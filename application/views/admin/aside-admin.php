@@ -54,7 +54,12 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <?php if($judul=="Anggota"){ ?>
+                <a href="<?php echo base_url()?>admin/anggota" class="nav-link active">
+            <?php }else{ ?>
+                <a href="<?php echo base_url()?>admin/anggota" class="nav-link">
+            <?php } ?>
+            
               <i class="nav-icon ion ion-person"></i>
               <p>
                 Anggota
@@ -73,7 +78,11 @@
             
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <?php if($judul=="Pinjam"){ ?>
+                <a href="<?php echo base_url()?>admin/pinjam" class="nav-link active">
+            <?php }else{ ?>
+                <a href="<?php echo base_url()?>admin/pinjam" class="nav-link">
+            <?php } ?>
               <i class="nav-icon fa fa-repeat"></i>
               <p>
                 Kembali Barang
