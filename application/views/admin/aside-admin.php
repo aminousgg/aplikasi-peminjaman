@@ -74,7 +74,7 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon ion ion-pie-graph"></i>
+              <i class="nav-icon fa fa-repeat"></i>
               <p>
                 Kembali Barang
                 

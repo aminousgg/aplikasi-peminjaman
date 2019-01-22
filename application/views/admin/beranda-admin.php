@@ -21,10 +21,10 @@
         <div class="row">
           <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box">
-              <span class="info-box-icon bg-info"><i class="fa fa-envelope-o"></i></span>
+              <span class="info-box-icon bg-info"><i class="fa fa-inbox"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Messages</span>
+                <span class="info-box-text">Barang</span>
                 <span class="info-box-number">1,410</span>
               </div>
               <!-- /.info-box-content -->
@@ -34,10 +34,10 @@
           <!-- /.col -->
           <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box">
-              <span class="info-box-icon bg-success"><i class="fa fa-flag-o"></i></span>
+              <span class="info-box-icon bg-success"><i class="fa fa-users"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Bookmarks</span>
+                <span class="info-box-text">Anggota</span>
                 <span class="info-box-number">410</span>
               </div>
               <!-- /.info-box-content -->
@@ -47,10 +47,10 @@
           <!-- /.col -->
           <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box">
-              <span class="info-box-icon bg-warning"><i class="fa fa-files-o"></i></span>
+              <span class="info-box-icon bg-warning"><i class="fa fa-shopping-cart"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Uploads</span>
+                <span class="info-box-text">Peminjam</span>
                 <span class="info-box-number">13,648</span>
               </div>
               <!-- /.info-box-content -->
@@ -60,10 +60,10 @@
           <!-- /.col -->
           <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box">
-              <span class="info-box-icon bg-danger"><i class="fa fa-star-o"></i></span>
+              <span class="info-box-icon bg-danger"><i class="fa fa-files-o"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Likes</span>
+                <span class="info-box-text">Transaksi</span>
                 <span class="info-box-number">93,139</span>
               </div>
               <!-- /.info-box-content -->
