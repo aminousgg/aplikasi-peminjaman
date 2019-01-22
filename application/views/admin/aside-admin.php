@@ -68,7 +68,11 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <?php if($judul=="Peminjaman"){ ?>
+                <a href="<?php echo base_url()?>admin/pinjam" class="nav-link active">
+            <?php }else{ ?>
+                <a href="<?php echo base_url()?>admin/pinjam" class="nav-link">
+            <?php } ?>
               <i class="nav-icon fa fa-shopping-cart"></i>
               <p>
                 Pinjam Barang
@@ -78,10 +82,10 @@
             
           </li>
           <li class="nav-item">
-            <?php if($judul=="Pinjam"){ ?>
-                <a href="<?php echo base_url()?>admin/pinjam" class="nav-link active">
+            <?php if($judul=="Kembali"){ ?>
+                <a href="<?php echo base_url()?>admin/kembali" class="nav-link active">
             <?php }else{ ?>
-                <a href="<?php echo base_url()?>admin/pinjam" class="nav-link">
+                <a href="<?php echo base_url()?>admin/kembali" class="nav-link">
             <?php } ?>
               <i class="nav-icon fa fa-repeat"></i>
               <p>

@@ -30,7 +30,7 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/barang-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
-		function anggota(){
+	function anggota(){
 		$data['judul']="Anggota";
 		$this->load->view('admin/header-admin',$data);
 		$this->load->view('admin/aside-admin',$data);
@@ -38,7 +38,7 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/footer-admin',$data);
 	}
 	function pinjam(){
-		$data['judul']="Pinjam";
+		$data['judul']="Peminjaman";
 		$this->load->view('admin/header-admin',$data);
 		$this->load->view('admin/aside-admin',$data);
 		$this->load->view('admin/pinjam-admin',$data);
@@ -51,7 +51,7 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/kembali-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
-	function Laporan(){
+	function aporan(){
 		$data['judul']="Laporan";
 		$this->load->view('admin/header-admin',$data);
 		$this->load->view('admin/aside-admin',$data);
