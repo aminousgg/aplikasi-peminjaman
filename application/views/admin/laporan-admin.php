@@ -50,7 +50,7 @@
               <span class="info-box-icon bg-warning"><i class="fa fa-shopping-cart"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Pinjam Barang</span>
+                <span class="info-box-text">Peminjaman</span>
                 <span class="info-box-number">13,648</span>
               </div>
               <!-- /.info-box-content -->
@@ -62,7 +62,7 @@
           <!-- /.col -->
           <div class="col-md-4 col-sm-6 col-12">
             <div class="info-box">
-              <span class="info-box-icon bg-danger"><i class="ion ion-pie-graph"></i></span>
+              <span class="info-box-icon bg-danger"><i class="fa fa-repeat"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Kembali Barang</span>
@@ -74,7 +74,7 @@
           </div>
           <div class="col-md-4 col-sm-6 col-12">
             <div class="info-box">
-              <span class="info-box-icon bg-danger"><i class="fa fa-archive"></i></span>
+              <span class="info-box-icon bg-danger"><i class="fa fa-files-o"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Transaksi</span>
