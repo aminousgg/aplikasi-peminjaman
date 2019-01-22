@@ -53,7 +53,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon ion ion-person"></i>
               <p>
@@ -62,7 +62,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-shopping-cart"></i>
               <p>
@@ -72,7 +72,7 @@
             </a>
             
           </li>
-          <li class="nav-item has-treeview">
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-repeat"></i>
               <p>
@@ -82,8 +82,15 @@
             </a>
             
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          
+
+          <li class="nav-item">
+            <?php if($judul=="Laporan"){ ?>
+                 <a href="<?php echo base_url()?>admin/laporan" class="nav-link active">
+            <?php }else{ ?>
+                 <a href="<?php echo base_url()?>admin/laporan" class="nav-link">
+            <?php } ?>
+            <!-- <a href="#" class="nav-link"> -->
               <i class="nav-icon fa fa-files-o"></i>
               <p>
                 Laporan

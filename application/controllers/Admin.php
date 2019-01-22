@@ -30,5 +30,12 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/barang-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
+	function Laporan(){
+		$data['judul']="Laporan";
+		$this->load->view('admin/header-admin',$data);
+		$this->load->view('admin/aside-admin',$data);
+		$this->load->view('admin/laporan-admin',$data);
+		$this->load->view('admin/footer-admin',$data);
+	}
 }
 ?>
