@@ -6,7 +6,7 @@ class Admin extends CI_Controller{
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
 		$this->load->helper('url');
-		
+		$this->load->model('M_admin');
 		// if ($this->session->userdata('username')=="") {
 		// 	redirect('login');
 		// }
@@ -24,6 +24,7 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/footer-admin',$data);
 	}
 	function barang(){
+		$data['tabel_record'] = $this->M_admin->tampil_barang()->result();
 		$data['judul']="Barang";
 		$this->load->view('admin/header-admin',$data);
 		$this->load->view('admin/aside-admin',$data);
