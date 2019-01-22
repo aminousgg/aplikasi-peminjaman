@@ -24,7 +24,7 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Input Data Peminjaman Barang</h3>
+              <h3 class="card-title">Data Peminjaman</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
