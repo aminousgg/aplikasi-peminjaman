@@ -4,7 +4,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Data <?php echo $judul; ?></h1>
+            <!-- <h1>Data <?php //echo $judul; ?></h1> -->
+            <button class="btn btn-info" type="button">
+              <i class="ion ion-android-add"></i>
+            </button>
+            <button class="btn btn-info" type="button">
+              <i class="ion ion-ios-printer-outline"></i>
+            </button>
           </div>
           <div class="col-sm-6">
             <!-- <ol class="breadcrumb float-sm-right">
@@ -24,7 +30,7 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Data Table With Full Features</h3>
+              <h3 class="card-title">Data Barang</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
