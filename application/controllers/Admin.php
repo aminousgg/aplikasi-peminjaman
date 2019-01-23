@@ -7,13 +7,7 @@ class Admin extends CI_Controller{
 		$this->load->helper(array('form', 'url'));
 		$this->load->helper('url');
 		$this->load->model('M_admin');
-		// if ($this->session->userdata('username')=="") {
-		// 	redirect('login');
-		// }
-	
-		//  else if(!$this->session->userdata('level') =="admin"){
-		//  	redirect(base_url("menu/guru"));
-		//  }
+		
 	}
 
 	function index(){
