@@ -7,9 +7,7 @@
             <button class="btn btn-info" type="button">
               <i class="ion ion-android-add"></i>
             </button>
-            <button class="btn btn-info" type="button">
-              <i class="ion ion-ios-printer-outline"></i>
-            </button>
+            
           </div>
           <div class="col-sm-6">
             <!-- <ol class="breadcrumb float-sm-right">
