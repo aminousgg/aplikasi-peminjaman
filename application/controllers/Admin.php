@@ -42,6 +42,7 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/footer-admin',$data);
 	}
 	function kembali(){
+		$data['tabel_record'] = $this->M_admin->tampil_kembali()->result();
 		$data['judul']="Kembali";
 		$this->load->view('admin/header-admin',$data);
 		$this->load->view('admin/aside-admin',$data);

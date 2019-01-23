@@ -39,7 +39,7 @@
                 <tr>
                   <th>No</th>
                   <th>NIP</th>
-                  <th>Nama Peminjam</th>
+                  <th>Nama</th>
                   <th>Nama Barang</th>
                   <th>Tanggal Pinjam</th>
                   <th>Tanggal Kembali</th>
@@ -70,7 +70,7 @@
                 <tr>
                   <th>No</th>
                   <th>NIP</th>
-                  <th>Nama Peminjam</th>
+                  <th>Nama</th>
                   <th>Nama Barang</th>
                   <th>Tanggal Pinjam</th>
                   <th>Tanggal Kembali</th>
