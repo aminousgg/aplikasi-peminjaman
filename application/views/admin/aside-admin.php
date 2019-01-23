@@ -75,7 +75,7 @@
             <?php } ?>
               <i class="nav-icon fa fa-shopping-cart"></i>
               <p>
-                Pinjam Barang
+                Peminjaman
                 
               </p>
             </a>
@@ -89,7 +89,7 @@
             <?php } ?>
               <i class="nav-icon fa fa-repeat"></i>
               <p>
-                Kembali Barang
+                Daftar Pengembalian
                 
               </p>
             </a>

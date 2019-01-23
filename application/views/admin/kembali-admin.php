@@ -28,7 +28,7 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Data Pengembalian Barang</h3>
+              <h3 class="card-title">Daftar Peminjam</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -37,42 +37,27 @@
                   <tr>
                     <th>No</th>
                     <th>ID Peminjam</th>
-                    <th>nama barang</th>
-                    <th>nama</th>
-                    <th>tanggal kemabli (perjanjian)</th>
-                    <th>tanggal Pengembalian</th>
-                    <th>aksi</th>
+                    <th>Nama barang</th>
+                    <th>Nama</th>
+                    <th>Tgl pinjam</th>
+                    <th>Tgl Pengembalian</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
-                  <?php $i=1; foreach($tabel_record as $row){ ?>
-                  <tr>
-                    <td><?php echo $i; ?></td>
-                    <td><?php echo $row->id_peminjam ?></td>
-                    <td><?php echo $row->nama_brg ?></td>
-                    <td><?php echo $row->nama_peminjam ?></td>
-                    <td><?php echo $row->tgl_normal_kmbl ?></td>
-                    <td><?php echo $row->tgl_pengembalian ?></td>
-                    <td>
-                      <div class="button-group">
-                        <button type="button" class="btn btn-info"> <i class="ion ion-ios-more"></i> </button>
-                        <button type="button" class="btn btn-warning"> <i class="ion ion-edit"></i> </button>
-                        <button type="button" class="btn btn-danger"> <i class="ion ion-android-delete"></i> </button>
-                      </div>
-                    </td>
-                    <?php $i++; ?>
-                  </tr>
-                  <?php } ?>
+                  
                 </tbody>
                 <tfoot>
                   <tr>
                     <th>No</th>
                     <th>ID Peminjam</th>
-                    <th>nama barang</th>
-                    <th>nama</th>
-                    <th>tanggal kemabli (perjanjian)</th>
-                    <th>tanggal Pengembalian</th>
-                    <th>aksi</th>
+                    <th>Nama barang</th>
+                    <th>Nama</th>
+                    <th>Tgl pinjam</th>
+                    <th>Tgl Pengembalian</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
                 </tr>
                 </tfoot>
               </table>

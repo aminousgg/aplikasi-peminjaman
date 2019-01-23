@@ -49,8 +49,24 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/pinjam-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
+	function pinjam_barang(){
+		$data['tabel_record'] = $this->M_admin->tampil_barang()->result();
+		$data['judul']="Peminjaman";
+		$this->load->view('admin/header-admin',$data);
+		$this->load->view('admin/aside-admin',$data);
+		$this->load->view('admin/pilih-pinjam-admin',$data);
+		$this->load->view('admin/footer-admin',$data);
+	}
+	function form_pinjam(){
+		$data['judul']="Peminjaman";
+		$this->load->view('admin/header-admin',$data);
+		$this->load->view('admin/aside-admin',$data);
+		$this->load->view('admin/form-pinjam-admin',$data);
+		$this->load->view('admin/footer-admin',$data);
+	}
+
 	function kembali(){
-		$data['tabel_record'] = $this->M_admin->tampil_kembali()->result();
+		// $data['tabel_record'] = $this->M_admin->tampil_kembali()->result();
 		$data['judul']="Kembali";
 		$this->load->view('admin/header-admin',$data);
 		$this->load->view('admin/aside-admin',$data);
