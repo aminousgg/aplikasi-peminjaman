@@ -32,6 +32,14 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/anggota-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
+//	function form-anggota(){
+//		$data['judul']="FormAnggota";
+//		$this->load->view('admin/header-admin',$data);
+//		$this->load->view('admin/aside-admin',$data);
+//		$this->load->view('admin/form-anggota-admin',$data);
+//		$this->load->view('admin/footer-admin',$data);
+//	}
+
 	function pinjam(){
 		$data['judul']="Peminjaman";
 		$this->load->view('admin/header-admin',$data);
@@ -53,12 +61,6 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/laporan-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
-//	function form-anggota(){
-//		$data['judul']="FormAnggota";
-//		$this->load->view('admin/header-admin',$data);
-//		$this->load->view('admin/aside-admin',$data);
-//		$this->load->view('admin/form-anggota-admin',$data);
-//		$this->load->view('admin/footer-admin',$data);
-//	}
+
 }
 
