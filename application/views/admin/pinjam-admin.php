@@ -3,8 +3,14 @@
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Data Peminjaman Barang</h1>
+        <div class="col-sm-6">
+            <!-- <h1>Data <?php //echo $judul; ?></h1> -->
+            <div>
+              <button class="btn btn-info" type="button">
+                <i class="ion ion-android-add"></i>
+              </button>
+              Input Data Peminjaman
+            </div>
           </div>
           <div class="col-sm-6">
             <!-- <ol class="breadcrumb float-sm-right">
