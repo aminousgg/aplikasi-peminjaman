@@ -26,6 +26,7 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/footer-admin',$data);
 	}
 	function anggota(){
+		$data['tabel_record'] = $this->M_admin->tampil_anggota()->result();
 		$data['judul']="Anggota";
 		$this->load->view('admin/header-admin',$data);
 		$this->load->view('admin/aside-admin',$data);
@@ -41,6 +42,7 @@ class Admin extends CI_Controller{
 //	}
 
 	function pinjam(){
+		$data['tabel_record'] = $this->M_admin->tampil_pinjam()->result();
 		$data['judul']="Peminjaman";
 		$this->load->view('admin/header-admin',$data);
 		$this->load->view('admin/aside-admin',$data);
@@ -48,6 +50,7 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/footer-admin',$data);
 	}
 	function kembali(){
+		$data['tabel_record'] = $this->M_admin->tampil_kembali()->result();
 		$data['judul']="Kembali";
 		$this->load->view('admin/header-admin',$data);
 		$this->load->view('admin/aside-admin',$data);

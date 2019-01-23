@@ -42,8 +42,9 @@
                   <th>Kode barang</th>
                   <th>Nama Barang</th>
                   <th>Merk</th>
-                  <th>Tersedia</th>
                   <th>Jumlah</th>
+                  <th>Tersedia</th>
+                  <th>Terpinjam</th>
                   <th>Aksi</th>
                 </tr>
                 </thead>
@@ -54,8 +55,9 @@
                     <td><?php echo $row->kode_barang ?></td>
                     <td><?php echo $row->nama_barang ?></td>
                     <td><?php echo $row->merk ?></td>
-                    <td><?php echo $row->jml_tersedia ?></td>
                     <td><?php echo $row->jml_barang ?></td>
+                    <td><?php echo $row->jml_tersedia ?></td>
+                    <td><?php echo $row->jml_terpinjam ?></td>
                     <td>
                       <div class="button-group">
                         <button type="button" class="btn btn-info"> <i class="ion ion-ios-more"></i> </button>
@@ -69,12 +71,13 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                <th>No</th>
+                  <th>No</th>
                   <th>Kode barang</th>
                   <th>Nama Barang</th>
                   <th>Merk</th>
-                  <th>Tersedia</th>
                   <th>Jumlah</th>
+                  <th>Tersedia</th>
+                  <th>Terpinjam</th>
                   <th>Aksi</th>
                 </tr>
                 </tfoot>
