@@ -46,7 +46,7 @@
                   <th style="font-size:13px;">Nama Barang</th>
                   <th style="font-size:13px;">Unit</th>
                   <th style="font-size:13px;">Estimasi Kembali</th>
-                  <th style="font-size:13px;">Stattus</th>
+                  <th style="font-size:13px;">Status</th>
                   <th style="font-size:13px;">Aksi</th>
                 </tr>
               </thead>
@@ -54,12 +54,12 @@
                 <?php $i=1; foreach($tabel_record as $row){ ?>
                   <tr>
                     <td><?php echo $i; ?></td>
-                    <td><?php echo $row->kode_barang ?></td>
+                    <td><?php echo $row->nip ?></td>
+                    <td><?php echo $row->nama ?></td>
                     <td><?php echo $row->nama_barang ?></td>
-                    <td><?php echo $row->merk ?></td>
-                    <td><?php echo $row->jml_barang ?></td>
-                    <td><?php echo $row->jml_tersedia ?></td>
-                    <td><?php echo $row->jml_terpinjam ?></td>
+                    <td><?php echo $row->jml_pinjam ?></td>
+                    <td>otw</td>
+                    <td><?php echo $row->status ?></td>
                     <td>
                       <div class="button-group">
                         <button type="button" class="btn btn-info"> <i class="ion ion-ios-more"></i> </button>
