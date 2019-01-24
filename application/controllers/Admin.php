@@ -55,8 +55,10 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/pilih-pinjam-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
-	function form_pinjam($nama_brg){
-		$data['pilih']=$nama_brg;
+	function form_pinjam($id){
+		$ez=$this->M_admin->ambil_row($id)->row_array();
+		$data['id']=$id;
+		$data['brg']=$ez['nama_barang'];
 		$data['judul']="Peminjaman";
 		$this->load->view('admin/header-admin',$data);
 		$this->load->view('admin/aside-admin',$data);
@@ -67,14 +69,34 @@ class Admin extends CI_Controller{
 		// date_default_timezone_set('Asia/Jakarta');
 		$exp_date = $this->input->post('tgl_kembali');
 		$todays_date = $this->input->post('tgl_pinjam'); 
-
 		$today = strtotime($todays_date); 
-
 		$expiration_date = strtotime($exp_date); 
-		if ($expiration_date > $today) { 
-			echo 'Still Active';
+		if ($expiration_date >= $today) { 
+			// echo 'Still Active';
+			$status="(Aktif) belum kembali";
 		} else { 
-			echo 'Time Expired';
+			// echo 'Time Expired';
+			$status="Salah tanggal";
+			die;
+		}
+		$id=$this->input->post('id');
+		// var_dump($id); die;
+		//$brg=$this->input->post('brg');
+		if($status=="(Aktif) belum kembali"){
+			$data = $this->M_admin->ambil_row($id)->row_array();
+			//var_dump($data); die;
+			if($data['jml_tesedia']>=$this->input->post('unit')){
+				$a=$data['jml_barang'] - $this->input->post('unit');
+				$b=$data['jml_terpinjam'] + $this->input->post('unit');
+				$c=$data['jml_tersedia'] - $this->input->post('unit');
+				$set = array(
+				);
+			}
+			
+			
+			$this->db->where('id',$id);
+			$result=$this->db->update('barang',$data);
+			//habis ini ngeset stok
 		}
 	}
 	// ========================================================================

@@ -28,7 +28,7 @@
 
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Data Peminjam</h3>
+            <h3 class="card-title">Daftar Barang Kembali</h3>
             <button style="margin-top:-25px;" onclick="link()" class="btn btn-success float-right"><i class="ion ion-android-add"></i>  Pinjam Barang</button>
           </div>
           <script>

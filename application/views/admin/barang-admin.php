@@ -51,7 +51,7 @@
                       <td><?php echo $row->jml_terpinjam ?></td>
                       <td>
                         <div class="button-group">
-                          <button type="button" class="btn btn-info"> <i class="ion ion-ios-more"></i> </button>
+                          <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-info"> <i class="ion ion-ios-more"></i> </button>
                           <button type="button" class="btn btn-warning"> <i class="ion ion-edit"></i> </button>
                           <button type="button" class="btn btn-danger"> <i class="ion ion-android-delete"></i> </button>
                         </div>
@@ -83,5 +83,26 @@
     </div>
     <!-- /.row -->
   </section>
+  <!-- modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Header</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
   <!-- /.content -->
 </div>
