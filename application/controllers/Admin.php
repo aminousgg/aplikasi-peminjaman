@@ -1,7 +1,6 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Admin extends CI_Controller{
-
 	function __construct(){
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
@@ -9,7 +8,6 @@ class Admin extends CI_Controller{
 		$this->load->model('M_admin');
 		
 	}
-
 	function index(){
 		$data['judul']="Beranda";
 		$this->load->view('admin/header-admin',$data);
@@ -95,6 +93,4 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/laporan-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
-
 }
-
