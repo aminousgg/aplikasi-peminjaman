@@ -66,8 +66,18 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/footer-admin',$data);
 	}
 	function tambah_pinjam(){
-		$data['judul']="Peminjaman";
-		
+		// date_default_timezone_set('Asia/Jakarta');
+		$exp_date = $this->input->post('tgl_kembali');
+		$todays_date = $this->input->post('tgl_pinjam'); 
+
+		$today = strtotime($todays_date); 
+
+		$expiration_date = strtotime($exp_date); 
+		if ($expiration_date > $today) { 
+			echo 'Still Active';
+		} else { 
+			echo 'Time Expired';
+		}
 	}
 	// ========================================================================
 	function kembali(){

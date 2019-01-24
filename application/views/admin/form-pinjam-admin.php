@@ -29,7 +29,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <?php echo form_open_multipart('', array('role' => 'form'))?>
+              <?php echo form_open('admin/tambah_pinjam', array('role' => 'form'))?>
                 <div class="card-body">
                   <div class="form-group">
                     <label>NIP</label>
@@ -48,18 +48,21 @@
                     <input type="text" name="seksi" class="form-control" placeholder="Seksi">
                   </div>
                   <fieldset disabled>
-                  <div class="form-group">
-                    <label>Nama Barang</label>
-                    <input type="text" nama="brg" class="form-control" value="<?php echo $pilih ?>">
-                  </div>
+                    <div class="form-group">
+                      <label>Nama Barang</label>
+                      <input type="text" nama="brg" class="form-control" value="<?php echo $pilih ?>">
+                    </div>
+                  </fieldset>
+                  <fieldset disabled>
+                    <div class="form-group">
+                      <label>Tgl Pinjam</label>
+                      <?php date_default_timezone_set('Asia/Jakarta'); ?>
+                      <input type="date" name="tgl_pinjam" value="<?php echo date('Y-m-d'); ?>" class="form-control">
+                    </div>
                   </fieldset>
                   <div class="form-group">
-                    <label>Tgl Pinjam</label>
-                    <input type="Date" name="tgl_pinjam" class="form-control">
-                  </div>
-                  <div class="form-group">
                     <label>Tgl Kembali</label>
-                    <input type="Date" name="tgl_kembali" class="form-control">
+                    <input type="date" name="tgl_kembali" class="form-control">
                   </div>
                   
                 </div>
