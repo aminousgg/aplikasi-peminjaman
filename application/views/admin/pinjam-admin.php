@@ -17,6 +17,7 @@
     </div><!-- /.container-fluid -->
   </section>
 
+<<<<<<< HEAD
   <!-- Main content -->
   <section class="content">
 
@@ -39,6 +40,27 @@
           <div class="card-body" style="padding-left:4px;">
             <table id="example1" class="table table-bordered table-striped">
               <thead>
+=======
+      <div class="row">
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <!-- /.card -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Data Peminjam</h3>
+              <button style="margin-top:-25px;" onclick="link()" class="btn btn-success float-right"><i class="ion ion-android-add"></i>  Pinjam Barang</button>
+            </div>
+            <script>
+              function link() {
+                window.location.href='<?php echo base_url() ?>admin/pinjam_barang';
+              }
+            </script>
+            <!-- /.card-header -->
+            <div class="card-body" style="padding-left:4px;">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+>>>>>>> 32cbab6d03c2b382c0f4e445d0b74c14677db4c3
                 <tr>
                   <th style="font-size:13px;">No</th>
                   <th style="font-size:13px;">NIP</th>
@@ -85,9 +107,15 @@
               </tfoot>
             </table>
           </div>
+<<<<<<< HEAD
           <!-- /.card-body -->
         </div>
         <!-- /.card -->
+=======
+          <!-- /.card -->
+        </div>
+        
+>>>>>>> 32cbab6d03c2b382c0f4e445d0b74c14677db4c3
       </div>
         
     </div>
