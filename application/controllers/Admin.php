@@ -57,6 +57,7 @@ class Admin extends CI_Controller{
 	}
 	function form_pinjam($id){
 		$ez=$this->M_admin->ambil_row($id)->row_array();
+		$data['sedia']=$ez['jml_tersedia'];
 		$data['id']=$id;
 		$data['brg']=$ez['nama_barang'];
 		$data['judul']="Peminjaman";
@@ -82,16 +83,27 @@ class Admin extends CI_Controller{
 		$id=$this->input->post('id');
 		// var_dump($id); die;
 		//$brg=$this->input->post('brg');
-		if($status=="(Aktif) belum kembali"){
+		if($status!="Salah tanggal"){
 			$data = $this->M_admin->ambil_row($id)->row_array();
-			//var_dump($data); die;
-			if($data['jml_tesedia']>=$this->input->post('unit')){
-				$a=$data['jml_barang'] - $this->input->post('unit');
+			//var_dump($data["jml_tersedia"]); die;
+			if($data['jml_tersedia']>=$this->input->post('unit')){
+				//var_dump($this->input->post('unit')); die;
 				$b=$data['jml_terpinjam'] + $this->input->post('unit');
 				$c=$data['jml_tersedia'] - $this->input->post('unit');
 				$set = array(
-
+					'jml_terpinjam'	=> $b,
+					'jml_tersedia'	=> $c,
 				);
+				var_dump($set); die;
+				$this->db->where('id',$id);
+				$result=$this->db->update('barang',$set);
+				if($result==true){
+					// Tambah data(ambil data anggota)
+				}
+
+				//redirect(base_url('admin/pinjam'));
+			} else {
+				echo "unit tidak cukup untuk di pinjam";
 			}
 			
 			

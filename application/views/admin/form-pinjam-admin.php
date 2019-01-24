@@ -68,7 +68,11 @@
                   </div>
                   <div class="form-group">
                     <label>Jumlah Unit</label>
-                    <input type="number" name="Unit" class="form-control" placeholder="input angka">
+                    <select name="unit">
+                      <?php for($i=1;$i<=$sedia;$i++) { ?>
+                        <option value="<?php echo $i?>"><?php echo $i?></option>
+                      <?php }?>
+                    </select>
                   </div>
                   <fieldset disabled>
                     <div class="form-group">
