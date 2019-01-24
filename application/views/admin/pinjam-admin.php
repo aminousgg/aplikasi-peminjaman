@@ -40,12 +40,12 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th style="font-size:13px;">No</th>
+                  <th style="font-size:13px; width:10px;">No</th>
                   <th style="font-size:13px;">NIP</th>
                   <th style="font-size:13px;">Nama</th>
                   <th style="font-size:13px;">Nama Barang</th>
-                  <th style="font-size:13px;">Tgl Pinjam</th>
-                  <th style="font-size:13px;">Tgl kembali</th>
+                  <th style="font-size:13px;">Unit</th>
+                  <th style="font-size:13px;">Estimasi Kembali</th>
                   <th style="font-size:13px;">Stattus</th>
                   <th style="font-size:13px;">Aksi</th>
                 </tr>
@@ -73,12 +73,12 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th style="font-size:13px;">No</th>
+                  <th style="font-size:13px; width:10px;">No</th>
                   <th style="font-size:13px;">NIP</th>
                   <th style="font-size:13px;">Nama</th>
                   <th style="font-size:13px;">Nama Barang</th>
-                  <th style="font-size:13px;">Tgl Pinjam</th>
-                  <th style="font-size:13px;">Tgl kembali</th>
+                  <th style="font-size:13px;">Unit</th>
+                  <th style="font-size:13px;">Estimasi Kembali</th>
                   <th style="font-size:13px;">Stattus</th>
                   <th style="font-size:13px;">Aksi</th>
                 </tr>
