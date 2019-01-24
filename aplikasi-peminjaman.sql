@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 23 Jan 2019 pada 04.50
+-- Generation Time: 24 Jan 2019 pada 01.36
 -- Versi Server: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -39,6 +39,14 @@ CREATE TABLE `anggota` (
   `level_user` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `anggota`
+--
+
+INSERT INTO `anggota` (`id`, `nip`, `nama`, `jabatan`, `pangkat_golongan`, `seksi`, `tgl_lahir`, `level_user`) VALUES
+(1, '45355', 'asdfdff', 'dfgddad', 'asfgaas', 'asdf', '1950-01-02', 'admin'),
+(2, '56451', 'asdf ads', 'asdf', 'sdf', 'asdf afsd', '1980-01-17', 'user');
+
 -- --------------------------------------------------------
 
 --
@@ -64,6 +72,20 @@ CREATE TABLE `barang` (
 INSERT INTO `barang` (`id`, `kode_barang`, `nama_barang`, `merk`, `tgl_masuk`, `jml_terpinjam`, `spesifikasi`, `jml_barang`, `jml_tersedia`) VALUES
 (1, '456', 'asfsadf', 'sdf', '2019-01-08', 3, 'adfadf ad', 10, 7),
 (2, '4545', 'adfasdas', 'sfdh', '2019-01-02', 3, 'sdfga', 10, 7);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `kembali_brg`
+--
+
+CREATE TABLE `kembali_brg` (
+  `id` int(11) NOT NULL,
+  `id_pinjam` varchar(5) NOT NULL,
+  `id_brg` varchar(5) NOT NULL,
+  `tgl_pinjam` date NOT NULL,
+  `tgl_kembali` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -102,6 +124,13 @@ ALTER TABLE `barang`
   ADD UNIQUE KEY `kode_barang` (`kode_barang`);
 
 --
+-- Indexes for table `kembali_brg`
+--
+ALTER TABLE `kembali_brg`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id_pinjam` (`id_pinjam`);
+
+--
 -- Indexes for table `pinjam_barang`
 --
 ALTER TABLE `pinjam_barang`
@@ -116,13 +145,19 @@ ALTER TABLE `pinjam_barang`
 -- AUTO_INCREMENT for table `anggota`
 --
 ALTER TABLE `anggota`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `kembali_brg`
+--
+ALTER TABLE `kembali_brg`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pinjam_barang`

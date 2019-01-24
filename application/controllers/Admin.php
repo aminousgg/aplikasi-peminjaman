@@ -57,7 +57,8 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/pilih-pinjam-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
-	function form_pinjam(){
+	function form_pinjam($nama_brg){
+		$data['pilih']=$nama_brg;
 		$data['judul']="Peminjaman";
 		$this->load->view('admin/header-admin',$data);
 		$this->load->view('admin/aside-admin',$data);

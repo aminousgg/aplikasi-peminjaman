@@ -47,10 +47,12 @@
                     <label>Seksi Bagian</label>
                     <input type="text" class="form-control" placeholder="Seksi">
                   </div>
+                  <fieldset disabled>
                   <div class="form-group">
                     <label>Nama Barang</label>
-                    <input type="text" class="form-control" placeholder="">
+                    <input type="text" class="form-control" value="<?php echo $pilih ?>">
                   </div>
+                  </fieldset>
                   <div class="form-group">
                     <label>Tgl Pinjam</label>
                     <input type="Date" class="form-control">

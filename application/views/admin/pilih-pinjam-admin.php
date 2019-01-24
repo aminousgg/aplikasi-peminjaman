@@ -44,7 +44,6 @@
                   <th>Merk</th>
                   <th>Jumlah</th>
                   <th>Tersedia</th>
-                  <th>Terpinjam</th>
                   <th>Aksi</th>
                 </tr>
                 </thead>
@@ -57,9 +56,14 @@
                     <td><?php echo $row->merk ?></td>
                     <td><?php echo $row->jml_barang ?></td>
                     <td><?php echo $row->jml_tersedia ?></td>
-                    <td><?php echo $row->jml_terpinjam ?></td>
+                    
                     <td>
-                        <button type="button" class="btn btn-info"> <i class="ion ion-android-checkbox"></i> pilih </button>
+                        <button type="button" onclick="link()" class="btn btn-info"><i class="ion ion-android-checkbox"></i> pilih</button>
+                        <script>
+                          function link() {
+                            window.location.href='<?php echo base_url()."admin/form_pinjam/".$row->nama_barang ?>';
+                          }
+                        </script>
                     </td>
                     <?php $i++; ?>
                   </tr>
@@ -73,7 +77,6 @@
                   <th>Merk</th>
                   <th>Jumlah</th>
                   <th>Tersedia</th>
-                  <th>Terpinjam</th>
                   <th>Aksi</th>
                 </tr>
                 </tfoot>
