@@ -4,9 +4,9 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <button class="btn btn-info" type="button">
+            <!-- <button class="btn btn-info" type="button">
               <i class="ion ion-android-add"></i>
-            </button>
+            </button> -->
             <button class="btn btn-info" type="button">
               <i class="ion ion-ios-printer-outline"></i>
             </button>
@@ -42,7 +42,7 @@
                     <th>Tgl pinjam</th>
                     <th>Tgl Pengembalian</th>
                     <th>Status</th>
-                    <th>Aksi</th>
+                    
                 </tr>
                 </thead>
                 <tbody>
@@ -57,7 +57,7 @@
                     <th>Tgl pinjam</th>
                     <th>Tgl Pengembalian</th>
                     <th>Status</th>
-                    <th>Aksi</th>
+                    
                 </tr>
                 </tfoot>
               </table>

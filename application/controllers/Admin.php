@@ -40,7 +40,7 @@ class Admin extends CI_Controller{
 //		$this->load->view('admin/form-anggota-admin',$data);
 //		$this->load->view('admin/footer-admin',$data);
 //	}
-
+	// ===========================Peminjaman==================================
 	function pinjam(){
 		$data['tabel_record'] = $this->M_admin->tampil_pinjam()->result();
 		$data['judul']="Peminjaman";
@@ -65,7 +65,11 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/form-pinjam-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
-
+	function tambah_pinjam(){
+		$data['judul']="Peminjaman";
+		
+	}
+	// ========================================================================
 	function kembali(){
 		// $data['tabel_record'] = $this->M_admin->tampil_kembali()->result();
 		$data['judul']="Kembali";
