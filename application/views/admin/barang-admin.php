@@ -18,62 +18,62 @@
       <div class="row">
         <div class="col-12">
           <!-- /.card -->
-
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Data Barang</h3>
               <button style="margin-top:-25px;" onclick="link()" class="btn btn-success float-right"><i class="ion ion-android-add"></i>  Input Barang</button>
             </div>
-          </div>
-          <!-- /.card-header -->
-          <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th>No</th>
-                  <th>Kode barang</th>
-                  <th>Nama Barang</th>
-                  <th>Merk</th>
-                  <th>Jumlah</th>
-                  <th>Tersedia</th>
-                  <th>Terpinjam</th>
-                  <th>Aksi</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php $i=1; foreach($tabel_record as $row){ ?>
+          
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
                   <tr>
-                    <td><?php echo $i; ?></td>
-                    <td><?php echo $row->kode_barang ?></td>
-                    <td><?php echo $row->nama_barang ?></td>
-                    <td><?php echo $row->merk ?></td>
-                    <td><?php echo $row->jml_barang ?></td>
-                    <td><?php echo $row->jml_tersedia ?></td>
-                    <td><?php echo $row->jml_terpinjam ?></td>
-                    <td>
-                      <div class="button-group">
-                        <button type="button" class="btn btn-info"> <i class="ion ion-ios-more"></i> </button>
-                        <button type="button" class="btn btn-warning"> <i class="ion ion-edit"></i> </button>
-                        <button type="button" class="btn btn-danger"> <i class="ion ion-android-delete"></i> </button>
-                      </div>
-                    </td>
-                    <?php $i++; ?>
+                    <th>No</th>
+                    <th>Kode barang</th>
+                    <th>Nama Barang</th>
+                    <th>Merk</th>
+                    <th>Jumlah</th>
+                    <th>Tersedia</th>
+                    <th>Terpinjam</th>
+                    <th>Aksi</th>
                   </tr>
-                <?php } ?>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th>No</th>
-                  <th>Kode barang</th>
-                  <th>Nama Barang</th>
-                  <th>Merk</th>
-                  <th>Jumlah</th>
-                  <th>Tersedia</th>
-                  <th>Terpinjam</th>
-                  <th>Aksi</th>
-                </tr>
-              </tfoot>
-            </table>
+                </thead>
+                <tbody>
+                  <?php $i=1; foreach($tabel_record as $row){ ?>
+                    <tr>
+                      <td><?php echo $i; ?></td>
+                      <td><?php echo $row->kode_barang ?></td>
+                      <td><?php echo $row->nama_barang ?></td>
+                      <td><?php echo $row->merk ?></td>
+                      <td><?php echo $row->jml_barang ?></td>
+                      <td><?php echo $row->jml_tersedia ?></td>
+                      <td><?php echo $row->jml_terpinjam ?></td>
+                      <td>
+                        <div class="button-group">
+                          <button type="button" class="btn btn-info"> <i class="ion ion-ios-more"></i> </button>
+                          <button type="button" class="btn btn-warning"> <i class="ion ion-edit"></i> </button>
+                          <button type="button" class="btn btn-danger"> <i class="ion ion-android-delete"></i> </button>
+                        </div>
+                      </td>
+                      <?php $i++; ?>
+                    </tr>
+                  <?php } ?>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th>No</th>
+                    <th>Kode barang</th>
+                    <th>Nama Barang</th>
+                    <th>Merk</th>
+                    <th>Jumlah</th>
+                    <th>Tersedia</th>
+                    <th>Terpinjam</th>
+                    <th>Aksi</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
           </div>
           <!-- /.card-body -->
         </div>
