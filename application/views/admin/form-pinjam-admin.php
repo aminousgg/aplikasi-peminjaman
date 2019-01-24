@@ -61,7 +61,6 @@
                   <label>Tgl Kembali</label>
                   <input type="Date" name="tgl_kembali" class="form-control">
                 </div>
-<<<<<<< HEAD
                   
               </div>
               <!-- /.card-body -->
@@ -71,10 +70,6 @@
               </div>
             <?php echo form_close(); ?>
           </div>
-=======
-              <?php echo form_close(); ?>
-            </div>
->>>>>>> 32cbab6d03c2b382c0f4e445d0b74c14677db4c3
         </div>
         <div class="col-md-2"></div>
     </div>
