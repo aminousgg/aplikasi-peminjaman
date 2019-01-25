@@ -54,6 +54,14 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/footer-admin',$data);
 	}
 	
+	function edit_form_anggota(){
+		$data['judul']="EditAnggota";
+		$this->load->view('admin/header-admin',$data);
+		$this->load->view('admin/aside-admin',$data);
+		$this->load->view('admin/form-anggota-edit-admin',$data);
+		$this->load->view('admin/footer-admin',$data);
+	}
+
 //	<!--function tambah_anggota(){
 //		if($result==true){
 //			// Tambah data(ambil data anggota)
