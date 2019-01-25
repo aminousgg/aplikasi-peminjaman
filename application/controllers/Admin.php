@@ -23,12 +23,40 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/barang-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
+	function form_barang(){
+		$data['judul']="FormBarang";
+		$this->load->view('admin/header-admin',$data);
+		$this->load->view('admin/aside-admin',$data);
+		$this->load->view('admin/form-barang-admin',$data);
+		$this->load->view('admin/footer-admin',$data);
+	}
+	function edit_form_barang(){
+		$data['judul']="EditFormBarang";
+		$this->load->view('admin/header-admin',$data);
+		$this->load->view('admin/aside-admin',$data);
+		$this->load->view('admin/form-barang-edit-admin',$data);
+		$this->load->view('admin/footer-admin',$data);
+	}
 	function anggota(){
 		$data['tabel_record'] = $this->M_admin->tampil_anggota()->result();
 		$data['judul']="Anggota";
 		$this->load->view('admin/header-admin',$data);
 		$this->load->view('admin/aside-admin',$data);
 		$this->load->view('admin/anggota-admin',$data);
+		$this->load->view('admin/footer-admin',$data);
+	}
+	function form_anggota(){
+		$data['judul']="FormAnggota";
+		$this->load->view('admin/header-admin',$data);
+		$this->load->view('admin/aside-admin',$data);
+		$this->load->view('admin/form-anggota-admin',$data);
+		$this->load->view('admin/footer-admin',$data);
+	}
+	function edit_form_anggota(){
+		$data['judul']="EditFormAnggota";
+		$this->load->view('admin/header-admin',$data);
+		$this->load->view('admin/aside-admin',$data);
+		$this->load->view('admin/form-anggota-edit-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
 //	function form-anggota(){
@@ -76,6 +104,13 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/header-admin',$data);
 		$this->load->view('admin/aside-admin',$data);
 		$this->load->view('admin/form-pinjam-admin',$data);
+		$this->load->view('admin/footer-admin',$data);
+	}
+	function edit_form_pinjam($id){
+		$data['judul']="EditPeminjaman";
+		$this->load->view('admin/header-admin',$data);
+		$this->load->view('admin/aside-admin',$data);
+		$this->load->view('admin/form-pinjam-edit-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
 	function tambah_pinjam(){

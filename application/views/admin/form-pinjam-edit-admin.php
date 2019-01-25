@@ -48,8 +48,6 @@
               <!-- form start -->
               <?php echo form_open_multipart('admin/tambah_pinjam', array('role' => 'form'))?>
                 <div class="card-body">
-                  <input type="hidden" name='id' value='<?php echo $id ?>'>
-                  <!-- <input type="hidden" name='brg' value='<?php //echo $brg ?>'> -->
                   <div class="form-group">
                     <label>NIP</label>
                     <input type="text" name="nip" class="form-control" placeholder="NIP">

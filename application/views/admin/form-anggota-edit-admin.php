@@ -76,7 +76,7 @@
                                 <label>Level User</label>
                                 <select class="form-control select2" style="width: 100%;">
                                     <option selected="selected">User</option>
-                                    <option>User</option>
+                                    
                                     <option>Admin</option>
                                 </select>
                             </div>
