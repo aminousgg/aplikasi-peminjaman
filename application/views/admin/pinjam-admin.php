@@ -51,6 +51,9 @@
                 </tr>
               </thead>
               <tbody>
+                <?php date_default_timezone_set('Asia/Jakarta');
+                  $today = date('Y-m-d');
+                ?>
                 <?php $i=1; foreach($tabel_record as $row){ ?>
                   <tr>
                     <td><?php echo $i; ?></td>
@@ -58,7 +61,20 @@
                     <td><?php echo $row->nama ?></td>
                     <td><?php echo $row->nama_barang ?></td>
                     <td><?php echo $row->jml_pinjam ?></td>
-                    <td>otw</td>
+                    <?php 
+                      //Our "then" date.
+                      $then = $row->tgl_pinjam;
+                      //Convert it into a timestamp.
+                      $then = strtotime($then);
+                      //Get the current timestamp.
+                      $now = time();
+                      //Calculate the difference.
+                      $difference = $now - $then;
+                      //Convert seconds into days.
+                      $days = floor($difference / (60*60*24) );
+                      echo $days;
+                    ?>
+                    <td><?php echo $days." hari" ?></td>
                     <td><?php echo $row->status ?></td>
                     <td>
                       <div class="button-group">
