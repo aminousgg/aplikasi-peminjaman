@@ -48,7 +48,7 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/footer-admin',$data);
 	}
 	function pinjam_barang(){
-		$data['tabel_record'] = $this->M_admin->tampil_pinjam()->result();
+		$data['tabel_record'] = $this->M_admin->tampil_barang()->result();
 		$data['judul']="Peminjaman";
 		$this->load->view('admin/header-admin',$data);
 		$this->load->view('admin/aside-admin',$data);
