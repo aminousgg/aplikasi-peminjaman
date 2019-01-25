@@ -22,9 +22,27 @@
 
         <div class="row">
             <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fa fa-text-width"></i>
+                            Detail Barang
+                        </h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <blockquote>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                        </blockquote>
+                    </div>
+                <!-- /.card-body -->
+                </div>
+            </div>
+            <div class="col-md-6">
                 <div class="card card-info">
                     <div class="card-header">
-                        <h3 class="card-title">Edit Data Anggota</h3>
+                        <h3 class="card-title">Masukan Data Anggota</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->

@@ -15,12 +15,12 @@
           <div class="card-header">
             <h3 class="card-title">Data Anggota</h3>
             <button style="margin-top:-25px;" onclick="link()" class="btn btn-success float-right"><i class="ion ion-android-add"></i>  Input Anggota</button>
-              <script>
-                function link() {
-                            window.location.href='<?php echo base_url()."admin/form_anggota/".$row->nama_anggota ?>';
-                          }
-                        </script>
           </div>
+          <script>
+            function link() {
+              window.location.href='<?php echo base_url() ?>admin/form_anggota';
+            }
+          </script>
           <!-- /.card-header -->
           <div class="card-body">
             <table id="example1" class="table table-bordered table-striped">
@@ -49,7 +49,7 @@
                     <td>
                       <div class="button-group">
                         <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-info"> <i class="ion ion-ios-more"></i> </button>
-                        <button type="button" class="btn btn-warning"> <i class="ion ion-edit"></i> </button>
+                        <button type="button" onclick="window.location='<?php echo base_url() ?>admin/edit_form_anggota/<?php echo $row->id ?>';" class="btn btn-warning"> <i class="ion ion-edit"></i> </button>
                         <button type="button" class="btn btn-danger"> <i class="ion ion-android-delete"></i> </button>
                       </div>
                     </td>

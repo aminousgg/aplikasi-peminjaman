@@ -62,8 +62,15 @@
                     <td><?php echo $row->status ?></td>
                     <td>
                       <div class="button-group">
+                        <?php var_dump($row->id); ?>
+                        <script>
+                          function link1() {
+                            window.location.href='<?php echo base_url()."admin/edit_form_pinjam/".$row->id ?>';
+                          }
+                        </script>
                         <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-info"> <i class="ion ion-ios-more"></i> </button>
-                        <button type="button" class="btn btn-warning"> <i class="ion ion-edit"></i> </button>
+                        <button type="button" onclick="window.location='<?php echo base_url() ?>admin/edit_form_pinjam/<?php echo $row->id ?>';" class="btn btn-warning"> <i class="ion ion-edit"></i> </button>
+                        
                         <button type="button" class="btn btn-danger"> <i class="ion ion-android-delete"></i> </button>
                       </div>
                     </td>
