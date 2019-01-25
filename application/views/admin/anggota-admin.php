@@ -50,7 +50,7 @@
                       <div class="button-group">
                         <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-info"> <i class="ion ion-ios-more"></i> </button>
                         <button type="button" onclick="window.location='<?php echo base_url() ?>admin/edit_form_anggota/<?php echo $row->id ?>';" class="btn btn-warning"> <i class="ion ion-edit"></i> </button>
-                        <button type="button" class="btn btn-danger"> <i class="ion ion-android-delete"></i> </button>
+                        <button type="button" data-toggle="modal" data-target="#myModal1" class="btn btn-danger"> <i class="ion ion-android-delete"></i> </button>
                       </div>
                     </td>
                     <?php $i++; ?>
@@ -100,5 +100,26 @@
       
     </div>
   </div>
+  <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Konfirmasi Hapus Data</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+        </div>
+        <div class="modal-body">
+          <p>Ingin menghapus data ini?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
   <!-- /.content -->
 </div>

@@ -50,23 +50,24 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>KODE BARANG</label>
-                        <input type="text" name="kode_barang" class="form-control" placeholder="Kode Barang">
+                        <input type="text" name="kode_barang" class="form-control" value="<?php echo $kode_barang ?>">
+                        
                     </div>
                     <div class="form-group">
                         <label>NAMA BARANG</label>
-                        <input type="text" name="nama_barang" class="form-control" placeholder="Nama Barang">
+                        <input type="text" name="nama_barang" class="form-control" value="<?php echo $nama_barang ?>">
                     </div>
                     <div class="form-group">
                         <label>MERK</label>
-                        <input type="text" name="merk" class="form-control" placeholder="Merk">
+                        <input type="text" name="merk" class="form-control" value="<?php echo $merk ?>">
                     </div>
                     <div class="form-group">
                         <label>TANGGAL MASUK</label>
-                        <input type="date" name="tgl_masuk" class="form-control">
+                        <input type="date" name="tgl_masuk" class="form-control"value="<?php echo $tgl_masuk ?>">
                     </div>  
                     <div class="form-group">
                         <label>Textarea</label>
-                        <textarea name="spesifikasi" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                        <textarea name="spesifikasi" class="form-control" rows="3" value="<?php echo $spesifikasi ?>"></textarea>
                     </div>                
                 </div>
                 <!-- /.card-body -->

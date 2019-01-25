@@ -75,7 +75,7 @@
                   
                   <div class="form-group">
                     <label>Nama Barang</label>
-                    <input type="text" name="brg" class="form-control" value="<?php echo $brg ?>" disabled>
+                    <input type="text" name="brg" class="form-control" value="<?php echo $brg ?>">
                     <input type="hidden" name="brg1" value="<?php echo $brg ?>">
                   </div>
                 
