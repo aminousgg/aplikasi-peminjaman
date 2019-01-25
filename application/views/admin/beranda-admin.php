@@ -22,9 +22,9 @@
           <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box">
               <span class="info-box-icon bg-info"><i class="fa fa-inbox"></i></span>
-
               <div class="info-box-content">
-                <span class="info-box-text">Barang</span>
+                <a href="<?php echo base_url()?>admin/barang">Barang</a>
+                <!--<span class="info-box-text">Barang</span>-->
                 <span class="info-box-number">1,410</span>
               </div>
               <!-- /.info-box-content -->
@@ -37,7 +37,8 @@
               <span class="info-box-icon bg-success"><i class="fa fa-users"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Anggota</span>
+                <a href="<?php echo base_url()?>admin/anggota">Anggota</a>
+                <!--<span class="info-box-text">Anggota</span>-->
                 <span class="info-box-number">410</span>
               </div>
               <!-- /.info-box-content -->
@@ -50,7 +51,8 @@
               <span class="info-box-icon bg-warning"><i class="fa fa-shopping-cart"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Peminjam</span>
+                <a href="<?php echo base_url()?>admin/pinjam">Peminjaman</a>
+                <!--<span class="info-box-text">Peminjam</span>-->
                 <span class="info-box-number">13,648</span>
               </div>
               <!-- /.info-box-content -->
@@ -61,9 +63,9 @@
           <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box">
               <span class="info-box-icon bg-danger"><i class="fa fa-files-o"></i></span>
-
               <div class="info-box-content">
-                <span class="info-box-text">Transaksi</span>
+              <a href="<?php echo base_url()?>admin/pinjam_barang">Pengembalian</a>
+                <!--<span class="info-box-text">Transaksi</span>-->
                 <span class="info-box-number">93,139</span>
               </div>
               <!-- /.info-box-content -->
