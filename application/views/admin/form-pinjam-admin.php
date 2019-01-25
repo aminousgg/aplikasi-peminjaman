@@ -46,7 +46,7 @@
           </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <?php echo form_open('admin/tambah_pinjam', array('role' => 'form'))?>
+              <?php echo form_open_multipart('admin/tambah_pinjam', array('role' => 'form'))?>
                 <div class="card-body">
                   <input type="hidden" name='id' value='<?php echo $id ?>'>
                   <!-- <input type="hidden" name='brg' value='<?php //echo $brg ?>'> -->
@@ -58,31 +58,37 @@
                     <label>Nama</label>
                     <input type="text" name="nama" class="form-control" placeholder="Nama">
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label>Jabatan</label>
                     <input type="text" name="jabatan" class="form-control" placeholder="jabatan">
-                  </div>
-                  <div class="form-group">
+                  </div> -->
+                  <!-- <div class="form-group">
                     <label>Seksi Bagian</label>
                     <input type="text" name="seksi" class="form-control" placeholder="Seksi">
-                  </div>
+                  </div> -->
                   <div class="form-group">
                     <label>Jumlah Unit</label>
-                    <input type="number" name="Unit" class="form-control" placeholder="input angka">
+                    <select name="unit">
+                      <?php for($i=1;$i<=$sedia;$i++) { ?>
+                        <option value="<?php echo $i?>"><?php echo $i?></option>
+                      <?php }?>
+                    </select>
                   </div>
-                  <fieldset disabled>
-                    <div class="form-group">
-                      <label>Nama Barang</label>
-                      <input type="text" nama="brg" class="form-control" value="<?php echo $brg ?>">
-                    </div>
-                  </fieldset>
-                  <fieldset disabled>
-                    <div class="form-group">
-                      <label>Tgl Pinjam</label>
-                      <?php date_default_timezone_set('Asia/Jakarta'); ?>
-                      <input type="date" name="tgl_pinjam" value="<?php echo date('Y-m-d'); ?>" class="form-control">
-                    </div>
-                  </fieldset>
+                  
+                  <div class="form-group">
+                    <label>Nama Barang</label>
+                    <input type="text" name="brg" class="form-control" value="<?php echo $brg ?>" disabled>
+                    <input type="hidden" name="brg1" value="<?php echo $brg ?>">
+                  </div>
+                
+                
+                  <div class="form-group">
+                    <label>Tgl Pinjam</label>
+                    <?php date_default_timezone_set('Asia/Jakarta'); ?>
+                    <input type="date" name="tgl_pinjam" value="<?php echo date('Y-m-d'); ?>" class="form-control" disabled>
+                    <input type="hidden" name="tgl_pinjam1" value="<?php echo date('Y-m-d'); ?>">
+                  </div>
+                  
                   <div class="form-group">
                     <label>Tgl Kembali</label>
                     <input type="date" name="tgl_kembali" class="form-control">

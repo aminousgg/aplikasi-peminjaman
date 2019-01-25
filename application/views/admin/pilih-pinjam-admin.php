@@ -56,17 +56,16 @@
                     <td><?php echo $row->merk ?></td>
                     <td><?php echo $row->jml_barang ?></td>
                     <td><?php echo $row->jml_tersedia ?></td>
-                    <?php $kirim=array(
-                        'id'  => $row->id,
-                        'nama'=> $row->nama_barang,
-                      ); ?>
+                    <?php ?>
                     <td>
-                        <button type="button" onclick="link()" class="btn btn-info"><i class="ion ion-android-checkbox"></i> pilih</button>
+                      <?php var_dump($row->id); ?>
                         <script>
                           function link() {
                             window.location.href='<?php echo base_url()."admin/form_pinjam/".$row->id ?>';
                           }
                         </script>
+                        <button type="button" onclick="window.location='<?php echo base_url() ?>admin/form_pinjam/<?php echo $row->id ?>';" class="btn btn-info"><i class="ion ion-android-checkbox"></i> pilih</button>
+                        
                     </td>
                     <?php $i++; ?>
                   </tr>
