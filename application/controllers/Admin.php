@@ -23,6 +23,20 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/barang-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
+	function edit_form_barang(){
+		$data['judul']="Edit Peminjaman";
+		$this->load->view('admin/header-admin',$data);
+		$this->load->view('admin/aside-admin',$data);
+		$this->load->view('admin/form-barang-edit-admin',$data);
+		$this->load->view('admin/footer-admin',$data);
+	}
+	function form_barang(){
+		$data['judul']="TambahBarang";
+		$this->load->view('admin/header-admin',$data);
+		$this->load->view('admin/aside-admin',$data);
+		$this->load->view('admin/form-barang-admin',$data);
+		$this->load->view('admin/footer-admin',$data);
+	}
 	function anggota(){
 		$data['tabel_record'] = $this->M_admin->tampil_anggota()->result();
 		$data['judul']="Anggota";
@@ -31,6 +45,41 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/anggota-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
+	
+	function form_anggota(){
+		$data['judul']="TambahAnggota";
+		$this->load->view('admin/header-admin',$data);
+		$this->load->view('admin/aside-admin',$data);
+		$this->load->view('admin/form-anggota-admin',$data);
+		$this->load->view('admin/footer-admin',$data);
+	}
+	
+//	<!--function tambah_anggota(){
+//		if($result==true){
+//			// Tambah data(ambil data anggota)
+//			// var_dump($angg);
+//			$in = array(
+//				'nip'			=> $nip,
+//				'nama'			=> $nama,
+//				'jabatan'		=> $angg['jabatan'],
+//				'seksi'			=> $angg['seksi'],
+//				'kode_barang'	=> $data['kode_barang'],
+//				'nama_barang'	=> $this->input->post('brg1'),
+//				'jml_pinjam'	=> $this->input->post('unit'),
+//				'tgl_pinjam'	=> $this->input->post('tgl_pinjam1'),
+//				'tgl_kembali'	=> $this->input->post('tgl_kembali'),
+//				'status'		=> $status
+//			);
+			//var_dump($in); die;
+//			$masuk=$this->db->insert('pinjam_barang',$in);
+//			
+//			if($masuk==true){
+//				echo "Berhasil Meminjam";
+//			}else{
+//				echo "gagal Meminjam";
+//			}		
+//		}
+//	}
 //	function form-anggota(){
 //		$data['judul']="FormAnggota";
 //		$this->load->view('admin/header-admin',$data);
@@ -55,6 +104,7 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/pilih-pinjam-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
+	
 	function form_pinjam($id){
 		$ez=$this->M_admin->ambil_row($id)->row_array();
 		$data['sedia']=$ez['jml_tersedia'];
@@ -64,6 +114,17 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/header-admin',$data);
 		$this->load->view('admin/aside-admin',$data);
 		$this->load->view('admin/form-pinjam-admin',$data);
+		$this->load->view('admin/footer-admin',$data);
+	}
+	function edit_form_pinjam($id){
+		$ez=$this->M_admin->ambil_row($id)->row_array();
+		$data['sedia']=$ez['jml_tersedia'];
+		$data['id']=$id;
+		$data['brg']=$ez['nama_barang'];
+		$data['judul']="Edit Peminjaman";
+		$this->load->view('admin/header-admin',$data);
+		$this->load->view('admin/aside-admin',$data);
+		$this->load->view('admin/form-pinjam-edit-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
 	function tambah_pinjam(){
@@ -111,7 +172,6 @@ class Admin extends CI_Controller{
 				$result=$this->db->update('barang',$set);
 				
 				
-
 				if($result==true){
 					// Tambah data(ambil data anggota)
 					// var_dump($angg);
@@ -138,7 +198,6 @@ class Admin extends CI_Controller{
 				}else{
 					echo "gagal set stok";
 				}
-
 				//redirect(base_url('admin/pinjam'));
 			} else {
 				echo "unit tidak cukup untuk di pinjam";

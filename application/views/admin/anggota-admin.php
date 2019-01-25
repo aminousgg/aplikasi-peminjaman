@@ -15,12 +15,12 @@
           <div class="card-header">
             <h3 class="card-title">Data Anggota</h3>
             <button style="margin-top:-25px;" onclick="link()" class="btn btn-success float-right"><i class="ion ion-android-add"></i>  Input Anggota</button>
-              <script>
-                function link() {
-                            window.location.href='<?php echo base_url()."admin/form_anggota/".$row->nama_anggota ?>';
-                          }
-                        </script>
           </div>
+          <script>
+            function link() {
+              window.location.href='<?php echo base_url() ?>admin/form_anggota';
+            }
+          </script>
           <!-- /.card-header -->
           <div class="card-body">
             <table id="example1" class="table table-bordered table-striped">

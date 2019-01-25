@@ -1,81 +1,98 @@
-<div class="card card-info">
-    <div class="card-header">
-        <h3 class="card-title">Horizontal Form</h3>
-    </div>
-    <!-- /.card-header -->
-    <!-- form start -->
-    <form class="form-horizontal">
-        <div class="card-body">
-            <div class="form-group">
-                <label>NIP</label>
-                <input type="text" class="form-control" placeholder="Enter ..." disabled>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <!-- <h1>Data <?php //echo $judul; ?></h1> -->
+            
+                </div>
+                <div class="col-sm-6">
+                    <!-- <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Data Peminjaman Barang</li>
+                    </ol> -->
+                </div>
             </div>
-            <div class="form-group">
-                <label>Nama</label>
-                <input type="text" class="form-control" placeholder="Enter ..." disabled>
-            </div>
-            <div class="form-group">
-                <label>Jabatan</label>
-                <input type="text" class="form-control" placeholder="Enter ..." disabled>
-            </div>
-            <div class="form-group">
-                <label>Golongan</label>
-                <input type="text" class="form-control" placeholder="Enter ..." disabled>
-            </div>
-            <div class="form-group">
-                <label>Bidang</label>
-                <input type="text" class="form-control" placeholder="Enter ..." disabled>
-            </div>
-            <!-- Date range BELUM JADI INI HARUSNYA CUMA ADA 1-->
-            <div class="form-group">
-                <label>Date range:</label>
+        </div><!-- /.container-fluid -->
+    </section>
 
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">
-                        <i class="fa fa-calendar"></i>
-                        </span>
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fa fa-text-width"></i>
+                            Detail Barang
+                        </h3>
                     </div>
-                    <input type="text" class="form-control float-right" id="reservation">
-                </div>
-            <!-- /.input group -->
-            </div>
-            <div class="form-group">
-                <label>Level User</label>
-                <select class="form-control select2" style="width: 100%;">
-                    <option selected="selected">User</option>
-                    <option>User</option>
-                    <option>Admin</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-
-                <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-
-                <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck2">
-                        <label class="form-check-label" for="exampleCheck2">Remember me</label>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <blockquote>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                        </blockquote>
                     </div>
+                <!-- /.card-body -->
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Masukan Data Anggota</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <?php echo form_open_multipart('admin/tambah_anggota', array('role' => 'form'))?>
+                        <div class="card-body">
+                            <input type="hidden" name='id' value='<?php echo $id ?>'>
+                            <!-- <input type="hidden" name='brg' value='<?php //echo $brg ?>'> -->
+                            <div class="form-group">
+                                <label>NIP</label>
+                                <input type="text" name="nip" class="form-control" placeholder="NIP">
+                            </div>
+                            <div class="form-group">
+                                <label>Nama</label>
+                                <input type="text" name="nama" class="form-control" placeholder="Nama">
+                            </div>
+                            <div class="form-group">
+                                <label>Jabatan</label>
+                                <input type="text" name="jabatan" class="form-control" placeholder="jabatan">
+                            </div>
+                            <div class="form-group">
+                                <label>Golongan</label>
+                                <input type="text" name="pangkat_golongan" class="form-control" placeholder="Seksi">
+                            </div> 
+                            <div class="form-group">
+                                <label>Seksi Bagian</label>
+                                <input type="text" name="seksi" class="form-control" placeholder="Seksi">
+                            </div>
+                            <div class="form-group">
+                                <label>Tgl Lahir</label>
+                                <input type="date" name="tgl_lahir" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Level User</label>
+                                <select class="form-control select2" style="width: 100%;">
+                                    <option selected="selected">User</option>
+                                    <option>User</option>
+                                    <option>Admin</option>
+                                </select>
+                            </div>
+                        </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    <?php echo form_close(); ?>
                 </div>
             </div>
         </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-            <button type="submit" class="btn btn-info">Sign in</button>
-            <button type="submit" class="btn btn-default float-right">Cancel</button>
-        </div>
-    <!-- /.card-footer -->
-    </form>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
 </div>
