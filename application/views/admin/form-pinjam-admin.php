@@ -52,11 +52,11 @@
                   <!-- <input type="hidden" name='brg' value='<?php //echo $brg ?>'> -->
                   <div class="form-group">
                     <label>NIP</label>
-                    <input type="text" name="nip" class="form-control" placeholder="NIP">
+                    <input type="text" id="nip" name="nip" onkeyup="autofill()" class="form-control" placeholder="NIP">
                   </div>
                   <div class="form-group">
                     <label>Nama</label>
-                    <input type="text" name="nama" class="form-control" placeholder="Nama">
+                    <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama">
                   </div>
                   <!-- <div class="form-group">
                     <label>Jabatan</label>
@@ -108,3 +108,21 @@
   </section>
     <!-- /.content -->
 </div>
+
+<script type="text/javascript" src="<?php echo base_url().'admin-lte-master/jquery.js'?>"></script>
+<script type="text/javascript">
+  function autofill(){
+    var nip = $("#nip").val();
+    $.ajax({
+      type : "POST",
+      url : "<?php echo base_url().'admin/get_anggota/'?>"+$("#nip").val(),
+      data : {nip: nip},
+      success : function(data){
+        var json = data,
+        obj = JSON.parse(json);
+        $("#nama").val(obj.nama);
+      } 
+    });
+  }
+</script>
+

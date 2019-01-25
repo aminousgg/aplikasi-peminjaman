@@ -16,6 +16,11 @@ class M_admin extends CI_Model{
 	function ambil_anggota($nip){
 		return $this->db->get_where('anggota',array('nip'=>$nip));
 	}
+	function get_anggota($nip){
+		$hsl=$this->db->get_where('anggota',array('nip'=>$nip));
+		return $hsl;
+    }
+
 	// function tambah_pinjam(){
 	// 	$result=$this->db->insert('berkas',$data);
 	// }

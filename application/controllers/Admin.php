@@ -55,6 +55,18 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/pilih-pinjam-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
+	function get_anggota($nip){
+		$kode=$nip;
+		$data=$this->M_admin->get_anggota($kode);
+		if($data->num_rows()>0){
+			$hasil=$data->row_array();
+			echo json_encode($hasil);
+		}else{
+			echo "nip salah"; die;
+		}
+        
+    }
+
 	function form_pinjam($id){
 		$ez=$this->M_admin->ambil_row($id)->row_array();
 		$data['sedia']=$ez['jml_tersedia'];
