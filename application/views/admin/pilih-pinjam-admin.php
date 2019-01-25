@@ -58,7 +58,7 @@
                     <td><?php echo $row->jml_tersedia ?></td>
                     <?php ?>
                     <td>
-                      <?php var_dump($row->id); ?>
+                      
                         <script>
                           function link() {
                             window.location.href='<?php echo base_url()."admin/form_pinjam/".$row->id ?>';

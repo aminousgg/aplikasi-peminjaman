@@ -56,7 +56,7 @@
                       <td><?php echo $row->jml_terpinjam ?></td>
                       <td>
                         <div class="button-group">
-                          <?php var_dump($row->id); ?>
+                          
                           <script>
                             function link1() {
                               window.location.href='<?php echo base_url()."admin/edit_form_pinjam/".$row->id ?>';
