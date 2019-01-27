@@ -21,7 +21,8 @@
   <section class="content">
 <?php 
   if($this->session->flashdata('error')):
-      echo '<script src="base_url()swal/sweetalert2.all.min"></script>';
+      $link="<script src='".base_url()."swal/sweetalert2.all.min.js'></script>";
+      echo $link;
       echo '<script>
               swal({
                   type: "'.'error'.'",
@@ -33,7 +34,8 @@
             </script>';
   endif;
   if($this->session->flashdata('gagal')):
-    echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.js"></script>';
+    $link="<script src='".base_url()."swal/sweetalert2.all.min.js'></script>";
+    echo $link;
     echo '<script>
             swal({
                 type: "'.'error'.'",

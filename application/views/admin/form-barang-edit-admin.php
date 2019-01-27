@@ -49,25 +49,25 @@
             <?php echo form_open_multipart('admin/tambah_barang', array('role' => 'form'))?>
                 <div class="card-body">
                     <div class="form-group">
-                        <label>KODE BARANG</label>
-                        <input type="text" name="kode_barang" class="form-control" value="<?php echo $kode_barang ?>">
+                        <label>Kode</label>
+                        <input type="text" name="kode_barang" class="form-control" value="<?php echo $brg['kode_barang'] ?>">
                         
                     </div>
                     <div class="form-group">
-                        <label>NAMA BARANG</label>
-                        <input type="text" name="nama_barang" class="form-control" value="<?php echo $nama_barang ?>">
+                        <label>Nama Barang</label>
+                        <input type="text" name="nama_barang" class="form-control" value="<?php echo $brg['nama_barang'] ?>">
                     </div>
                     <div class="form-group">
-                        <label>MERK</label>
-                        <input type="text" name="merk" class="form-control" value="<?php echo $merk ?>">
+                        <label>Merk</label>
+                        <input type="text" name="merk" class="form-control" value="<?php echo $brg['merk'] ?>">
                     </div>
                     <div class="form-group">
-                        <label>TANGGAL MASUK</label>
-                        <input type="date" name="tgl_masuk" class="form-control"value="<?php echo $tgl_masuk ?>">
+                        <label>Tgl masuk</label>
+                        <input type="date" name="tgl_masuk" class="form-control"value="<?php echo $brg['tgl_masuk'] ?>">
                     </div>  
                     <div class="form-group">
-                        <label>Textarea</label>
-                        <textarea name="spesifikasi" class="form-control" rows="3" value="<?php echo $spesifikasi ?>"></textarea>
+                        <label>Spesifikasi</label>
+                        <textarea name="spesifikasi" class="form-control" rows="3"><?php echo $brg['spesifikasi'] ?></textarea>
                     </div>                
                 </div>
                 <!-- /.card-body -->

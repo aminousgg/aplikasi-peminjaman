@@ -8,6 +8,7 @@ class Admin extends CI_Controller{
 		$this->load->model('M_admin');
 		
 	}
+	// =============================BERANDA===============
 	function index(){
 		$data['judul']="Beranda";
 		$this->load->view('admin/header-admin',$data);
@@ -15,6 +16,8 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/beranda-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
+	//=====================================================
+	// ==============================BARANG================
 	function barang(){
 		$data['tabel_record'] = $this->M_admin->tampil_barang()->result();
 		$data['judul']="Barang";
@@ -23,20 +26,24 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/barang-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
-	function form_barang(){
-		$data['judul']="FormBarang";
+	function tambah_barang(){
+		$data['judul']="Barang";
 		$this->load->view('admin/header-admin',$data);
 		$this->load->view('admin/aside-admin',$data);
 		$this->load->view('admin/form-barang-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
-	function edit_form_barang(){
-		$data['judul']="EditFormBarang";
+	function edit_form_barang($id){
+		$data['brg']=$this->M_admin->get_brg($id)->row_array();
+		//var_dump($data['brg']); die;
+		$data['judul']="Barang";
 		$this->load->view('admin/header-admin',$data);
 		$this->load->view('admin/aside-admin',$data);
 		$this->load->view('admin/form-barang-edit-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
+	//==========================================================================
+	//======================================ANGGOTA=============================
 	function anggota(){
 		$data['tabel_record'] = $this->M_admin->tampil_anggota()->result();
 		$data['judul']="Anggota";
@@ -46,26 +53,20 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/footer-admin',$data);
 	}
 	function form_anggota(){
-		$data['judul']="FormAnggota";
+		$data['judul']="Anggota";
 		$this->load->view('admin/header-admin',$data);
 		$this->load->view('admin/aside-admin',$data);
 		$this->load->view('admin/form-anggota-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
-	function edit_form_anggota(){
-		$data['judul']="EditFormAnggota";
+	function edit_form_anggota($id){
+		$data['judul']="Anggota";
 		$this->load->view('admin/header-admin',$data);
 		$this->load->view('admin/aside-admin',$data);
 		$this->load->view('admin/form-anggota-edit-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
-//	function form-anggota(){
-//		$data['judul']="FormAnggota";
-//		$this->load->view('admin/header-admin',$data);
-//		$this->load->view('admin/aside-admin',$data);
-//		$this->load->view('admin/form-anggota-admin',$data);
-//		$this->load->view('admin/footer-admin',$data);
-//	}
+	//=========================================================================
 	// ===========================Peminjaman==================================
 	function pinjam(){
 		$data['tabel_record'] = $this->M_admin->tampil_pinjam()->result();
@@ -94,7 +95,6 @@ class Admin extends CI_Controller{
 		}
         
     }
-
 	function form_pinjam($id){
 		$ez=$this->M_admin->ambil_row($id)->row_array();
 		$data['sedia']=$ez['jml_tersedia'];
@@ -157,9 +157,6 @@ class Admin extends CI_Controller{
 				//var_dump($id); die;
 				$this->db->where('id',$id);
 				$result=$this->db->update('barang',$set);
-				
-				
-
 				if($result==true){
 					// Tambah data(ambil data anggota)
 					// var_dump($angg);
@@ -196,12 +193,11 @@ class Admin extends CI_Controller{
 			} else {
 				echo "unit tidak cukup untuk di pinjam";
 			}
-			// $this->db->where('id',$id);
-			// $result=$this->db->update('barang',$data);
-			//habis ini ngeset stok
+			
 		}
 	}
 	// ========================================================================
+	//==================================PENGEMBALIAN===========================
 	function kembali(){
 		// $data['tabel_record'] = $this->M_admin->tampil_kembali()->result();
 		$data['judul']="Kembali";
@@ -210,6 +206,8 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/kembali-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
+	//=========================================================================
+	//===============================LAPORAN===================================
 	function laporan(){
 		$data['judul']="Laporan";
 		$this->load->view('admin/header-admin',$data);

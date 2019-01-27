@@ -21,11 +21,11 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Data Barang</h3>
-              <button style="margin-top:-25px;" onclick="link()" class="btn btn-success float-right"><i class="ion ion-android-add"></i>  Input Barang</button>
+              <button style="margin-top:-25px;" onclick="link()" class="btn btn-success float-right"><i class="ion ion-android-add"></i>  Tambah Barang</button>
             </div>
             <script>
               function link() {
-                window.location.href='<?php echo base_url() ?>admin/form_barang';
+                window.location.href='<?php echo base_url() ?>admin/tambah_barang';
               }
             </script>
           
