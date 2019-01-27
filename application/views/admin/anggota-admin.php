@@ -50,7 +50,7 @@
                       <div class="button-group">
                         <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-info"> <i class="ion ion-ios-more"></i> </button>
                         <button type="button" onclick="window.location='<?php echo base_url() ?>admin/edit_form_anggota/<?php echo $row->id ?>';" class="btn btn-warning"> <i class="ion ion-edit"></i> </button>
-                        <button type="button" data-toggle="modal" data-target="#myModal1" class="btn btn-danger"> <i class="ion ion-android-delete"></i> </button>
+                        <button type="button" onclick="del()" class="btn btn-danger"> <i class="ion ion-android-delete"></i> </button>
                       </div>
                     </td>
                     <?php $i++; ?>
@@ -123,3 +123,26 @@
   
   <!-- /.content -->
 </div>
+<?php
+$link="<script src='".base_url()."swal/sweetalert2.all.min.js'></script>";
+echo $link;
+
+?>
+<script>
+  function del(){
+    swal({
+      title: 'Are you sure?',
+      text: "Yakin akan menghapus ini?",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#28a745',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya',
+      cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.value) {
+          window.location = "#";
+        }
+    })
+  }
+</script>
