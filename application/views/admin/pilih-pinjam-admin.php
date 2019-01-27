@@ -55,18 +55,19 @@
                     <td><?php echo $row->nama_barang ?></td>
                     <td><?php echo $row->merk ?></td>
                     <td><?php echo $row->jml_barang ?></td>
-                    <td><?php echo $row->jml_tersedia ?></td>
-                    <?php ?>
-                    <td>
-                      
-                        <script>
-                          function link() {
-                            window.location.href='<?php echo base_url()."admin/form_pinjam/".$row->id ?>';
-                          }
-                        </script>
-                        <button type="button" onclick="window.location='<?php echo base_url() ?>admin/form_pinjam/<?php echo $row->id ?>';" class="btn btn-info"><i class="ion ion-android-checkbox"></i> pilih</button>
-                        
-                    </td>
+
+                    <?php if($row->jml_tersedia==0){ ?>
+                      <td style="color:red;"><?php echo $row->jml_tersedia ?></td>
+                      <td>
+                        <button style="cursor: not-allowed;" type="button" class="btn btn-info">pilih</button>
+                      </td>
+
+                    <?php } else { ?>
+                      <td><?php echo $row->jml_tersedia ?></td>
+                      <td>
+                        <button type="button" onclick="window.location='<?php echo base_url() ?>admin/form_pinjam/<?php echo $row->id ?>';" class="btn btn-info">pilih</button>
+                      </td>
+                    <?php } ?>
                     <?php $i++; ?>
                   </tr>
                   <?php } ?>

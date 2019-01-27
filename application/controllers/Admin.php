@@ -117,6 +117,7 @@ class Admin extends CI_Controller{
 		
 		// date_default_timezone_set('Asia/Jakarta');
 		//var_dump($this->input->post('tgl_pinjam1')); die;
+		//var_dump($this->input->post('nama1')); die;
 		date_default_timezone_set('Asia/Jakarta');
 		$exp_date = $this->input->post('tgl_kembali');
 		$todays_date = $this->input->post('tgl_pinjam1'); 
@@ -164,7 +165,7 @@ class Admin extends CI_Controller{
 					// var_dump($angg);
 					$in = array(
 						'nip'			=> $nip,
-						'nama'			=> $this->input->post('nama'),
+						'nama'			=> $this->input->post('nama1'),
 						'jabatan'		=> $angg['jabatan'],
 						'seksi'			=> $angg['seksi'],
 						'kode_barang'	=> $data['kode_barang'],
@@ -178,12 +179,17 @@ class Admin extends CI_Controller{
 					$masuk=$this->db->insert('pinjam_barang',$in);
 					
 					if($masuk==true){
-						echo "Berhasil Meminjam";
+						//echo "Berhasil Meminjam";
+						$this->session->set_flashdata('success', 'Berhasil Meminjam !');
+						//var_dump(base_url()); die;
+						redirect(base_url('admin/pinjam'));
 					}else{
-						echo "gagal Meminjam";
+						$this->session->set_flashdata('error', 'Gagal Mendaftar!');
+						redirect(base_url('admin/pinjam'));
 					}
 				}else{
-					echo "gagal set stok";
+					$this->session->set_flashdata('gagal', 'error set stok');
+					redirect(base_url('admin/pinjam'));
 				}
 
 				//redirect(base_url('admin/pinjam'));

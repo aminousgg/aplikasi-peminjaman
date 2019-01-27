@@ -19,6 +19,44 @@
 
   <!-- Main content -->
   <section class="content">
+<?php 
+  if($this->session->flashdata('error')):
+      echo '<script src="base_url()swal/sweetalert2.all.min"></script>';
+      echo '<script>
+              swal({
+                  type: "'.'error'.'",
+                  title: "'.$this->session->flashdata('error').'",
+                  text: "'.'Data tidak masuk ke database'.'",
+                  timer: 10000,
+                  customClass: "'.'animated bounceIn'.'",
+                  })
+            </script>';
+  endif;
+  if($this->session->flashdata('gagal')):
+    echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.js"></script>';
+    echo '<script>
+            swal({
+                type: "'.'error'.'",
+                title: "'.$this->session->flashdata('gagal').'",
+                text: "'.'gagal mengurangi jumlah tersedia'.'",
+                timer: 10000,
+                customClass: "'.'animated bounceIn'.'",
+                })
+          </script>';
+  endif;
+  if($this->session->flashdata('success')):
+      $link="<script src='".base_url()."swal/sweetalert2.all.min.js'></script>";
+      echo $link;
+      echo '<script>
+              swal({
+                  type: "'.'success'.'",
+                  title: "'.$this->session->flashdata('success').'",
+                  text: "'.'Cek tabel peminjaman'.'",
+                  customClass: "'.'animated bounceIn'.'",
+                  })
+            </script>';
+  endif;
+?>
 
     <div class="row">
     </div>
@@ -51,9 +89,6 @@
                 </tr>
               </thead>
               <tbody>
-                <?php date_default_timezone_set('Asia/Jakarta');
-                  $today = date('Y-m-d');
-                ?>
                 <?php $i=1; foreach($tabel_record as $row){ ?>
                   <tr>
                     <td><?php echo $i; ?></td>
@@ -63,18 +98,23 @@
                     <td><?php echo $row->jml_pinjam ?></td>
                     <?php 
                       //Our "then" date.
-                      $then = $row->tgl_pinjam;
+                      $then = $row->tgl_kembali;
                       //Convert it into a timestamp.
                       $then = strtotime($then);
                       //Get the current timestamp.
                       $now = time();
                       //Calculate the difference.
-                      $difference = $now - $then;
+                      $difference = $then - $now;
                       //Convert seconds into days.
-                      $days = floor($difference / (60*60*24) );
-                      echo $days;
+                      $days = floor($difference / (60*60*24) )+1;
+                      //echo $days;
                     ?>
-                    <td><?php echo $days." hari" ?></td>
+                    <?php if($days>0){ ?>
+                      <td><?php echo $days." hari" ?></td>
+                    <?php }else{ $day=$days*-1; ?>
+                      <td style="color:red;"><?php echo "Lewat ".$day." hari"; }?></td>
+                    
+
                     <td><?php echo $row->status ?></td>
                     <td>
                       <div class="button-group">

@@ -56,7 +56,8 @@
                   </div>
                   <div class="form-group">
                     <label>Nama</label>
-                    <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama">
+                    <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama" disabled>
+                    <input type="hidden" name="nama1" id="nama1">
                   </div>
                   <!-- <div class="form-group">
                     <label>Jabatan</label>
@@ -121,6 +122,7 @@
         var json = data,
         obj = JSON.parse(json);
         $("#nama").val(obj.nama);
+        $("#nama1").val(obj.nama);
       } 
     });
   }
