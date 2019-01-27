@@ -126,7 +126,7 @@
                             window.location.href='<?php //echo base_url()."admin/edit_form_pinjam/".$row->id ?>';
                           }
                         </script> -->
-                        <button type="button" class="btn btn-danger" style="font-size:13px;">Kembalikan</button>
+                        <button type="button" onclick="confrm()" class="btn btn-danger" style="font-size:13px;">Kembalikan</button>
                       </div>
                     </td>
                     <?php $i++; ?>
@@ -179,3 +179,27 @@
   
     <!-- /.content -->
 </div>
+
+<?php
+$link="<script src='".base_url()."swal/sweetalert2.all.min.js'></script>";
+echo $link;
+
+?>
+<script>
+  function confrm(){
+    swal({
+      title: 'Are you sure?',
+      text: "Yakin akan mengembalikan barang ini?",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#28a745',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya',
+      cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.value) {
+          window.location = "#";
+        }
+    })
+  }
+</script>
