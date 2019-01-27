@@ -50,27 +50,27 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label>NIP</label>
-                                <input type="text" name="nip" class="form-control" placeholder="NIP">
+                                <input type="text" name="nip" class="form-control" value="<?php echo $nip ?>">
                             </div>
                             <div class="form-group">
                                 <label>Nama</label>
-                                <input type="text" name="nama" class="form-control" placeholder="Nama">
+                                <input type="text" name="nama" class="form-control" value="<?php echo $nama ?>">
                             </div>
                             <div class="form-group">
                                 <label>Jabatan</label>
-                                <input type="text" name="jabatan" class="form-control" placeholder="jabatan">
+                                <input type="text" name="jabatan" class="form-control" value="<?php echo $jabatan ?>">
                             </div>
                             <div class="form-group">
                                 <label>Golongan</label>
-                                <input type="text" name="pangkat_golongan" class="form-control" placeholder="Seksi">
+                                <input type="text" name="pangkat_golongan" class="form-control" value="<?php echo $pangkat_golongan ?>">
                             </div> 
                             <div class="form-group">
                                 <label>Seksi Bagian</label>
-                                <input type="text" name="seksi" class="form-control" placeholder="Seksi">
+                                <input type="text" name="seksi" class="form-control" value="<?php echo $seksi ?>">
                             </div>
                             <div class="form-group">
                                 <label>Tgl Lahir</label>
-                                <input type="date" name="tgl_lahir" class="form-control">
+                                <input type="date" name="tgl_lahir" class="form-control"value="<?php echo $tgl_lahir ?>">
                             </div>
                             <div class="form-group">
                                 <label>Level User</label>
