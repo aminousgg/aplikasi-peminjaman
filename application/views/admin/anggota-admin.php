@@ -14,7 +14,7 @@
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Data Anggota</h3>
-            <button style="margin-top:-25px;" onclick="link()" class="btn btn-success float-right"><i class="ion ion-android-add"></i>  Input Anggota</button>
+            <button style="margin-top:-25px;" onclick="link()" class="btn btn-success float-right"><i class="ion ion-android-add"></i>  Tambah Anggota</button>
           </div>
           <script>
             function link() {

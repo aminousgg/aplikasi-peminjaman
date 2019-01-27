@@ -60,6 +60,7 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/footer-admin',$data);
 	}
 	function edit_form_anggota($id){
+		$data['angg']=$this->M_admin->get_form_anggota($id)->row_array();
 		$data['judul']="Anggota";
 		$this->load->view('admin/header-admin',$data);
 		$this->load->view('admin/aside-admin',$data);

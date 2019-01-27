@@ -50,33 +50,32 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label>NIP</label>
-                                <input type="text" name="nip" class="form-control" value="<?php echo $nip ?>">
+                                <input type="text" name="nip" class="form-control" value="<?php echo $angg['nip'] ?>">
                             </div>
                             <div class="form-group">
                                 <label>Nama</label>
-                                <input type="text" name="nama" class="form-control" value="<?php echo $nama ?>">
+                                <input type="text" name="nama" class="form-control" value="<?php echo $angg['nama'] ?>">
                             </div>
                             <div class="form-group">
                                 <label>Jabatan</label>
-                                <input type="text" name="jabatan" class="form-control" value="<?php echo $jabatan ?>">
+                                <input type="text" name="jabatan" class="form-control" value="<?php echo $angg['jabatan'] ?>">
                             </div>
                             <div class="form-group">
                                 <label>Golongan</label>
-                                <input type="text" name="pangkat_golongan" class="form-control" value="<?php echo $pangkat_golongan ?>">
+                                <input type="text" name="pangkat_golongan" class="form-control" value="<?php echo $angg['pangkat_golongan'] ?>">
                             </div> 
                             <div class="form-group">
                                 <label>Seksi Bagian</label>
-                                <input type="text" name="seksi" class="form-control" value="<?php echo $seksi ?>">
+                                <input type="text" name="seksi" class="form-control" value="<?php echo $angg['seksi'] ?>">
                             </div>
                             <div class="form-group">
                                 <label>Tgl Lahir</label>
-                                <input type="date" name="tgl_lahir" class="form-control"value="<?php echo $tgl_lahir ?>">
+                                <input type="date" name="tgl_lahir" class="form-control"value="<?php echo $angg['tgl_lahir'] ?>">
                             </div>
                             <div class="form-group">
                                 <label>Level User</label>
                                 <select class="form-control select2" style="width: 100%;">
                                     <option selected="selected">User</option>
-                                    
                                     <option>Admin</option>
                                 </select>
                             </div>

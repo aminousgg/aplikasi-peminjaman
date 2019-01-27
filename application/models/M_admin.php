@@ -20,14 +20,14 @@ class M_admin extends CI_Model{
 		$hsl=$this->db->get_where('anggota',array('nip'=>$nip));
 		return $hsl;
 	}
+	function get_form_anggota($id){
+		$hsl=$this->db->get_where('anggota',array('id'=>$id));
+		return $hsl;
+	}
 	function get_brg($id){
 		$hsl=$this->db->get_where('barang',array('id'=>$id));
 		return $hsl;
     }
-
-	// function tambah_pinjam(){
-	// 	$result=$this->db->insert('berkas',$data);
-	// }
 
 	function tampil_kembali(){
 		return $this->db->get('kembali_barang');

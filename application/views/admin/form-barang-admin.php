@@ -31,28 +31,27 @@
             <?php echo form_open_multipart('admin/tambah_barang', array('role' => 'form'))?>
                 <div class="card-body">
                     <div class="form-group">
-                        <label>KODE BARANG</label>
+                        <label>Kode Barang</label>
                         <input type="text" name="kode_barang" class="form-control" placeholder="Kode Barang">
                     </div>
                     <div class="form-group">
-                        <label>NAMA BARANG</label>
+                        <label>Nama Barang</label>
                         <input type="text" name="nama_barang" class="form-control" placeholder="Nama Barang">
                     </div>
                     <div class="form-group">
-                        <label>MERK</label>
+                        <label>Merk</label>
                         <input type="text" name="merk" class="form-control" placeholder="Merk">
                     </div>
                     <div class="form-group">
-                        <label>TANGGAL MASUK</label>
+                        <label>Tanggal Masuk</label>
                         <input type="date" name="tgl_masuk" class="form-control">
                     </div>  
                     <div class="form-group">
-                        <label>Textarea</label>
+                        <label>Spesifikasi</label>
                         <textarea name="spesifikasi" class="form-control" rows="3" placeholder="Enter ..."></textarea>
                     </div>                
                 </div>
                 <!-- /.card-body -->
-
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
