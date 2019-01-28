@@ -28,7 +28,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <?php echo form_open_multipart('admin/tambah_anggota', array('role' => 'form'))?>
+                    <?php echo form_open_multipart('admin/tambah_agt_aksi', array('role' => 'form'))?>
                         <div class="card-body">
                             <div class="form-group">
                                 <label>NIP</label>
@@ -58,7 +58,6 @@
                                 <label>Level User</label>
                                 <select class="form-control select2" style="width: 100%;">
                                     <option selected="selected">User</option>
-                                    
                                     <option>Admin</option>
                                 </select>
                             </div>
@@ -66,7 +65,7 @@
                     <!-- /.card-body -->
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">SIMPAN</button>
                     </div>
                     <?php echo form_close(); ?>
                 </div>

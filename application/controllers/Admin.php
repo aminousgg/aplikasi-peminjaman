@@ -80,6 +80,25 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/form-anggota-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
+	function tambah_agt_aksi(){
+		$data = array(
+			'nip'				=> $this->input->post('nip'),
+			'nama'				=> $this->input->post('nama'),
+			'jabatan'			=> $this->input->post('jabatan'),
+			'pangkat_golongan'	=> $this->input->post('pangkat_golongan'),
+			'seksi'				=> $this->input->post('seksi'),
+			'tgl_lahir'			=> $this->input->post('tgl_lahir'),
+			'level_user'		=> $this->input->post('level_user'),
+		);
+		$result=$this->M_admin->tambah_agt('anggota', $data);
+		if($result==true){
+			$this->session->set_flashdata('success', 'Anggota berhasil ditambahkan');
+			redirect(base_url('admin/anggota'));
+		}else{
+			$this->session->set_flashdata('error', 'Gagal ditambahkan');
+			redirect(base_url('admin/anggota'));
+		}
+	}
 	function edit_form_anggota($id){
 		$data['angg']=$this->M_admin->get_form_anggota($id)->row_array();
 		$data['judul']="Anggota";
@@ -88,6 +107,7 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/form-anggota-edit-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
+
 	//=========================================================================
 	// ===========================Peminjaman==================================
 	function pinjam(){

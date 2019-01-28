@@ -10,6 +10,9 @@ class M_admin extends CI_Model{
 	function tampil_anggota(){
 		return $this->db->get('anggota');
 	}
+	function tambah_agt($table,$data){
+		return $this->db->insert($table, $data);
+	}
 	function tampil_pinjam(){
 		return $this->db->get('pinjam_barang');
 	}
