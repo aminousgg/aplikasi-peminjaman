@@ -22,6 +22,7 @@
             <div class="card-header">
               <h3 class="card-title">Data Barang</h3>
               <button style="margin-top:-25px;" onclick="link()" class="btn btn-success float-right"><i class="ion ion-android-add"></i>  Tambah Barang</button>
+              
             </div>
             <script>
               function link() {
@@ -51,7 +52,9 @@
                       <td><?php echo $row->kode_barang ?></td>
                       <td><?php echo $row->nama_barang ?></td>
                       <td><?php echo $row->merk ?></td>
-                      <td><?php echo $row->jml_barang ?></td>
+                      <td><?php echo $row->jml_barang ?>
+                      <button style="margin-left:3px;" data-toggle="modal" data-target="#unit" class="btn btn-success"><i class="ion ion-android-add"></i></button>
+                      </td>
                       <td><?php echo $row->jml_tersedia ?></td>
                       <td><?php echo $row->jml_terpinjam ?></td>
                       <td>
@@ -102,6 +105,26 @@
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title">Modal Header</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="modal fade" id="unit" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Tambah Unit</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           
         </div>

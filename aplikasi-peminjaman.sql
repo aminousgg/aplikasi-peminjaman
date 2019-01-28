@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 25 Jan 2019 pada 01.12
+-- Generation Time: 28 Jan 2019 pada 02.31
 -- Versi Server: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -70,8 +70,8 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id`, `kode_barang`, `nama_barang`, `merk`, `tgl_masuk`, `jml_terpinjam`, `spesifikasi`, `jml_barang`, `jml_tersedia`) VALUES
-(1, '456', 'asfsadf', 'sdf', '2019-01-08', 10, 'adfadf ad', 10, 0),
-(2, '4545', 'adfasdas', 'sfdh', '2019-01-02', 5, 'sdfga', 10, 5);
+(1, '456', 'asfsadf', 'sdf', '2019-01-08', 3, 'adfadf ad', 10, 7),
+(2, '4545', 'adfasdas', 'sfdh', '2019-01-02', 10, 'sdfga', 10, 0);
 
 -- --------------------------------------------------------
 
@@ -99,7 +99,7 @@ CREATE TABLE `pinjam_barang` (
   `nama` varchar(50) NOT NULL,
   `jabatan` varchar(20) NOT NULL,
   `seksi` varchar(20) NOT NULL,
-  `kode_barang` varchar(5) NOT NULL,
+  `kode_barang` varchar(10) NOT NULL,
   `nama_barang` varchar(30) NOT NULL,
   `jml_pinjam` int(3) NOT NULL,
   `tgl_pinjam` date NOT NULL,
@@ -112,7 +112,10 @@ CREATE TABLE `pinjam_barang` (
 --
 
 INSERT INTO `pinjam_barang` (`id`, `nip`, `nama`, `jabatan`, `seksi`, `kode_barang`, `nama_barang`, `jml_pinjam`, `tgl_pinjam`, `tgl_kembali`, `status`) VALUES
-(1, '56451', 'asdf ads', 'asdf', 'asdf afsd', '4545', 'adfasdas', 1, '2019-01-24', '2019-01-25', 'Belum Kembali');
+(5, '45355', 'asdfdff', 'dfgddad', 'asdf', '4545', 'adfasdas', 1, '2019-01-27', '2019-01-29', 'Belum Kembali'),
+(6, '45355', 'asdfdff', 'dfgddad', 'asdf', '456', 'asfsadf', 1, '2019-01-27', '2019-01-30', 'Belum Kembali'),
+(7, '56451', 'asdf ads', 'asdf', 'asdf afsd', '456', 'asfsadf', 1, '2019-01-27', '2019-01-31', 'Belum Kembali'),
+(8, '56451', 'asdf ads', 'asdf', 'asdf afsd', '456', 'asfsadf', 1, '2019-01-27', '2019-02-01', 'Belum Kembali');
 
 --
 -- Indexes for dumped tables
@@ -143,8 +146,7 @@ ALTER TABLE `kembali_brg`
 -- Indexes for table `pinjam_barang`
 --
 ALTER TABLE `pinjam_barang`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `kode_barang` (`kode_barang`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -172,7 +174,7 @@ ALTER TABLE `kembali_brg`
 -- AUTO_INCREMENT for table `pinjam_barang`
 --
 ALTER TABLE `pinjam_barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

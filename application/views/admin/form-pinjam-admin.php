@@ -46,7 +46,7 @@
           </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <?php echo form_open_multipart('admin/tambah_pinjam', array('role' => 'form'))?>
+              <?php echo form_open_multipart('admin/tambah_pinjam', array('role' => 'form','autocomplete' => 'off'))?>
                 <div class="card-body">
                   <input type="hidden" name='id' value='<?php echo $id ?>'>
                   <!-- <input type="hidden" name='brg' value='<?php //echo $brg ?>'> -->
