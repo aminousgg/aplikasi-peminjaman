@@ -35,27 +35,24 @@ class Admin extends CI_Controller{
 	}
 
 	function tambah_barang_aksi(){
-		$kode_barang = $this->input->post('kode_barang');
-		$nama_barang = $this->input->post('nama_barang');
-		$merk = $this->input->post('merk');
-		$tgl_masuk = $this->input->post('tgl_masuk');
-		$jml_terpinjam = $this->input->post('nama_barang');
-		$jml_barang = $this->input->post('jml_barang');
-		$spesifikasi = $this->input->post('spesifikasi');
-		$jml_tersedia = $jml_barang-$jml_terpinjam;
-
 		$data = array(
-			'kode_barang' =>$kode_barang,
-			'nama_barang' =>$nama_barang,
-			'merk' =>$tgl_masuk,
-			'jml_terpinjam' =>$jml_terpinjam,
-			'jml_barang' =>$jml_barang,
-			'spesifikasi' =>$spesifikasi,
-			'jml_tersedia' =>$jml_tersedia
+			'kode_barang'	=> $this->input->post('kode_barang'),
+			'nama_barang'	=> $this->input->post('nama_barang'),
+			'merk'			=> $this->input->post('merk'),
+			'tgl_masuk'		=> $this->input->post('tgl_masuk'),
+			'jml_terpinjam'	=> 0,
+			'spesifikasi'	=> $this->input->post('spesifikasi'),
+			'jml_barang'	=> $this->input->post('jml_barang'),
+			'jml_tersedia'	=> $this->input->post('jml_barang'),
 		);
-
-		$this->M_admin->tambah_brg($data,'user');
-		redirect('admin/barang');
+		$result=$this->M_admin->tambah_brg('barang', $data);
+		if($result==true){
+			$this->session->set_flashdata('success', 'Barang berhasil ditambahkan');
+			redirect(base_url('admin/barang'));
+		}else{
+			$this->session->set_flashdata('error', 'Gagal ditambahkan');
+			redirect(base_url('admin/barang'));
+		}
 	}
 	function edit_form_barang($id){
 		$data['brg']=$this->M_admin->get_brg($id)->row_array();
