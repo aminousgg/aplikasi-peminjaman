@@ -33,6 +33,30 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/form-barang-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
+
+	function tambah_barang_aksi(){
+		$kode_barang = $this->input->post('kode_barang');
+		$nama_barang = $this->input->post('nama_barang');
+		$merk = $this->input->post('merk');
+		$tgl_masuk = $this->input->post('tgl_masuk');
+		$jml_terpinjam = $this->input->post('nama_barang');
+		$jml_barang = $this->input->post('jml_barang');
+		$spesifikasi = $this->input->post('spesifikasi');
+		$jml_tersedia = $jml_barang-$jml_terpinjam;
+
+		$data = array(
+			'kode_barang' =>$kode_barang,
+			'nama_barang' =>$nama_barang,
+			'merk' =>$tgl_masuk,
+			'jml_terpinjam' =>$jml_terpinjam,
+			'jml_barang' =>$jml_barang,
+			'spesifikasi' =>$spesifikasi,
+			'jml_tersedia' =>$jml_tersedia
+		);
+
+		$this->M_admin->tambah_brg($data,'user');
+		redirect('admin/barang');
+	}
 	function edit_form_barang($id){
 		$data['brg']=$this->M_admin->get_brg($id)->row_array();
 		//var_dump($data['brg']); die;

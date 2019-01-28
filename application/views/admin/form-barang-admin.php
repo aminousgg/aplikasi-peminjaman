@@ -45,6 +45,10 @@
                     <div class="form-group">
                         <label>Tanggal Masuk</label>
                         <input type="date" name="tgl_masuk" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Jumlah Barang</label>
+                        <input type="text" name="jml_barang" class="form-control" placeholder="Jumlah Barang">
                     </div>  
                     <div class="form-group">
                         <label>Spesifikasi</label>
@@ -53,7 +57,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary">SIMPAN</button>
                 </div>
               <?php echo form_close(); ?>
         </div>

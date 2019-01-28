@@ -64,7 +64,11 @@
                     <div class="form-group">
                         <label>Tgl masuk</label>
                         <input type="date" name="tgl_masuk" class="form-control"value="<?php echo $brg['tgl_masuk'] ?>">
-                    </div>  
+                    </div>
+                    <div class="form-group">
+                        <label>Jumlah Barang</label>
+                        <input type="text" name="jml_barang" class="form-control"value="<?php echo $brg['jml_barang'] ?>">
+                    </div>    
                     <div class="form-group">
                         <label>Spesifikasi</label>
                         <textarea name="spesifikasi" class="form-control" rows="3"><?php echo $brg['spesifikasi'] ?></textarea>
@@ -73,7 +77,7 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary">SIMPAN</button>
                 </div>
               <?php echo form_close(); ?>
         </div>

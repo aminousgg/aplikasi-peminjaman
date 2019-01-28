@@ -4,6 +4,9 @@ class M_admin extends CI_Model{
 	function tampil_barang(){
 		return $this->db->get('barang');
 	}
+	function tambah_brg($data,$table){
+		$this->db->insert($table, $data);
+	}
 	function tampil_anggota(){
 		return $this->db->get('anggota');
 	}
