@@ -56,9 +56,9 @@
                             </div>
                             <div class="form-group">
                                 <label>Level User</label>
-                                <select class="form-control select2" style="width: 100%;">
-                                    <option selected="selected">User</option>
-                                    <option>Admin</option>
+                                <select name="level_user" class="form-control select2" style="width: 100%;">
+                                    <option selected="selected" value="user">User</option>
+                                    <option value="admin">Admin</option>
                                 </select>
                             </div>
                         </div>
