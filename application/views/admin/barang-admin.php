@@ -12,6 +12,35 @@
       </div>
     </div><!-- /.container-fluid -->
   </section>
+  <?php 
+  if($this->session->flashdata('error')):
+      $link="<script src='".base_url()."swal/sweetalert2.all.min.js'></script>";
+      echo $link;
+      echo '<script>
+              swal({
+                  type: "'.'error'.'",
+                  title: "'.$this->session->flashdata('error').'",
+                  text: "'.'Gagal menambahkan ke database'.'",
+                  timer: 10000,
+                  customClass: "'.'animated bounceIn'.'",
+                  })
+            </script>';
+  endif;
+ 
+  if($this->session->flashdata('success')):
+      $link="<script src='".base_url()."swal/sweetalert2.all.min.js'></script>";
+      echo $link;
+      echo '<script>
+              swal({
+                  type: "'.'success'.'",
+                  title: "'.$this->session->flashdata('success').'",
+                  text: "'.'Telah Ditambahkan'.'",
+                  customClass: "'.'animated bounceIn'.'",
+                  })
+            </script>';
+  endif;
+?>
+
 
   <!-- Main content -->
     <section class="content">
