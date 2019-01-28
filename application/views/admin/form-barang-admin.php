@@ -57,7 +57,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">SIMPAN</button>
+                  <button type="submit" <?php echo ('crud/edit/'.$u->id,'Edit'); ?>class="btn btn-primary">SIMPAN</button>
                 </div>
               <?php echo form_close(); ?>
         </div>
