@@ -82,7 +82,7 @@
                       <td><?php echo $row->nama_barang ?></td>
                       <td><?php echo $row->merk ?></td>
                       <td><?php echo $row->jml_barang ?>
-                      <button style="margin-left:3px;" data-toggle="modal" data-target="#unit" class="btn btn-success"><i class="ion ion-android-add"></i></button>
+                      <button data-toggle="modal" data-target="#unit" class="btn btn-success float-right"><i class="ion ion-android-add"></i></button>
                       </td>
                       <td><?php echo $row->jml_tersedia ?></td>
                       <td><?php echo $row->jml_terpinjam ?></td>
@@ -94,13 +94,61 @@
                               window.location.href='<?php echo base_url()."admin/edit_form_pinjam/".$row->id ?>';
                             }
                           </script>
-                          <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-info"> <i class="ion ion-ios-more"></i> </button>
+                          <button type="button" data-toggle="modal" data-target="#<?php echo $row->id ?>" class="btn btn-info"> <i class="ion ion-ios-more"></i> </button>
                           <button type="button" onclick="window.location='<?php echo base_url() ?>admin/edit_form_barang/<?php echo $row->id ?>';" class="btn btn-warning"> <i class="ion ion-edit"></i> </button>
                           <button type="button" onclick="del()" class="btn btn-danger"> <i class="ion ion-android-delete"></i> </button>
                         </div>
                       </td>
                       <?php $i++; ?>
                     </tr>
+                    <div class="modal fade" id="<?php echo $row->id ?>" role="dialog">
+                      <div class="modal-dialog">
+                      
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Detail Barang</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            
+                          </div>
+                          <div class="modal-body">
+                            <div class="row">
+                              <div class="col-md-4">Kode Barang</div>
+                              <div class="col-md-8"><?php echo $row->kode_barang ?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4">Nama Barang</div>
+                              <div class="col-md-8"><?php echo $row->nama_barang ?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4">Merk</div>
+                              <div class="col-md-8"><?php echo $row->merk ?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4">Tanggal masuk</div>
+                              <div class="col-md-8"><?php echo $row->tgl_masuk ?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4">Jumlah</div>
+                              <div class="col-md-8"><?php echo $row->jml_barang ?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4">Tersedia</div>
+                              <div class="col-md-8"><?php echo $row->jml_tersedia ?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4">Spesifikasi</div>
+                              <div class="col-md-8"><?php echo $row->spesifikasi ?></div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+
                   <?php } ?>
                 </tbody>
                 <tfoot>
@@ -127,26 +175,7 @@
     <!-- /.row -->
   </section>
   <!-- modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Modal Header</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
+  
   <div class="modal fade" id="unit" role="dialog">
     <div class="modal-dialog">
     
