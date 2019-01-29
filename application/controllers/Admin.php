@@ -259,4 +259,13 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/laporan-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
+
+	//=============================USER==================
+	//=============================BERANDA===============
+	function index2(){
+		$data['judul']="BerandaUser";
+		$this->load->view('user/header-user',$data);
+		$this->load->view('user/body-user',$data);
+		$this->load->view('user/footer-user',$data);
+	}
 }
