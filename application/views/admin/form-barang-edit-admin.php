@@ -30,9 +30,9 @@
                         </h3>
                     </div>
                 <!-- /.card-header -->
-                <div class="card-body">
+                <div class="card-body" >
                     <blockquote>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                        <p><?php echo $brg['spesifikasi'] ?></p>
                         <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
                     </blockquote>
                 </div>
