@@ -48,11 +48,12 @@
             <!-- form start -->
             <?php echo form_open_multipart('admin/tambah_barang', array('role' => 'form'))?>
                 <div class="card-body">
-                    <div class="form-group">
+                    <input type="hidden" name="kode_barang" value="<?php echo $brg['kode_barang'] ?>">
+                    <!-- <div class="form-group">
                         <label>Kode</label>
-                        <input type="text" name="kode_barang" class="form-control" value="<?php echo $brg['kode_barang'] ?>">
+                        <input type="text" name="kode_barang" class="form-control" value="<?php //echo $brg['kode_barang'] ?>">
                         
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label>Nama Barang</label>
                         <input type="text" name="nama_barang" class="form-control" value="<?php echo $brg['nama_barang'] ?>">

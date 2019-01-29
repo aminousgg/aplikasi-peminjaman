@@ -84,7 +84,10 @@
                       <td><?php echo $row->jml_barang ?>
                       <button data-toggle="modal" data-target="#unit" class="btn btn-success float-right"><i class="ion ion-android-add"></i></button>
                       </td>
-                      <td><?php echo $row->jml_tersedia ?></td>
+                      <?php if($row->jml_tersedia==0){ ?>
+                        <td style="color:red;"><?php echo $row->jml_tersedia; ?></td>
+                      <?php }else{ ?>
+                        <td><?php echo $row->jml_tersedia;}  ?></td>
                       <td><?php echo $row->jml_terpinjam ?></td>
                       <td>
                         <div class="button-group">

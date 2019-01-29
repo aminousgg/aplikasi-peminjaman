@@ -75,7 +75,7 @@
           <?php } ?>
             <i class="nav-icon fa fa-shopping-cart"></i>
             <p>
-              Peminjaman
+             Log Peminjaman
                 
             </p>
           </a>
