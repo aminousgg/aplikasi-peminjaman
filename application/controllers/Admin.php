@@ -35,6 +35,7 @@ class Admin extends CI_Controller{
 	}
 
 	function tambah_barang_aksi(){
+		
 		$data = array(
 			'kode_barang'	=> $this->input->post('kode_barang'),
 			'nama_barang'	=> $this->input->post('nama_barang'),
