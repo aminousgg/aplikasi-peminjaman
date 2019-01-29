@@ -35,9 +35,10 @@ class Admin extends CI_Controller{
 	}
 
 	function tambah_barang_aksi(){
-		
+		$kode = rand(1000,9999);
+		$kode_barang = (string)$kode;
 		$data = array(
-			'kode_barang'	=> $this->input->post('kode_barang'),
+			'kode_barang'	=> $kode_barang,
 			'nama_barang'	=> $this->input->post('nama_barang'),
 			'merk'			=> $this->input->post('merk'),
 			'tgl_masuk'		=> $this->input->post('tgl_masuk'),

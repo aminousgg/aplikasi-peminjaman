@@ -30,10 +30,10 @@
             <!-- form start -->
             <?php echo form_open_multipart('admin/tambah_barang_aksi', array('role' => 'form'))?>
                 <div class="card-body">
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label>Kode Barang</label>
                         <input type="text" name="kode_barang" class="form-control" placeholder="Kode Barang">
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label>Nama Barang</label>
                         <input type="text" name="nama_barang" class="form-control" placeholder="Nama Barang">
