@@ -8,4 +8,5 @@ class User extends CI_Controller{
 		$this->load->model('M_user');
 		
 	}
+    
 }

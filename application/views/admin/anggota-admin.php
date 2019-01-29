@@ -77,13 +77,60 @@
                     <td><?php echo $row->level_user ?></td>
                     <td>
                       <div class="button-group">
-                        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-info"> <i class="ion ion-ios-more"></i> </button>
+                        <button type="button" data-toggle="modal" data-target="#<?php echo $row->id ?>" class="btn btn-info"> <i class="ion ion-ios-more"></i> </button>
                         <button type="button" onclick="window.location='<?php echo base_url() ?>admin/edit_form_anggota/<?php echo $row->id ?>';" class="btn btn-warning"> <i class="ion ion-edit"></i> </button>
                         <button type="button" onclick="del()" class="btn btn-danger"> <i class="ion ion-android-delete"></i> </button>
                       </div>
                     </td>
                     <?php $i++; ?>
                   </tr>
+                  <div class="modal fade" id="<?php echo $row->id ?>" role="dialog">
+                      <div class="modal-dialog">
+                      
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Detail Anggota</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            
+                          </div>
+                          <div class="modal-body">
+                            <div class="row">
+                              <div class="col-md-4">NIP</div>
+                              <div class="col-md-8"><?php echo $row->nip ?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4">Nama Anggota</div>
+                              <div class="col-md-8"><?php echo $row->nama ?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4">Jabatan</div>
+                              <div class="col-md-8"><?php echo $row->jabatan ?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4">Pangkat / Golongan</div>
+                              <div class="col-md-8"><?php echo $row->pangkat_golongan ?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4">Seksi</div>
+                              <div class="col-md-8"><?php echo $row->seksi ?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4">Tanggal Lahir</div>
+                              <div class="col-md-8"><?php echo $row->tgl_lahir ?></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4">Level User</div>
+                              <div class="col-md-8"><?php echo $row->level_user ?></div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
                 <?php } ?>
               </tbody>
               <tfoot>
