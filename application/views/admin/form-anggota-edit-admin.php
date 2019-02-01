@@ -26,7 +26,7 @@
                     <div class="card-header">
                         <h3 class="card-title">
                             <i class="fa fa-text-width"></i>
-                            Detail Barang
+                            Detail Anggota
                         </h3>
                     </div>
                     <!-- /.card-header -->
