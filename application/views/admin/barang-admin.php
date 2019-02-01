@@ -64,14 +64,14 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th>No</th>
-                    <th>Kode barang</th>
-                    <th>Nama Barang</th>
-                    <th>Merk</th>
-                    <th>Jumlah</th>
-                    <th>Tersedia</th>
-                    <th>Terpinjam</th>
-                    <th>Aksi</th>
+                    <th style="font-size:13px; width:10px;">No</th>
+                    <th style="font-size:13px; width:10px;">Kode barang</th>
+                    <th style="font-size:13px; width:10px;">Nama Barang</th>
+                    <th style="font-size:13px; width:10px;">Merk</th>
+                    <th style="font-size:13px; width:10px;">Jumlah</th>
+                    <th style="font-size:13px; width:10px;">Tersedia</th>
+                    <th style="font-size:13px; width:10px;">Terpinjam</th>
+                    <th style="font-size:13px; width:10px;">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -156,14 +156,14 @@
                 </tbody>
                 <tfoot>
                   <tr>
-                    <th>No</th>
-                    <th>Kode barang</th>
-                    <th>Nama Barang</th>
-                    <th>Merk</th>
-                    <th>Jumlah</th>
-                    <th>Tersedia</th>
-                    <th>Terpinjam</th>
-                    <th>Aksi</th>
+                    <th style="font-size:13px; width:10px;">No</th>
+                    <th style="font-size:13px; width:10px;">Kode barang</th>
+                    <th style="font-size:13px; width:10px;">Nama Barang</th>
+                    <th style="font-size:13px; width:10px;">Merk</th>
+                    <th style="font-size:13px; width:10px;">Jumlah</th>
+                    <th style="font-size:13px; width:10px;">Tersedia</th>
+                    <th style="font-size:13px; width:10px;">Terpinjam</th>
+                    <th style="font-size:13px; width:10px;">Aksi</th>
                   </tr>
                 </tfoot>
               </table>

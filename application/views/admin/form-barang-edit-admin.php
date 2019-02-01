@@ -25,16 +25,15 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
-                            <i class="fa fa-text-width"></i>
-                            Detail Barang
+                            Spesifikasi Barang
                         </h3>
                     </div>
                 <!-- /.card-header -->
                 <div class="card-body" >
                     <blockquote>
                         <p><?php echo $brg['spesifikasi'] ?></p>
-                        <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
-                    </blockquote>
+                        <!--<small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                    --></blockquote>
                 </div>
                 <!-- /.card-body -->
             </div>

@@ -143,7 +143,7 @@
                   <th style="font-size:13px;">Nama Barang</th>
                   <th style="font-size:13px;">Unit</th>
                   <th style="font-size:13px;">Estimasi Kembali</th>
-                  <th style="font-size:13px;">Stattus</th>
+                  <th style="font-size:13px;">Status</th>
                   <th style="font-size:13px;">Aksi</th>
                 </tr>
               </tfoot>

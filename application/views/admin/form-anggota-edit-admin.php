@@ -25,7 +25,6 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
-                            <i class="fa fa-text-width"></i>
                             Detail Anggota
                         </h3>
                     </div>
@@ -33,8 +32,8 @@
                     <div class="card-body">
                         <blockquote>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
-                        </blockquote>
+                            <!--<small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                        --></blockquote>
                     </div>
                 <!-- /.card-body -->
                 </div>

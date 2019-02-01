@@ -24,7 +24,7 @@
             <div class="col-md-6">
                 <div class="card card-info">
                     <div class="card-header">
-                        <h3 class="card-title">Edit Data Anggota</h3>
+                        <h3 class="card-title">Masukan Data Anggota</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -40,15 +40,15 @@
                             </div>
                             <div class="form-group">
                                 <label>Jabatan</label>
-                                <input type="text" name="jabatan" class="form-control" placeholder="jabatan">
+                                <input type="text" name="jabatan" class="form-control" placeholder="Jabatan">
                             </div>
                             <div class="form-group">
                                 <label>Golongan</label>
-                                <input type="text" name="pangkat_golongan" class="form-control" placeholder="Seksi">
+                                <input type="text" name="pangkat_golongan" class="form-control" placeholder="Golongan">
                             </div> 
                             <div class="form-group">
                                 <label>Seksi Bagian</label>
-                                <input type="text" name="seksi" class="form-control" placeholder="Seksi">
+                                <input type="text" name="seksi" class="form-control" placeholder="Seksi Bagian">
                             </div>
                             <div class="form-group">
                                 <label>Tgl Lahir</label>

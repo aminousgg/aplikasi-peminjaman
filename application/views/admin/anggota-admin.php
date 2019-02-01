@@ -55,14 +55,14 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th>No</th>
-                  <th>NIP</th>
-                  <th>Nama Anggota</th>
-                  <th>Jabatan</th>
-                  <th>pangkat/gol</th>
-                  <th>seksi</th>
-                  <th>level user</th>
-                  <th>Aksi</th>
+                  <th style="font-size:13px; width:10px;">No</th>
+                  <th style="font-size:13px; width:10px;">NIP</th>
+                  <th style="font-size:13px; width:10px;">Nama Anggota</th>
+                  <th style="font-size:13px; width:10px;">Jabatan</th>
+                  <th style="font-size:13px; width:10px;">Pangkat/Gol</th>
+                  <th style="font-size:13px; width:10px;">Seksi</th>
+                  <th style="font-size:13px; width:10px;">Level User</th>
+                  <th style="font-size:13px; width:10px;">Aksi</th>
                 </tr>
               </thead>
               <tbody>
@@ -135,14 +135,14 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>No</th>
-                  <th>NIP</th>
-                  <th>Nama Anggota</th>
-                  <th>Jabatan</th>
-                  <th>pangkat/gol</th>
-                  <th>seksi</th>
-                  <th>level user</th>
-                  <th>Aksi</th>
+                  <th style="font-size:13px; width:10px;">No</th>
+                  <th style="font-size:13px; width:10px;">NIP</th>
+                  <th style="font-size:13px; width:10px;">Nama Anggota</th>
+                  <th style="font-size:13px; width:10px;">Jabatan</th>
+                  <th style="font-size:13px; width:10px;">Pangkat/Gol</th>
+                  <th style="font-size:13px; width:10px;">Seksi</th>
+                  <th style="font-size:13px; width:10px;">Level User</th>
+                  <th style="font-size:13px; width:10px;">Aksi</th>
                 </tr>
               </tfoot>
             </table>
