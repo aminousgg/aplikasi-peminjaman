@@ -1,8 +1,15 @@
 <!-- First Container -->
 <div class="container-fluid bg-2 text-center">
-  <h3 class="margin">Pencarian</h3>
-  <img src="" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
-  <h3></h3>
+    <h3 class="margin">Pencarian</h3>
+        <form class="form-inline">
+            <div class="input-group">
+                <input type="email" class="form-control" size="50" placeholder="Cari . . . . ." required>
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-danger">Cari</button>
+                </div>
+            </div>
+        </form>
+    <h3></h3>
 </div>
 
 <!-- Second Container -->
@@ -11,12 +18,11 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Data Barang</h3>
-              
             </div>
             
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -52,7 +58,7 @@
             
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th>No</th>
