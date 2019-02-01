@@ -172,9 +172,12 @@ class Admin extends CI_Controller{
 			$status="Belum Kembali";
 		} else { 
 			// echo 'Time Expired';
+			$this->session->set_flashdata('error', 'Salah Tanggal');
+			$id=$this->input->post('id');
+			redirect(base_url('admin/form_pinjam/'.$id));
 			$status="Salah tanggal";
-			echo $status;
-			die;
+			//echo $status;
+			//die;
 		}
 		$id=$this->input->post('id');
 		// var_dump($id); die;

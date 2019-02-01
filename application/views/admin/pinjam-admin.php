@@ -113,6 +113,8 @@
                     ?>
                     <?php if($days>0){ ?>
                       <td><?php echo $days." hari" ?></td>
+                    <?php } elseif($days==0) {?>
+                      <td style="color:#007bff;"><?php echo "hari ini" ?></td>
                     <?php }else{ $day=$days*-1; ?>
                       <td style="color:red;"><?php echo "Lewat ".$day." hari"; }?></td>
                     
