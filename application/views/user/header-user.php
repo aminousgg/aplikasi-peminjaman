@@ -63,7 +63,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"></a></li>
         <li><a href="#"></a></li>
-        <li><a href="#">MASUK</a></li>
+        <li><a href="<?php echo base_url()?>web/login">MASUK</a></li>
       </ul>
     </div>
   </div>

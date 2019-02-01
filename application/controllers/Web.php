@@ -16,5 +16,10 @@ class Web extends CI_Controller{
 		$this->load->view('user/footer-user',$data);
 		
 	}
+	function login(){
+		$data['judul']="Login";
+		$this->load->view('user/login-user',$data);
+		$this->load->view('user/footer-user',$data);
+	}
 
 }
