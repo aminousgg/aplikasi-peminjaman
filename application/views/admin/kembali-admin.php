@@ -41,28 +41,38 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th>No</th>
-                  <th>ID Peminjam</th>
-                  <th>Nama barang</th>
-                  <th>Nama</th>
-                  <th>Tgl pinjam</th>
-                  <th>Tgl Pengembalian</th>
-                  <th>Status</th>
+                  <th style="font-size:13px; width:10px;">No</th>
+                  <th style="font-size:13px; width:10px;">ID Peminjam</th>
+                  <th style="font-size:13px; width:10px;">Nama barang</th>
+                  <th style="font-size:13px; width:10px;">Nama</th>
+                  <th style="font-size:13px; width:10px;">Tgl pinjam</th>
+                  <th style="font-size:13px; width:10px;">Tgl Pengembalian</th>
+                  <th style="font-size:13px; width:10px;">Status</th>
                     
                 </tr>
               </thead>
               <tbody>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+
                   
               </tbody>
               <tfoot>
                 <tr>
                   <th>No</th>
-                    <th>ID Peminjam</th>
-                    <th>Nama barang</th>
-                    <th>Nama</th>
-                    <th>Tgl pinjam</th>
-                    <th>Tgl Pengembalian</th>
-                    <th>Status</th>
+                    <th style="font-size:13px; width:10px;">ID Peminjam</th>
+                    <th style="font-size:13px; width:10px;">Nama barang</th>
+                    <th style="font-size:13px; width:10px;">Nama</th>
+                    <th style="font-size:13px; width:10px;">Tgl pinjam</th>
+                    <th style="font-size:13px; width:10px;">Tgl Pengembalian</th>
+                    <th style="font-size:13px; width:10px;">Status</th>
                     
                 </tr>
               </tfoot>
