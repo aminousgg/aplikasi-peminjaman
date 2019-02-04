@@ -56,6 +56,22 @@ class Admin extends CI_Controller{
 			redirect(base_url('admin/barang'));
 		}
 	}
+	function unit(){
+		$update=$this->input->post('asli')+$this->input->post('unit');
+		$data=array(
+			'jml_barang' => $update,
+		);
+		$this->db->where('id',$this->input->post('id'));
+		$result=$this->db->update('barang',$data);
+		if($result==true){
+			$this->session->set_flashdata('success', 'Unit Berhasil ditambah');
+			redirect(base_url('admin/barang'));
+		}else{
+			$this->session->set_flashdata('error', 'Gagal Menambah');
+			redirect(base_url('admin/barang'));
+		}
+		
+	}
 	function edit_form_barang($id){
 		$data['brg']=$this->M_admin->get_brg($id)->row_array();
 		//var_dump($data['brg']); die;

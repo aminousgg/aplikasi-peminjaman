@@ -56,13 +56,13 @@
               <thead>
                 <tr>
                   <th style="font-size:13px; width:10px;">No</th>
-                  <th style="font-size:13px; width:10px;">NIP</th>
-                  <th style="font-size:13px; width:10px;">Nama Anggota</th>
-                  <th style="font-size:13px; width:10px;">Jabatan</th>
-                  <th style="font-size:13px; width:10px;">Pangkat/Gol</th>
-                  <th style="font-size:13px; width:10px;">Seksi</th>
-                  <th style="font-size:13px; width:10px;">Level User</th>
-                  <th style="font-size:13px; width:10px;">Aksi</th>
+                  <th style="">NIP</th>
+                  <th style="">Nama Anggota</th>
+                  <th style="">Jabatan</th>
+                  <th style="">Pangkat/Gol</th>
+                  <th style="">Seksi</th>
+                  <th style="">Level User</th>
+                  <th style="">Aksi</th>
                 </tr>
               </thead>
               <tbody>
@@ -84,65 +84,66 @@
                     </td>
                     <?php $i++; ?>
                   </tr>
+                  <!-- detail -->
                   <div class="modal fade" id="<?php echo $row->id ?>" role="dialog">
-                      <div class="modal-dialog">
-                      
+                    <div class="modal-dialog">
                         <!-- Modal content-->
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h4 class="modal-title">Detail Anggota</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">Detail Anggota</h4>
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          
+                        </div>
+                        <div class="modal-body">
+                          <div class="row">
+                            <div class="col-md-4">NIP</div>
+                            <div class="col-md-8"><?php echo $row->nip ?></div>
                           </div>
-                          <div class="modal-body">
-                            <div class="row">
-                              <div class="col-md-4">NIP</div>
-                              <div class="col-md-8"><?php echo $row->nip ?></div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-4">Nama Anggota</div>
-                              <div class="col-md-8"><?php echo $row->nama ?></div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-4">Jabatan</div>
-                              <div class="col-md-8"><?php echo $row->jabatan ?></div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-4">Pangkat / Golongan</div>
-                              <div class="col-md-8"><?php echo $row->pangkat_golongan ?></div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-4">Seksi</div>
-                              <div class="col-md-8"><?php echo $row->seksi ?></div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-4">Tanggal Lahir</div>
-                              <div class="col-md-8"><?php echo $row->tgl_lahir ?></div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-4">Level User</div>
-                              <div class="col-md-8"><?php echo $row->level_user ?></div>
-                            </div>
+                          <div class="row">
+                            <div class="col-md-4">Nama Anggota</div>
+                            <div class="col-md-8"><?php echo $row->nama ?></div>
                           </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <div class="row">
+                            <div class="col-md-4">Jabatan</div>
+                            <div class="col-md-8"><?php echo $row->jabatan ?></div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-4">Pangkat / Golongan</div>
+                            <div class="col-md-8"><?php echo $row->pangkat_golongan ?></div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-4">Seksi</div>
+                            <div class="col-md-8"><?php echo $row->seksi ?></div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-4">Tanggal Lahir</div>
+                            <div class="col-md-8"><?php echo $row->tgl_lahir ?></div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-4">Level User</div>
+                            <div class="col-md-8"><?php echo $row->level_user ?></div>
                           </div>
                         </div>
-                        
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
                       </div>
                     </div>
+                  </div>
+                  <!-- Tambah unit -->
+
                 <?php } ?>
               </tbody>
               <tfoot>
                 <tr>
                   <th style="font-size:13px; width:10px;">No</th>
-                  <th style="font-size:13px; width:10px;">NIP</th>
-                  <th style="font-size:13px; width:10px;">Nama Anggota</th>
-                  <th style="font-size:13px; width:10px;">Jabatan</th>
-                  <th style="font-size:13px; width:10px;">Pangkat/Gol</th>
-                  <th style="font-size:13px; width:10px;">Seksi</th>
-                  <th style="font-size:13px; width:10px;">Level User</th>
-                  <th style="font-size:13px; width:10px;">Aksi</th>
+                  <th style="">NIP</th>
+                  <th style="">Nama Anggota</th>
+                  <th style="">Jabatan</th>
+                  <th style="">Pangkat/Gol</th>
+                  <th style="">Seksi</th>
+                  <th style="">Level User</th>
+                  <th style="">Aksi</th>
                 </tr>
               </tfoot>
             </table>
@@ -176,26 +177,7 @@
       
     </div>
   </div>
-  <div class="modal fade" id="myModal1" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Konfirmasi Hapus Data</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          
-        </div>
-        <div class="modal-body">
-          <p>Ingin menghapus data ini?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
+  
   
   <!-- /.content -->
 </div>

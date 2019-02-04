@@ -50,7 +50,7 @@
 
 
       <div id="navbar">
-        <a class="active" href="javascript:void(0)">Home</a>
+        <a class="" href="javascript:void(0)">Home</a>
         <a href="javascript:void(0)">News</a>
         <a href="javascript:void(0)">Contact</a>
       </div>

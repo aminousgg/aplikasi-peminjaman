@@ -65,13 +65,13 @@
                 <thead>
                   <tr>
                     <th style="font-size:13px; width:10px;">No</th>
-                    <th style="font-size:13px; width:10px;">Kode barang</th>
-                    <th style="font-size:13px; width:10px;">Nama Barang</th>
-                    <th style="font-size:13px; width:10px;">Merk</th>
-                    <th style="font-size:13px; width:10px;">Jumlah</th>
-                    <th style="font-size:13px; width:10px;">Tersedia</th>
-                    <th style="font-size:13px; width:10px;">Terpinjam</th>
-                    <th style="font-size:13px; width:10px;">Aksi</th>
+                    <th style="">Kode barang</th>
+                    <th style="">Nama Barang</th>
+                    <th style="">Merk</th>
+                    <th style="">Jumlah</th>
+                    <th style="">Tersedia</th>
+                    <th style="">Terpinjam</th>
+                    <th style="">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -81,8 +81,9 @@
                       <td><?php echo $row->kode_barang ?></td>
                       <td><?php echo $row->nama_barang ?></td>
                       <td><?php echo $row->merk ?></td>
-                      <td><?php echo $row->jml_barang ?>
-                      <button data-toggle="modal" data-target="#unit" class="btn btn-success float-right"><i class="ion ion-android-add"></i></button>
+                      <td>
+                        <?php echo $row->jml_barang ?>
+                        <button data-toggle="modal" data-target="#<?php echo $row->id ?>_unit" class="btn btn-success float-right"><i class="ion ion-android-add"></i></button>
                       </td>
                       <?php if($row->jml_tersedia==0){ ?>
                         <td style="color:red;"><?php echo $row->jml_tersedia; ?></td>
@@ -104,6 +105,7 @@
                       </td>
                       <?php $i++; ?>
                     </tr>
+                    <!-- detail -->
                     <div class="modal fade" id="<?php echo $row->id ?>" role="dialog">
                       <div class="modal-dialog">
                       
@@ -151,19 +153,46 @@
                         
                       </div>
                     </div>
+                    <!-- Tambah unit -->
+                    <div class="modal fade" id="<?php echo $row->id ?>_unit" role="dialog">
+                      <div class="modal-dialog">
+                      
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Tambah Unit</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            
+                          </div>
+                          <div class="modal-body">
+                            <?php echo form_open('admin/unit'); ?>
+                              <label for="">Unit</label>&nbsp;&nbsp;&nbsp;
+                              <input type="number" name="unit">&nbsp;&nbsp;
+                              <input type="hidden" name="id" value="<?php echo $row->id ?>">
+                              <input type="hidden" name="asli" value="<?php echo $row->jml_barang ?>">
+                              <button type="submit" class="btn btn-info"><i class="ion ion-android-add"></i></button>
+                            <?php echo form_close(); ?>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
 
                   <?php } ?>
                 </tbody>
                 <tfoot>
                   <tr>
                     <th style="font-size:13px; width:10px;">No</th>
-                    <th style="font-size:13px; width:10px;">Kode barang</th>
-                    <th style="font-size:13px; width:10px;">Nama Barang</th>
-                    <th style="font-size:13px; width:10px;">Merk</th>
-                    <th style="font-size:13px; width:10px;">Jumlah</th>
-                    <th style="font-size:13px; width:10px;">Tersedia</th>
-                    <th style="font-size:13px; width:10px;">Terpinjam</th>
-                    <th style="font-size:13px; width:10px;">Aksi</th>
+                    <th style="">Kode barang</th>
+                    <th style="">Nama Barang</th>
+                    <th style="">Merk</th>
+                    <th style="">Jumlah</th>
+                    <th style="">Tersedia</th>
+                    <th style="">Terpinjam</th>
+                    <th style="">Aksi</th>
                   </tr>
                 </tfoot>
               </table>
@@ -179,26 +208,7 @@
   </section>
   <!-- modal -->
   
-  <div class="modal fade" id="unit" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Tambah Unit</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
+  
   <!-- /.content -->
 </div>
 <?php
