@@ -1,7 +1,7 @@
 #navbar {
   z-index: 99;
   overflow: hidden;
-  background-color: #333;
+  background-color: #474e5d;
 }
 
 .navbar-left{
@@ -50,10 +50,9 @@
 }
 
 .header {
-
   padding: 50px;
   min-height: 40vh;
-  background-color: silver;
+  background-color: blue;
 }
 .awak {
   min-height: 100vh;
@@ -61,11 +60,11 @@
 .bodikiri {
   min-width: 100%;
   min-height: 90vh;
-  background-color: silver;
+  background-color: #1abc9c;
 }
 .bodikanan {
   min-width: 100%;
   min-height: 45vh;
-  background-color: silver;
+  background-color: #1abc9c;
 }
 
