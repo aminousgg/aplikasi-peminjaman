@@ -21,7 +21,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="../../index2.html"><b>Sistem</b>PEMINJAMAN</a>
+            <a href="<?php echo base_url() ?>web/index"><b>Sistem</b>PEMINJAMAN</a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
