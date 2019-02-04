@@ -13,6 +13,11 @@
     <link href="<?php echo base_url()?>user/dist/css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo base_url()?>user/dist/css/navbar.css" rel="stylesheet">
     <link href="<?php echo base_url()?>user/dist/css/sampul.css" rel="stylesheet">
+      <!-- Date Picker -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>admin-lte-master/plugins/datepicker/datepicker3.css">
+ <!-- Theme style -->
+ <link rel="stylesheet" href="<?php echo base_url() ?>admin-lte-master/dist/css/adminlte.css">
+ 
 
     <!-- Custom styles for this template -->
     <link href="jumbotron.css" rel="stylesheet">
@@ -52,8 +57,6 @@
       <div id="navbar">
         <div class="navbar-left">
           <a class="" href="javascript:void(0)">Home</a>
-          <a href="javascript:void(0)">News</a>
-          <a href="javascript:void(0)">Contact</a>
         </div>  
         <div class="navbar-right">
           <a href="<?php echo base_url()?>web/login">MASUK</a>
