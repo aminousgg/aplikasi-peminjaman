@@ -21,7 +21,7 @@
         <div class="row">
           <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box">
-              <span class="info-box-icon bg-info"><i class="fa fa-inbox"></i></span>
+              <span class="info-box-icon bg-info elevation-1"><i class="fa fa-inbox"></i></span>
               <div class="info-box-content">
                 <a href="<?php echo base_url()?>admin/barang">Barang</a>
                 <!--<span class="info-box-text">Barang</span>-->
@@ -34,7 +34,7 @@
           <!-- /.col -->
           <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box">
-              <span class="info-box-icon bg-success"><i class="fa fa-users"></i></span>
+              <span class="info-box-icon bg-success elevation-1"><i class="fa fa-users"></i></span>
 
               <div class="info-box-content">
                 <a href="<?php echo base_url()?>admin/anggota">Anggota</a>
@@ -48,7 +48,7 @@
           <!-- /.col -->
           <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box">
-              <span class="info-box-icon bg-warning"><i class="fa fa-shopping-cart"></i></span>
+              <span class="info-box-icon bg-warning elevation-1"><i class="fa fa-shopping-cart"></i></span>
 
               <div class="info-box-content">
                 <a href="<?php echo base_url()?>admin/pinjam">Peminjaman</a>
@@ -62,7 +62,7 @@
           <!-- /.col -->
           <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box">
-              <span class="info-box-icon bg-danger"><i class="fa fa-files-o"></i></span>
+              <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-files-o"></i></span>
               <div class="info-box-content">
               <a href="<?php echo base_url()?>admin/pinjam_barang">Pengembalian</a>
                 <!--<span class="info-box-text">Transaksi</span>-->

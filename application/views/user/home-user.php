@@ -5,7 +5,7 @@
         <div class="bodikiri">
           <div class="col-md-1">
           </div>
-          <div class="col-md-6">
+          <div class="col-md-8">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Data Barang</h3>
@@ -41,7 +41,7 @@
           <br>
           <div class="col-md-1">
           </div>
-          <div class="col-md-6">
+          <div class="col-md-8">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Data Peminjaman</h3>
