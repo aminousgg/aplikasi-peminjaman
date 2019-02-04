@@ -50,7 +50,13 @@
 
 
       <div id="navbar">
-        <a class="" href="javascript:void(0)">Home</a>
-        <a href="javascript:void(0)">News</a>
-        <a href="javascript:void(0)">Contact</a>
+        <div class="navbar-left">
+          <a class="" href="javascript:void(0)">Home</a>
+          <a href="javascript:void(0)">News</a>
+          <a href="javascript:void(0)">Contact</a>
+        </div>  
+        <div class="navbar-right">
+          <a href="<?php echo base_url()?>web/login">MASUK</a>
+        </div>
       </div>
+      

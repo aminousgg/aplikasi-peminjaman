@@ -64,7 +64,7 @@
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="exampleCheck2">
-                                        <label class="form-check-label" for="exampleCheck2">Ingaktan Saya</label>
+                                        <label class="form-check-label" for="exampleCheck2">Ingatkan Saya</label>
                                     </div>
                                 </div>
                             </div>
