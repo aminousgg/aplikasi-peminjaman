@@ -53,6 +53,7 @@
 <script src="<?php echo base_url() ?>admin-lte-master/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url() ?>admin-lte-master/dist/js/demo.js"></script>
+<script src="../plugins/fullcalendar/fullcalendar.min.js"></script>
 <script>
   $(function () {
     $("#example1").DataTable();

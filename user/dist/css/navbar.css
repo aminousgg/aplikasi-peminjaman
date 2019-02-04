@@ -23,6 +23,11 @@
   background-color: #4CAF50;
   color: white;
 }
+.navbar-nav  li a:hover {
+  color: #1abc9c !important;
+}
+
+
 
 .content {
   padding: 16px;
@@ -57,3 +62,4 @@
   min-height: 45vh;
   background-color: silver;
 }
+

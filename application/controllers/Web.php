@@ -12,7 +12,7 @@ class Web extends CI_Controller{
 		$data['tabel_record'] = $this->M_user->tampil_barang()->result();
 		$data['judul']="Beranda";
 		$this->load->view('user/header-user',$data);
-		$this->load->view('user/body-user',$data);
+		$this->load->view('user/home-user',$data);
 		$this->load->view('user/footer-user',$data);
 		
 	}
