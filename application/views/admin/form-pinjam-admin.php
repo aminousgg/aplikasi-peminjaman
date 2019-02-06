@@ -114,7 +114,7 @@ endif;
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">SIMPAN</button>
+                  <button type="submit" class="btn btn-primary">Pinjam</button>
                 </div>
               <?php echo form_close(); ?>
         </div>
