@@ -170,6 +170,7 @@
                               <input type="number" name="unit">&nbsp;&nbsp;
                               <input type="hidden" name="id" value="<?php echo $row->id ?>">
                               <input type="hidden" name="asli" value="<?php echo $row->jml_barang ?>">
+                              <input type="hidden" name="sedia" value="<?php echo $row->jml_tersedia ?>">
                               <button type="submit" class="btn btn-info"><i class="ion ion-android-add"></i></button>
                             <?php echo form_close(); ?>
                           </div>

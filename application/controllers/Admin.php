@@ -58,8 +58,10 @@ class Admin extends CI_Controller{
 	}
 	function unit(){
 		$update=$this->input->post('asli')+$this->input->post('unit');
+		$sedia=$this->input->post('sedia')+$this->input->post('unit');
 		$data=array(
-			'jml_barang' => $update,
+			'jml_barang'	=> $update,
+			'jml_tersedia'	=> $sedia,
 		);
 		$this->db->where('id',$this->input->post('id'));
 		$result=$this->db->update('barang',$data);
