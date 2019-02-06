@@ -21,6 +21,35 @@
     </div><!-- /.container-fluid -->
   </section>
 
+  <?php 
+  if($this->session->flashdata('error')):
+      $link="<script src='".base_url()."swal/sweetalert2.all.min.js'></script>";
+      echo $link;
+      echo '<script>
+              swal({
+                  type: "'.'error'.'",
+                  title: "'.'Gagal'.'",
+                  text: "'.$this->session->flashdata('error').'",
+                  timer: 10000,
+                  customClass: "'.'animated bounceIn'.'",
+                  })
+            </script>';
+  endif;
+ 
+  if($this->session->flashdata('success')):
+      $link="<script src='".base_url()."swal/sweetalert2.all.min.js'></script>";
+      echo $link;
+      echo '<script>
+              swal({
+                  type: "'.'success'.'",
+                  title: "'.'Berhasil'.'",
+                  text: "'.$this->session->flashdata('success').'",
+                  customClass: "'.'animated bounceIn'.'",
+                  })
+            </script>';
+  endif;
+?>
+
   <!-- Main content -->
   <section class="content">
     <div class="row">
@@ -42,37 +71,46 @@
               <thead>
                 <tr>
                   <th style="font-size:13px; width:10px;">No</th>
-                  <th style="font-size:13px; width:10px;">ID Peminjam</th>
-                  <th style="font-size:13px; width:10px;">Nama barang</th>
-                  <th style="font-size:13px; width:10px;">Nama</th>
-                  <th style="font-size:13px; width:10px;">Tgl pinjam</th>
-                  <th style="font-size:13px; width:10px;">Tgl Pengembalian</th>
-                  <th style="font-size:13px; width:10px;">Status</th>
+                  <th style="">Peminjam</th>
+                  <th style="">Barang</th>
+                  <th style="">Tgl pinjam</th>
+                  <th style="">Tgl Kembali</th>
+                  <th style="">Status</th>
                     
                 </tr>
               </thead>
               <tbody>
+              <?php $i=1; foreach($tabel_record as $row){ ?>
                     <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td><?php echo $i; ?></td>
+                      <td><?php 
+                          $anggota=$this->db->get_where('anggota',array('nip'=>$row->nip));
+                          $hsl=$anggota->row_array();
+                          echo $hsl['nama'];
+                          ?>
+                      </td>
+
+                      <td><?php
+                          $brg=$this->db->get_where('barang',array('kode_barang'=>$row->kode_brg));
+                          $hsl1=$brg->row_array();
+                          echo $hsl1['nama_barang'];
+                          ?>
+                      </td>
+                      <td><?php echo $row->tgl_pinjam ?></td>
+                      <td><?php echo $row->wkt_kembali ?></td>
+                      <td>Telah Kembali</td>
                     </tr>
 
-                  
+              <?php } ?>   
               </tbody>
               <tfoot>
                 <tr>
-                  <th>No</th>
-                    <th style="font-size:13px; width:10px;">ID Peminjam</th>
-                    <th style="font-size:13px; width:10px;">Nama barang</th>
-                    <th style="font-size:13px; width:10px;">Nama</th>
-                    <th style="font-size:13px; width:10px;">Tgl pinjam</th>
-                    <th style="font-size:13px; width:10px;">Tgl Pengembalian</th>
-                    <th style="font-size:13px; width:10px;">Status</th>
+                  <th style="font-size:13px; width:10px;">No</th>
+                  <th style="">Peminjam</th>
+                  <th style="">Barang</th>
+                  <th style="">Tgl pinjam</th>
+                  <th style="">Tgl Kembali</th>
+                  <th style="">Status</th>
                     
                 </tr>
               </tfoot>

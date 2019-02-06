@@ -262,13 +262,48 @@ class Admin extends CI_Controller{
 	// ========================================================================
 	//==================================PENGEMBALIAN===========================
 	function kembali(){
-		// $data['tabel_record'] = $this->M_admin->tampil_kembali()->result();
+		$data['tabel_record'] = $this->M_admin->tampil_kembali()->result();
 		$data['judul']="Kembali";
 		$this->load->view('admin/header-admin',$data);
 		$this->load->view('admin/aside-admin',$data);
 		$this->load->view('admin/kembali-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
+	function kembalikan($id){
+		// echo $id; die;
+		$pinjam = $this->M_admin->ambil_pinjam($id)->row_array();
+		if($pinjam==null){
+			echo "Peminjam tdk ditemukan";
+			die;
+		}
+		//var_dump($pinjam); die;
+		
+		//set today
+		date_default_timezone_set('Asia/Jakarta');
+		$in = array(
+			'nip'			=> $pinjam['nip'],
+			'kode_brg'		=> $pinjam['kode_barang'],
+			'tgl_pinjam'	=> $pinjam['tgl_pinjam'],
+			'estimasi'		=> $pinjam['tgl_kembali'],
+			'wkt_kembali'	=> date('Y-m-d'),
+		);
+		$insert=$this->db->insert('kembali_brg',$in);
+		if($insert==true){
+			$result=$this->db->delete('pinjam_barang',array('id'=>$id));
+			if($result==false){
+				echo "gagal ada kesalahan sistem";
+				die;
+			}
+			$this->session->set_flashdata('success', 'Pengembalian '.$pinjam['nama']);
+			redirect(base_url('admin/kembali'));
+					
+		}else{
+			$this->session->set_flashdata('error', 'Pengembalian '.$pinjam['nama']);
+			redirect(base_url('admin/kembali'));
+		}
+
+	}
+
 	//=========================================================================
 	//===============================LAPORAN===================================
 	function laporan(){

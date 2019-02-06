@@ -128,7 +128,7 @@
                             window.location.href='<?php //echo base_url()."admin/edit_form_pinjam/".$row->id ?>';
                           }
                         </script> -->
-                        <button type="button" onclick="confrm()" class="btn btn-danger" style="font-size:13px;">Kembalikan</button>
+                        <button type="button" onclick="confrm(<?php echo $row->id?>)" class="btn btn-danger" style="font-size:13px;">Kembalikan</button>
                       </div>
                     </td>
                     <?php $i++; ?>
@@ -188,7 +188,7 @@ echo $link;
 
 ?>
 <script>
-  function confrm(){
+  function confrm(id){
     swal({
       title: 'Are you sure?',
       text: "Yakin akan mengembalikan barang ini?",
@@ -200,7 +200,7 @@ echo $link;
       cancelButtonText: 'Batal'
     }).then((result) => {
         if (result.value) {
-          window.location = "#";
+          window.location = "<?php echo base_url() ?>admin/kembalikan/"+id;
         }
     })
   }

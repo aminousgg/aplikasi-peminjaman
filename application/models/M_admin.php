@@ -22,6 +22,9 @@ class M_admin extends CI_Model{
 	function ambil_anggota($nip){
 		return $this->db->get_where('anggota',array('nip'=>$nip));
 	}
+	function ambil_pinjam($id){
+		return $this->db->get_where('pinjam_barang',array('id'=>$id));
+	}
 	function get_anggota($nip){
 		$hsl=$this->db->get_where('anggota',array('nip'=>$nip));
 		return $hsl;
@@ -36,7 +39,7 @@ class M_admin extends CI_Model{
     }
 
 	function tampil_kembali(){
-		return $this->db->get('kembali_barang');
+		return $this->db->get('kembali_brg');
 	}
 }
 ?>
