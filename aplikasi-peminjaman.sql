@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 28 Jan 2019 pada 02.31
+-- Generation Time: 06 Feb 2019 pada 03.20
 -- Versi Server: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -45,7 +45,8 @@ CREATE TABLE `anggota` (
 
 INSERT INTO `anggota` (`id`, `nip`, `nama`, `jabatan`, `pangkat_golongan`, `seksi`, `tgl_lahir`, `level_user`) VALUES
 (1, '45355', 'asdfdff', 'dfgddad', 'asfgaas', 'asdf', '1950-01-02', 'admin'),
-(2, '56451', 'asdf ads', 'asdf', 'sdf', 'asdf afsd', '1980-01-17', 'user');
+(2, '56451', 'asdf ads', 'asdf', 'sdf', 'asdf afsd', '1980-01-17', 'user'),
+(3, '55555', 'Nur Amin', 'ffff', 'gg', 'asd', '2019-01-29', 'admin');
 
 -- --------------------------------------------------------
 
@@ -70,8 +71,10 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id`, `kode_barang`, `nama_barang`, `merk`, `tgl_masuk`, `jml_terpinjam`, `spesifikasi`, `jml_barang`, `jml_tersedia`) VALUES
-(1, '456', 'asfsadf', 'sdf', '2019-01-08', 3, 'adfadf ad', 10, 7),
-(2, '4545', 'adfasdas', 'sfdh', '2019-01-02', 10, 'sdfga', 10, 0);
+(1, '456', 'asfsadf', 'sdf', '2019-01-08', 4, 'adfadf ad', 11, 6),
+(2, '4545', 'adfasdas', 'sfdh', '2019-01-02', 10, 'sdfga', 10, 0),
+(3, '4444', 'Motor', 'Honda', '2019-01-28', 0, 'asfda fdds sdsf', 10, 10),
+(4, '5374', 'Monitor', 'LG', '2019-01-29', 0, 'dssadf dsa LED', 8, 7);
 
 -- --------------------------------------------------------
 
@@ -81,11 +84,20 @@ INSERT INTO `barang` (`id`, `kode_barang`, `nama_barang`, `merk`, `tgl_masuk`, `
 
 CREATE TABLE `kembali_brg` (
   `id` int(11) NOT NULL,
-  `id_pinjam` varchar(5) NOT NULL,
-  `id_brg` varchar(5) NOT NULL,
+  `nip` varchar(20) NOT NULL,
+  `kode_brg` varchar(5) NOT NULL,
   `tgl_pinjam` date NOT NULL,
-  `tgl_kembali` date NOT NULL
+  `estimasi` date NOT NULL,
+  `wkt_kembali` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `kembali_brg`
+--
+
+INSERT INTO `kembali_brg` (`id`, `nip`, `kode_brg`, `tgl_pinjam`, `estimasi`, `wkt_kembali`) VALUES
+(1, '45355', '4545', '2019-01-27', '2019-01-29', '2019-02-05'),
+(2, '45355', '456', '2019-01-27', '2019-01-30', '2019-02-05');
 
 -- --------------------------------------------------------
 
@@ -112,10 +124,9 @@ CREATE TABLE `pinjam_barang` (
 --
 
 INSERT INTO `pinjam_barang` (`id`, `nip`, `nama`, `jabatan`, `seksi`, `kode_barang`, `nama_barang`, `jml_pinjam`, `tgl_pinjam`, `tgl_kembali`, `status`) VALUES
-(5, '45355', 'asdfdff', 'dfgddad', 'asdf', '4545', 'adfasdas', 1, '2019-01-27', '2019-01-29', 'Belum Kembali'),
-(6, '45355', 'asdfdff', 'dfgddad', 'asdf', '456', 'asfsadf', 1, '2019-01-27', '2019-01-30', 'Belum Kembali'),
 (7, '56451', 'asdf ads', 'asdf', 'asdf afsd', '456', 'asfsadf', 1, '2019-01-27', '2019-01-31', 'Belum Kembali'),
-(8, '56451', 'asdf ads', 'asdf', 'asdf afsd', '456', 'asfsadf', 1, '2019-01-27', '2019-02-01', 'Belum Kembali');
+(8, '56451', 'asdf ads', 'asdf', 'asdf afsd', '456', 'asfsadf', 1, '2019-01-27', '2019-02-01', 'Belum Kembali'),
+(9, '45355', 'asdfdff', 'dfgddad', 'asdf', '456', 'asfsadf', 1, '2019-01-28', '2019-02-09', 'Belum Kembali');
 
 --
 -- Indexes for dumped tables
@@ -139,8 +150,7 @@ ALTER TABLE `barang`
 -- Indexes for table `kembali_brg`
 --
 ALTER TABLE `kembali_brg`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id_pinjam` (`id_pinjam`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `pinjam_barang`
@@ -156,25 +166,25 @@ ALTER TABLE `pinjam_barang`
 -- AUTO_INCREMENT for table `anggota`
 --
 ALTER TABLE `anggota`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `kembali_brg`
 --
 ALTER TABLE `kembali_brg`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pinjam_barang`
 --
 ALTER TABLE `pinjam_barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
