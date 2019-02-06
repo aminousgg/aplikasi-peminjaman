@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 06 Feb 2019 pada 03.20
+-- Generation Time: 06 Feb 2019 pada 13.00
 -- Versi Server: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -21,6 +21,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `aplikasi-peminjaman`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `akun_admin`
+--
+
+CREATE TABLE `akun_admin` (
+  `id` int(11) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `akun_admin`
+--
+
+INSERT INTO `akun_admin` (`id`, `username`, `password`) VALUES
+(1, 'admin', '827ccb0eea8a706c4c34a16891f84e7b');
 
 -- --------------------------------------------------------
 
@@ -71,10 +90,9 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id`, `kode_barang`, `nama_barang`, `merk`, `tgl_masuk`, `jml_terpinjam`, `spesifikasi`, `jml_barang`, `jml_tersedia`) VALUES
-(1, '456', 'asfsadf', 'sdf', '2019-01-08', 4, 'adfadf ad', 11, 6),
-(2, '4545', 'adfasdas', 'sfdh', '2019-01-02', 10, 'sdfga', 10, 0),
-(3, '4444', 'Motor', 'Honda', '2019-01-28', 0, 'asfda fdds sdsf', 10, 10),
-(4, '5374', 'Monitor', 'LG', '2019-01-29', 0, 'dssadf dsa LED', 8, 7);
+(2, '4545', 'adfasdas', 'sfdh', '2019-01-02', 10, 'sdfga', 11, 1),
+(3, '4444', 'Motor', 'Honda', '2019-01-28', 1, 'asfda fdds sdsf', 10, 9),
+(4, '5374', 'Monitor', 'LG', '2019-01-29', 0, 'dssadf dsa LED', 8, 8);
 
 -- --------------------------------------------------------
 
@@ -126,11 +144,18 @@ CREATE TABLE `pinjam_barang` (
 INSERT INTO `pinjam_barang` (`id`, `nip`, `nama`, `jabatan`, `seksi`, `kode_barang`, `nama_barang`, `jml_pinjam`, `tgl_pinjam`, `tgl_kembali`, `status`) VALUES
 (7, '56451', 'asdf ads', 'asdf', 'asdf afsd', '456', 'asfsadf', 1, '2019-01-27', '2019-01-31', 'Belum Kembali'),
 (8, '56451', 'asdf ads', 'asdf', 'asdf afsd', '456', 'asfsadf', 1, '2019-01-27', '2019-02-01', 'Belum Kembali'),
-(9, '45355', 'asdfdff', 'dfgddad', 'asdf', '456', 'asfsadf', 1, '2019-01-28', '2019-02-09', 'Belum Kembali');
+(9, '45355', 'asdfdff', 'dfgddad', 'asdf', '456', 'asfsadf', 1, '2019-01-28', '2019-02-09', 'Belum Kembali'),
+(10, '55555', 'Nur Amin', 'ffff', 'asd', '4444', 'Motor', 1, '2019-02-06', '2019-02-09', 'Belum Kembali');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `akun_admin`
+--
+ALTER TABLE `akun_admin`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `anggota`
@@ -163,6 +188,12 @@ ALTER TABLE `pinjam_barang`
 --
 
 --
+-- AUTO_INCREMENT for table `akun_admin`
+--
+ALTER TABLE `akun_admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `anggota`
 --
 ALTER TABLE `anggota`
@@ -172,7 +203,7 @@ ALTER TABLE `anggota`
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `kembali_brg`
@@ -184,7 +215,7 @@ ALTER TABLE `kembali_brg`
 -- AUTO_INCREMENT for table `pinjam_barang`
 --
 ALTER TABLE `pinjam_barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
