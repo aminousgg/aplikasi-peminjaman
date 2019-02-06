@@ -233,6 +233,18 @@ class Admin extends CI_Controller{
 		}
 		
 	}
+	function hapus_anggota($id){
+		//echo $id; die;
+		$result=$this->db->delete('anggota',array('id'=>$id));
+		if($result==true){
+			$this->session->set_flashdata('success', 'Berhasil di Hapus');
+			redirect(base_url('admin/anggota'));
+		}else{
+			$this->session->set_flashdata('error', 'Gagal menghapus');
+			redirect(base_url('admin/anggota'));
+		}
+		//redirect('admin/news');
+	}
 
 	//=========================================================================
 	// ===========================Peminjaman==================================

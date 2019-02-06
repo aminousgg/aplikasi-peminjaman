@@ -79,7 +79,7 @@
                       <div class="button-group">
                         <button type="button" data-toggle="modal" data-target="#<?php echo $row->id ?>" class="btn btn-info"> <i class="ion ion-ios-more"></i> </button>
                         <button type="button" onclick="window.location='<?php echo base_url() ?>admin/edit_form_anggota/<?php echo $row->id ?>';" class="btn btn-warning"> <i class="ion ion-edit"></i> </button>
-                        <button type="button" onclick="del()" class="btn btn-danger"> <i class="ion ion-android-delete"></i> </button>
+                        <button type="button" onclick="del(<?php echo $row->id?>)" class="btn btn-danger"> <i class="ion ion-android-delete"></i> </button>
                       </div>
                     </td>
                     <?php $i++; ?>
@@ -187,9 +187,9 @@ echo $link;
 
 ?>
 <script>
-  function del(){
+  function del(id){
     swal({
-      title: 'Are you sure?',
+      title: 'Hapus?',
       text: "Yakin akan menghapus ini?",
       type: 'warning',
       showCancelButton: true,
@@ -199,7 +199,7 @@ echo $link;
       cancelButtonText: 'Batal'
     }).then((result) => {
         if (result.value) {
-          window.location = "#";
+          window.location = "<?php echo base_url() ?>admin/hapus_anggota/"+id;;
         }
     })
   }
