@@ -157,6 +157,18 @@ class Admin extends CI_Controller{
 		}
 		
 	}
+	function hapus_barang($id){
+		//echo $id; die;
+		$result=$this->db->delete('barang',array('id'=>$id));
+		if($result==true){
+			$this->session->set_flashdata('success', 'Berhasil di Hapus');
+			redirect(base_url('admin/barang'));
+		}else{
+			$this->session->set_flashdata('error', 'Gagal menghapus');
+			redirect(base_url('admin/barang'));
+		}
+		//redirect('admin/news');
+	}
 	//==========================================================================
 	//======================================ANGGOTA=============================
 	function anggota(){
