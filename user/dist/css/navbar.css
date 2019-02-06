@@ -1,11 +1,13 @@
 #navbar {
   z-index: 99;
   overflow: hidden;
-  background-color: #333;
+  background-color: #474e5d;
 }
 
-#navbar a {
+.navbar-left{
   float: left;
+}
+#navbar a {
   display: block;
   color: #f2f2f2;
   text-align: center;
@@ -23,6 +25,18 @@
   background-color: #4CAF50;
   color: white;
 }
+<<<<<<< HEAD
+=======
+.navbar-nav  li a:hover {
+  color: #1abc9c !important;
+}
+
+.navbar-right{
+  float: right;
+}
+
+
+>>>>>>> 4654dc967443761348c1a6c39d04f78cdd797918
 
 .content {
   padding: 16px;
@@ -39,10 +53,9 @@
 }
 
 .header {
-
   padding: 50px;
   min-height: 40vh;
-  background-color: silver;
+  background-color: #f8f8f8;
 }
 .awak {
   min-height: 100vh;
@@ -50,10 +63,19 @@
 .bodikiri {
   min-width: 100%;
   min-height: 90vh;
-  background-color: silver;
+  background-color: #f8f8f8;
 }
 .bodikanan {
   min-width: 100%;
   min-height: 45vh;
+<<<<<<< HEAD
   background-color: silver;
+=======
+  background-color: #f8f8f8;
+}
+
+.bg-4 { 
+  background-color: #2f2f2f;
+  color: #ffffff;
+>>>>>>> 4654dc967443761348c1a6c39d04f78cdd797918
 }

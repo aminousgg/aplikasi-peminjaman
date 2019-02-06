@@ -34,7 +34,7 @@
           <!-- /.col -->
           <div class="col-md-4 col-sm-6 col-12">
             <div class="info-box">
-              <span class="info-box-icon bg-success"><i class="ion ion-person"></i></span>
+              <span class="info-box-icon bg-success elevation-1"><i class="ion ion-person"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Anggota</span>
@@ -47,7 +47,7 @@
           <!-- /.col -->
           <div class="col-md-4 col-sm-6 col-12">
             <div class="info-box">
-              <span class="info-box-icon bg-warning"><i class="fa fa-shopping-cart"></i></span>
+              <span class="info-box-icon bg-warning elevation-1"><i class="fa fa-shopping-cart"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Peminjaman</span>
@@ -62,7 +62,7 @@
           <!-- /.col -->
           <div class="col-md-4 col-sm-6 col-12">
             <div class="info-box">
-              <span class="info-box-icon bg-danger"><i class="fa fa-repeat"></i></span>
+              <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-repeat"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Kembali Barang</span>
@@ -74,7 +74,7 @@
           </div>
           <div class="col-md-4 col-sm-6 col-12">
             <div class="info-box">
-              <span class="info-box-icon bg-danger"><i class="fa fa-files-o"></i></span>
+              <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-files-o"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Transaksi</span>
