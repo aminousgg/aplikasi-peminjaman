@@ -56,28 +56,17 @@
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="fa fa-cog"></i>
+          <div class="image">
+            <img width=30px height=30px src="<?php echo base_url() ?>admin-lte-master/dist/img/user2-160x160.jpg" class="img-circle elevation-2">
+          </div>
           <span class="badge badge-warning navbar-badge"></span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header"></span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            
-            <span class="float-right text-muted text-sm"></span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            
-            <span class="float-right text-muted text-sm"></span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fa fa-file mr-2"></i>
-            <span class="float-right text-muted text-sm"></span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">Logout</a>
+          <div style="padding-top:15px; padding-bottom:15px; background-color:#17a2b8;" class="image">
+            <img style="border-style: solid; border-color: #ffff; display: block;  margin-left: auto; margin-right: auto;" width=60px height=60px src="<?php echo base_url() ?>admin-lte-master/dist/img/user2-160x160.jpg" class="img-circle elevation-2">
+          </div>
+            Admin
+          <button type="button" onclick="window.location.href='<?php echo base_url() ?>admin/logout' " class="btn btn-danger float-right">Logout</button>
         </div>
       </li>
       <li class="nav-item">

@@ -166,8 +166,8 @@
                           </div>
                           <div class="modal-body">
                             <?php echo form_open('admin/unit'); ?>
-                              <label for="">Unit</label>&nbsp;&nbsp;&nbsp;
-                              <input type="number" name="unit">&nbsp;&nbsp;
+                              <label for="">Unit</label> &nbsp;&nbsp;&nbsp;
+                              <input type="number" name="unit"> &nbsp;&nbsp;
                               <input type="hidden" name="id" value="<?php echo $row->id ?>">
                               <input type="hidden" name="asli" value="<?php echo $row->jml_barang ?>">
                               <input type="hidden" name="sedia" value="<?php echo $row->jml_tersedia ?>">

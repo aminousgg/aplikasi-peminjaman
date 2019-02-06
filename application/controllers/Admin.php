@@ -6,55 +6,124 @@ class Admin extends CI_Controller{
 		$this->load->helper(array('form', 'url'));
 		$this->load->helper('url');
 		$this->load->model('M_admin');
+		$this->load->model('M_login');
 		
 	}
-	// =============================BERANDA===============
+
+	//==============================LOGIN & LOGOUT===================
+	function login(){
+		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+			redirect(base_url('admin'));
+		}
+		else{
+			$this->load->view('admin/login-admin');
+		}
+	}
+	function aksi_login(){
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+		//var_dump($username);die;
+		$where = array(
+			'username' => $username,
+			'password' => md5($password)
+			);
+		$cek = $this->M_login->cek_login("akun_admin",$where)->num_rows();
+		if($cek > 0){
+ 
+			$data_session = array(
+				'nama' 		=> $username,
+				'status' 	=> "login",
+				'level'		=> "admin"
+				);
+ 
+			$this->session->set_userdata('admin',$data_session);
+
+			//var_dump($this->session->userdata('admin','status'));die;
+ 
+			redirect(base_url("admin"));
+ 
+		}else{
+			$this->session->set_flashdata('error', 'gagal login');
+			$this->load->view('admin/v_admin_login');
+		}
+	}
+	function logout(){
+		$this->session->unset_userdata('admin')["nama"];
+		$this->session->unset_userdata('admin')["level"];
+		$this->session->unset_userdata('admin')["status"];
+		//$this->session->sess_destroy('admin');
+		redirect(base_url('admin'));
+	}
+	//======================================================
+	// =============================BERANDA=================
 	function index(){
-		$data['judul']="Beranda";
-		$this->load->view('admin/header-admin',$data);
-		$this->load->view('admin/aside-admin',$data);
-		$this->load->view('admin/beranda-admin',$data);
-		$this->load->view('admin/footer-admin',$data);
+		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+
+			$data['judul']="Beranda";
+			$this->load->view('admin/header-admin',$data);
+			$this->load->view('admin/aside-admin',$data);
+			$this->load->view('admin/beranda-admin',$data);
+			$this->load->view('admin/footer-admin',$data);
+		}else{
+			redirect(base_url('admin/login'));
+		}
+			
 	}
 	//=====================================================
 	// ==============================BARANG================
 	function barang(){
-		$data['tabel_record'] = $this->M_admin->tampil_barang()->result();
-		$data['judul']="Barang";
-		$this->load->view('admin/header-admin',$data);
-		$this->load->view('admin/aside-admin',$data);
-		$this->load->view('admin/barang-admin',$data);
-		$this->load->view('admin/footer-admin',$data);
+		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+			$data['tabel_record'] = $this->M_admin->tampil_barang()->result();
+			$data['judul']="Barang";
+			$this->load->view('admin/header-admin',$data);
+			$this->load->view('admin/aside-admin',$data);
+			$this->load->view('admin/barang-admin',$data);
+			$this->load->view('admin/footer-admin',$data);
+		}else{
+			redirect(base_url('admin/login'));
+		}
+		
 	}
 	function tambah_barang(){
-		$data['judul']="Barang";
-		$this->load->view('admin/header-admin',$data);
-		$this->load->view('admin/aside-admin',$data);
-		$this->load->view('admin/form-barang-admin',$data);
-		$this->load->view('admin/footer-admin',$data);
+		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+			$data['judul']="Barang";
+			$this->load->view('admin/header-admin',$data);
+			$this->load->view('admin/aside-admin',$data);
+			$this->load->view('admin/form-barang-admin',$data);
+			$this->load->view('admin/footer-admin',$data);
+		}else{
+			redirect(base_url('admin/login'));
+		}
+		
 	}
 
 	function tambah_barang_aksi(){
-		$kode = rand(1000,9999);
-		$kode_barang = (string)$kode;
-		$data = array(
-			'kode_barang'	=> $kode_barang,
-			'nama_barang'	=> $this->input->post('nama_barang'),
-			'merk'			=> $this->input->post('merk'),
-			'tgl_masuk'		=> $this->input->post('tgl_masuk'),
-			'jml_terpinjam'	=> 0,
-			'spesifikasi'	=> $this->input->post('spesifikasi'),
-			'jml_barang'	=> $this->input->post('jml_barang'),
-			'jml_tersedia'	=> $this->input->post('jml_barang'),
-		);
-		$result=$this->M_admin->tambah_brg('barang', $data);
-		if($result==true){
-			$this->session->set_flashdata('success', 'Barang berhasil ditambahkan');
-			redirect(base_url('admin/barang'));
+		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+			$kode = rand(1000,9999);
+			$kode_barang = (string)$kode;
+			$data = array(
+				'kode_barang'	=> $kode_barang,
+				'nama_barang'	=> $this->input->post('nama_barang'),
+				'merk'			=> $this->input->post('merk'),
+				'tgl_masuk'		=> $this->input->post('tgl_masuk'),
+				'jml_terpinjam'	=> 0,
+				'spesifikasi'	=> $this->input->post('spesifikasi'),
+				'jml_barang'	=> $this->input->post('jml_barang'),
+				'jml_tersedia'	=> $this->input->post('jml_barang'),
+			);
+			$result=$this->M_admin->tambah_brg('barang', $data);
+			if($result==true){
+				$this->session->set_flashdata('success', 'Barang berhasil ditambahkan');
+				redirect(base_url('admin/barang'));
+			}else{
+				$this->session->set_flashdata('error', 'Gagal ditambahkan');
+				redirect(base_url('admin/barang'));
+			}
+
 		}else{
-			$this->session->set_flashdata('error', 'Gagal ditambahkan');
-			redirect(base_url('admin/barang'));
+			redirect(base_url('admin/login'));
 		}
+		
 	}
 	function unit(){
 		$update=$this->input->post('asli')+$this->input->post('unit');
@@ -75,76 +144,111 @@ class Admin extends CI_Controller{
 		
 	}
 	function edit_form_barang($id){
-		$data['brg']=$this->M_admin->get_brg($id)->row_array();
-		//var_dump($data['brg']); die;
-		$data['judul']="Barang";
-		$this->load->view('admin/header-admin',$data);
-		$this->load->view('admin/aside-admin',$data);
-		$this->load->view('admin/form-barang-edit-admin',$data);
-		$this->load->view('admin/footer-admin',$data);
+		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+			$data['brg']=$this->M_admin->get_brg($id)->row_array();
+			//var_dump($data['brg']); die;
+			$data['judul']="Barang";
+			$this->load->view('admin/header-admin',$data);
+			$this->load->view('admin/aside-admin',$data);
+			$this->load->view('admin/form-barang-edit-admin',$data);
+			$this->load->view('admin/footer-admin',$data);
+		}else{
+			redirect(base_url('admin/login'));
+		}
+		
 	}
 	//==========================================================================
 	//======================================ANGGOTA=============================
 	function anggota(){
-		$data['tabel_record'] = $this->M_admin->tampil_anggota()->result();
-		$data['judul']="Anggota";
-		$this->load->view('admin/header-admin',$data);
-		$this->load->view('admin/aside-admin',$data);
-		$this->load->view('admin/anggota-admin',$data);
-		$this->load->view('admin/footer-admin',$data);
+		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+			$data['tabel_record'] = $this->M_admin->tampil_anggota()->result();
+			$data['judul']="Anggota";
+			$this->load->view('admin/header-admin',$data);
+			$this->load->view('admin/aside-admin',$data);
+			$this->load->view('admin/anggota-admin',$data);
+			$this->load->view('admin/footer-admin',$data);
+		}else{
+			redirect(base_url('admin/login'));
+		}
+		
 	}
 	function form_anggota(){
-		$data['judul']="Anggota";
-		$this->load->view('admin/header-admin',$data);
-		$this->load->view('admin/aside-admin',$data);
-		$this->load->view('admin/form-anggota-admin',$data);
-		$this->load->view('admin/footer-admin',$data);
+		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+			$data['judul']="Anggota";
+			$this->load->view('admin/header-admin',$data);
+			$this->load->view('admin/aside-admin',$data);
+			$this->load->view('admin/form-anggota-admin',$data);
+			$this->load->view('admin/footer-admin',$data);
+		}else{
+			redirect(base_url('admin/login'));
+		}
+		
 	}
 	function tambah_agt_aksi(){
-		$data = array(
-			'nip'				=> $this->input->post('nip'),
-			'nama'				=> $this->input->post('nama'),
-			'jabatan'			=> $this->input->post('jabatan'),
-			'pangkat_golongan'	=> $this->input->post('pangkat_golongan'),
-			'seksi'				=> $this->input->post('seksi'),
-			'tgl_lahir'			=> $this->input->post('tgl_lahir'),
-			'level_user'		=> $this->input->post('level_user'),
-		);
-		$result=$this->M_admin->tambah_agt('anggota', $data);
-		if($result==true){
-			$this->session->set_flashdata('success', 'Anggota berhasil ditambahkan');
-			redirect(base_url('admin/anggota'));
+		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+			$data = array(
+				'nip'				=> $this->input->post('nip'),
+				'nama'				=> $this->input->post('nama'),
+				'jabatan'			=> $this->input->post('jabatan'),
+				'pangkat_golongan'	=> $this->input->post('pangkat_golongan'),
+				'seksi'				=> $this->input->post('seksi'),
+				'tgl_lahir'			=> $this->input->post('tgl_lahir'),
+				'level_user'		=> $this->input->post('level_user'),
+			);
+			$result=$this->M_admin->tambah_agt('anggota', $data);
+			if($result==true){
+				$this->session->set_flashdata('success', 'Anggota berhasil ditambahkan');
+				redirect(base_url('admin/anggota'));
+			}else{
+				$this->session->set_flashdata('error', 'Gagal ditambahkan');
+				redirect(base_url('admin/anggota'));
+			}
 		}else{
-			$this->session->set_flashdata('error', 'Gagal ditambahkan');
-			redirect(base_url('admin/anggota'));
+			redirect(base_url('admin/login'));
 		}
+		
 	}
 	function edit_form_anggota($id){
-		$data['angg']=$this->M_admin->get_form_anggota($id)->row_array();
-		$data['judul']="Anggota";
-		$this->load->view('admin/header-admin',$data);
-		$this->load->view('admin/aside-admin',$data);
-		$this->load->view('admin/form-anggota-edit-admin',$data);
-		$this->load->view('admin/footer-admin',$data);
+		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+			$data['angg']=$this->M_admin->get_form_anggota($id)->row_array();
+			$data['judul']="Anggota";
+			$this->load->view('admin/header-admin',$data);
+			$this->load->view('admin/aside-admin',$data);
+			$this->load->view('admin/form-anggota-edit-admin',$data);
+			$this->load->view('admin/footer-admin',$data);
+		}else{
+			redirect(base_url('admin/login'));
+		}
+		
 	}
 
 	//=========================================================================
 	// ===========================Peminjaman==================================
 	function pinjam(){
-		$data['tabel_record'] = $this->M_admin->tampil_pinjam()->result();
-		$data['judul']="Peminjaman";
-		$this->load->view('admin/header-admin',$data);
-		$this->load->view('admin/aside-admin',$data);
-		$this->load->view('admin/pinjam-admin',$data);
-		$this->load->view('admin/footer-admin',$data);
+		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+			$data['tabel_record'] = $this->M_admin->tampil_pinjam()->result();
+			$data['judul']="Peminjaman";
+			$this->load->view('admin/header-admin',$data);
+			$this->load->view('admin/aside-admin',$data);
+			$this->load->view('admin/pinjam-admin',$data);
+			$this->load->view('admin/footer-admin',$data);
+		}else{
+			redirect(base_url('admin/login'));
+		}
+		
 	}
 	function pinjam_barang(){
-		$data['tabel_record'] = $this->M_admin->tampil_barang()->result();
-		$data['judul']="Peminjaman";
-		$this->load->view('admin/header-admin',$data);
-		$this->load->view('admin/aside-admin',$data);
-		$this->load->view('admin/pilih-pinjam-admin',$data);
-		$this->load->view('admin/footer-admin',$data);
+		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+			$data['tabel_record'] = $this->M_admin->tampil_barang()->result();
+			$data['judul']="Peminjaman";
+			$this->load->view('admin/header-admin',$data);
+			$this->load->view('admin/aside-admin',$data);
+			$this->load->view('admin/pilih-pinjam-admin',$data);
+			$this->load->view('admin/footer-admin',$data);
+		}else{
+			redirect(base_url('admin/login'));
+		}
+		
 	}
 	function get_anggota($nip){
 		$kode=$nip;
@@ -168,13 +272,13 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/form-pinjam-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
-	function edit_form_pinjam($id){
-		$data['judul']="EditPeminjaman";
-		$this->load->view('admin/header-admin',$data);
-		$this->load->view('admin/aside-admin',$data);
-		$this->load->view('admin/form-pinjam-edit-admin',$data);
-		$this->load->view('admin/footer-admin',$data);
-	}
+	// function edit_form_pinjam($id){
+	// 	$data['judul']="EditPeminjaman";
+	// 	$this->load->view('admin/header-admin',$data);
+	// 	$this->load->view('admin/aside-admin',$data);
+	// 	$this->load->view('admin/form-pinjam-edit-admin',$data);
+	// 	$this->load->view('admin/footer-admin',$data);
+	// }
 	function tambah_pinjam(){
 		
 		// date_default_timezone_set('Asia/Jakarta');
@@ -264,12 +368,17 @@ class Admin extends CI_Controller{
 	// ========================================================================
 	//==================================PENGEMBALIAN===========================
 	function kembali(){
-		$data['tabel_record'] = $this->M_admin->tampil_kembali()->result();
-		$data['judul']="Kembali";
-		$this->load->view('admin/header-admin',$data);
-		$this->load->view('admin/aside-admin',$data);
-		$this->load->view('admin/kembali-admin',$data);
-		$this->load->view('admin/footer-admin',$data);
+		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+			$data['tabel_record'] = $this->M_admin->tampil_kembali()->result();
+			$data['judul']="Kembali";
+			$this->load->view('admin/header-admin',$data);
+			$this->load->view('admin/aside-admin',$data);
+			$this->load->view('admin/kembali-admin',$data);
+			$this->load->view('admin/footer-admin',$data);
+		}else{
+			redirect(base_url('admin/login'));
+		}
+		
 	}
 	function kembalikan($id){
 		// echo $id; die;
@@ -309,19 +418,18 @@ class Admin extends CI_Controller{
 	//=========================================================================
 	//===============================LAPORAN===================================
 	function laporan(){
-		$data['judul']="Laporan";
-		$this->load->view('admin/header-admin',$data);
-		$this->load->view('admin/aside-admin',$data);
-		$this->load->view('admin/laporan-admin',$data);
-		$this->load->view('admin/footer-admin',$data);
+		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+			$data['judul']="Laporan";
+			$this->load->view('admin/header-admin',$data);
+			$this->load->view('admin/aside-admin',$data);
+			$this->load->view('admin/laporan-admin',$data);
+			$this->load->view('admin/footer-admin',$data);
+		}else{
+			redirect(base_url('admin/login'));
+		}
+		
 	}
 
 	//=============================USER==================
-	//=============================BERANDA===============
-	function index2(){
-		$data['judul']="BerandaUser";
-		$this->load->view('user/header-user',$data);
-		$this->load->view('user/body-user',$data);
-		$this->load->view('user/footer-user',$data);
-	}
+	
 }
