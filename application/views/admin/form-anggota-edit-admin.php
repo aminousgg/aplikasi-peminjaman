@@ -22,26 +22,10 @@
 
         <div class="row">
             <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            Detail Anggota
-                        </h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <blockquote>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                            <!--<small>Someone famous in <cite title="Source Title">Source Title</cite></small>
-                        --></blockquote>
-                    </div>
-                <!-- /.card-body -->
-                </div>
-            </div>
-            <div class="col-md-6">
                 <div class="card card-info">
                     <div class="card-header">
                         <h3 class="card-title">Edit Data Anggota</h3>
+                        
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -64,7 +48,7 @@
                                 <input type="text" name="pangkat_golongan" class="form-control" value="<?php echo $angg['pangkat_golongan'] ?>">
                             </div> 
                             <div class="form-group">
-                                <label>Seksi Bagian</label>
+                                <label>Bidang</label>
                                 <input type="text" name="seksi" class="form-control" value="<?php echo $angg['seksi'] ?>">
                             </div>
                             <div class="form-group">
@@ -82,9 +66,26 @@
                     <!-- /.card-body -->
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">SIMPAN</button>
                     </div>
                     <?php echo form_close(); ?>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            Detail Anggota
+                        </h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <blockquote>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            <!--<small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                        --></blockquote>
+                    </div>
+                <!-- /.card-body -->
                 </div>
             </div>
         </div>

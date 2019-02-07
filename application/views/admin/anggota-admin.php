@@ -60,7 +60,7 @@
                   <th style="">Nama Anggota</th>
                   <th style="">Jabatan</th>
                   <th style="">Pangkat/Gol</th>
-                  <th style="">Seksi</th>
+                  <th style="">Bidang</th>
                   <th style="">Level User</th>
                   <th style="">Aksi</th>
                 </tr>
@@ -112,7 +112,7 @@
                             <div class="col-md-8"><?php echo $row->pangkat_golongan ?></div>
                           </div>
                           <div class="row">
-                            <div class="col-md-4">Seksi</div>
+                            <div class="col-md-4">Bidang</div>
                             <div class="col-md-8"><?php echo $row->seksi ?></div>
                           </div>
                           <div class="row">
@@ -141,7 +141,7 @@
                   <th style="">Nama Anggota</th>
                   <th style="">Jabatan</th>
                   <th style="">Pangkat/Gol</th>
-                  <th style="">Seksi</th>
+                  <th style="">Bidang</th>
                   <th style="">Level User</th>
                   <th style="">Aksi</th>
                 </tr>

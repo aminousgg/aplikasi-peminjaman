@@ -47,7 +47,7 @@
                                 <input type="text" name="pangkat_golongan" class="form-control" placeholder="Golongan">
                             </div> 
                             <div class="form-group">
-                                <label>Seksi Bagian</label>
+                                <label>Bidang</label>
                                 <input type="text" name="seksi" class="form-control" placeholder="Seksi Bagian">
                             </div>
                             <div class="form-group">
