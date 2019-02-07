@@ -13,8 +13,7 @@ class Web extends CI_Controller{
 		$data['judul']="Beranda";
 		$this->load->view('user/header-user',$data);
 		$this->load->view('user/home-user',$data);
-		$this->load->view('user/footer-user',$data);
-		
+		$this->load->view('user/footer-user',$data);	
 	}
 	function login(){
 		$data['judul']="Login";
