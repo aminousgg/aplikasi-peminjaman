@@ -96,33 +96,31 @@
                         </div>
                         <div class="modal-body">
                           <div class="row">
-                            <div class="col-md-4">NIP</div>
-                            <div class="col-md-8"><?php echo $row->nip ?></div>
+                            <div class="col-md-4">
+                              NIP<br>
+                              Nama<br>
+                              Jabatan<br>
+                              Golongan<br>
+                              Bidang<br>
+                              Tgl Lahir<br>
+                              Level User<br>
+                            </div>
+                            <div class="col-md-4">
+                              &nbsp;:&nbsp;<?php echo $row->nip ?><br>
+                              &nbsp;:&nbsp;<?php echo $row->nama ?><br>
+                              &nbsp;:&nbsp;<?php echo $row->jabatan ?><br>
+                              &nbsp;:&nbsp;<?php echo $row->pangkat_golongan ?><br>
+                              &nbsp;:&nbsp;<?php echo $row->seksi ?><br>
+                              &nbsp;:&nbsp;<?php echo $row->tgl_lahir ?><br>
+                              &nbsp;:&nbsp;<?php echo $row->level_user ?><br>
+                            </div>
+                            <div class="col-md-4">
+                              <img src="<?php echo base_url().'admin-lte-master/foto/'.$row->foto ?>" width=150px height=150px>
+                            </div>
                           </div>
-                          <div class="row">
-                            <div class="col-md-4">Nama Anggota</div>
-                            <div class="col-md-8"><?php echo $row->nama ?></div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-4">Jabatan</div>
-                            <div class="col-md-8"><?php echo $row->jabatan ?></div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-4">Pangkat / Golongan</div>
-                            <div class="col-md-8"><?php echo $row->pangkat_golongan ?></div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-4">Bidang</div>
-                            <div class="col-md-8"><?php echo $row->seksi ?></div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-4">Tanggal Lahir</div>
-                            <div class="col-md-8"><?php echo $row->tgl_lahir ?></div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-4">Level User</div>
-                            <div class="col-md-8"><?php echo $row->level_user ?></div>
-                          </div>
+
+                          
+
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

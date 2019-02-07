@@ -25,7 +25,7 @@
               <div class="info-box-content">
                 <a href="<?php echo base_url()?>admin/barang">Barang</a>
                 <!--<span class="info-box-text">Barang</span>-->
-                <span class="info-box-number">1,410</span>
+                <span class="info-box-number"><?php echo $brg ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -39,7 +39,7 @@
               <div class="info-box-content">
                 <a href="<?php echo base_url()?>admin/anggota">Anggota</a>
                 <!--<span class="info-box-text">Anggota</span>-->
-                <span class="info-box-number">410</span>
+                <span class="info-box-number"><?php echo $agt ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -53,7 +53,7 @@
               <div class="info-box-content">
                 <a href="<?php echo base_url()?>admin/pinjam">Peminjaman</a>
                 <!--<span class="info-box-text">Peminjam</span>-->
-                <span class="info-box-number">13,648</span>
+                <span class="info-box-number"><?php echo $pinjam ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -66,7 +66,7 @@
               <div class="info-box-content">
               <a href="<?php echo base_url()?>admin/pinjam_barang">Pengembalian</a>
                 <!--<span class="info-box-text">Transaksi</span>-->
-                <span class="info-box-number">93,139</span>
+                <span class="info-box-number"><?php echo $kembali ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -80,44 +80,84 @@
           
         </div>
         <!-- /.row (main row) -->
+        <div class="row">
+          <div class="col-md-4">
+            
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Anggota terdaftar</h3>
+                <div class="card-tools">
+                  
+                  <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-widget="remove"><i class="fa fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body p-0">
+                <ul class="users-list clearfix">
+                  <li>
+                    <img src="<?php echo base_url()?>admin-lte-master/dist/img/user1-128x128.jpg" alt="User Image">
+                    <a class="users-list-name" href="#">Alexander Pierce</a>
+                    <span class="users-list-date">Today</span>
+                  </li>
+                  <li>
+                    <img src="<?php echo base_url()?>admin-lte-master/dist/img/user8-128x128.jpg" alt="User Image">
+                    <a class="users-list-name" href="#">Norman</a>
+                    <span class="users-list-date">Yesterday</span>
+                  </li>
+                  <li>
+                    <img src="<?php echo base_url()?>admin-lte-master/dist/img/user7-128x128.jpg" alt="User Image">
+                    <a class="users-list-name" href="#">Jane</a>
+                    <span class="users-list-date">12 Jan</span>
+                  </li>
+                  <li>
+                    <img src="<?php echo base_url()?>admin-lte-master/dist/img/user6-128x128.jpg" alt="User Image">
+                    <a class="users-list-name" href="#">John</a>
+                    <span class="users-list-date">12 Jan</span>
+                  </li>
+                  <li>
+                    <img src="<?php echo base_url()?>admin-lte-master/dist/img/user2-160x160.jpg" alt="User Image">
+                    <a class="users-list-name" href="#">Alexander</a>
+                    <span class="users-list-date">13 Jan</span>
+                  </li>
+                  <li>
+                    <img src="<?php echo base_url()?>admin-lte-master/dist/img/user5-128x128.jpg" alt="User Image">
+                    <a class="users-list-name" href="#">Sarah</a>
+                    <span class="users-list-date">14 Jan</span>
+                  </li>
+                  <li>
+                    <img src="<?php echo base_url()?>admin-lte-master/dist/img/user4-128x128.jpg" alt="User Image">
+                    <a class="users-list-name" href="#">Nora</a>
+                    <span class="users-list-date">15 Jan</span>
+                  </li>
+                  <li>
+                    <img src="<?php echo base_url()?>admin-lte-master/dist/img/user3-128x128.jpg" alt="User Image">
+                    <a class="users-list-name" href="#">Nadia</a>
+                    <span class="users-list-date">15 Jan</span>
+                  </li>
+                </ul>
+                <!-- /.users-list -->
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer text-center">
+                <a href="javascript::">View All Users</a>
+              </div>
+              <!-- /.card-footer -->
+            </div>
+
+          </div>
+        </div>
+          
+
+
+
       </div><!-- /.container-fluid -->
+      
+      
     </section>
     <!-- /.content -->
-    <div class="card">
-              <div class="card-header no-border">
-                <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Online Store Visitors</h3>
-                  <a href="javascript:void(0);">View Report</a>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="d-flex">
-                  <p class="d-flex flex-column">
-                    <span class="text-bold text-lg">820</span>
-                    <span>Visitors Over Time</span>
-                  </p>
-                  <p class="ml-auto d-flex flex-column text-right">
-                    <span class="text-success">
-                      <i class="fa fa-arrow-up"></i> 12.5%
-                    </span>
-                    <span class="text-muted">Since last week</span>
-                  </p>
-                </div>
-                <!-- /.d-flex -->
+    
 
-                <div class="position-relative mb-4">
-                  <canvas id="visitors-chart" height="200"></canvas>
-                </div>
-
-                <div class="d-flex flex-row justify-content-end">
-                  <span class="mr-2">
-                    <i class="fa fa-square text-primary"></i> This Week
-                  </span>
-
-                  <span>
-                    <i class="fa fa-square text-gray"></i> Last Week
-                  </span>
-                </div>
-              </div>
-            </div>
-  </div>
+</div>

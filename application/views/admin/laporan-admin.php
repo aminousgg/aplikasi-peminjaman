@@ -50,7 +50,7 @@
               <span class="info-box-icon bg-warning elevation-1"><i class="fa fa-shopping-cart"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Peminjaman</span>
+                <span class="info-box-text"><a href="<?php echo base_url() ?>Report_pdf/pdf_pinjam">Peminjaman</a></span>
                 <span class="info-box-number">13,648</span>
               </div>
               <!-- /.info-box-content -->

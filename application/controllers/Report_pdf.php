@@ -67,7 +67,11 @@ Class Report_pdf extends CI_Controller{
             $i++;
             $pdf->Ln();
         }
+        //echo '<script>print();</script>'; die;  
         $pdf->Output();
+        echo '<script>print();</script>';
+        
+        
     }
     function pdf_anggota(){
         $pdf = new FPDF('P','mm','A4');
@@ -200,3 +204,4 @@ Class Report_pdf extends CI_Controller{
         $pdf->Output();
     }
 }
+

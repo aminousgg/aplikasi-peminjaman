@@ -59,7 +59,11 @@ class Admin extends CI_Controller{
 	function index(){
 		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
 
-			$data['judul']="Beranda";
+			$data['judul']="Beranda"; 
+			$data['brg'] = $this->db->get('barang')->num_rows();
+			$data['agt'] = $this->db->get('anggota')->num_rows();
+			$data['pinjam'] = $this->db->get('pinjam_barang')->num_rows();
+			$data['kembali'] = $this->db->get('kembali_brg')->num_rows();
 			$this->load->view('admin/header-admin',$data);
 			$this->load->view('admin/aside-admin',$data);
 			$this->load->view('admin/beranda-admin',$data);
@@ -199,14 +203,22 @@ class Admin extends CI_Controller{
 	}
 	function tambah_agt_aksi(){
 		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+			// Upload
+			$config['upload_path'] 		= './admin-lte-master/foto/';
+			$config['allowed_types'] 	= 'jpg|jpeg|png|gif';
+			$this->load->library('upload',$config);
+			$this->upload->do_upload('file');
+			$hasil 	= $this->upload->data();
+			//echo $hasil['file_name']; die;
 			$data = array(
-				'nip'				=> $this->input->post('nip'),
-				'nama'				=> $this->input->post('nama'),
-				'jabatan'			=> $this->input->post('jabatan'),
+				'nip'								=> $this->input->post('nip'),
+				'nama'							=> $this->input->post('nama'),
+				'jabatan'						=> $this->input->post('jabatan'),
 				'pangkat_golongan'	=> $this->input->post('pangkat_golongan'),
-				'seksi'				=> $this->input->post('seksi'),
-				'tgl_lahir'			=> $this->input->post('tgl_lahir'),
-				'level_user'		=> $this->input->post('level_user'),
+				'seksi'							=> $this->input->post('seksi'),
+				'tgl_lahir'					=> $this->input->post('tgl_lahir'),
+				'level_user'				=> $this->input->post('level_user'),
+				'foto'							=> $hasil['file_name'],
 			);
 			$result=$this->M_admin->tambah_agt('anggota', $data);
 			if($result==true){
@@ -297,18 +309,10 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/form-pinjam-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
-	// function edit_form_pinjam($id){
-	// 	$data['judul']="EditPeminjaman";
-	// 	$this->load->view('admin/header-admin',$data);
-	// 	$this->load->view('admin/aside-admin',$data);
-	// 	$this->load->view('admin/form-pinjam-edit-admin',$data);
-	// 	$this->load->view('admin/footer-admin',$data);
-	// }
+	
 	function tambah_pinjam(){
 		
-		// date_default_timezone_set('Asia/Jakarta');
-		//var_dump($this->input->post('tgl_pinjam1')); die;
-		//var_dump($this->input->post('nama1')); die;
+		
 		date_default_timezone_set('Asia/Jakarta');
 		$exp_date = $this->input->post('tgl_kembali');
 		$todays_date = $this->input->post('tgl_pinjam1'); 
@@ -352,8 +356,6 @@ class Admin extends CI_Controller{
 				$this->db->where('id',$id);
 				$result=$this->db->update('barang',$set);
 				if($result==true){
-					// Tambah data(ambil data anggota)
-					// var_dump($angg);
 					$in = array(
 						'nip'			=> $nip,
 						'nama'			=> $this->input->post('nama1'),
@@ -366,13 +368,10 @@ class Admin extends CI_Controller{
 						'tgl_kembali'	=> $this->input->post('tgl_kembali'),
 						'status'		=> $status
 					);
-					//var_dump($in); die;
 					$masuk=$this->db->insert('pinjam_barang',$in);
 					
 					if($masuk==true){
-						//echo "Berhasil Meminjam";
 						$this->session->set_flashdata('success', 'Berhasil Meminjam !');
-						//var_dump(base_url()); die;
 						redirect(base_url('admin/pinjam'));
 					}else{
 						$this->session->set_flashdata('error', 'Gagal Mendaftar!');
@@ -383,7 +382,7 @@ class Admin extends CI_Controller{
 					redirect(base_url('admin/pinjam'));
 				}
 
-				//redirect(base_url('admin/pinjam'));
+				
 			} else {
 				echo "unit tidak cukup untuk di pinjam";
 			}

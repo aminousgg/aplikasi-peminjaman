@@ -19,61 +19,96 @@
 
     <!-- Main content -->
     <section class="content">
-
+   
+    <?php echo form_open_multipart('admin/tambah_agt_aksi', array('role' => 'form', 'id'=>'uploadForm'))?>
         <div class="row">
-            <div class="col-md-3">
-            </div>
             <div class="col-md-6">
                 <div class="card card-info">
                     <div class="card-header">
-                        <h3 class="card-title">Masukan Data Anggota</h3>
+                        <h3 class="card-title">Daftarkan Anggota</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <?php echo form_open_multipart('admin/tambah_agt_aksi', array('role' => 'form'))?>
+                    
                         <div class="card-body">
                             <div class="form-group">
-                                <label>NIP</label>
-                                <input type="text" name="nip" class="form-control" placeholder="NIP">
+                                <div class="row">
+                                  <div class="col">
+                                    <label>NIP</label>
+                                    <input name="nip" placeholder="NIP" type="text" class="form-control">
+                                  </div>
+                                  <div class="col">
+                                    <label>Nama</label>
+                                    <input name="nama" placeholder="Nama" type="text" class="form-control">
+                                  </div>
+                                </div>
                             </div>
+                            
                             <div class="form-group">
-                                <label>Nama</label>
-                                <input type="text" name="nama" class="form-control" placeholder="Nama">
+                              <div class="row">
+                                <div class="col">
+                                  <label>Jabatan</label>
+                                  <input name="jabatan" placeholder="Jabatan" type="text" class="form-control">
+                                </div>
+                                <div class="col">
+                                  <label>Golongan</label>
+                                  <input name="pangkat_golongan" placeholder="Golongan" type="text" class="form-control">
+                                </div>
+                              </div>
                             </div>
-                            <div class="form-group">
-                                <label>Jabatan</label>
-                                <input type="text" name="jabatan" class="form-control" placeholder="Jabatan">
-                            </div>
-                            <div class="form-group">
-                                <label>Golongan</label>
-                                <input type="text" name="pangkat_golongan" class="form-control" placeholder="Golongan">
-                            </div> 
                             <div class="form-group">
                                 <label>Bidang</label>
                                 <input type="text" name="seksi" class="form-control" placeholder="Seksi Bagian">
                             </div>
                             <div class="form-group">
-                                <label>Tgl Lahir</label>
-                                <input type="date" name="tgl_lahir" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Level User</label>
-                                <select name="level_user" class="form-control select2" style="width: 100%;">
-                                    <option selected="selected" value="user">User</option>
-                                    <option value="admin">Admin</option>
-                                </select>
+                              <div class="row">
+                                <div class="col">
+                                  <label>Tgl Lahir</label>
+                                  <input type="date" name="tgl_lahir" class="form-control">
+                                </div>
+                                <div class="col">
+                                  <label>Level User</label>
+                                  <select name="level_user" class="form-control select2" style="width: 100%;">
+                                      <option selected="selected" value="user">User</option>
+                                      <option value="admin">Admin</option>
+                                  </select>
+                                </div>
+                              </div>
                             </div>
                         </div>
                     <!-- /.card-body -->
 
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">SIMPAN</button>
+                    <!-- <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Daftar</button>
+                    </div> -->
+                    
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Daftarkan Anggota</h3>
                     </div>
-                    <?php echo form_close(); ?>
+                    <div class="card-body">
+                      <div class="form-group">
+                        <label>Upload Foto</label>
+                      </div>
+                      <input type="file" name="file" id="file" require>
+                      <div class="kotakUp" id="gambar">
+                      
+                      </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Daftar</button>
+                    </div>
+                    
                 </div>
             </div>
         </div>
         <!-- /.row -->
+    <?php echo form_close(); ?>
     </section>
     <!-- /.content -->
 </div>
