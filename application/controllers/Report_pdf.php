@@ -82,6 +82,61 @@ Class Report_pdf extends CI_Controller{
         $pdf->Cell(190,7,'Dinas Energi Sumber Daya dan Mineral',0,1,'C');
         // Memberikan space kebawah agar tidak terlalu rapat
         $pdf->Cell(10,7,'',0,1,'');
+        $pdf->SetX(7);
+        $pdf->SetFont('Arial','B',11);
+        
+        $pdf->SetFillColor(28, 166, 205);
+        $pdf->Cell(7,6,'No',1,0,'C',1);
+
+        $pdf->SetFillColor(28, 166, 205);
+        $pdf->Cell(32,6,'NIP',1,0,'C',1);
+
+        $pdf->SetFillColor(28, 166, 205);
+        $pdf->Cell(52,6,'Nama',1,0,'C',1);
+
+        $pdf->SetFillColor(28, 166, 205);
+        $pdf->Cell(42,6,'Jabatan',1,0,'C',1);
+
+        $pdf->SetFillColor(28, 166, 205);
+        $pdf->Cell(20,6,'Golongan',1,0,'C',1);
+
+        $pdf->SetFillColor(28, 166, 205);
+        $pdf->Cell(20,6,'Bidang',1,0,'C',1);
+
+        $pdf->SetFillColor(28, 166, 205);
+        $pdf->Cell(22,6,'Tgl Lahir',1,0,'C',1);
+        
+        $pdf->SetFont('Arial','',11);
+        $pdf->Ln();
+        $agt = $this->db->get('anggota')->result();
+        $i=1;
+        foreach ($agt as $row){
+            $pdf->SetX(7);
+            $pdf->Cell(7,6,$i,1,0,'C');
+            $pdf->Cell(32,6,$row->nip,1,0);
+            $pdf->Cell(52,6,$row->nama,1,0);
+            $pdf->Cell(42,6,$row->jabatan,1,0);
+            $pdf->Cell(20,6,$row->pangkat_golongan,1,0);
+            $pdf->Cell(20,6,$row->seksi,1,0);
+            $pdf->Cell(22,6,$row->tgl_lahir,1,0);
+            $i++;
+            $pdf->Ln();
+        }
+        $pdf->Output();
+    }
+    function pdf_pinjam(){
+        $pdf = new FPDF('P','mm','A4');
+        $pdf->SetMargins(10,10,10);
+        // membuat halaman baru
+        $pdf->AddPage();
+        // setting jenis font yang akan digunakan
+        $pdf->SetFont('Arial','B',16);
+        // mencetak string
+        $pdf->Cell(190,7,'Data Peminjam',0,1,'C');
+        $pdf->SetFont('Arial','B',14);
+        $pdf->Cell(190,7,'Dinas Energi Sumber Daya dan Mineral',0,1,'C');
+        // Memberikan space kebawah agar tidak terlalu rapat
+        $pdf->Cell(10,7,'',0,1,'');
         $pdf->SetX(20);
         $pdf->SetFont('Arial','B',11);
         
@@ -89,36 +144,56 @@ Class Report_pdf extends CI_Controller{
         $pdf->Cell(9,6,'No',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(17,6,'NIP',1,0,'C',1);
+        $pdf->Cell(30,6,'NIP',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(30,6,'Nama',1,0,'C',1);
+        $pdf->Cell(40,6,'Nama Peminjam',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(30,6,'Jabatan',1,0,'C',1);
+        $pdf->Cell(30,6,'Barang',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(35,6,'Pangkat/Golongan',1,0,'C',1);
+        $pdf->Cell(10,6,'Unit',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(20,6,'Bidang',1,0,'C',1);
+        $pdf->Cell(25,6,'Estimasi',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(30,6,'Tgl Lahir',1,0,'C',1);
+        $pdf->Cell(30,6,'Status',1,0,'C',1);
         
         $pdf->SetFont('Arial','',11);
         $pdf->Ln();
-        $agt = $this->db->get('anggota')->result();
+        $brg = $this->db->get('pinjam_barang')->result();
         $i=1;
-        foreach ($agt as $row){
+        foreach ($brg as $row){
             $pdf->SetX(20);
-            $pdf->Cell(9,6,$i,1,0);
-            $pdf->Cell(17,6,$row->nip,1,0);
-            $pdf->Cell(30,6,$row->nama,1,0);
-            $pdf->Cell(30,6,$row->jabatan,1,0);
-            $pdf->Cell(35,6,$row->pangkat_golongan,1,0);
-            $pdf->Cell(20,6,$row->seksi,1,0);
-            $pdf->Cell(30,6,$row->tgl_lahir,1,0);
+            $pdf->Cell(9,6,$i,1,0,'C');
+            $pdf->Cell(30,6,$row->nip,1,0);
+            $pdf->Cell(40,6,$row->nama,1,0);
+            $pdf->Cell(30,6,$row->nama_barang,1,0);
+            $pdf->Cell(10,6,$row->jml_pinjam,1,0,'C');
+            //Our "then" date.
+            $then = $row->tgl_kembali;
+            //Convert it into a timestamp.
+            $then = strtotime($then);
+            //Get the current timestamp.
+            $now = time();
+            //Calculate the difference.
+            $difference = $then - $now;
+            //Convert seconds into days.
+            $days = floor($difference / (60*60*24) )+1;
+            //echo $days;
+            //echo $days." hari"
+            if($days>0){
+                $pdf->Cell(25,6,$days." hari",1,0);
+            }elseif($days==0){
+                $pdf->Cell(25,6,"Hari ini",1,0);
+            }else{
+                $day=$days*-1;
+                $pdf->Cell(25,6,"Lewat ".$day." hari",1,0);
+            }
+            
+            $pdf->Cell(30,6,$row->status,1,0);
             $i++;
             $pdf->Ln();
         }
