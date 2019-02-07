@@ -62,6 +62,10 @@
                         <input type="text" name="merk" class="form-control" value="<?php echo $brg['merk'] ?>">
                     </div>
                     <div class="form-group">
+                        <label>Kategori</label>
+                        <input type="text" name="kategori" class="form-control" value="<?php echo $brg['kategori'] ?>">
+                    </div>
+                    <div class="form-group">
                         <label>Tgl masuk</label>
                         <input type="date" name="tgl_masuk" class="form-control"value="<?php echo $brg['tgl_masuk'] ?>">
                     </div>
