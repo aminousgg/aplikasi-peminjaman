@@ -44,7 +44,7 @@ class Admin extends CI_Controller{
  
 		}else{
 			$this->session->set_flashdata('error', 'gagal login');
-			$this->load->view('admin/v_admin_login');
+			$this->load->view('admin/login-admin');
 		}
 	}
 	function logout(){

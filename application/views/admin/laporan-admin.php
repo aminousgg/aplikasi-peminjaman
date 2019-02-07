@@ -24,7 +24,7 @@
               <span class="info-box-icon bg-info"><i class="ion ion-bag"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Barang</span>
+                <span class="info-box-text"> <a href="<?php echo base_url() ?>Report_pdf/pdf_barang">Barang</a> </span>
                 <span class="info-box-number">1,410</span>
               </div>
               <!-- /.info-box-content -->
@@ -37,7 +37,7 @@
               <span class="info-box-icon bg-success elevation-1"><i class="ion ion-person"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Anggota</span>
+                <span class="info-box-text"><a href="<?php echo base_url() ?>Report_pdf/pdf_anggota">Anggota</a></span>
                 <span class="info-box-number">410</span>
               </div>
               <!-- /.info-box-content -->
