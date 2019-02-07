@@ -39,7 +39,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="<?php echo base_url() ?>user/logo/logo-esdm.png" class="logokiri"> Peminjaman</a>
+      <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="<?php echo base_url() ?>admin-lte-master/dist/img/Logo-Jateng.png" class="logokiri"> Sipirang</a>
       <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -61,8 +61,8 @@
   <header class="masthead bg-primary text-white text-center">
     <div class="container">
       <img width=200px height=200px class="img-fluid mb-5 d-block mx-auto" src="<?php echo base_url() ?>user/logo/logo_brg.png" alt="">
-      <h1 class="text-uppercase mb-0">Pinjam Barang</h1>
-      <hr class="star-light">
-      <h2 class="font-weight-light mb-0">Aplikasi pinjam barang</h2>
+      <h1 class="text-uppercase mb-0">Sipirang</h1>
+      <!-- <hr class="star-light"> -->
+      <h2 class="font-weight-light mb-0">Sitem Pinjam Barang</h2>
     </div>
   </header>
