@@ -100,8 +100,8 @@
                       <td><?php echo $row->wkt_kembali ?></td>
                       <td>Telah Kembali</td>
                     </tr>
-
-              <?php } ?>   
+                    
+              <?php $i++; } ?>   
               </tbody>
               <tfoot>
                 <tr>
