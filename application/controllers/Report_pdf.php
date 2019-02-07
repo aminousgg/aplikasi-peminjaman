@@ -25,25 +25,25 @@ Class Report_pdf extends CI_Controller{
         $pdf->SetFont('Arial','B',11);
         
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(13,6,'No',1,0,'C',1);
+        $pdf->Cell(9,6,'No',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
         $pdf->Cell(17,6,'Kode',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(35,6,'Nama Barang',1,0,'C',1);
+        $pdf->Cell(40,6,'Nama Barang',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(25,6,'Merk',1,0,'C',1);
+        $pdf->Cell(30,6,'Merk',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(13,6,'Unit',1,0,'C',1);
+        $pdf->Cell(10,6,'Unit',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(20,6,'Tersedia',1,0,'C',1);
+        $pdf->Cell(17,6,'Tersedia',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(20,6,'Terpinjam',1,0,'C',1);
+        $pdf->Cell(25,6,'Tgl Masuk',1,0,'C',1);
         
         $pdf->SetFont('Arial','',11);
         $pdf->Ln();
@@ -51,13 +51,19 @@ Class Report_pdf extends CI_Controller{
         $i=1;
         foreach ($brg as $row){
             $pdf->SetX(30);
-            $pdf->Cell(13,6,$i,1,0);
+            $pdf->Cell(9,6,$i,1,0,'C');
             $pdf->Cell(17,6,$row->kode_barang,1,0);
-            $pdf->Cell(35,6,$row->nama_barang,1,0);
-            $pdf->Cell(25,6,$row->merk,1,0);
-            $pdf->Cell(13,6,$row->jml_barang,1,0);
-            $pdf->Cell(20,6,$row->jml_tersedia,1,0);
-            $pdf->Cell(20,6,$row->jml_terpinjam,1,0);
+            $pdf->Cell(40,6,$row->nama_barang,1,0);
+            $pdf->Cell(30,6,$row->merk,1,0);
+            $pdf->Cell(10,6,$row->jml_barang,1,0,'C');
+            if($row->jml_tersedia>0){
+                $pdf->Cell(17,6,$row->jml_tersedia,1,0,'C');
+            }else{
+                $pdf->SetTextColor(255, 0, 0);
+                $pdf->Cell(17,6,$row->jml_tersedia,1,0,'C');
+            }
+            $pdf->SetTextColor(0, 0, 0);
+            $pdf->Cell(25,6,$row->tgl_masuk,1,0,'C');
             $i++;
             $pdf->Ln();
         }
