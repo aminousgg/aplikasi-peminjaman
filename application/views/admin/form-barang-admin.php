@@ -43,6 +43,10 @@
                         <input type="text" name="merk" class="form-control" placeholder="Merk">
                     </div>
                     <div class="form-group">
+                        <label>Kategori</label>
+                        <input type="text" name="kategori" class="form-control" placeholder="Kategori">
+                    </div>
+                    <div class="form-group">
                         <label>Tanggal Masuk</label>
                         <input type="date" name="tgl_masuk" class="form-control">
                     </div>

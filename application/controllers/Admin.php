@@ -105,6 +105,7 @@ class Admin extends CI_Controller{
 				'kode_barang'	=> $kode_barang,
 				'nama_barang'	=> $this->input->post('nama_barang'),
 				'merk'			=> $this->input->post('merk'),
+				'kategori'		=> $this->input->post('kategori'),
 				'tgl_masuk'		=> $this->input->post('tgl_masuk'),
 				'jml_terpinjam'	=> 0,
 				'spesifikasi'	=> $this->input->post('spesifikasi'),
