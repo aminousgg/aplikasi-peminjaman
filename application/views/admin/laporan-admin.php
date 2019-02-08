@@ -65,7 +65,7 @@
               <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-repeat"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Kembali Barang</span>
+                <span class="info-box-text"><a href="<?php echo base_url() ?>Report_pdf/pdf_kembali">Kembali Barang</a></span>
                 <span class="info-box-number">93,139</span>
               </div>
               <!-- /.info-box-content -->

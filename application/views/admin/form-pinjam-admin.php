@@ -107,7 +107,7 @@ endif;
                   <div class="form-group">
                     <label>Tgl Pinjam</label>
                     <?php date_default_timezone_set('Asia/Jakarta'); ?>
-                    <input type="date" name="tgl_pinjam" value="<?php echo date('Y-m-d'); ?>" class="form-control" disabled>
+                    <input type="date" name="tgl_pinjam" value="<?php echo date('Y-m-d'); ?>" class="form-control">
                     <input type="hidden" name="tgl_pinjam1" value="<?php echo date('Y-m-d'); ?>">
                   </div>
                   
