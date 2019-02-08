@@ -105,16 +105,24 @@ class Admin extends CI_Controller{
 		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
 			$kode = rand(1000,9999);
 			$kode_barang = (string)$kode;
+
+			$config['upload_path'] 		= './admin-lte-master/foto/barang/';
+			$config['allowed_types'] 	= 'jpg|jpeg|png|gif';
+			$this->load->library('upload',$config);
+			$this->upload->do_upload('file');
+			$hasil = $this->upload->data();
+
 			$data = array(
-				'kode_barang'	=> $kode_barang,
-				'nama_barang'	=> $this->input->post('nama_barang'),
-				'merk'			=> $this->input->post('merk'),
-				'kategori'		=> $this->input->post('kategori'),
-				'tgl_masuk'		=> $this->input->post('tgl_masuk'),
+				'kode_barang'		=> $kode_barang,
+				'nama_barang'		=> $this->input->post('nama_barang'),
+				'merk'					=> $this->input->post('merk'),
+				'kategori'			=> $this->input->post('kategori'),
+				'tgl_masuk'			=> $this->input->post('tgl_masuk'),
 				'jml_terpinjam'	=> 0,
-				'spesifikasi'	=> $this->input->post('spesifikasi'),
-				'jml_barang'	=> $this->input->post('jml_barang'),
+				'spesifikasi'		=> $this->input->post('spesifikasi'),
+				'jml_barang'		=> $this->input->post('jml_barang'),
 				'jml_tersedia'	=> $this->input->post('jml_barang'),
+				'foto'					=> $hasil['file_name'],
 			);
 			$result=$this->M_admin->tambah_brg('barang', $data);
 			if($result==true){
@@ -162,6 +170,48 @@ class Admin extends CI_Controller{
 		}
 		
 	}
+	function edit_brg(){
+		if($this->input->post('cek')=="tdkada"){
+			$id=$this->input->post('id');
+			$data = array(
+				'nama_barang'		=> $this->input->post('nama_barang'),
+				'merk'					=> $this->input->post('merk'),
+				'kategori'			=> $this->input->post('kategori'),
+				'tgl_masuk'			=> $this->input->post('tgl_masuk'),
+				'spesifikasi'		=> $this->input->post('spesifikasi'),
+			);
+			$this->db->where('id',$id);
+			$result=$this->db->update('barang',$data);
+			if($result==true){
+				$this->session->set_flashdata('success', 'Update Berhasil');
+				redirect(base_url('admin/barang'));
+			}else{
+				$this->session->set_flashdata('error', 'Gagal Ubah');
+				redirect(base_url('admin/anggota'));
+			}
+
+		}else{
+			$config['upload_path'] 		= './admin-lte-master/foto/barang/';
+			$config['allowed_types'] 	= 'jpg|jpeg|png|gif';
+			$this->load->library('upload',$config);
+			$this->upload->do_upload('file');
+			$hasil = $this->upload->data();
+			$id=$this->input->post('id');
+			$data=array(
+				'foto'	=>	$hasil['file_name'],
+			);
+			$this->db->where('id',$id);
+			$result=$this->db->update('barang',$data);
+			if($result==true){
+				$this->session->set_flashdata('success', 'Update Berhasil');
+				redirect(base_url('admin/barang'));
+			}else{
+				$this->session->set_flashdata('error', 'Gagal Ubah');
+				redirect(base_url('admin/barang'));
+			}
+		}
+	}
+
 	function hapus_barang($id){
 		//echo $id; die;
 		$result=$this->db->delete('barang',array('id'=>$id));
@@ -204,7 +254,7 @@ class Admin extends CI_Controller{
 	function tambah_agt_aksi(){
 		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
 			// Upload
-			$config['upload_path'] 		= './admin-lte-master/foto/';
+			$config['upload_path'] 		= './admin-lte-master/foto/agt/';
 			$config['allowed_types'] 	= 'jpg|jpeg|png|gif';
 			$this->load->library('upload',$config);
 			$this->upload->do_upload('file');
@@ -245,6 +295,50 @@ class Admin extends CI_Controller{
 			redirect(base_url('admin/login'));
 		}
 		
+	}
+	function edit_agt(){
+		if($this->input->post('cek')=="tdkada"){
+			//var_dump($this->input->post('cek')); die;
+			$id=$this->input->post('id');
+			$data=array(
+				'nip'								=> $this->input->post('nip'),
+				'nama'							=> $this->input->post('nama'),
+				'jabatan'						=> $this->input->post('jabatan'),
+				'pangkat_golongan'	=> $this->input->post('pangkat_golongan'),
+				'seksi'							=> $this->input->post('seksi'),
+				'tgl_lahir'					=> $this->input->post('tgl_lahir'),
+				'level_user'				=> $this->input->post('level_user'),
+			);
+			$this->db->where('id',$id);
+			$result=$this->db->update('anggota',$data);
+			if($result==true){
+				$this->session->set_flashdata('success', 'Update Berhasil');
+				redirect(base_url('admin/anggota'));
+			}else{
+				$this->session->set_flashdata('error', 'Gagal Ubah');
+				redirect(base_url('admin/anggota'));
+			}
+
+		}else{
+			$config['upload_path'] 		= './admin-lte-master/foto/agt/';
+			$config['allowed_types'] 	= 'jpg|jpeg|png|gif';
+			$this->load->library('upload',$config);
+			$this->upload->do_upload('file');
+			$hasil = $this->upload->data();
+			$id=$this->input->post('id');
+			$data=array(
+				'foto'	=>	$hasil['file_name'],
+			);
+			$this->db->where('id',$id);
+			$result=$this->db->update('anggota',$data);
+			if($result==true){
+				$this->session->set_flashdata('success', 'Update Berhasil');
+				redirect(base_url('admin/anggota'));
+			}else{
+				$this->session->set_flashdata('error', 'Gagal Ubah');
+				redirect(base_url('admin/anggota'));
+			}
+		}
 	}
 	function hapus_anggota($id){
 		//echo $id; die;

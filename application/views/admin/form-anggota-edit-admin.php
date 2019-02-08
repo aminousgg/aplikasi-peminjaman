@@ -24,72 +24,107 @@
             <div class="col-md-6">
                 <div class="card card-info">
                     <div class="card-header">
-                        <h3 class="card-title">Edit Data Anggota</h3>
-                        
+                        <h3 class="card-title">Edit anggota</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <?php echo form_open_multipart('admin/tambah_anggota', array('role' => 'form'))?>
+                    
                         <div class="card-body">
+                            <?php echo form_open_multipart('admin/edit_agt', array('role' => 'form', 'id'=>'uploadForm'))?>
                             <div class="form-group">
-                                <label>NIP</label>
-                                <input type="text" name="nip" class="form-control" value="<?php echo $angg['nip'] ?>">
+                                <div class="row">
+                                  <div class="col">
+                                    <label>NIP</label>
+                                    <input name="id" value="<?php echo $angg['id']?>" type="hidden">
+                                    <input name="nip" value="<?php echo $angg['nip']?>" placeholder="NIP" type="text" class="form-control">
+                                  </div>
+                                  <div class="col">
+                                    <label>Nama</label>
+                                    <input name="nama" value="<?php echo $angg['nama']?>" placeholder="Nama" type="text" class="form-control">
+                                  </div>
+                                </div>
                             </div>
+                            
                             <div class="form-group">
-                                <label>Nama</label>
-                                <input type="text" name="nama" class="form-control" value="<?php echo $angg['nama'] ?>">
+                              <div class="row">
+                                <div class="col">
+                                  <label>Jabatan</label>
+                                  <input name="jabatan" value="<?php echo $angg['jabatan']?>" placeholder="Jabatan" type="text" class="form-control">
+                                </div>
+                                <div class="col">
+                                  <label>Golongan</label>
+                                  <input name="pangkat_golongan" value="<?php echo $angg['pangkat_golongan']?>" placeholder="Golongan" type="text" class="form-control">
+                                </div>
+                              </div>
                             </div>
-                            <div class="form-group">
-                                <label>Jabatan</label>
-                                <input type="text" name="jabatan" class="form-control" value="<?php echo $angg['jabatan'] ?>">
-                            </div>
-                            <div class="form-group">
-                                <label>Golongan</label>
-                                <input type="text" name="pangkat_golongan" class="form-control" value="<?php echo $angg['pangkat_golongan'] ?>">
-                            </div> 
                             <div class="form-group">
                                 <label>Bidang</label>
-                                <input type="text" name="seksi" class="form-control" value="<?php echo $angg['seksi'] ?>">
+                                <input type="text" value="<?php echo $angg['seksi']?>" name="seksi" class="form-control" placeholder="Seksi Bagian">
                             </div>
                             <div class="form-group">
-                                <label>Tgl Lahir</label>
-                                <input type="date" name="tgl_lahir" class="form-control"value="<?php echo $angg['tgl_lahir'] ?>">
+                              <div class="row">
+                                <div class="col">
+                                  <label>Tgl Lahir</label>
+                                  <input type="date" name="tgl_lahir" value="<?php echo $angg['tgl_lahir']?>" class="form-control">
+                                </div>
+                                <div class="col">
+                                  <label>Level User</label>
+                                  <select name="level_user" class="form-control select2" style="width: 100%;">
+                                      <?php if($angg['level_user']=="user"){?>
+                                        <option selected="selected" value="user">User</option>
+                                        <option value="admin">Admin</option>
+                                      <?php } else { ?>
+                                        <option value="user">User</option>
+                                        <option selected="selected" value="admin">Admin</option>
+                                      <?php } ?>
+                                        
+                                        
+                                  </select>
+                                </div>
+                              </div>
                             </div>
-                            <div class="form-group">
-                                <label>Level User</label>
-                                <select class="form-control select2" style="width: 100%;">
-                                    <option selected="selected">User</option>
-                                    <option>Admin</option>
-                                </select>
-                            </div>
+                          
                         </div>
                     <!-- /.card-body -->
-
+                    <input type="hidden" name="cek" value="tdkada">
                     <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Ubah</button>
                     </div>
                     <?php echo form_close(); ?>
+                    
                 </div>
             </div>
-            
+
             <div class="col-md-6">
-                <div class="card">
+                <div class="card card-info">
                     <div class="card-header">
-                        <h3 class="card-title">
-                            Detail Anggota
-                        </h3>
+                        <h3 class="card-title">Update gambar</h3>
                     </div>
-                    <!-- /.card-header -->
                     <div class="card-body">
-                        <blockquote>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                            <!--<small>Someone famous in <cite title="Source Title">Source Title</cite></small>
-                        --></blockquote>
+                      <?php echo form_open_multipart('admin/edit_agt', array('role' => 'form', 'id'=>'uploadForm'))?>
+                        <div class="form-group">
+                          <label>Upload Foto</label>
+                        </div>
+                        <input type="file" name="file" id="file" require>
+                        <input type="hidden" name="cek" value="ada">
+                        <input type="hidden" name="id" value="<?php echo $angg['id']?>">
+                        <div class="kotakUp" id="gambar">
+                          
+                          <img src="<?php echo base_url().'admin-lte-master/foto/agt/'.$angg['foto'] ?>" width=150px height=150px>
+                        </div>
+                      
                     </div>
-                <!-- /.card-body -->
+                      
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Ubah</button>
+                        <?php echo form_close(); ?>
+                    </div>
+                    
                 </div>
             </div>
         </div>
         <!-- /.row -->
+    
     </section>
     <!-- /.content -->
 </div>

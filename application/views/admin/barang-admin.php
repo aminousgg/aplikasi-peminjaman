@@ -118,32 +118,31 @@
                           </div>
                           <div class="modal-body">
                             <div class="row">
-                              <div class="col-md-4">Kode Barang</div>
-                              <div class="col-md-8"><?php echo $row->kode_barang ?></div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-4">Nama Barang</div>
-                              <div class="col-md-8"><?php echo $row->nama_barang ?></div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-4">Merk</div>
-                              <div class="col-md-8"><?php echo $row->merk ?></div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-4">Tanggal masuk</div>
-                              <div class="col-md-8"><?php echo $row->tgl_masuk ?></div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-4">Jumlah</div>
-                              <div class="col-md-8"><?php echo $row->jml_barang ?></div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-4">Tersedia</div>
-                              <div class="col-md-8"><?php echo $row->jml_tersedia ?></div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-4">Spesifikasi</div>
-                              <div class="col-md-8"><?php echo $row->spesifikasi ?></div>
+                              <div class="col-md-4">
+                                Kode Barang <br>
+                                Nama Barang <br>
+                                Merk <br>
+                                Kategori <br>
+                                Tgl Masuk <br>
+                                Terpinjam <br>
+                                Spesifikasi <br>
+                                Total Unit <br>
+                                Tersedia <br>
+                              </div>
+                              <div class="col-md-4">
+                                &nbsp;:&nbsp;<?php echo $row->kode_barang ?><br>
+                                &nbsp;:&nbsp;<?php echo $row->nama_barang ?><br>
+                                &nbsp;:&nbsp;<?php echo $row->merk ?><br>
+                                &nbsp;:&nbsp;<?php echo $row->kategori ?><br>
+                                &nbsp;:&nbsp;<?php echo $row->tgl_masuk ?><br>
+                                &nbsp;:&nbsp;<?php echo $row->jml_terpinjam ?><br>
+                                &nbsp;:&nbsp;<?php echo $row->spesifikasi ?><br>
+                                &nbsp;:&nbsp;<?php echo $row->jml_barang ?><br>
+                                &nbsp;:&nbsp;<?php echo $row->jml_tersedia ?><br>
+                              </div>
+                              <div class="col-md-4">
+                                <img src="<?php echo base_url().'admin-lte-master/foto/barang/'.$row->foto ?>" width=150px height=150px>
+                              </div>
                             </div>
                           </div>
                           <div class="modal-footer">

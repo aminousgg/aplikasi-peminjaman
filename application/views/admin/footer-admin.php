@@ -72,7 +72,7 @@
     });
   });
 </script>
-<script src="<?php echo base_url() ?>widget/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- <script src="<?php echo base_url() ?>widget/bower_components/jquery/dist/jquery.min.js"></script> -->
 <script>
 	function filePreview(input) {
 		if(input.files&&input.files[0]){

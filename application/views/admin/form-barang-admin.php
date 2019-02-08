@@ -19,55 +19,81 @@
 
     <!-- Main content -->
     <section class="content">
+    <?php echo form_open_multipart('admin/tambah_barang_aksi', array('role' => 'form', 'id'=>'uploadForm'))?>
         <div class="row">
-            <div class="col-md-3"></div>
             <div class="col-md-6">
                 <div class="card card-info">
                     <div class="card-header">
-                        <h3 class="card-title">Masukan Data Barang</h3>
+                        <h3 class="card-title">Tambah Barang</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <?php echo form_open_multipart('admin/tambah_barang_aksi', array('role' => 'form'))?>
+                    
                         <div class="card-body">
-                        <!-- <div class="form-group">
-                        <label>Kode Barang</label>
-                        <input type="text" name="kode_barang" class="form-control" placeholder="Kode Barang">
-                        </div> -->
-                        <div class="form-group">
-                            <label>Nama Barang</label>
-                            <input type="text" name="nama_barang" class="form-control" placeholder="Nama Barang">
+                            <div class="form-group">
+                                <div class="row">
+                                  <div class="col">
+                                    <label>Nama Barang</label>
+                                    <input name="nama_barang" placeholder="Nama Barang" type="text" class="form-control">
+                                  </div>
+                                  <div class="col">
+                                    <label>Merk</label>
+                                    <input name="merk" placeholder="Merk" type="text" class="form-control">
+                                  </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                              <div class="row">
+                                <div class="col">
+                                  <label>Kategori</label>
+                                  <input name="kategori" placeholder="Kategori" type="text" class="form-control">
+                                </div>
+                                <div class="col">
+                                  <label>Tgl Masuk</label>
+                                  <input name="tgl_masuk" type="date" class="form-control">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Jumlah Unit</label>
+                                <input type="text" name="jml_barang" class="form-control" placeholder="Angka">
+                            </div>
+                            <div class="form-group">
+                                <label>Spesifikasi</label>
+                                <input type="text" name="spesifikasi" class="form-control" placeholder="Spesifikasi">
+                            </div>
+                            
                         </div>
-                        <div class="form-group">
-                            <label>Merk</label>
-                            <input type="text" name="merk" class="form-control" placeholder="Merk">
-                        </div>
-                        <div class="form-group">
-                            <label>Kategori</label>
-                            <input type="text" name="kategori" class="form-control" placeholder="Kategori">
-                        </div>
-                        <div class="form-group">
-                            <label>Tanggal Masuk</label>
-                            <input type="date" name="tgl_masuk" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Jumlah Barang</label>
-                            <input type="text" name="jml_barang" class="form-control" placeholder="Jumlah Barang">
-                        </div>  
-                        <div class="form-group">
-                            <label>Spesifikasi</label>
-                            <textarea name="spesifikasi" class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                        </div>                
-                        </div>
-                        <!-- /.card-body -->
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">SIMPAN</button>
-                        </div>
-                    <?php echo form_close(); ?>
+                    <!-- /.card-body -->
+                    
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Sertakan Foto</h3>
+                    </div>
+                    <div class="card-body">
+                      <div class="form-group">
+                        <label>Upload Foto</label>
+                      </div>
+                      <input type="file" name="file" id="file" require>
+                      <div class="kotakUp" id="gambar">
+                      
+                      </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Daftar</button>
+                    </div>
+                    
                 </div>
             </div>
         </div>
         <!-- /.row -->
+    <?php echo form_close(); ?>
     </section>
     <!-- /.content -->
 </div>
