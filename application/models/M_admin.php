@@ -25,8 +25,8 @@ class M_admin extends CI_Model{
 	function ambil_pinjam($id){
 		return $this->db->get_where('pinjam_barang',array('id'=>$id));
 	}
-	function get_anggota($nip){
-		$hsl=$this->db->get_where('anggota',array('nip'=>$nip));
+	function get_anggota($nama){
+		$hsl=$this->db->get_where('anggota',array('nama'=>$nama));
 		return $hsl;
 	}
 	function get_form_anggota($id){

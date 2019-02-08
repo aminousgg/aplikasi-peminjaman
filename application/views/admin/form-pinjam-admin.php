@@ -65,19 +65,25 @@ endif;
                 <div class="card-body">
                   <input type="hidden" name='id' value='<?php echo $id ?>'>
                   <!-- <input type="hidden" name='brg' value='<?php //echo $brg ?>'> -->
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label>NIP</label>
                     <input type="text" id="nip" name="nip" onkeyup="autofill()" class="form-control" placeholder="NIP">
-                  </div>
+                  </div> -->
                   <div class="form-group">
                     <label>Nama</label>
-                    <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama" disabled>
-                    <input type="hidden" name="nama1" id="nama1">
+                    <input type="text" name="nama" id="nama" list="browsers" class="form-control" placeholder="Nama">
+                    <datalist id="browsers">
+                      <?php foreach($angg as $u){?>
+                        <option value="<?php echo $u->nama ?>">
+                      <?php }?>
+                    </datalist>
+                    <!-- <input type="hidden" name="nama1" id="nama1"> -->
                   </div>
-                  <!-- <div class="form-group">
-                    <label>Jabatan</label>
-                    <input type="text" name="jabatan" class="form-control" placeholder="jabatan">
-                  </div> -->
+                  <div class="form-group">
+                    <label>NIP</label>
+                    <input type="text" id="nip" name="nip" class="form-control" disabled>
+                    <input type="hidden" id="nip1" name="nip1" class="form-control">
+                  </div>
                   <!-- <div class="form-group">
                     <label>Seksi Bagian</label>
                     <input type="text" name="seksi" class="form-control" placeholder="Seksi">
@@ -127,18 +133,24 @@ endif;
 
 <script type="text/javascript" src="<?php echo base_url().'admin-lte-master/jquery.js'?>"></script>
 <script type="text/javascript">
-  function autofill(){
-    var nip = $("#nip").val();
-    $.ajax({
-      type : "POST",
-      url : "<?php echo base_url().'admin/get_anggota/'?>"+$("#nip").val(),
-      data : {nip: nip},
-      success : function(data){
-        var json = data,
-        obj = JSON.parse(json);
-        $("#nama").val(obj.nama);
-        $("#nama1").val(obj.nama);
-      } 
-    });
-  }
-</script>
+        $(document).ready(function(){
+             $('#nama').on('input',function(){
+                 
+                var nama=$(this).val();
+                $.ajax({
+                    type : "POST",
+                    url  : "<?php echo base_url().'admin/get_anggota/'?>"+nama,
+                    data : {nama: nama},
+                    success: function(data){
+                      var json = data,
+                      obj = JSON.parse(json);
+                      $("#nip").val(obj.nip);
+                      $("#nip1").val(obj.nip);
+                         
+                    }
+                });
+                return false;
+           });
+ 
+        });
+    </script>

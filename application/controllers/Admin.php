@@ -381,19 +381,20 @@ class Admin extends CI_Controller{
 		}
 		
 	}
-	function get_anggota($nip){
-		$kode=$nip;
-		$data=$this->M_admin->get_anggota($kode);
+	function get_anggota($nama){
+		$nm=urldecode($nama);
+		$data=$this->M_admin->get_anggota($nm);
 		if($data->num_rows()>0){
 			$hasil=$data->row_array();
 			echo json_encode($hasil);
 		}else{
-			echo "nip salah"; die;
+			echo "nama Tdk Ketemu";
 		}
         
-    }
+  }
 	function form_pinjam($id){
 		$ez=$this->M_admin->ambil_row($id)->row_array();
+		$data['angg'] = $this->db->get('anggota')->result();
 		$data['sedia']=$ez['jml_tersedia'];
 		$data['id']=$id;
 		$data['brg']=$ez['nama_barang'];
@@ -405,8 +406,6 @@ class Admin extends CI_Controller{
 	}
 	
 	function tambah_pinjam(){
-		
-		
 		date_default_timezone_set('Asia/Jakarta');
 		$exp_date = $this->input->post('tgl_kembali');
 		$todays_date = $this->input->post('tgl_pinjam1'); 
@@ -439,22 +438,21 @@ class Admin extends CI_Controller{
 					'jml_tersedia'	=> $c,
 				);
 				//var_dump($set); die;
-				$nip=$this->input->post('nip');
+				$nip=$this->input->post('nip1');
 				$angg = $this->M_admin->ambil_anggota($nip)->row_array();
 				//var_dump($this->input->post('nip')); die;
 				if($angg==null){
 					echo "NIP tidak Ditemukan";
 					die;
 				}
-				//var_dump($id); die;
 				$this->db->where('id',$id);
 				$result=$this->db->update('barang',$set);
 				if($result==true){
 					$in = array(
-						'nip'			=> $nip,
-						'nama'			=> $this->input->post('nama1'),
-						'jabatan'		=> $angg['jabatan'],
-						'seksi'			=> $angg['seksi'],
+						'nip'					=> $nip,
+						'nama'				=> $this->input->post('nama'),
+						'jabatan'			=> $angg['jabatan'],
+						'seksi'				=> $angg['seksi'],
 						'kode_barang'	=> $data['kode_barang'],
 						'nama_barang'	=> $this->input->post('brg1'),
 						'jml_pinjam'	=> $this->input->post('unit'),
