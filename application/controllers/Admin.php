@@ -438,7 +438,7 @@ class Admin extends CI_Controller{
 					'jml_tersedia'	=> $c,
 				);
 				//var_dump($set); die;
-				$nip=$this->input->post('nip1');
+				$nip = $this->input->post('nip1');
 				$angg = $this->M_admin->ambil_anggota($nip)->row_array();
 				//var_dump($this->input->post('nip')); die;
 				if($angg==null){
@@ -458,7 +458,7 @@ class Admin extends CI_Controller{
 						'jml_pinjam'	=> $this->input->post('unit'),
 						'tgl_pinjam'	=> $this->input->post('tgl_pinjam1'),
 						'tgl_kembali'	=> $this->input->post('tgl_kembali'),
-						'status'		=> $status
+						'status'			=> $status
 					);
 					$masuk=$this->db->insert('pinjam_barang',$in);
 					
