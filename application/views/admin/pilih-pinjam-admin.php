@@ -61,9 +61,9 @@
                       </td>
 
                     <?php } else { ?>
-                      <td><?php echo $row->jml_tersedia ?></td>
+                      <td id="sedia"><?php echo $row->jml_tersedia ?></td>
                       <td>
-                        <button data-kode="<?= $row->kode_barang ?>" data-nama="<?= $row->nama_barang ?>" type="button" class="add-to-cart btn btn-info">pilih</button>
+                        <button data-sedia="<?= $row->jml_tersedia ?>" data-kode="<?= $row->kode_barang ?>" data-nama="<?= $row->nama_barang ?>" type="button" class="add-to-cart btn btn-info">pilih</button>
                       </td>
                     <?php } ?>
                     <?php $i++; ?>
@@ -117,8 +117,8 @@
               </ul>
             </div>
             <!-- /.card-body -->
-            <div class="card-footer text-center">
-              <button type="button" class="btn btn-success">Pinjam</button>
+            <div id="tombol" class="card-footer text-center">
+              <!-- <button type="button" class="btn btn-success">Pinjam</button> -->
             </div>
             <!-- /.card-footer -->
           </div>
@@ -148,7 +148,7 @@
 
     function displayCart() {
         var cartArray = shoppingCart.listCart();
-        console.log(cartArray);
+        //console.log(cartArray);
         var output = "";
 
         for (var i in cartArray) {
@@ -166,10 +166,16 @@
                 +cartArray[i].name+"'>batal</button></div>"
                 +"</div></div></li>";
         }
-
+        if(cartArray.length!==0){
+          $("#tombol").html('<button type="button" class="btn btn-success">Pinjam</button>');
+        }else{
+          $("#tombol").html('');
+        }
         $("#show-cart").html(output);
         $("#count-cart").html( shoppingCart.countCart() );
         $("#total-cart").html( shoppingCart.totalCart() );
+        
+
     }
 
     $("#show-cart").on("click", ".delete-item", function(event){
