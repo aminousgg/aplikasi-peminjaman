@@ -4,14 +4,15 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <!-- <h1>Data <?php //echo $judul; ?></h1> -->
-            
-        </div>
-        <div class="col-sm-6">
-          <!-- <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active">Data Peminjaman Barang</li>
-          </ol> -->
+          <button class="btn btn-info" type="button">
+            <i class="ion ion-ios-printer-outline"></i> Cetak PDF
+          </button>
+          <button class="btn btn-info" type="button">
+            <i class="ion ion-ios-printer-outline"></i> Cetak Excel
+          </button>
+          <button class="btn btn-info" type="button">
+            <i class="ion ion-ios-printer-outline"></i> Cetak Langsung
+          </button>
         </div>
       </div>
     </div><!-- /.container-fluid -->
@@ -85,6 +86,7 @@
                   <th style="font-size:13px;">Nama</th>
                   <th style="font-size:13px;">Nama Barang</th>
                   <th style="font-size:13px;">Unit</th>
+                  <th style="font-size:13px;">Tanggal Pinjam</th>
                   <th style="font-size:13px;">Estimasi Kembali</th>
                   <th style="font-size:13px;">Status</th>
                   <th style="font-size:13px;">Aksi</th>
@@ -98,6 +100,7 @@
                     <td><?php echo $row->nama ?></td>
                     <td><?php echo $row->nama_barang ?></td>
                     <td><?php echo $row->jml_pinjam ?></td>
+                    <td><?php echo $row->tgl_pinjam ?></td>
                     <?php 
                       //Our "then" date.
                       $then = $row->tgl_kembali;
@@ -142,6 +145,7 @@
                   <th style="font-size:13px;">Nama</th>
                   <th style="font-size:13px;">Nama Barang</th>
                   <th style="font-size:13px;">Unit</th>
+                  <th style="font-size:13px;">Tanggal Pinjam</th>
                   <th style="font-size:13px;">Estimasi Kembali</th>
                   <th style="font-size:13px;">Status</th>
                   <th style="font-size:13px;">Aksi</th>

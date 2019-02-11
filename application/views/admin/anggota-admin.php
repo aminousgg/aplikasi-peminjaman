@@ -3,7 +3,17 @@
   <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
-
+        <div class="col-sm-6">
+          <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>Report_pdf/pdf_anggota';">
+            <i class="ion ion-ios-printer-outline"></i> Cetak PDF
+          </button>
+          <button class="btn btn-info" type="button">
+            <i class="ion ion-ios-printer-outline"></i> Cetak Excel
+          </button>
+          <button class="btn btn-info" type="button">
+            <i class="ion ion-ios-printer-outline"></i> Cetak Langsung
+          </button>
+        </div>
       </div><!-- /.container-fluid -->
   </section>
   <?php 
