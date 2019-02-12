@@ -84,7 +84,7 @@ endif;
                         <div class="col">
                           <label>Jml Barang</label>
                           <input type="text" name="jml" class="form-control" value="<?php echo $u->count ?>" disabled>
-                          <input type="hidden" name="jml1[]" value="<?php $u->count ?>">
+                          <input type="hidden" name="jml1[]" value="<?= $u->count ?>">
                         </div>
                       </div>
                     </div>
@@ -100,7 +100,7 @@ endif;
                         <div class="col">
                           
                           <input type="text" name="jml" class="form-control" value="<?php echo $u->count ?>" disabled>
-                          <input type="hidden" name="jml1[]" value="<?php $u->count ?>">
+                          <input type="hidden" name="jml1[]" value="<?= $u->count ?>">
                         </div>
                       </div>
                     </div>

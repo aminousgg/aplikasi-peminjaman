@@ -408,35 +408,57 @@ class Admin extends CI_Controller{
 	}
 	function inPinjam(){
 		$kodePinjam = rand(1000,9999);
-		
-		if(count($this->input->post('kode'))>1){
-			//input banyak
-			//echo $this->input->post('kode')[0]; die;
-			
-			for($i=0;$i<count($this->input->post('kode'));$i++){
-				$data = $this->M_admin->ambil_row($this->input->post('kode')[$i])->row_array();
-				
-				if($data["jml_tersedia"]>=$this->input->post('jml1')[$i]){
-					var_dump($data); die;
-					$in = array(
-						'nip'			=> $this->input->post(),
-						'nama'			=> $this->input->post(),
-						'jabatan'		=> $angg['jabatan'],
-						'seksi'			=> $angg['seksi'],
-						'kode_barang'	=> $data['kode_barang'],
-						'nama_barang'	=> $this->input->post('brg1'),
-						'jml_pinjam'	=> $this->input->post('unit'),
-						'tgl_pinjam'	=> $this->input->post('tgl_pinjam1'),
-						'tgl_kembali'	=> $this->input->post('tgl_kembali'),
-						'status'		=> $status
+		$a=0;
+		for($i=0;$i<count($this->input->post('kode'));$i++){
+			$data = $this->M_admin->ambil_row($this->input->post('kode')[$i])->row_array();
+			$angg = $this->M_admin->ambil_anggota($this->input->post('nip1'))->row_array();
+			if($data["jml_tersedia"]>=$this->input->post('jml1')[$i]){
+				//var_dump($data); die;
+				$in = array(
+					'kd_pinjam'		=> $kodePinjam,
+					'nip'			=> $this->input->post('nip1'),
+					'nama'			=> $this->input->post('nama'),
+					'jabatan'		=> $angg['jabatan'],
+					'seksi'			=> $angg['seksi'],
+					'kode_barang'	=> $this->input->post('kode')[$i],
+					'nama_barang'	=> $this->input->post('brg1')[$i],
+					'jml_pinjam'	=> $this->input->post('jml1')[$i],
+					'tgl_pinjam'	=> $this->input->post('tgl_pinjam1'),
+					'tgl_kembali'	=> $this->input->post('tgl_kembali'),
+					'status'		=> "Belum Kembali"
+				);
+				//var_dump($this->input->post('jml1')); die;
+				$masuk=$this->db->insert('pinjam_barang',$in);
+				if($masuk==true){
+					$b=$data['jml_terpinjam'] + $this->input->post('jml1')[$i];
+					$c=$data['jml_tersedia'] - $this->input->post('jml1')[$i];
+					$set = array(
+						'jml_terpinjam'	=> $b,
+						'jml_tersedia'	=> $c,
 					);
-					$masuk=$this->db->insert('pinjam_barang',$in);
+					//var_dump($set); die;
+					$this->db->where('kode_barang',$this->input->post('kode')[$i]);
+					$result=$this->db->update('barang',$set);
+					
+					if($result==true){
+						$a++;
+					}else{
+						echo "gagal";
+					}
 				}else{
-					//jumlah yg  di pinjam terlalu banyak
+					// gagal insert
 				}
+			}else{
+				//jumlah yg  di pinjam terlalu banyak
 			}
+		}
+		
+		if($a==count($this->input->post('kode'))){
+			$this->session->set_flashdata('success', 'Berhasil Meminjam !');
+			redirect(base_url('admin/pinjam'));
 		}else{
-			//input satu
+			$this->session->set_flashdata('error', 'Gagal Mendaftar!');
+			redirect(base_url('admin/pinjam'));
 		}
 	}
 	function tambah_pinjam(){

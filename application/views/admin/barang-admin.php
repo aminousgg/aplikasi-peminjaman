@@ -1,3 +1,7 @@
+<script src="<?php echo base_url() ?>admin-lte-master/pesan/js/shoppingCart.js"></script>
+<script>
+shoppingCart.clearCart();
+</script>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -70,13 +74,10 @@
                 <thead>
                   <tr>
                     <th style="font-size:13px; width:10px;">No</th>
-                    <th style="">Kode barang</th>
                     <th style="">Nama Barang</th>
                     <th style="">Merk</th>
-                    <th style="">Kategori</th>
                     <th style="">Jumlah</th>
                     <th style="">Tersedia</th>
-                    <th style="">Terpinjam</th>
                     <th style="">Aksi</th>
                   </tr>
                 </thead>
@@ -84,10 +85,10 @@
                   <?php $i=1; foreach($tabel_record as $row){ ?>
                     <tr>
                       <td><?php echo $i; ?></td>
-                      <td><?php echo $row->kode_barang ?></td>
+                      
                       <td><?php echo $row->nama_barang ?></td>
                       <td><?php echo $row->merk ?></td>
-                      <td><?php echo $row->kategori ?></td>
+                      
                       <td>
                         <?php echo $row->jml_barang ?>
                         <button data-toggle="modal" data-target="#<?php echo $row->id ?>_unit" class="btn btn-success float-right"><i class="ion ion-android-add"></i></button>
@@ -96,7 +97,7 @@
                         <td style="color:red;"><?php echo $row->jml_tersedia; ?></td>
                       <?php }else{ ?>
                         <td><?php echo $row->jml_tersedia;}  ?></td>
-                      <td><?php echo $row->jml_terpinjam ?></td>
+                      
                       <td>
                         <div class="button-group">
                           
@@ -193,14 +194,14 @@
                 <tfoot>
                   <tr>
                     <th style="font-size:13px; width:10px;">No</th>
-                    <th style="">Kode barang</th>
+                    
                     <th style="">Nama Barang</th>
                     <th style="">Merk</th>
-                    <th style="">Kategori</th>
+                    
                     <th style="">Jumlah</th>
                     <th style="">Tersedia</th>
-                    <th style="">Terpinjam</th>
-                    <th style="">Aksi</th>
+                    
+                    <th style="width:120px;">Aksi</th>
                   </tr>
                 </tfoot>
               </table>

@@ -1,3 +1,7 @@
+<script src="<?php echo base_url() ?>admin-lte-master/pesan/js/shoppingCart.js"></script>
+<script>
+shoppingCart.clearCart();
+</script>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
