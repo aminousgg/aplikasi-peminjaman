@@ -17,7 +17,7 @@ class M_admin extends CI_Model{
 		return $this->db->get('pinjam_barang');
 	}
 	function ambil_row($id){
-		return $this->db->get_where('barang',array('id'=>$id));
+		return $this->db->get_where('barang',array('kode_barang'=>$id));
 	}
 	function ambil_anggota($nip){
 		return $this->db->get_where('anggota',array('nip'=>$nip));

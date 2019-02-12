@@ -34,34 +34,16 @@ endif;
 ?>
   <!-- Main content -->
   <section class="content">
-
     <div class="row">
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">
-              <i class="fa fa-text-width"></i>
-              Detail Barang
-            </h3>
-          </div>
-          <!-- /.card-header -->
-          <div class="card-body">
-            <blockquote>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-              <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
-            </blockquote>
-          </div>
-          <!-- /.card-body -->
-        </div>
-      </div>
+      <!-- form -->
       <div class="col-md-6">
         <div class="card card-info">
           <div class="card-header">
-            <h3 class="card-title">Masukan Data peminjaman</h3>
+            <h3 class="card-title">Identitas Peminjam</h3>
           </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <?php echo form_open_multipart('admin/tambah_pinjam', array('role' => 'form','autocomplete' => 'off'))?>
+              <?php echo form_open_multipart('admin/inPinjam', array('role' => 'form','autocomplete' => 'off'))?>
                 <div class="card-body">
                   <input type="hidden" name='id' value='<?php echo $id ?>'>
                   <!-- <input type="hidden" name='brg' value='<?php //echo $brg ?>'> -->
@@ -88,21 +70,42 @@ endif;
                     <label>Seksi Bagian</label>
                     <input type="text" name="seksi" class="form-control" placeholder="Seksi">
                   </div> -->
-                  <div class="form-group">
-                    <label>Jumlah Unit</label>
-                    <select name="unit">
-                      <?php for($i=1;$i<=$sedia;$i++) { ?>
-                        <option value="<?php echo $i?>"><?php echo $i?></option>
-                      <?php }?>
-                    </select>
-                  </div>
                   
-                  <div class="form-group">
-                    <label>Nama Barang</label>
-                    <input type="text" name="brg" class="form-control" value="<?php echo $brg ?>" disabled>
-                    <input type="hidden" name="brg1" value="<?php echo $brg ?>">
-                  </div>
-                
+                  <?php $i=0; foreach($brg as $u){?>
+                    <?php if($i==0){ ?>
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col">
+                          <label>Nama Barang</label>
+                          <input type="text" name="brg" class="form-control" value="<?php echo $u->name ?>" disabled>
+                          <input type="hidden" name="brg1[]" value="<?php echo $u->name ?>">
+                          <input type="hidden" name="kode[]" value="<?php echo $u->price ?>">
+                        </div>
+                        <div class="col">
+                          <label>Jml Barang</label>
+                          <input type="text" name="jml" class="form-control" value="<?php echo $u->count ?>" disabled>
+                          <input type="hidden" name="jml1[]" value="<?php $u->count ?>">
+                        </div>
+                      </div>
+                    </div>
+                    <?php }else{?>
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col">
+                          
+                          <input type="text" name="brg" class="form-control" value="<?php echo $u->name ?>" disabled>
+                          <input type="hidden" name="brg1[]" value="<?php echo $u->name ?>">
+                          <input type="hidden" name="kode[]" value="<?php echo $u->price ?>">
+                        </div>
+                        <div class="col">
+                          
+                          <input type="text" name="jml" class="form-control" value="<?php echo $u->count ?>" disabled>
+                          <input type="hidden" name="jml1[]" value="<?php $u->count ?>">
+                        </div>
+                      </div>
+                    </div>
+                    <?php } ?>
+                  <?php $i++; }?>
                 
                   <div class="form-group">
                     <label>Tgl Pinjam</label>
@@ -123,6 +126,28 @@ endif;
                   <button type="submit" class="btn btn-primary">Pinjam</button>
                 </div>
               <?php echo form_close(); ?>
+        </div>
+      </div>
+      <!-- detail -->
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fa fa-text-width"></i>
+              Detail Barang
+            </h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <?php foreach($brg as $u){?>
+              <?php 
+                $foto=$this->db->get_where('barang',array('kode_barang'=>$u->price));
+                $namaFoto=$foto->row_array();
+              ?>
+              <img width="100px" height="100px" src="<?php echo base_url() ?>admin-lte-master/foto/barang/<?= $namaFoto['foto']?>">
+            <?php }?>
+          </div>
+          <!-- /.card-body -->
         </div>
       </div>
     </div>

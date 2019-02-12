@@ -301,13 +301,13 @@ class Admin extends CI_Controller{
 			//var_dump($this->input->post('cek')); die;
 			$id=$this->input->post('id');
 			$data=array(
-				'nip'								=> $this->input->post('nip'),
-				'nama'							=> $this->input->post('nama'),
-				'jabatan'						=> $this->input->post('jabatan'),
+				'nip'				=> $this->input->post('nip'),
+				'nama'				=> $this->input->post('nama'),
+				'jabatan'			=> $this->input->post('jabatan'),
 				'pangkat_golongan'	=> $this->input->post('pangkat_golongan'),
-				'seksi'							=> $this->input->post('seksi'),
-				'tgl_lahir'					=> $this->input->post('tgl_lahir'),
-				'level_user'				=> $this->input->post('level_user'),
+				'seksi'				=> $this->input->post('seksi'),
+				'tgl_lahir'			=> $this->input->post('tgl_lahir'),
+				'level_user'		=> $this->input->post('level_user'),
 			);
 			$this->db->where('id',$id);
 			$result=$this->db->update('anggota',$data);
@@ -391,21 +391,57 @@ class Admin extends CI_Controller{
 			echo "nama Tdk Ketemu";
 		}
         
-  }
-	function form_pinjam($id){
-		$ez=$this->M_admin->ambil_row($id)->row_array();
+	}
+	function get_foto($kode){
+		$foto=$this->db->get_where('barang',array('kode_barang'=>$kode));
+	}
+	function form_pinjam(){
+		$list=json_decode($this->input->post('list'));
+		// var_dump($list); die;
 		$data['angg'] = $this->db->get('anggota')->result();
-		$data['sedia']=$ez['jml_tersedia'];
-		$data['id']=$id;
-		$data['brg']=$ez['nama_barang'];
+		$data['brg']=$list;
 		$data['judul']="Peminjaman";
 		$this->load->view('admin/header-admin',$data);
 		$this->load->view('admin/aside-admin',$data);
 		$this->load->view('admin/form-pinjam-admin',$data);
 		$this->load->view('admin/footer-admin',$data);
 	}
-	
+	function inPinjam(){
+		$kodePinjam = rand(1000,9999);
+		
+		if(count($this->input->post('kode'))>1){
+			//input banyak
+			//echo $this->input->post('kode')[0]; die;
+			
+			for($i=0;$i<count($this->input->post('kode'));$i++){
+				$data = $this->M_admin->ambil_row($this->input->post('kode')[$i])->row_array();
+				
+				if($data["jml_tersedia"]>=$this->input->post('jml1')[$i]){
+					var_dump($data); die;
+					$in = array(
+						'nip'			=> $this->input->post(),
+						'nama'			=> $this->input->post(),
+						'jabatan'		=> $angg['jabatan'],
+						'seksi'			=> $angg['seksi'],
+						'kode_barang'	=> $data['kode_barang'],
+						'nama_barang'	=> $this->input->post('brg1'),
+						'jml_pinjam'	=> $this->input->post('unit'),
+						'tgl_pinjam'	=> $this->input->post('tgl_pinjam1'),
+						'tgl_kembali'	=> $this->input->post('tgl_kembali'),
+						'status'		=> $status
+					);
+					$masuk=$this->db->insert('pinjam_barang',$in);
+				}else{
+					//jumlah yg  di pinjam terlalu banyak
+				}
+			}
+		}else{
+			//input satu
+		}
+	}
 	function tambah_pinjam(){
+		
+
 		date_default_timezone_set('Asia/Jakarta');
 		$exp_date = $this->input->post('tgl_kembali');
 		$todays_date = $this->input->post('tgl_pinjam1'); 
@@ -449,16 +485,16 @@ class Admin extends CI_Controller{
 				$result=$this->db->update('barang',$set);
 				if($result==true){
 					$in = array(
-						'nip'					=> $nip,
-						'nama'				=> $this->input->post('nama'),
-						'jabatan'			=> $angg['jabatan'],
-						'seksi'				=> $angg['seksi'],
+						'nip'			=> $nip,
+						'nama'			=> $this->input->post('nama'),
+						'jabatan'		=> $angg['jabatan'],
+						'seksi'			=> $angg['seksi'],
 						'kode_barang'	=> $data['kode_barang'],
 						'nama_barang'	=> $this->input->post('brg1'),
 						'jml_pinjam'	=> $this->input->post('unit'),
 						'tgl_pinjam'	=> $this->input->post('tgl_pinjam1'),
 						'tgl_kembali'	=> $this->input->post('tgl_kembali'),
-						'status'			=> $status
+						'status'		=> $status
 					);
 					$masuk=$this->db->insert('pinjam_barang',$in);
 					

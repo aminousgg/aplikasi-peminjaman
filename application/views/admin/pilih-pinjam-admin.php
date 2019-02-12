@@ -61,8 +61,8 @@
                       </td>
 
                     <?php } else { ?>
-                      <td id="sedia"><?php echo $row->jml_tersedia ?></td>
-                      <td>
+                      <td id="sedia<?= $row->kode_barang ?>"><?php echo $row->jml_tersedia ?></td>
+                      <td id="pilih<?= $row->kode_barang ?>">
                         <button data-sedia="<?= $row->jml_tersedia ?>" data-kode="<?= $row->kode_barang ?>" data-nama="<?= $row->nama_barang ?>" type="button" class="add-to-cart btn btn-info">pilih</button>
                       </td>
                     <?php } ?>
@@ -131,13 +131,12 @@
 <!-- <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> -->
 <script src="<?php echo base_url() ?>admin-lte-master/pesan/js/shoppingCart.js"></script>
 <script>
-
     $(".add-to-cart").click(function(event){
         event.preventDefault();
         var name = $(this).attr("data-nama");
         var price = Number($(this).attr("data-kode"));
-        //alert('asdas');
-        shoppingCart.addItemToCart(name, price, 1);
+        var sedia = Number($(this).attr("data-sedia"));
+        shoppingCart.addItemToCart(name, sedia, price, 1);
         displayCart();
     });
 
@@ -148,7 +147,7 @@
 
     function displayCart() {
         var cartArray = shoppingCart.listCart();
-        //console.log(cartArray);
+        console.log(cartArray);
         var output = "";
 
         for (var i in cartArray) {
@@ -159,40 +158,44 @@
                 +cartArray[i].name
                 +"' value='"+cartArray[i].count+"' readonly ></div>"
                 +"<div class='col-4'> <button class='plus-item' data-name='"
-                +cartArray[i].name+"'>+</button>"
+                +cartArray[i].price+"' data-sedia='"+cartArray[i].sedia+"'>+</button>"
                 +" <button class='subtract-item' data-name='"
-                +cartArray[i].name+"'>-</button>"
+                +cartArray[i].price+"'>-</button>"
                 +" <button class='delete-item' data-name='"
-                +cartArray[i].name+"'>batal</button></div>"
+                +cartArray[i].price+"'>batal</button></div>"
                 +"</div></div></li>";
         }
         if(cartArray.length!==0){
-          $("#tombol").html('<button type="button" class="btn btn-success">Pinjam</button>');
+          var data = JSON.stringify(cartArray);
+          $("#tombol").html("<form action='<?php echo base_url() ?>admin/form_pinjam' method='post'><button name='list' value='"+data+"' type='submit' class='btn btn-success'>Pinjam</button></form>");
+          // $("#tombol").html(clicks);
         }else{
           $("#tombol").html('');
         }
         $("#show-cart").html(output);
+        
         $("#count-cart").html( shoppingCart.countCart() );
         $("#total-cart").html( shoppingCart.totalCart() );
-        
 
     }
 
     $("#show-cart").on("click", ".delete-item", function(event){
-        var name = $(this).attr("data-name");
-        shoppingCart.removeItemFromCartAll(name);
+        var price = Number($(this).attr("data-name"));
+        shoppingCart.removeItemFromCartAll(price);
         displayCart();
     });
 
     $("#show-cart").on("click", ".subtract-item", function(event){
-        var name = $(this).attr("data-name");
-        shoppingCart.removeItemFromCart(name);
+        var price = Number($(this).attr("data-name"));
+        shoppingCart.removeItemFromCart(price);
         displayCart();
     });
 
     $("#show-cart").on("click", ".plus-item", function(event){
-        var name = $(this).attr("data-name");
-        shoppingCart.addItemToCart(name, 0, 1);
+        var price = Number($(this).attr("data-name"));
+        var sedia = Number($(this).attr("data-sedia"));
+        shoppingCart.addItemToCart("",sedia, price, 1);
+        //name, sedia, price, count
         displayCart();
     });
 
@@ -202,7 +205,8 @@
         shoppingCart.setCountForItem(name, count);
         displayCart();
     });
-
     displayCart();
-
+    function kirim(list){
+      window.location.href="<?php echo base_url() ?>admin/tambah_pinjam/"+list;
+    }
 </script>

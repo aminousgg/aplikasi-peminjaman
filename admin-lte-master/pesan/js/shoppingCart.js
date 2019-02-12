@@ -5,10 +5,12 @@ var shoppingCart = (function () {
     // Private methods and properties
     var cart = [];
 
-    function Item(name, price, count) {
+    function Item(name, sedia, price, count) {
         this.name = name
+        this.sedia = sedia
         this.price = price
         this.count = count
+        
     }
 
     function saveCart() {
@@ -29,26 +31,34 @@ var shoppingCart = (function () {
     // Public methods and properties
     var obj = {};
 
-    obj.addItemToCart = function (name, price, count) {
+    obj.addItemToCart = function (name, sedia, price, count) {
         //alert('aasd');
         for (var i in cart) {
-            if (cart[i].name === name) {
-                cart[i].count += count;
-                saveCart();
-                return;
+            
+            if (cart[i].price === price) {
+                if(cart[i].count>=cart[i].sedia){
+                    return;
+                }else{
+                    cart[i].count += count;
+                    saveCart();
+                    return;
+                }
+                
             }
+            
+            
         }
 
-        console.log("addItemToCart:", name, price, count);
+        console.log("addItemToCart:", name, sedia, price, count);
 
-        var item = new Item(name, price, count);
+        var item = new Item(name, sedia, price, count);
         cart.push(item);
         saveCart();
     };
 
     obj.setCountForItem = function (name, count) {
         for (var i in cart) {
-            if (cart[i].name === name) {
+            if (cart[i].price === price) {
                 cart[i].count = count;
                 break;
             }
@@ -57,9 +67,9 @@ var shoppingCart = (function () {
     };
 
 
-    obj.removeItemFromCart = function (name) { // Removes one item
+    obj.removeItemFromCart = function (price) { // Removes one item
         for (var i in cart) {
-            if (cart[i].name === name) { // "3" === 3 false
+            if (cart[i].price === price) { // "3" === 3 false
                 cart[i].count--; // cart[i].count --
                 if (cart[i].count === 0) {
                     cart.splice(i, 1);
@@ -71,9 +81,9 @@ var shoppingCart = (function () {
     };
 
 
-    obj.removeItemFromCartAll = function (name) { // removes all item name
+    obj.removeItemFromCartAll = function (price) { // removes all item name
         for (var i in cart) {
-            if (cart[i].name === name) {
+            if (cart[i].price === price) {
                 cart.splice(i, 1);
                 break;
             }
@@ -97,13 +107,13 @@ var shoppingCart = (function () {
         return totalCount;
     };
 
-    obj.totalCart = function () { // -> return total cost
-        var totalCost = 0;
-        for (var i in cart) {
-            totalCost += cart[i].price * cart[i].count;
-        }
-        return totalCost.toFixed(2);
-    };
+    // obj.totalCart = function () { // -> return total cost
+    //     var totalCost = 0;
+    //     for (var i in cart) {
+    //         totalCost += cart[i].price * cart[i].count;
+    //     }
+    //     return totalCost.toFixed(2);
+    // };
 
     obj.listCart = function () { // -> array of Items
         var cartCopy = [];
