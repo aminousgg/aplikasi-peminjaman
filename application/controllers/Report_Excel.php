@@ -181,13 +181,13 @@ class Report_Excel extends CI_Controller {
         $excel->getActiveSheet()->getStyle('A2')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER); // Set text center untuk kolom A1
     
         // Buat header tabel nya pada baris ke 4
-        $excel->setActiveSheetIndex(0)->setCellValue('A4', "No"); // Set kolom A3 dengan tulisan "NO"
-        $excel->setActiveSheetIndex(0)->setCellValue('B4', "Kode"); // Set kolom B3 dengan tulisan "NIS"
-        $excel->setActiveSheetIndex(0)->setCellValue('C4', "Nama Barang"); // Set kolom C3 dengan tulisan "NAMA"
-        $excel->setActiveSheetIndex(0)->setCellValue('D4', "Merk"); // Set kolom D3 dengan tulisan "JENIS KELAMIN"
-        $excel->setActiveSheetIndex(0)->setCellValue('E4', "Unit"); // Set kolom E3 dengan tulisan "ALAMAT"
-        $excel->setActiveSheetIndex(0)->setCellValue('F4', "Tersedia"); // Set kolom D3 dengan tulisan "JENIS KELAMIN"
-        $excel->setActiveSheetIndex(0)->setCellValue('G4', "Tanggal Masuk"); // Set kolom E3 dengan tulisan "ALAMAT"
+        $excel->setActiveSheetIndex(0)->setCellValue('A4', "No"); // Set kolom A4 dengan tulisan "NO"
+        $excel->setActiveSheetIndex(0)->setCellValue('B4', "Kode"); // Set kolom B4 dengan tulisan "NIS"
+        $excel->setActiveSheetIndex(0)->setCellValue('C4', "Nama Barang"); // Set kolom C4 dengan tulisan "NAMA"
+        $excel->setActiveSheetIndex(0)->setCellValue('D4', "Merk"); // Set kolom D4 dengan tulisan "JENIS KELAMIN"
+        $excel->setActiveSheetIndex(0)->setCellValue('E4', "Unit"); // Set kolom E4 dengan tulisan "ALAMAT"
+        $excel->setActiveSheetIndex(0)->setCellValue('F4', "Tersedia"); // Set kolom F4 dengan tulisan "JENIS KELAMIN"
+        $excel->setActiveSheetIndex(0)->setCellValue('G4', "Tanggal Masuk"); // Set kolom G4 dengan tulisan "ALAMAT"
     
         // Apply style header yang telah kita buat tadi ke masing-masing kolom header
         $excel->getActiveSheet()->getStyle('A4')->applyFromArray($style_col);
