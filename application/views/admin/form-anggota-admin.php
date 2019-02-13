@@ -61,6 +61,10 @@
                                 <input type="text" name="seksi" class="form-control" placeholder="Seksi Bagian">
                             </div>
                             <div class="form-group">
+                                <label>Tgl Lahir</label>
+                                <input type="date" name="tgl_lahir" class="form-control">
+                            </div>
+                            <!-- <div class="form-group">
                               <div class="row">
                                 <div class="col">
                                   <label>Tgl Lahir</label>
@@ -74,7 +78,7 @@
                                   </select>
                                 </div>
                               </div>
-                            </div>
+                            </div> -->
                         </div>
                     <!-- /.card-body -->
 
