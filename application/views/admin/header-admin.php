@@ -66,7 +66,27 @@
           <div style="padding-top:15px; padding-bottom:15px; background-color:#17a2b8;" class="image">
             <img style="border-style: solid; border-color: #ffff; display: block;  margin-left: auto; margin-right: auto;" width=60px height=60px src="<?php echo base_url() ?>admin-lte-master/dist/img/user2-160x160.jpg" class="img-circle elevation-2">
           </div>
-            Admin
+            <!--  ambil nama  -->
+            <?php if($this->session->userdata('admin')['nama']==null){ 
+              $cek=$this->session->userdata('petugas')['nama'];
+              $angg=$this->db->get_where('anggota',array('nip'=>$cek))->row_array();
+              if($angg['nama']!=null){
+                echo $angg['nama'];
+              }else{
+                echo "Developer";
+              }
+              
+            }else{
+              $cek=$this->session->userdata('admin')['nama'];
+              $angg=$this->db->get_where('anggota',array('nip'=>$cek))->row_array();
+              if($angg['nama']!=null){
+                echo $angg['nama'];
+              }else{
+                echo "Developer";
+              }
+            }
+            ?>
+            
           <button type="button" onclick="window.location.href='<?php echo base_url() ?>admin/logout' " class="btn btn-danger float-right">Logout</button>
         </div>
       </li>

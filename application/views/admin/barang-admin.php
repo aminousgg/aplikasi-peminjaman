@@ -59,8 +59,11 @@ shoppingCart.clearCart();
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Data Barang</h3>
-              <button style="margin-top:-25px;" onclick="link()" class="btn btn-success float-right"><i class="ion ion-android-add"></i>  Tambah Barang</button>
+              <?php if($this->session->userdata('admin')['nama']==null){ 
               
+              }else {?>
+                <button style="margin-top:-25px;" onclick="link()" class="btn btn-success float-right"><i class="ion ion-android-add"></i>  Tambah Barang</button>
+              <?php } ?>
             </div>
             <script>
               function link() {
@@ -74,43 +77,57 @@ shoppingCart.clearCart();
                 <thead>
                   <tr>
                     <th style="font-size:13px; width:10px;">No</th>
+                    <th style="">Kode</th>
                     <th style="">Nama Barang</th>
                     <th style="">Merk</th>
                     <th style="">Jumlah</th>
                     <th style="">Tersedia</th>
-                    <th style="">Aksi</th>
+                    <?php if($this->session->userdata('admin')['nama']==null){ 
+              
+                    }else {?>
+                      <th style="width:100px;">Aksi</th>
+                    <?php } ?>
+                    
                   </tr>
                 </thead>
                 <tbody>
                   <?php $i=1; foreach($tabel_record as $row){ ?>
                     <tr>
                       <td><?php echo $i; ?></td>
-                      
-                      <td><?php echo $row->nama_barang ?></td>
+                      <td><?php echo $row->kode_barang ?></td>
+                      <td><a href="#" data-toggle="modal" data-target="#<?php echo $row->id ?>"><?php echo $row->nama_barang ?></a></td>
                       <td><?php echo $row->merk ?></td>
                       
                       <td>
                         <?php echo $row->jml_barang ?>
-                        <button data-toggle="modal" data-target="#<?php echo $row->id ?>_unit" class="btn btn-success float-right"><i class="ion ion-android-add"></i></button>
+                        <?php if($this->session->userdata('admin')['nama']==null){ 
+              
+                        }else {?>
+                          <button data-toggle="modal" data-target="#<?php echo $row->id ?>_unit" class="btn btn-success float-right"><i class="ion ion-android-add"></i></button>
+                        <?php } ?>
+                        
                       </td>
                       <?php if($row->jml_tersedia==0){ ?>
                         <td style="color:red;"><?php echo $row->jml_tersedia; ?></td>
                       <?php }else{ ?>
                         <td><?php echo $row->jml_tersedia;}  ?></td>
-                      
-                      <td>
-                        <div class="button-group">
-                          
-                          <script>
-                            function link1() {
-                              window.location.href='<?php echo base_url()."admin/edit_form_pinjam/".$row->id ?>';
-                            }
-                          </script>
-                          <button type="button" data-toggle="modal" data-target="#<?php echo $row->id ?>" class="btn btn-info"> <i class="ion ion-ios-more" title="Detail"></i> </button>
-                          <button type="button" onclick="window.location='<?php echo base_url() ?>admin/edit_form_barang/<?php echo $row->id ?>';" class="btn btn-warning" title="Edit" > <i class="ion ion-edit"></i> </button>
-                          <button type="button" onclick="del(<?php echo $row->id?>)" class="btn btn-danger" title="Hapus"> <i class="ion ion-android-delete"></i> </button>
-                        </div>
-                      </td>
+                        <?php if($this->session->userdata('admin')['nama']==null){ 
+              
+                        }else {?>
+                          <td>
+                            <div class="button-group">
+                              
+                              <script>
+                                function link1() {
+                                  window.location.href='<?php echo base_url()."admin/edit_form_pinjam/".$row->id ?>';
+                                }
+                              </script>
+                              
+                              <button type="button" onclick="window.location='<?php echo base_url() ?>admin/edit_form_barang/<?php echo $row->id ?>';" class="btn btn-info" title="Edit" > <i class="ion ion-edit"></i> </button>
+                              <button type="button" onclick="del(<?php echo $row->id?>)" class="btn btn-danger" title="Hapus"> <i class="ion ion-android-delete"></i> </button>
+                            </div>
+                          </td>
+                        <?php } ?>
                       <?php $i++; ?>
                     </tr>
                     <!-- detail -->
@@ -194,14 +211,17 @@ shoppingCart.clearCart();
                 <tfoot>
                   <tr>
                     <th style="font-size:13px; width:10px;">No</th>
-                    
+                    <th style="">Kode</th>
                     <th style="">Nama Barang</th>
                     <th style="">Merk</th>
                     
                     <th style="">Jumlah</th>
                     <th style="">Tersedia</th>
-                    
-                    <th style="width:120px;">Aksi</th>
+                    <?php if($this->session->userdata('admin')['nama']==null){ 
+              
+                    }else {?>
+                      <th style="width:100px;">Aksi</th>
+                    <?php } ?>
                   </tr>
                 </tfoot>
               </table>

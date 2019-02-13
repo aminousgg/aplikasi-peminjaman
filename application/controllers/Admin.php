@@ -12,7 +12,7 @@ class Admin extends CI_Controller{
 
 	//==============================LOGIN & LOGOUT===================
 	function login(){
-		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			redirect(base_url('admin'));
 		}
 		else{
@@ -28,19 +28,28 @@ class Admin extends CI_Controller{
 			'password' => md5($password)
 			);
 		$cek = $this->M_login->cek_login("akun_admin",$where)->num_rows();
+		$level = $this->M_login->cek_login("akun_admin",$where)->row_array();
 		if($cek > 0){
- 
-			$data_session = array(
-				'nama' 		=> $username,
-				'status' 	=> "login",
-				'level'		=> "admin"
-				);
- 
-			$this->session->set_userdata('admin',$data_session);
-
-			//var_dump($this->session->userdata('admin','status'));die;
- 
-			redirect(base_url("admin"));
+			if($level['level_user']=="admin"){
+				$data_session = array(
+					'nama' 		=> $username,
+					'status' 	=> "login",
+					'level'		=> "admin"
+					);
+				$this->session->set_userdata('admin',$data_session);
+				//var_dump($this->session->userdata('admin','status'));die;
+				redirect(base_url("admin"));
+			}else{
+				$data_session = array(
+					'nama' 		=> $username,
+					'status' 	=> "login",
+					'level'		=> "petugas"
+					);
+				$this->session->set_userdata('petugas',$data_session);
+				//var_dump($this->session->userdata('admin','status'));die;
+				redirect(base_url("admin"));
+			}
+			
  
 		}else{
 			$this->session->set_flashdata('error', 'gagal login');
@@ -48,16 +57,23 @@ class Admin extends CI_Controller{
 		}
 	}
 	function logout(){
-		$this->session->unset_userdata('admin')["nama"];
-		$this->session->unset_userdata('admin')["level"];
-		$this->session->unset_userdata('admin')["status"];
+		if($this->session->unset_userdata('admin')["nama"]!=null){
+			$this->session->unset_userdata('admin')["nama"];
+			$this->session->unset_userdata('admin')["level"];
+			$this->session->unset_userdata('admin')["status"];
+		}
+		else{
+			$this->session->unset_userdata('petugas')["nama"];
+			$this->session->unset_userdata('petugas')["level"];
+			$this->session->unset_userdata('petugas')["status"];
+		}
 		//$this->session->sess_destroy('admin');
 		redirect(base_url('admin'));
 	}
 	//======================================================
 	// =============================BERANDA=================
 	function index(){
-		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 
 			$data['judul']="Beranda"; 
 			$data['brg'] = $this->db->get('barang')->num_rows();
@@ -76,7 +92,7 @@ class Admin extends CI_Controller{
 	//=====================================================
 	// ==============================BARANG================
 	function barang(){
-		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			$data['tabel_record'] = $this->M_admin->tampil_barang()->result();
 			$data['judul']="Barang";
 			$this->load->view('admin/header-admin',$data);
@@ -89,7 +105,7 @@ class Admin extends CI_Controller{
 		
 	}
 	function tambah_barang(){
-		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			$data['judul']="Barang";
 			$this->load->view('admin/header-admin',$data);
 			$this->load->view('admin/aside-admin',$data);
@@ -102,7 +118,7 @@ class Admin extends CI_Controller{
 	}
 
 	function tambah_barang_aksi(){
-		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			$kode = rand(1000,9999);
 			$kode_barang = (string)$kode;
 
@@ -115,14 +131,14 @@ class Admin extends CI_Controller{
 			$data = array(
 				'kode_barang'		=> $kode_barang,
 				'nama_barang'		=> $this->input->post('nama_barang'),
-				'merk'					=> $this->input->post('merk'),
+				'merk'				=> $this->input->post('merk'),
 				'kategori'			=> $this->input->post('kategori'),
 				'tgl_masuk'			=> $this->input->post('tgl_masuk'),
-				'jml_terpinjam'	=> 0,
+				'jml_terpinjam'		=> 0,
 				'spesifikasi'		=> $this->input->post('spesifikasi'),
 				'jml_barang'		=> $this->input->post('jml_barang'),
-				'jml_tersedia'	=> $this->input->post('jml_barang'),
-				'foto'					=> $hasil['file_name'],
+				'jml_tersedia'		=> $this->input->post('jml_barang'),
+				'foto'				=> $hasil['file_name'],
 			);
 			$result=$this->M_admin->tambah_brg('barang', $data);
 			if($result==true){
@@ -157,7 +173,7 @@ class Admin extends CI_Controller{
 		
 	}
 	function edit_form_barang($id){
-		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			$data['brg']=$this->M_admin->get_brg($id)->row_array();
 			//var_dump($data['brg']); die;
 			$data['judul']="Barang";
@@ -227,7 +243,7 @@ class Admin extends CI_Controller{
 	//==========================================================================
 	//======================================ANGGOTA=============================
 	function anggota(){
-		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			$data['tabel_record'] = $this->M_admin->tampil_anggota()->result();
 			$data['judul']="Anggota";
 			$this->load->view('admin/header-admin',$data);
@@ -240,7 +256,7 @@ class Admin extends CI_Controller{
 		
 	}
 	function form_anggota(){
-		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			$data['judul']="Anggota";
 			$this->load->view('admin/header-admin',$data);
 			$this->load->view('admin/aside-admin',$data);
@@ -252,7 +268,7 @@ class Admin extends CI_Controller{
 		
 	}
 	function tambah_agt_aksi(){
-		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			// Upload
 			$config['upload_path'] 		= './admin-lte-master/foto/agt/';
 			$config['allowed_types'] 	= 'jpg|jpeg|png|gif';
@@ -284,7 +300,7 @@ class Admin extends CI_Controller{
 		
 	}
 	function edit_form_anggota($id){
-		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			$data['angg']=$this->M_admin->get_form_anggota($id)->row_array();
 			$data['judul']="Anggota";
 			$this->load->view('admin/header-admin',$data);
@@ -356,7 +372,7 @@ class Admin extends CI_Controller{
 	//=========================================================================
 	// ===========================Peminjaman==================================
 	function pinjam(){
-		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			$data['tabel_record'] = $this->M_admin->tampil_pinjam()->result();
 			$data['judul']="Peminjaman";
 			$this->load->view('admin/header-admin',$data);
@@ -369,7 +385,7 @@ class Admin extends CI_Controller{
 		
 	}
 	function pinjam_barang(){
-		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			$data['tabel_record'] = $this->M_admin->tampil_barang()->result();
 			$data['judul']="Peminjaman";
 			$this->load->view('admin/header-admin',$data);
@@ -542,7 +558,7 @@ class Admin extends CI_Controller{
 	// ========================================================================
 	//==================================PENGEMBALIAN===========================
 	function kembali(){
-		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			$data['tabel_record'] = $this->M_admin->tampil_kembali()->result();
 			$data['judul']="Kembali";
 			$this->load->view('admin/header-admin',$data);
@@ -592,7 +608,7 @@ class Admin extends CI_Controller{
 	//=========================================================================
 	//===============================LAPORAN===================================
 	function laporan(){
-		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			$data['judul']="Laporan";
 			$this->load->view('admin/header-admin',$data);
 			$this->load->view('admin/aside-admin',$data);

@@ -102,19 +102,13 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body p-0">
+              
               <ul id="show-cart" class="products-list product-list-in-card pl-2 pr-2">
                 <li class="item">
-                  <!-- <div class="product-img">
-                    <img src="" alt="Image" class="img-size-50">
-                  </div>
-                  <div class="product-info">
-                    <a href="javascript:void(0)" class="product-title">Samsung TV</a>
-                    <span class="product-description">
-                      Samsung 32" 1080p 60Hz LED Smart HDTV.
-                    </span>
-                  </div> -->???
+                  ???
                 </li>
               </ul>
+              <p style="margin-left: 20px; color: red;" id="maks"></p>
             </div>
             <!-- /.card-body -->
             <div id="tombol" class="card-footer text-center">
@@ -132,16 +126,27 @@
 <script src="<?php echo base_url() ?>admin-lte-master/pesan/js/shoppingCart.js"></script>
 <script>
     $(".add-to-cart").click(function(event){
-        event.preventDefault();
-        var name = $(this).attr("data-nama");
-        var price = Number($(this).attr("data-kode"));
-        var sedia = Number($(this).attr("data-sedia"));
-        shoppingCart.addItemToCart(name, sedia, price, 1);
-        displayCart();
+        if(shoppingCart.listCart().length<5){ // maksimal pinjem 5
+          event.preventDefault();
+          var name = $(this).attr("data-nama");
+          var price = Number($(this).attr("data-kode"));
+          var sedia = Number($(this).attr("data-sedia"));
+          shoppingCart.addItemToCart(name, sedia, price, 1);
+          displayCart();
+        }else{
+          var name = $(this).attr("data-nama");
+          var price = Number($(this).attr("data-kode"));
+          var sedia = Number($(this).attr("data-sedia"));
+          shoppingCart.addItemToCart("",sedia, price, 1);
+          //name, sedia, price, count
+          displayCart();
+        }
+        
     });
 
     $("#clear-cart").click(function(event){
         shoppingCart.clearCart();
+        $("#maks").html('');
         displayCart();
     });
 
@@ -169,8 +174,12 @@
           var data = JSON.stringify(cartArray);
           $("#tombol").html("<form action='<?php echo base_url() ?>admin/form_pinjam' method='post'><button name='list' value='"+data+"' type='submit' class='btn btn-success'>Pinjam</button></form>");
           // $("#tombol").html(clicks);
+          //$("#tombol").html(cartArray.length);
         }else{
           $("#tombol").html('');
+        }
+        if(cartArray.length==5){
+          $("#maks").html('Maks Pinjam 5 jenis barang');
         }
         $("#show-cart").html(output);
         

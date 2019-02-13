@@ -14,7 +14,28 @@
         <img src="<?php echo base_url() ?>admin-lte-master/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="<?php echo base_url()?>admin" class="d-block">Admin</a>
+        <a href="<?php echo base_url()?>admin" class="d-block">
+          <?php if($this->session->userdata('admin')['nama']==null){ 
+              $cek=$this->session->userdata('petugas')['nama'];
+              $angg=$this->db->get_where('anggota',array('nip'=>$cek))->row_array();
+              if($angg['nama']!=null){
+                echo $angg['nama'];
+              }else{
+                echo "Developer";
+              }
+              
+            }else{
+              $cek=$this->session->userdata('admin')['nama'];
+              $angg=$this->db->get_where('anggota',array('nip'=>$cek))->row_array();
+              if($angg['nama']!=null){
+                echo $angg['nama'];
+              }else{
+                echo "Developer";
+              }
+            }
+          ?>
+        
+        </a>
       </div>
     </div>
 

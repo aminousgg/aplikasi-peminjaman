@@ -49,11 +49,16 @@ var shoppingCart = (function () {
             
         }
 
-        console.log("addItemToCart:", name, sedia, price, count);
-
-        var item = new Item(name, sedia, price, count);
-        cart.push(item);
-        saveCart();
+        
+        if(name!==""){ // maksimal pinjem 5
+            console.log("addItemToCart:", name, sedia, price, count);
+            var item = new Item(name, sedia, price, count);
+            cart.push(item);
+            saveCart();
+        }else{
+            return;
+        }
+        
     };
 
     obj.setCountForItem = function (name, count) {

@@ -57,7 +57,15 @@ shoppingCart.clearCart();
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Data Anggota</h3>
-            <button style="margin-top:-25px;" onclick="link()" class="btn btn-success float-right"><i class="ion ion-android-add"></i>  Tambah Anggota</button>
+            <?php if($this->session->userdata('admin')['nama']==null){ 
+              
+            }else {?>
+              <button style="margin-top:-25px; margin-left: 10px;" onclick="link()" class="btn btn-info float-right"><i class="ion ion-android-add"></i>  Tambah Anggota</button>
+              <button style="margin-top:-25px;" class="btn btn-info float-right"><i class="ion ion-android-add"></i>  Daftarkan Petugas</button>
+            <?php }?>
+            
+            
+            
           </div>
           <script>
             function link() {
@@ -75,8 +83,11 @@ shoppingCart.clearCart();
                   <th style="">Jabatan</th>
                   <th style="">Pangkat/Gol</th>
                   <th style="">Bidang</th>
-                  <th style="">Level User</th>
-                  <th style="">Aksi</th>
+                  <?php if($this->session->userdata('admin')['nama']==null){ 
+              
+                  }else {?>
+                    <th style="">Aksi</th>
+                  <?php } ?>
                 </tr>
               </thead>
               <tbody>
@@ -84,18 +95,25 @@ shoppingCart.clearCart();
                   <tr>
                     <td><?php echo $i; ?></td>
                     <td><?php echo $row->nip ?></td>
-                    <td><?php echo $row->nama ?></td>
+                    <td> <a href="#" data-toggle="modal" data-target="#<?php echo $row->id ?>" title="Detail"><?php echo $row->nama ?></a></td>
                     <td><?php echo $row->jabatan ?></td>
                     <td><?php echo $row->pangkat_golongan ?></td>
                     <td><?php echo $row->seksi ?></td>
-                    <td><?php echo $row->level_user ?></td>
+                    
+                    
+                    <?php if($this->session->userdata('admin')['nama']==null){ 
+              
+                    }else {?>
                     <td>
                       <div class="button-group">
-                        <button type="button" data-toggle="modal" data-target="#<?php echo $row->id ?>" class="btn btn-info" title="Detail"> <i class="ion ion-ios-more"></i> </button>
-                        <button type="button" onclick="window.location='<?php echo base_url() ?>admin/edit_form_anggota/<?php echo $row->id ?>';" class="btn btn-warning" title="Edit"> <i class="ion ion-edit"></i> </button>
+                          
+                        <button type="button" onclick="window.location='<?php echo base_url() ?>admin/edit_form_anggota/<?php echo $row->id ?>';" class="btn btn-info" title="Edit"> <i class="ion ion-edit"></i> </button>
                         <button type="button" onclick="del(<?php echo $row->id?>)" class="btn btn-danger"> <i class="ion ion-android-delete" title="Hapus"></i> </button>
                       </div>
                     </td>
+                    <?php } ?>
+                        
+                    
                     <?php $i++; ?>
                   </tr>
                   <!-- detail -->
@@ -126,7 +144,7 @@ shoppingCart.clearCart();
                               &nbsp;:&nbsp;<?php echo $row->pangkat_golongan ?><br>
                               &nbsp;:&nbsp;<?php echo $row->seksi ?><br>
                               &nbsp;:&nbsp;<?php echo $row->tgl_lahir ?><br>
-                              &nbsp;:&nbsp;<?php echo $row->level_user ?><br>
+                             
                             </div>
                             <div class="col-md-4">
                               <img src="<?php echo base_url().'admin-lte-master/foto/'.$row->foto ?>" width=150px height=150px>
@@ -154,8 +172,12 @@ shoppingCart.clearCart();
                   <th style="">Jabatan</th>
                   <th style="">Pangkat/Gol</th>
                   <th style="">Bidang</th>
-                  <th style="">Level User</th>
-                  <th style="">Aksi</th>
+                  
+                  <?php if($this->session->userdata('admin')['nama']==null){ 
+              
+                  }else {?>
+                    <th style="">Aksi</th>
+                  <?php } ?>
                 </tr>
               </tfoot>
             </table>
