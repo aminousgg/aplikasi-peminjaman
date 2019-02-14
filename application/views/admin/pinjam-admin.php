@@ -85,7 +85,7 @@ shoppingCart.clearCart();
             <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th style="font-size:13px; width:10px;">No</th>
+                  <th style="font-size:13px; width:10px;">kode</th>
                   <th style="font-size:13px;">NIP</th>
                   <th style="font-size:13px;">Nama</th>
                   <th style="font-size:13px;">Nama Barang</th>
@@ -97,54 +97,113 @@ shoppingCart.clearCart();
                 </tr>
               </thead>
               <tbody>
-                <?php $i=1; foreach($tabel_record as $row){ ?>
+                <?php $i=0; for($i=0;$i<count((array)$tabel_record);$i++){ $count=0;?>
                   <tr>
-                    <td><?php echo $i; ?></td>
-                    <td><?php echo $row->nip ?></td>
-                    <td><?php echo $row->nama ?></td>
-                    <td><?php echo $row->nama_barang ?></td>
-                    <td><?php echo $row->jml_pinjam ?></td>
-                    <td><?php echo $row->tgl_pinjam ?></td>
-                    <?php 
-                      //Our "then" date.
-                      $then = $row->tgl_kembali;
-                      //Convert it into a timestamp.
-                      $then = strtotime($then);
-                      //Get the current timestamp.
-                      $now = time();
-                      //Calculate the difference.
-                      $difference = $then - $now;
-                      //Convert seconds into days.
-                      $days = floor($difference / (60*60*24) )+1;
-                      //echo $days;
-                    ?>
-                    <?php if($days>0){ ?>
-                      <td><?php echo $days." hari" ?></td>
-                    <?php } elseif($days==0) {?>
-                      <td style="color:#007bff;"><?php echo "hari ini" ?></td>
-                    <?php }else{ $day=$days*-1; ?>
-                      <td style="color:red;"><?php echo "Lewat ".$day." hari"; }?></td>
-                    
-
-                    <td><?php echo $row->status ?></td>
-                    <td>
-                      <div class="button-group">
+                    <?php
+                      $index=array();
+                      $row=(array)$tabel_record;
+                      //var_dump(count((array)$tabel_record)); die;
+                      //var_dump($row[$i]->kd_pinjam); die;
+                      $kd_pjm=$row[$i]->kd_pinjam;
+                      for($a=0;$a<count((array)$tabel_record);$a++){
+                        if($kd_pjm==$row[$a]->kd_pinjam){
+                          $index[$count]=$a;
+                          $count++;
+                        }
+                      }
+                      if($count>0){
+                        echo "<td>".$row[$i]->kd_pinjam."</td>";
+                        echo "<td>".$row[$i]->nip."</td>";
+                        echo "<td>".$row[$i]->nama."</td>";
+                        echo "<td>";
+                        for($b=0;$b<$count;$b++){
+                          echo $row[$index[$b]]->nama_barang.",";
+                        }
+                        echo "</td>";
+                        echo "<td>";
+                        for($b=0;$b<count($index);$b++){
+                          echo $row[$index[$b]]->jml_pinjam.",";
+                        }
+                        echo "</td>";
+                      ?>
+                        <?php
+                          echo "<td>".$row[$i]->tgl_pinjam."</td>";
+                          //Our "then" date.
+                          $then = $row[$i]->tgl_kembali;
+                          //Convert it into a timestamp.
+                          $then = strtotime($then);
+                          //Get the current timestamp.
+                          $now = time();
+                          //Calculate the difference.
+                          $difference = $then - $now;
+                          //Convert seconds into days.
+                          $days = floor($difference / (60*60*24) )+1;
+                          //echo $days;
+                        ?>
+                        <?php if($days>0){ ?>
+                          <td><?php echo $days." hari" ?></td>
+                        <?php } elseif($days==0) {?>
+                          <td style="color:#007bff;"><?php echo "hari ini" ?></td>
+                        <?php }else{ $day=$days*-1; ?>
+                          <td style="color:red;"><?php echo "Lewat ".$day." hari"; }?></td>
                         
-                        <!-- <script>
-                          function link1() {
-                            window.location.href='<?php //echo base_url()."admin/edit_form_pinjam/".$row->id ?>';
-                          }
-                        </script> -->
-                        <button type="button" onclick="confrm(<?php echo $row->id?>)" class="btn btn-danger" style="font-size:13px;">Kembalikan</button>
-                      </div>
-                    </td>
+
+                        <?php echo "<td>".$row[$i]->status."</td>"; ?></td>
+                        <td>
+                          <div class="button-group">
+                            
+                            <!-- <script>
+                              function link1() {
+                                window.location.href='<?php //echo base_url()."admin/edit_form_pinjam/".$row->id ?>';
+                              }
+                            </script>onclick="confrm(<?php echo $row[$i]->id?>)" -->
+                            <button type="button" data-toggle="modal" data-target="#kd_<?= $row[$i]->kd_pinjam ?>" class="btn btn-danger" style="font-size:13px;">Kembalikan</button>
+                          </div>
+                        </td>
+                        
+                        <div class="modal fade" id="kd_<?= $row[$i]->kd_pinjam ?>" role="dialog">
+                          <div class="modal-dialog">
+                          
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4 class="modal-title">Kembalikan Barang</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                
+                              </div>
+                              <div class="modal-body">
+                                <div class="row">
+                                  <div class="col-md-4">
+                                    Kode Pinjam <br>
+                                    <?= $row[$i]->kd_pinjam ?>
+                                  </div>
+                                  <div class="col-md-4">
+                                    
+                                  </div>
+                                  <div class="col-md-4">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                            
+                          </div>
+                        </div>
+
+
+
+                    <?php } ?>
+                      
+                      
                     <?php $i++; ?>
                   </tr>
                 <?php } ?>
               </tbody>
               <tfoot>
                 <tr>
-                  <th style="font-size:13px; width:10px;">No</th>
+                  <th style="font-size:13px; width:10px;">kode</th>
                   <th style="font-size:13px;">NIP</th>
                   <th style="font-size:13px;">Nama</th>
                   <th style="font-size:13px;">Nama Barang</th>

@@ -374,6 +374,7 @@ class Admin extends CI_Controller{
 	function pinjam(){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			$data['tabel_record'] = $this->M_admin->tampil_pinjam()->result();
+			//var_dump($data['tabel_record'][0]); die;
 			$data['judul']="Peminjaman";
 			$this->load->view('admin/header-admin',$data);
 			$this->load->view('admin/aside-admin',$data);
