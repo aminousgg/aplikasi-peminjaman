@@ -172,15 +172,43 @@ shoppingCart.clearCart();
                                 
                               </div>
                               <div class="modal-body">
+                                <?php
+                                echo "<p align='center'><b>".$row[$i]->kd_pinjam."</b><br>";
+                                echo $row[$i]->nama."<br></p>";
+                                
+                                ?>
                                 <div class="row">
-                                  <div class="col-md-4">
-                                    Kode Pinjam <br>
-                                    <?= $row[$i]->kd_pinjam ?>
-                                  </div>
-                                  <div class="col-md-4">
+                                  <div class="col-md-2">
+                                    <?php
+                                      $pjm=$this->db->get_where('pinjam_barang',array('kd_pinjam'=>$row[$i]->kd_pinjam));
+                                      
+                                      //var_dump($pjm->num_rows()); die;
+                                      for($c=1;$c<=$pjm->num_rows();$c++){
+                                        echo $c." Barang<br>";
+                                        echo "<br>";
+                                      }
+                                    ?>
+
                                     
                                   </div>
+                                  <div class="col-md-6">
+                                    <?php
+                                      foreach($pjm->result() as $u){
+                                        echo "&nbsp; :".$u->nama_barang."<br>";
+                                        // echo $u->id."<br>"; ambil id untuk mengembalikan
+                                        echo "<br>";
+                                      }
+                                    ?>
+                                  </div>
                                   <div class="col-md-4">
+                                    <?php
+                                      foreach($pjm->result() as $u){
+                                        echo $u->jml_pinjam."&nbsp;";
+                                        echo "<button type='button' class='btn btn-danger' style='font-size:9px;'>kembalikan</button><br>";
+                                        echo "<br>";
+                                        // echo $u->id."<br>"; ambil id untuk mengembalikan
+                                      }
+                                    ?>
                                   </div>
                                 </div>
                               </div>
