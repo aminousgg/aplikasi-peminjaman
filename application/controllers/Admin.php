@@ -572,7 +572,8 @@ class Admin extends CI_Controller{
 		
 	}
 	function kembalikan($id){
-		// echo $id; die;
+		//echo $id; die;
+		
 		$pinjam = $this->M_admin->ambil_pinjam($id)->row_array();
 		if($pinjam==null){
 			echo "Peminjam tdk ditemukan";

@@ -114,17 +114,17 @@ shoppingCart.clearCart();
                       if($count>0){
                         echo "<td>".$row[$i]->kd_pinjam."</td>";
                         echo "<td>".$row[$i]->nip."</td>";
-                        echo "<td>".$row[$i]->nama."</td>";
-                        echo "<td>";
+                        echo "<td><b>".$row[$i]->nama."</b></td>";
+                        echo "<td><ul>";
                         for($b=0;$b<$count;$b++){
-                          echo $row[$index[$b]]->nama_barang.",";
+                          echo "<li>".$row[$index[$b]]->nama_barang."</li>";
                         }
-                        echo "</td>";
-                        echo "<td>";
+                        echo "</ul></td>";
+                        echo "<td><ul>";
                         for($b=0;$b<count($index);$b++){
-                          echo $row[$index[$b]]->jml_pinjam.",";
+                          echo "<li>".$row[$index[$b]]->jml_pinjam."</li>";
                         }
-                        echo "</td>";
+                        echo "</ul></td>";
                       ?>
                         <?php
                           echo "<td>".$row[$i]->tgl_pinjam."</td>";
@@ -202,13 +202,23 @@ shoppingCart.clearCart();
                                   </div>
                                   <div class="col-md-4">
                                     <?php
+                                      
+                                      
                                       foreach($pjm->result() as $u){
                                         echo $u->jml_pinjam."&nbsp;";
-                                        echo "<button type='button' class='btn btn-danger' style='font-size:9px;'>kembalikan</button><br>";
+                                        
+                                        echo "<button type='button' onclick='kmbl(".$u->id.")' class='btn btn-danger' style='font-size:9px;'>kembalikan</button><br>";
                                         echo "<br>";
+                                        
                                         // echo $u->id."<br>"; ambil id untuk mengembalikan
                                       }
+                                      
                                     ?>
+                                    <script>
+                                      function kmbl(id){
+                                        window.location.href='<?= base_url() ?>admin/kembalikan/'+id;
+                                      }
+                                    </script>
                                   </div>
                                 </div>
                               </div>
