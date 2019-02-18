@@ -19,6 +19,9 @@ Class Report_pdf extends CI_Controller{
         $pdf->Cell(190,7,'Data Barang',0,1,'C');
         $pdf->SetFont('Arial','B',14);
         $pdf->Cell(190,7,'Dinas Energi Sumber Daya dan Mineral',0,1,'C');
+        date_default_timezone_set('Asia/Jakarta');
+        $pdf->SetFont('Arial','',11);
+        $pdf->Cell(190,7,date('Y-m-d'),0,1,'C');
         // Memberikan space kebawah agar tidak terlalu rapat
         $pdf->Cell(10,7,'',0,1,'');
         $pdf->SetX(30);
@@ -84,6 +87,9 @@ Class Report_pdf extends CI_Controller{
         $pdf->Cell(190,7,'Daftar Anggota',0,1,'C');
         $pdf->SetFont('Arial','B',14);
         $pdf->Cell(190,7,'Dinas Energi Sumber Daya dan Mineral',0,1,'C');
+        date_default_timezone_set('Asia/Jakarta');
+        $pdf->SetFont('Arial','',11);
+        $pdf->Cell(190,7,date('Y-m-d'),0,1,'C');
         // Memberikan space kebawah agar tidak terlalu rapat
         $pdf->Cell(10,7,'',0,1,'');
         $pdf->SetX(7);
@@ -139,6 +145,9 @@ Class Report_pdf extends CI_Controller{
         $pdf->Cell(190,7,'Data Peminjam',0,1,'C');
         $pdf->SetFont('Arial','B',14);
         $pdf->Cell(190,7,'Dinas Energi Sumber Daya dan Mineral',0,1,'C');
+        date_default_timezone_set('Asia/Jakarta');
+        $pdf->SetFont('Arial','',11);
+        $pdf->Cell(190,7,date('Y-m-d'),0,1,'C');
         // Memberikan space kebawah agar tidak terlalu rapat
         $pdf->Cell(10,7,'',0,1,'');
         $pdf->SetX(20);
@@ -215,6 +224,9 @@ Class Report_pdf extends CI_Controller{
         $pdf->Cell(190,7,'Data Kembali',0,1,'C');
         $pdf->SetFont('Arial','B',14);
         $pdf->Cell(190,7,'Dinas Energi Sumber Daya dan Mineral',0,1,'C');
+        date_default_timezone_set('Asia/Jakarta');
+        $pdf->SetFont('Arial','',11);
+        $pdf->Cell(190,7,date('Y-m-d'),0,1,'C');
         // Memberikan space kebawah agar tidak terlalu rapat
         $pdf->Cell(10,7,'',0,1,'');
         $pdf->SetX(20);

@@ -5,6 +5,34 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>user/login/login.css">
 </head>
 <body>
+<?php 
+  if($this->session->flashdata('error')):
+      $link="<script src='".base_url()."swal/sweetalert2.all.min.js'></script>";
+      echo $link;
+      echo '<script>
+              swal({
+                  type: "'.'error'.'",
+                  title: "'.'Gagal'.'",
+                  text: "'.$this->session->flashdata('error').'",
+                  timer: 10000,
+                  customClass: "'.'animated bounceIn'.'",
+                  })
+            </script>';
+  endif;
+ 
+  if($this->session->flashdata('success')):
+      $link="<script src='".base_url()."swal/sweetalert2.all.min.js'></script>";
+      echo $link;
+      echo '<script>
+              swal({
+                  type: "'.'success'.'",
+                  title: "'.'Berhasil'.'",
+                  text: "'.$this->session->flashdata('success').'",
+                  customClass: "'.'animated bounceIn'.'",
+                  })
+            </script>';
+  endif;
+?>
 <div class="login-card">
     <img class="center" src="<?php echo base_url() ?>user/logo/logo-esdm.png" width=70px height=70px>
     <h3 style="text-align:center;">Admin</h3>

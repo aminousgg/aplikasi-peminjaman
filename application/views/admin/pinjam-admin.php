@@ -2,20 +2,21 @@
 <script>
 shoppingCart.clearCart();
 </script>
+<?php $i=0; $count=0; ?>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <button class="btn btn-info" type="button">
-            <i class="ion ion-ios-printer-outline"></i> Cetak PDF
+          <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>Report_pdf/pdf_pinjam';">
+            <i class="ion ion-ios-printer-outline"></i> PDF
           </button>
           <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>Report_Excel/exportPinjam';">
-            <i class="ion ion-ios-printer-outline"></i> Cetak Excel
+            <i class="ion ion-ios-printer-outline"></i> Excel
           </button>
           <button class="btn btn-info" type="button">
-            <i class="ion ion-ios-printer-outline"></i> Cetak Langsung
+            <i class="ion ion-ios-printer-outline"></i> Print Out
           </button>
         </div>
       </div>
@@ -112,6 +113,12 @@ shoppingCart.clearCart();
                         }
                       }
                       if($count>0){
+                        if($i>0)
+                        {
+                          if($row[$i]->kd_pinjam==$row[$i-1]->kd_pinjam){
+                            continue;
+                          }
+                        }
                         echo "<td>".$row[$i]->kd_pinjam."</td>";
                         echo "<td>".$row[$i]->nip."</td>";
                         echo "<td><b>".$row[$i]->nama."</b></td>";
@@ -157,7 +164,7 @@ shoppingCart.clearCart();
                                 window.location.href='<?php //echo base_url()."admin/edit_form_pinjam/".$row->id ?>';
                               }
                             </script>onclick="confrm(<?php echo $row[$i]->id?>)" -->
-                            <button type="button" data-toggle="modal" data-target="#kd_<?= $row[$i]->kd_pinjam ?>" class="btn btn-danger" style="font-size:13px;">Kembalikan</button>
+                            <button type="button" data-toggle="modal" data-target="#kd_<?= $row[$i]->kd_pinjam ?>" class="btn btn-danger" style="font-size:12px; padding:3px;">Kembalikan</button>
                           </div>
                         </td>
                         
@@ -169,7 +176,6 @@ shoppingCart.clearCart();
                               <div class="modal-header">
                                 <h4 class="modal-title">Kembalikan Barang</h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                
                               </div>
                               <div class="modal-body">
                                 <?php
@@ -202,8 +208,6 @@ shoppingCart.clearCart();
                                   </div>
                                   <div class="col-md-4">
                                     <?php
-                                      
-                                      
                                       foreach($pjm->result() as $u){
                                         echo $u->jml_pinjam."&nbsp;";
                                         
@@ -212,7 +216,6 @@ shoppingCart.clearCart();
                                         
                                         // echo $u->id."<br>"; ambil id untuk mengembalikan
                                       }
-                                      
                                     ?>
                                     <script>
                                       function kmbl(id){
@@ -230,12 +233,14 @@ shoppingCart.clearCart();
                           </div>
                         </div>
 
-
-
-                    <?php } ?>
+                      <?php 
+                        
+                      
+                    }
+                      ?>
                       
                       
-                    <?php $i++; ?>
+                    
                   </tr>
                 <?php } ?>
               </tbody>

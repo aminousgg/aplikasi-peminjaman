@@ -9,13 +9,13 @@ shoppingCart.clearCart();
       <div class="row mb-2">
       <div class="col-sm-6">
           <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>Report_pdf/pdf_kembali';">
-            <i class="ion ion-ios-printer-outline"></i> Cetak PDF
+            <i class="ion ion-ios-printer-outline"></i> PDF
           </button>
           <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>Report_Excel/exportKembali';">
-            <i class="ion ion-ios-printer-outline"></i> Cetak Excel
+            <i class="ion ion-ios-printer-outline"></i> Excel
           </button>
           <button class="btn btn-info" type="button">
-            <i class="ion ion-ios-printer-outline"></i> Cetak Langsung
+            <i class="ion ion-ios-printer-outline"></i> Print Out
           </button>
         </div>
       </div>
@@ -76,6 +76,7 @@ shoppingCart.clearCart();
                   <th style="">Barang</th>
                   <th style="">Tgl pinjam</th>
                   <th style="">Tgl Kembali</th>
+                  <th style="">Petugas</th>
                   <th style="">Status</th>
                     
                 </tr>
@@ -99,6 +100,7 @@ shoppingCart.clearCart();
                       </td>
                       <td><?php echo $row->tgl_pinjam ?></td>
                       <td><?php echo $row->wkt_kembali ?></td>
+                      <td><?php echo $row->petugas_kmbl ?></td>
                       <td>Telah Kembali</td>
                     </tr>
                     
@@ -111,6 +113,7 @@ shoppingCart.clearCart();
                   <th style="">Barang</th>
                   <th style="">Tgl pinjam</th>
                   <th style="">Tgl Kembali</th>
+                  <th style="">Petugas</th>
                   <th style="">Status</th>
                     
                 </tr>

@@ -172,7 +172,7 @@
         }
         if(cartArray.length!==0){
           var data = JSON.stringify(cartArray);
-          $("#tombol").html("<form action='<?php echo base_url() ?>admin/form_pinjam' method='post'><button name='list' value='"+data+"' type='submit' class='btn btn-success'>Pinjam</button></form>");
+          $("#tombol").html("<form action='<?= base_url() ?>admin/form_pinjam' method='post'><button name='list' value='"+data+"' type='submit' class='btn btn-success'>Pinjam</button></form>");
           // $("#tombol").html(clicks);
           //$("#tombol").html(cartArray.length);
         }else{

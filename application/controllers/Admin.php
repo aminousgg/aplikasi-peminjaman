@@ -40,14 +40,20 @@ class Admin extends CI_Controller{
 				//var_dump($this->session->userdata('admin','status'));die;
 				redirect(base_url("admin"));
 			}else{
-				$data_session = array(
-					'nama' 		=> $username,
-					'status' 	=> "login",
-					'level'		=> "petugas"
-					);
-				$this->session->set_userdata('petugas',$data_session);
-				//var_dump($this->session->userdata('admin','status'));die;
-				redirect(base_url("admin"));
+				if($level['status']==1){
+					$data_session = array(
+						'nama' 		=> $username,
+						'status' 	=> "login",
+						'level'		=> "petugas"
+						);
+					$this->session->set_userdata('petugas',$data_session);
+					//var_dump($this->session->userdata('admin','status'));die;
+					redirect(base_url("admin"));
+				}else{
+					$link="admin/aktifasi/".md5($username);
+					redirect(base_url($link));
+				}
+				
 			}
 			
  
@@ -55,6 +61,52 @@ class Admin extends CI_Controller{
 			$this->session->set_flashdata('error', 'gagal login');
 			$this->load->view('admin/login-admin');
 		}
+	}
+	function aktifasi($token){
+		$cek=$this->db->get_where('akun_admin',array('token'=>$token));
+		if($cek->num_rows()>0){
+			if($this->input->post('login')==null){
+				$data['token']=$token;
+				$this->load->view('admin/aktifasi',$data);
+			}else{
+				$p_lama=md5($this->input->post('pwd_lama'));
+				$ha=$this->db->get_where('akun_admin',array('password'=>$p_lama));
+				if($ha->num_rows()>0){
+					$data = array(
+						'password'			=> md5($this->input->post('pwd_baru1')),
+						'status'			=> 1,
+					);
+					$this->db->where('token',$token);
+					$result=$this->db->update('akun_admin',$data);
+					if($result==true){
+						$usr=$cek->row_array();
+						$data_session = array(
+							'nama' 		=> $usr['username'],
+							'status' 	=> "login",
+							'level'		=> "petugas"
+							);
+						$this->session->set_userdata('petugas',$data_session);
+						//var_dump($this->session->userdata('admin','status'));die;
+						redirect(base_url("admin"));
+
+					}else{
+						$this->session->set_flashdata('error', 'Gagal Mengubah');
+						$link="admin/aktifasi/".$token;
+						redirect(base_url($link));
+					}
+
+				}else{
+					$this->session->set_flashdata('error', 'Pass lama salah');
+					$link="admin/aktifasi/".$token;
+					redirect(base_url($link));
+				}
+			}
+
+			
+		}else{
+			echo "salah url bos";
+		}
+		
 	}
 	function logout(){
 		if($this->session->unset_userdata('admin')["nama"]!=null){
@@ -191,7 +243,7 @@ class Admin extends CI_Controller{
 			$id=$this->input->post('id');
 			$data = array(
 				'nama_barang'		=> $this->input->post('nama_barang'),
-				'merk'					=> $this->input->post('merk'),
+				'merk'				=> $this->input->post('merk'),
 				'kategori'			=> $this->input->post('kategori'),
 				'tgl_masuk'			=> $this->input->post('tgl_masuk'),
 				'spesifikasi'		=> $this->input->post('spesifikasi'),
@@ -277,14 +329,13 @@ class Admin extends CI_Controller{
 			$hasil 	= $this->upload->data();
 			//echo $hasil['file_name']; die;
 			$data = array(
-				'nip'								=> $this->input->post('nip'),
-				'nama'							=> $this->input->post('nama'),
-				'jabatan'						=> $this->input->post('jabatan'),
+				'nip'				=> $this->input->post('nip'),
+				'nama'				=> $this->input->post('nama'),
+				'jabatan'			=> $this->input->post('jabatan'),
 				'pangkat_golongan'	=> $this->input->post('pangkat_golongan'),
-				'seksi'							=> $this->input->post('seksi'),
-				'tgl_lahir'					=> $this->input->post('tgl_lahir'),
-				'level_user'				=> $this->input->post('level_user'),
-				'foto'							=> $hasil['file_name'],
+				'seksi'				=> $this->input->post('seksi'),
+				'tgl_lahir'			=> $this->input->post('tgl_lahir'),
+				'foto'				=> $hasil['file_name'],
 			);
 			$result=$this->M_admin->tambah_agt('anggota', $data);
 			if($result==true){
@@ -356,6 +407,39 @@ class Admin extends CI_Controller{
 			}
 		}
 	}
+
+	function daftar_ptgs(){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
+			$data['judul']="Anggota";
+			$data['tabel_record'] = $this->M_admin->tampil_anggota()->result();
+			$this->load->view('admin/header-admin',$data);
+			$this->load->view('admin/aside-admin',$data);
+			$this->load->view('admin/daftar-petugas',$data);
+			$this->load->view('admin/footer-admin',$data);
+		}else{
+			redirect(base_url('admin/login'));
+		}
+	}
+	function petugas($nip){
+		$pwdDefault="12345";
+		$data = array(
+			'username'		=> $nip,
+			'level_user'	=> "petugas",
+			'password'		=> md5($pwdDefault),
+			'token'			=> md5($nip),
+			'status'		=> 0,
+		);
+		$result=$this->db->insert('akun_admin', $data);
+		if($result==true){
+			$this->session->set_flashdata('success', 'Berhasil');
+			redirect(base_url('admin/anggota'));
+		}else{
+			$this->session->set_flashdata('error', 'Gagal');
+			redirect(base_url('admin/anggota'));
+		}
+
+	}
+
 	function hapus_anggota($id){
 		//echo $id; die;
 		$result=$this->db->delete('anggota',array('id'=>$id));
@@ -425,12 +509,21 @@ class Admin extends CI_Controller{
 	}
 	function inPinjam(){
 		$kodePinjam = rand(1000,9999);
-		$a=0;
+		$zzz=0; //ceking
 		for($i=0;$i<count($this->input->post('kode'));$i++){
 			$data = $this->M_admin->ambil_row($this->input->post('kode')[$i])->row_array();
-			$angg = $this->M_admin->ambil_anggota($this->input->post('nip1'))->row_array();
 			if($data["jml_tersedia"]>=$this->input->post('jml1')[$i]){
-				//var_dump($data); die;
+				$zzz++;
+			}
+		}
+		//var_dump(count($this->input->post('kode'))); die;
+		if($zzz==count($this->input->post('kode'))){
+			// lakukan
+			$a=0;
+			for($i=0;$i<count($this->input->post('kode'));$i++){
+				$data = $this->M_admin->ambil_row($this->input->post('kode')[$i])->row_array();
+				$angg = $this->M_admin->ambil_anggota($this->input->post('nip1'))->row_array();
+					//var_dump($data); die;
 				$in = array(
 					'kd_pinjam'		=> $kodePinjam,
 					'nip'			=> $this->input->post('nip1'),
@@ -442,11 +535,27 @@ class Admin extends CI_Controller{
 					'jml_pinjam'	=> $this->input->post('jml1')[$i],
 					'tgl_pinjam'	=> $this->input->post('tgl_pinjam1'),
 					'tgl_kembali'	=> $this->input->post('tgl_kembali'),
+					'petugas'		=> $this->input->post('petugas'),
 					'status'		=> "Belum Kembali"
+				);
+				$time = strtotime('00/00/0000');
+				$noltime = date('Y-m-d',$time);
+				$inAktifitas = array(
+					'kd_pjm'	=> $kodePinjam,
+					'nip'		=> $this->input->post('nip1'),
+					'kd_brg'	=> $this->input->post('kode')[$i],
+					'jml_pjm'	=> $this->input->post('jml1')[$i],
+					'jml_kmbl'	=> 0,
+					'tgl_pjm'	=> $this->input->post('tgl_pinjam1'),
+					'estimate_kmbl'	=> $this->input->post('tgl_kembali'),
+					'ptgs_pjm'	=> $this->input->post('petugas'),
+					'ptg_kmbl' => "-",
+					'status'	=> "Belum Kembali"
 				);
 				//var_dump($this->input->post('jml1')); die;
 				$masuk=$this->db->insert('pinjam_barang',$in);
-				if($masuk==true){
+				$masuk1=$this->db->insert('aktifitas_pinjam',$inAktifitas);
+				if($masuk==true&&$masuk1==true){
 					$b=$data['jml_terpinjam'] + $this->input->post('jml1')[$i];
 					$c=$data['jml_tersedia'] - $this->input->post('jml1')[$i];
 					$set = array(
@@ -463,24 +572,26 @@ class Admin extends CI_Controller{
 						echo "gagal";
 					}
 				}else{
-					// gagal insert
+					$this->session->set_flashdata('error', 'error Dalam Proses menambah!');
+					redirect(base_url('admin/pinjam'));
 				}
-			}else{
-				//jumlah yg  di pinjam terlalu banyak
 			}
+			
+			if($a==count($this->input->post('kode'))){
+				$this->session->set_flashdata('success', 'Berhasil Meminjam !');
+				redirect(base_url('admin/pinjam'));
+			}else{
+				$this->session->set_flashdata('error', 'Gagal Meminjam!');
+				redirect(base_url('admin/pinjam'));
+			}
+
+		}else{
+			// jumlah brg terlalu bnyk
 		}
 		
-		if($a==count($this->input->post('kode'))){
-			$this->session->set_flashdata('success', 'Berhasil Meminjam !');
-			redirect(base_url('admin/pinjam'));
-		}else{
-			$this->session->set_flashdata('error', 'Gagal Mendaftar!');
-			redirect(base_url('admin/pinjam'));
-		}
 	}
 	function tambah_pinjam(){
 		
-
 		date_default_timezone_set('Asia/Jakarta');
 		$exp_date = $this->input->post('tgl_kembali');
 		$todays_date = $this->input->post('tgl_pinjam1'); 
@@ -573,15 +684,17 @@ class Admin extends CI_Controller{
 	}
 	function kembalikan($id){
 		//echo $id; die;
+		if($this->session->userdata('admin')!=null){
+			$petugas=$this->session->userdata('admin')['nama'];
+		}else{
+			$petugas=$this->session->userdata('petugas')['nama'];
+		}
 		
 		$pinjam = $this->M_admin->ambil_pinjam($id)->row_array();
 		if($pinjam==null){
 			echo "Peminjam tdk ditemukan";
 			die;
 		}
-		//var_dump($pinjam); die;
-		
-		//set today
 		date_default_timezone_set('Asia/Jakarta');
 		$in = array(
 			'nip'			=> $pinjam['nip'],
@@ -589,9 +702,22 @@ class Admin extends CI_Controller{
 			'tgl_pinjam'	=> $pinjam['tgl_pinjam'],
 			'estimasi'		=> $pinjam['tgl_kembali'],
 			'wkt_kembali'	=> date('Y-m-d'),
+			'petugas_kmbl'	=> $petugas,
 		);
 		$insert=$this->db->insert('kembali_brg',$in);
-		if($insert==true){
+		//$nipPetugas=$this->db->get_where('anggota',array('nama'=>$petugas))->row_array();
+		//var_dump($nipPetugas); die;
+		$inAkt = array(
+			'jml_pjm'	=> 0,
+			'jml_kmbl'	=> $pinjam['jml_pinjam'],
+			'tgl_kmbl'	=> date('Y-m-d'),
+			'ptg_kmbl'	=> $petugas,
+			'status'	=> "Telah Kembali"
+		);
+		$dimana = array('kd_pjm' => $pinjam['kd_pinjam'], 'nip' => $pinjam['nip'], 'kd_brg' => $pinjam['kode_barang']);
+		$this->db->where($dimana); 	
+		$res=$this->db->update('aktifitas_pinjam',$inAkt);
+		if($insert==true&&$res==true){
 			$result=$this->db->delete('pinjam_barang',array('id'=>$id));
 			if($result==false){
 				echo "gagal ada kesalahan sistem";
@@ -604,7 +730,6 @@ class Admin extends CI_Controller{
 			$this->session->set_flashdata('error', 'Pengembalian '.$pinjam['nama']);
 			redirect(base_url('admin/kembali'));
 		}
-
 	}
 
 	//=========================================================================
@@ -612,6 +737,10 @@ class Admin extends CI_Controller{
 	function laporan(){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			$data['judul']="Laporan";
+			$data['brg'] = $this->db->get('barang')->num_rows();
+			$data['agt'] = $this->db->get('anggota')->num_rows();
+			$data['pinjam'] = $this->db->get('pinjam_barang')->num_rows();
+			$data['kembali'] = $this->db->get('kembali_brg')->num_rows();
 			$this->load->view('admin/header-admin',$data);
 			$this->load->view('admin/aside-admin',$data);
 			$this->load->view('admin/laporan-admin',$data);
@@ -621,7 +750,18 @@ class Admin extends CI_Controller{
 		}
 		
 	}
-
-	//=============================USER==================
-	
+	// ===================================================================================
+	// ===============================================RECORD============================
+	function record(){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
+			$data['tabel_record'] = $this->db->get('aktifitas_pinjam')->result();
+			$data['judul']="Record";
+			$this->load->view('admin/header-admin',$data);
+			$this->load->view('admin/aside-admin',$data);
+			$this->load->view('admin/record',$data);
+			$this->load->view('admin/footer-admin',$data);
+		}else{
+			redirect(base_url('admin/login'));
+		}
+	}
 }

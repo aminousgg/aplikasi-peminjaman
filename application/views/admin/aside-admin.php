@@ -11,7 +11,25 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
-        <img src="<?php echo base_url() ?>admin-lte-master/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        <!-- <img src="<?php echo base_url() ?>admin-lte-master/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="Image"> -->
+        <?php if($this->session->userdata('admin')['nama']==null){ 
+              $cek=$this->session->userdata('petugas')['nama'];
+              $angg=$this->db->get_where('anggota',array('nip'=>$cek))->row_array();
+              if($angg['nama']!=null){
+                echo '<img style="height:40px;" src="'.base_url().'admin-lte-master/foto/agt/'.$angg['foto'].'" class="img-circle elevation-2" alt="Image">';
+              }else{
+                echo '<img src="'.base_url().'admin-lte-master/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="Image">';
+              }
+            }else{
+              $cek=$this->session->userdata('admin')['nama'];
+              $angg=$this->db->get_where('anggota',array('nip'=>$cek))->row_array();
+              if($angg['nama']!=null){
+                echo '<img style="height:40px;" src="'.base_url().'admin-lte-master/foto/agt/'.$angg['foto'].'" class="img-circle elevation-2" alt="Image">';
+              }else{
+                echo '<img src="'.base_url().'admin-lte-master/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="Image">';
+              }
+            }
+          ?>
       </div>
       <div class="info">
         <a href="<?php echo base_url()?>admin" class="d-block">
@@ -34,7 +52,6 @@
               }
             }
           ?>
-        
         </a>
       </div>
     </div>
@@ -70,7 +87,6 @@
             <i class="nav-icon ion ion-bag"></i>
             <p>
               Barang
-                
             </p>
             </a>
         </li>
@@ -84,7 +100,6 @@
           <i class="nav-icon ion ion-person"></i>
             <p>
               Anggota
-             
             </p>
           </a>
         </li>
@@ -96,11 +111,9 @@
           <?php } ?>
             <i class="nav-icon fa fa-shopping-cart"></i>
             <p>
-             Log Peminjaman
-                
+             Log Peminjaman  
             </p>
-          </a>
-            
+          </a>   
         </li>
         <li class="nav-item">
           <?php if($judul=="Kembali"){ ?>
@@ -111,13 +124,22 @@
             <i class="nav-icon fa fa-repeat"></i>
             <p>
               Daftar Pengembalian
-                
             </p>
           </a>
-            
         </li>
-          
-
+        <li class="nav-item">
+          <?php if($judul=="Record"){ ?>
+            <a href="<?php echo base_url()?>admin/record" class="nav-link active">
+          <?php }else{ ?>
+            <a href="<?php echo base_url()?>admin/record" class="nav-link">
+          <?php } ?>
+            <!-- <a href="#" class="nav-link"> -->
+            <i class="nav-icon fa fa-files-o"></i>
+            <p>
+              Record
+            </p>
+          </a>
+        </li>
         <li class="nav-item">
           <?php if($judul=="Laporan"){ ?>
             <a href="<?php echo base_url()?>admin/laporan" class="nav-link active">
@@ -128,10 +150,11 @@
             <i class="nav-icon fa fa-files-o"></i>
             <p>
               Laporan
-              
             </p>
           </a>
         </li>
+        
+       
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

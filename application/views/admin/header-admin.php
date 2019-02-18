@@ -58,7 +58,25 @@
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <div class="image">
-            <img width=30px height=30px src="<?php echo base_url() ?>admin-lte-master/dist/img/user2-160x160.jpg" class="img-circle elevation-2">
+            <!-- <img width=30px height=30px src="<?php echo base_url() ?>admin-lte-master/dist/img/user2-160x160.jpg" class="img-circle elevation-2"> -->
+            <?php if($this->session->userdata('admin')['nama']==null){ 
+              $cek=$this->session->userdata('petugas')['nama'];
+              $angg=$this->db->get_where('anggota',array('nip'=>$cek))->row_array();
+              if($angg['nama']!=null){
+                echo '<img width=30px height=30px src="'.base_url().'admin-lte-master/foto/agt/'.$angg['foto'].'" class="img-circle elevation-2" alt="Image">';
+              }else{
+                echo '<img width=30px height=30px src="'.base_url().'admin-lte-master/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="Image">';
+              }
+            }else{
+              $cek=$this->session->userdata('admin')['nama'];
+              $angg=$this->db->get_where('anggota',array('nip'=>$cek))->row_array();
+              if($angg['nama']!=null){
+                echo '<img width=30px height=30px src="'.base_url().'admin-lte-master/foto/agt/'.$angg['foto'].'" class="img-circle elevation-2" alt="Image">';
+              }else{
+                echo '<img width=30px height=30px src="'.base_url().'admin-lte-master/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="Image">';
+              }
+            }
+          ?>
           </div>
           <span class="badge badge-warning navbar-badge"></span>
         </a>

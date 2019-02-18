@@ -9,13 +9,13 @@ shoppingCart.clearCart();
       <div class="row mb-2">          
         <div class="col-sm-6">
           <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>Report_pdf/pdf_barang';">
-            <i class="ion ion-ios-printer-outline"></i> Cetak PDF
+            <i class="ion ion-ios-printer-outline"></i> PDF
           </button>
           <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>Report_Excel/exportBarang';">
-            <i class="ion ion-ios-printer-outline"></i> Cetak Excel
+            <i class="ion ion-ios-printer-outline"></i> Excel
           </button>
           <button class="btn btn-info" type="button">
-            <i class="ion ion-ios-printer-outline"></i> Cetak Langsung
+            <i class="ion ion-ios-printer-outline"></i> Print Out
           </button>
         </div>
       </div>
@@ -124,7 +124,13 @@ shoppingCart.clearCart();
                               </script>
                               
                               <button type="button" onclick="window.location='<?php echo base_url() ?>admin/edit_form_barang/<?php echo $row->id ?>';" class="btn btn-info" title="Edit" > <i class="ion ion-edit"></i> </button>
-                              <button type="button" onclick="del(<?php echo $row->id?>)" class="btn btn-danger" title="Hapus"> <i class="ion ion-android-delete"></i> </button>
+                              <?php
+                                $cekSedia=$this->db->get_where('barang',array('id'=>$row->id))->row_array();
+                                if($cekSedia['jml_barang']==$cekSedia['jml_tersedia']){ ?>
+                                <button type="button" onclick="del(<?php echo $row->id?>)" class="btn btn-danger" title="Hapus"> <i class="ion ion-android-delete"></i> </button>
+                              <?php }else{ ?>
+                                <button type="button" onclick="del1(<?php echo $row->id?>)" class="btn btn-danger" title="Hapus"> <i class="ion ion-android-delete"></i> </button>
+                              <?php } ?>
                             </div>
                           </td>
                         <?php } ?>
@@ -260,6 +266,13 @@ echo $link;
         if (result.value) {
           window.location = "<?php echo base_url() ?>admin/hapus_barang/"+id;;
         }
+    })
+  }
+  function del1(id){
+      Swal.fire({
+      type: 'error',
+      title: 'Tdk Dapat diHapus',
+      text: 'Barang Masih ada yg terpinjam'
     })
   }
 </script>

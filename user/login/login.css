@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100);
 
 body {
-  background: url(https://dl.dropboxusercontent.com/u/23299152/Wallpapers/wallpaper-22705.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -18,6 +17,7 @@ body {
   border-radius: 2px;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  margin-top: 100px;
 }
 .center {
     display: block;

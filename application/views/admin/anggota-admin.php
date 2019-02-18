@@ -9,13 +9,13 @@ shoppingCart.clearCart();
       <div class="row mb-2">
         <div class="col-sm-6">
           <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>Report_pdf/pdf_anggota';">
-            <i class="ion ion-ios-printer-outline"></i> Cetak PDF
+            <i class="ion ion-ios-printer-outline"></i> PDF
           </button>
           <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>Report_Excel/exportAnggota';">
-            <i class="ion ion-ios-printer-outline"></i> Cetak Excel
+            <i class="ion ion-ios-printer-outline"></i> Excel
           </button>
           <button class="btn btn-info" type="button">
-            <i class="ion ion-ios-printer-outline"></i> Cetak Langsung
+            <i class="ion ion-ios-printer-outline"></i> Print Out
           </button>
         </div>
       </div><!-- /.container-fluid -->
@@ -61,7 +61,7 @@ shoppingCart.clearCart();
               
             }else {?>
               <button style="margin-top:-25px; margin-left: 10px;" onclick="link()" class="btn btn-info float-right"><i class="ion ion-android-add"></i>  Tambah Anggota</button>
-              <button style="margin-top:-25px;" class="btn btn-info float-right"><i class="ion ion-android-add"></i>  Daftarkan Petugas</button>
+              <button style="margin-top:-25px;" onclick="linkPtgs()" class="btn btn-info float-right"><i class="ion ion-android-add"></i>  Daftarkan Petugas</button>
             <?php }?>
             
             
@@ -70,6 +70,9 @@ shoppingCart.clearCart();
           <script>
             function link() {
               window.location.href='<?php echo base_url() ?>admin/form_anggota';
+            }
+            function linkPtgs(){
+              window.location.href='<?php echo base_url() ?>admin/daftar_ptgs';
             }
           </script>
           <!-- /.card-header -->
@@ -83,6 +86,7 @@ shoppingCart.clearCart();
                   <th style="">Jabatan</th>
                   <th style="">Pangkat/Gol</th>
                   <th style="">Bidang</th>
+                  <th style="">Level</th>
                   <?php if($this->session->userdata('admin')['nama']==null){ 
               
                   }else {?>
@@ -99,7 +103,16 @@ shoppingCart.clearCart();
                     <td><?php echo $row->jabatan ?></td>
                     <td><?php echo $row->pangkat_golongan ?></td>
                     <td><?php echo $row->seksi ?></td>
-                    
+                    <td><?php 
+                      $level=$this->db->get_where('akun_admin',array('username'=>$row->nip));
+                      if($level->num_rows()>0){
+                        $level=$level->row_array();
+                        echo '<span style="cursor:pointer;" class="badge badge-success">'.$level['level_user'].'</span>';
+                      }else{
+                        echo '<span style="cursor:pointer;" class="badge badge-secondary">user</span>';
+                      }
+
+                    ?></td>
                     
                     <?php if($this->session->userdata('admin')['nama']==null){ 
               
@@ -124,7 +137,6 @@ shoppingCart.clearCart();
                         <div class="modal-header">
                           <h4 class="modal-title">Detail Anggota</h4>
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          
                         </div>
                         <div class="modal-body">
                           <div class="row">
@@ -144,10 +156,18 @@ shoppingCart.clearCart();
                               &nbsp;:&nbsp;<?php echo $row->pangkat_golongan ?><br>
                               &nbsp;:&nbsp;<?php echo $row->seksi ?><br>
                               &nbsp;:&nbsp;<?php echo $row->tgl_lahir ?><br>
-                             
+                              &nbsp;:&nbsp;<?php
+                                $level=$this->db->get_where('akun_admin',array('username'=>$row->nip));
+                                if($level->num_rows()>0){
+                                  $level=$level->row_array();
+                                  echo '<span style="cursor:pointer;" class="badge badge-success">'.$level['level_user'].'</span>';
+                                }else{
+                                  echo '<span style="cursor:pointer;" class="badge badge-secondary">user</span>';
+                                }
+                              ?><br>
                             </div>
                             <div class="col-md-4">
-                              <img src="<?php echo base_url().'admin-lte-master/foto/'.$row->foto ?>" width=150px height=150px>
+                              <img src="<?php echo base_url().'admin-lte-master/foto/agt/'.$row->foto ?>" width=150px height=150px>
                             </div>
                           </div>
 
@@ -172,7 +192,7 @@ shoppingCart.clearCart();
                   <th style="">Jabatan</th>
                   <th style="">Pangkat/Gol</th>
                   <th style="">Bidang</th>
-                  
+                  <th style="">Level</th>
                   <?php if($this->session->userdata('admin')['nama']==null){ 
               
                   }else {?>

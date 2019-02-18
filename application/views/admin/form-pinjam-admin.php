@@ -1,3 +1,10 @@
+<?php
+if($this->session->userdata('admin')!=null){
+  $petugas=$this->session->userdata('admin')['nama'];
+}else{
+  $petugas=$this->session->userdata('petugas')['nama'];
+}
+?>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -46,6 +53,7 @@ endif;
               <?php echo form_open_multipart('admin/inPinjam', array('role' => 'form','autocomplete' => 'off'))?>
                 <div class="card-body">
                   <input type="hidden" name='id' value='<?php echo $id ?>'>
+                  <input type='hidden' name='petugas' value='<?= $petugas ?>'>
                   <!-- <input type="hidden" name='brg' value='<?php //echo $brg ?>'> -->
                   <!-- <div class="form-group">
                     <label>NIP</label>

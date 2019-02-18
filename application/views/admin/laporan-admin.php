@@ -29,7 +29,7 @@ shoppingCart.clearCart();
 
               <div class="info-box-content">
                 <span class="info-box-text"> <a href="<?php echo base_url() ?>Report_pdf/pdf_barang">Barang</a> </span>
-                <span class="info-box-number">1,410</span>
+                <span class="info-box-number"><?= $brg ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -42,7 +42,7 @@ shoppingCart.clearCart();
 
               <div class="info-box-content">
                 <span class="info-box-text"><a href="<?php echo base_url() ?>Report_pdf/pdf_anggota">Anggota</a></span>
-                <span class="info-box-number">410</span>
+                <span class="info-box-number"><?= $agt ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -55,7 +55,7 @@ shoppingCart.clearCart();
 
               <div class="info-box-content">
                 <span class="info-box-text"><a href="<?php echo base_url() ?>Report_pdf/pdf_pinjam">Peminjaman</a></span>
-                <span class="info-box-number">13,648</span>
+                <span class="info-box-number"><?= $pinjam ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -70,7 +70,7 @@ shoppingCart.clearCart();
 
               <div class="info-box-content">
                 <span class="info-box-text"><a href="<?php echo base_url() ?>Report_pdf/pdf_kembali">Kembali Barang</a></span>
-                <span class="info-box-number">93,139</span>
+                <span class="info-box-number"><?= $kembali ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
