@@ -35,11 +35,11 @@
                                 <div class="row">
                                   <div class="col">
                                     <label>NIP</label>
-                                    <input name="nip" placeholder="NIP" type="text" class="form-control">
+                                    <input name="nip" placeholder="NIP" type="text" class="form-control" required>
                                   </div>
                                   <div class="col">
                                     <label>Nama</label>
-                                    <input name="nama" placeholder="Nama" type="text" class="form-control">
+                                    <input name="nama" placeholder="Nama" type="text" class="form-control" required>
                                   </div>
                                 </div>
                             </div>
@@ -48,21 +48,21 @@
                               <div class="row">
                                 <div class="col">
                                   <label>Jabatan</label>
-                                  <input name="jabatan" placeholder="Jabatan" type="text" class="form-control">
+                                  <input name="jabatan" placeholder="Jabatan" type="text" class="form-control" required>
                                 </div>
                                 <div class="col">
                                   <label>Golongan</label>
-                                  <input name="pangkat_golongan" placeholder="Golongan" type="text" class="form-control">
+                                  <input name="pangkat_golongan" placeholder="Golongan" type="text" class="form-control" required>
                                 </div>
                               </div>
                             </div>
                             <div class="form-group">
                                 <label>Bidang</label>
-                                <input type="text" name="seksi" class="form-control" placeholder="Seksi Bagian">
+                                <input type="text" name="seksi" class="form-control" placeholder="Seksi Bagian" required>
                             </div>
                             <div class="form-group">
                                 <label>Tgl Lahir</label>
-                                <input type="date" name="tgl_lahir" class="form-control">
+                                <input type="date" name="tgl_lahir" class="form-control" required>
                             </div>
                             <!-- <div class="form-group">
                               <div class="row">
@@ -98,7 +98,7 @@
                       <div class="form-group">
                         <label>Upload Foto</label>
                       </div>
-                      <input type="file" name="file" id="file" require>
+                      <input type="file" name="file" id="file" required>
                       <div class="kotakUp" id="gambar">
                       
                       </div>

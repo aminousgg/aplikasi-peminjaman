@@ -467,7 +467,6 @@ class Admin extends CI_Controller{
 		}else{
 			redirect(base_url('admin/login'));
 		}
-		
 	}
 	function pinjam_barang(){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
@@ -533,7 +532,7 @@ class Admin extends CI_Controller{
 					'kode_barang'	=> $this->input->post('kode')[$i],
 					'nama_barang'	=> $this->input->post('brg1')[$i],
 					'jml_pinjam'	=> $this->input->post('jml1')[$i],
-					'tgl_pinjam'	=> $this->input->post('tgl_pinjam1'),
+					'tgl_pinjam'	=> $this->input->post('tgl_pinjam'),
 					'tgl_kembali'	=> $this->input->post('tgl_kembali'),
 					'petugas'		=> $this->input->post('petugas'),
 					'status'		=> "Belum Kembali"

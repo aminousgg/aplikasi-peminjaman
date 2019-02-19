@@ -61,7 +61,7 @@ endif;
                   </div> -->
                   <div class="form-group">
                     <label>Nama</label>
-                    <input type="text" name="nama" id="nama" list="browsers" class="form-control" placeholder="Nama">
+                    <input type="text" name="nama" id="nama" list="browsers" class="form-control" required placeholder="Nama">
                     <datalist id="browsers">
                       <?php foreach($angg as $u){?>
                         <option value="<?php echo $u->nama ?>">
@@ -124,7 +124,12 @@ endif;
                   
                   <div class="form-group">
                     <label>Tgl Kembali</label>
-                    <input type="date" name="tgl_kembali" class="form-control">
+                    <?php
+                    $datetime = new DateTime(date('Y-m-d'));
+                    $datetime->add(new DateInterval('P7D'));
+                    //echo $datetime->format('Y-m-d');
+                    ?>
+                    <input type="date" name="tgl_kembali" value="<?= $datetime->format('Y-m-d'); ?>" class="form-control">
                   </div>
                   
                 </div>

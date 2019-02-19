@@ -62,28 +62,9 @@
                                 <input type="text" value="<?php echo $angg['seksi']?>" name="seksi" class="form-control" placeholder="Seksi Bagian">
                             </div>
                             <div class="form-group">
-                              <div class="row">
-                                <div class="col">
-                                  <label>Tgl Lahir</label>
-                                  <input type="date" name="tgl_lahir" value="<?php echo $angg['tgl_lahir']?>" class="form-control">
-                                </div>
-                                <div class="col">
-                                  <label>Level User</label>
-                                  <select name="level_user" class="form-control select2" style="width: 100%;">
-                                      <?php if($angg['level_user']=="user"){?>
-                                        <option selected="selected" value="user">User</option>
-                                        <option value="admin">Admin</option>
-                                      <?php } else { ?>
-                                        <option value="user">User</option>
-                                        <option selected="selected" value="admin">Admin</option>
-                                      <?php } ?>
-                                        
-                                        
-                                  </select>
-                                </div>
-                              </div>
+                              <label>Tgl Lahir</label>
+                              <input type="date" name="tgl_lahir" value="<?php echo $angg['tgl_lahir']?>" class="form-control">
                             </div>
-                          
                         </div>
                     <!-- /.card-body -->
                     <input type="hidden" name="cek" value="tdkada">

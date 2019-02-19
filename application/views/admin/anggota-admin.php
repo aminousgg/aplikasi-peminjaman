@@ -140,7 +140,7 @@ shoppingCart.clearCart();
                         </div>
                         <div class="modal-body">
                           <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                               NIP<br>
                               Nama<br>
                               Jabatan<br>
@@ -149,7 +149,7 @@ shoppingCart.clearCart();
                               Tgl Lahir<br>
                               Level User<br>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                               &nbsp;:&nbsp;<?php echo $row->nip ?><br>
                               &nbsp;:&nbsp;<?php echo $row->nama ?><br>
                               &nbsp;:&nbsp;<?php echo $row->jabatan ?><br>

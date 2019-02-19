@@ -5089,7 +5089,7 @@ button.close, button.mailbox-attachment-close {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 120%;
   pointer-events: auto;
   background-color: #ffffff;
   background-clip: padding-box;
