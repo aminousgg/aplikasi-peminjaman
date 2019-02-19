@@ -9,13 +9,13 @@ shoppingCart.clearCart();
       <div class="row mb-2">
         <div class="col-sm-6">
           <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>Report_pdf/pdf_anggota';">
-            <i class="ion ion-ios-printer-outline"></i> PDF
+            <i class="fa fa-print"></i> PDF
           </button>
           <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>Report_Excel/exportAnggota';">
-            <i class="ion ion-ios-printer-outline"></i> Excel
+            <i class="fa fa-print"></i> Excel
           </button>
           <button class="btn btn-info" type="button">
-            <i class="ion ion-ios-printer-outline"></i> Print Out
+            <i class="fa fa-print"></i> Print Out
           </button>
         </div>
       </div><!-- /.container-fluid -->
@@ -60,8 +60,8 @@ shoppingCart.clearCart();
             <?php if($this->session->userdata('admin')['nama']==null){ 
               
             }else {?>
-              <button style="margin-top:-25px; margin-left: 10px;" onclick="link()" class="btn btn-info float-right"><i class="ion ion-android-add"></i>  Tambah Anggota</button>
-              <button style="margin-top:-25px;" onclick="linkPtgs()" class="btn btn-info float-right"><i class="ion ion-android-add"></i>  Daftarkan Petugas</button>
+              <button style="margin-top:-25px; margin-left: 10px;" onclick="link()" class="btn btn-info float-right"><i class="fa fa-plus"></i>  Tambah Anggota</button>
+              <button style="margin-top:-25px;" onclick="linkPtgs()" class="btn btn-info float-right"><i class="fa fa-plus"></i>  Daftarkan Petugas</button>
             <?php }?>
             
             
@@ -120,8 +120,8 @@ shoppingCart.clearCart();
                     <td>
                       <div class="button-group">
                           
-                        <button type="button" onclick="window.location='<?php echo base_url() ?>admin/edit_form_anggota/<?php echo $row->id ?>';" class="btn btn-info" title="Edit"> <i class="ion ion-edit"></i> </button>
-                        <button type="button" onclick="del(<?php echo $row->id?>)" class="btn btn-danger"> <i class="ion ion-android-delete" title="Hapus"></i> </button>
+                        <button type="button" onclick="window.location='<?php echo base_url() ?>admin/edit_form_anggota/<?php echo $row->id ?>';" class="btn btn-info" title="Edit"> <i class="fa fa-pencil-square-o"></i> </button>
+                        <button type="button" onclick="del(<?php echo $row->id?>)" class="btn btn-danger"> <i class="fa fa-trash-o" title="Hapus"></i> </button>
                       </div>
                     </td>
                     <?php } ?>

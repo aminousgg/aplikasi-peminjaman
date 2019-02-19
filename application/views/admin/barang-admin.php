@@ -9,13 +9,13 @@ shoppingCart.clearCart();
       <div class="row mb-2">          
         <div class="col-sm-6">
           <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>Report_pdf/pdf_barang';">
-            <i class="ion ion-ios-printer-outline"></i> PDF
+            <i class="fa fa-print"></i> PDF
           </button>
           <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>Report_Excel/exportBarang';">
-            <i class="ion ion-ios-printer-outline"></i> Excel
+            <i class="fa fa-print"></i> Excel
           </button>
           <button class="btn btn-info" type="button">
-            <i class="ion ion-ios-printer-outline"></i> Print Out
+            <i class="fa fa-print"></i> Print Out
           </button>
         </div>
       </div>
@@ -62,7 +62,7 @@ shoppingCart.clearCart();
               <?php if($this->session->userdata('admin')['nama']==null){ 
               
               }else {?>
-                <button style="margin-top:-25px;" onclick="link()" class="btn btn-success float-right"><i class="ion ion-android-add"></i>  Tambah Barang</button>
+                <button style="margin-top:-25px;" onclick="link()" class="btn btn-success float-right"><i class="fa fa-plus"></i>  Tambah Barang</button>
               <?php } ?>
             </div>
             <script>
@@ -103,7 +103,12 @@ shoppingCart.clearCart();
                         <?php if($this->session->userdata('admin')['nama']==null){ 
               
                         }else {?>
-                          <button data-toggle="modal" data-target="#<?php echo $row->id ?>_unit" class="btn btn-success float-right"><i class="ion ion-android-add"></i></button>
+                          <?php if($row->jml_tersedia==0){ ?>
+                            <button style="padding:4px; cursor: no-drop; margin-left:3px;" class="btn btn-secondary float-right"><i class="fa fa-minus"></i></button>
+                          <?php }else{ ?>
+                            <button style="padding:5px; margin-left:3px;" data-toggle="modal" data-target="#<?php echo $row->id ?>_min" class="btn btn-secondary float-right"><i class="fa fa-minus"></i></button>
+                          <?php }?>
+                          <button style="padding:5px;" data-toggle="modal" data-target="#<?php echo $row->id ?>_unit" class="btn btn-secondary float-right"><i class="fa fa-plus"></i></button>
                         <?php } ?>
                         
                       </td>
@@ -123,13 +128,13 @@ shoppingCart.clearCart();
                                 }
                               </script>
                               
-                              <button type="button" onclick="window.location='<?php echo base_url() ?>admin/edit_form_barang/<?php echo $row->id ?>';" class="btn btn-info" title="Edit" > <i class="ion ion-edit"></i> </button>
+                              <button type="button" onclick="window.location='<?php echo base_url() ?>admin/edit_form_barang/<?php echo $row->id ?>';" class="btn btn-info" title="Edit" > <i class="fa fa-pencil-square-o"></i> </button>
                               <?php
                                 $cekSedia=$this->db->get_where('barang',array('id'=>$row->id))->row_array();
                                 if($cekSedia['jml_barang']==$cekSedia['jml_tersedia']){ ?>
-                                <button type="button" onclick="del(<?php echo $row->id?>)" class="btn btn-danger" title="Hapus"> <i class="ion ion-android-delete"></i> </button>
+                                <button type="button" onclick="del(<?php echo $row->id?>)" class="btn btn-danger" title="Hapus"> <i class="fa fa-trash-o"></i> </button>
                               <?php }else{ ?>
-                                <button type="button" onclick="del1(<?php echo $row->id?>)" class="btn btn-danger" title="Hapus"> <i class="ion ion-android-delete"></i> </button>
+                                <button type="button" onclick="del1(<?php echo $row->id?>)" class="btn btn-danger" title="Hapus"> <i class="fa fa-trash-o"></i> </button>
                               <?php } ?>
                             </div>
                           </td>
@@ -202,6 +207,34 @@ shoppingCart.clearCart();
                               <input type="hidden" name="asli" value="<?php echo $row->jml_barang ?>">
                               <input type="hidden" name="sedia" value="<?php echo $row->jml_tersedia ?>">
                               <button type="submit" class="btn btn-info"><i class="ion ion-android-add"></i></button>
+                            <?php echo form_close(); ?>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+
+                    <div class="modal fade" id="<?php echo $row->id ?>_min" role="dialog">
+                      <div class="modal-dialog">
+                      
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Tambah Unit</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            
+                          </div>
+                          <div class="modal-body">
+                            <?php echo form_open('admin/unitmin'); ?>
+                              <label for="">Unit</label> &nbsp;&nbsp;&nbsp;
+                              <input type="number" name="unit"> &nbsp;&nbsp;
+                              <input type="hidden" name="id" value="<?php echo $row->id ?>">
+                              <input type="hidden" name="asli" value="<?php echo $row->jml_barang ?>">
+                              <input type="hidden" name="sedia" value="<?php echo $row->jml_tersedia ?>">
+                              <button type="submit" class="btn btn-info"><i class="fa fa-minus"></i></button>
                             <?php echo form_close(); ?>
                           </div>
                           <div class="modal-footer">

@@ -84,7 +84,7 @@
           <?php } ?>
 
           <!-- <a href="<?php //echo base_url()?>admin/barang" class="nav-link"> -->
-            <i class="nav-icon ion ion-bag"></i>
+            <i class="nav-icon fa fa-briefcase"></i>
             <p>
               Barang
             </p>
@@ -97,7 +97,7 @@
             <a href="<?php echo base_url()?>admin/anggota" class="nav-link">
           <?php } ?>
             
-          <i class="nav-icon ion ion-person"></i>
+          <i class="nav-icon fa fa-user"></i>
             <p>
               Anggota
             </p>
@@ -109,7 +109,7 @@
           <?php }else{ ?>
             <a href="<?php echo base_url()?>admin/pinjam" class="nav-link">
           <?php } ?>
-            <i class="nav-icon fa fa-shopping-cart"></i>
+            <i class="nav-icon fa fa-exchange"></i>
             <p>
              Log Peminjaman  
             </p>
@@ -134,7 +134,7 @@
             <a href="<?php echo base_url()?>admin/record" class="nav-link">
           <?php } ?>
             <!-- <a href="#" class="nav-link"> -->
-            <i class="nav-icon fa fa-files-o"></i>
+            <i class="nav-icon fa fa-list"></i>
             <p>
               Record
             </p>

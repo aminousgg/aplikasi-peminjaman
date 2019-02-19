@@ -224,6 +224,24 @@ class Admin extends CI_Controller{
 		}
 		
 	}
+	function unitmin(){
+		$update=$this->input->post('asli')-$this->input->post('unit');
+		$sedia=$this->input->post('sedia')-$this->input->post('unit');
+		$data=array(
+			'jml_barang'	=> $update,
+			'jml_tersedia'	=> $sedia,
+		);
+		$this->db->where('id',$this->input->post('id'));
+		$result=$this->db->update('barang',$data);
+		if($result==true){
+			$this->session->set_flashdata('success', 'Unit Berhasil dikurangi');
+			redirect(base_url('admin/barang'));
+		}else{
+			$this->session->set_flashdata('error', 'Gagal mengurangi');
+			redirect(base_url('admin/barang'));
+		}
+		
+	}
 	function edit_form_barang($id){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			$data['brg']=$this->M_admin->get_brg($id)->row_array();
