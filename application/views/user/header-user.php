@@ -47,10 +47,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">Daftar</a>
-          </li>
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Masuk</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="admin/login">Masuk</a>
           </li>
         </ul>
       </div>
@@ -70,9 +67,9 @@
             <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
             <div class="container">
               <div class="carousel-caption text-left">
-                <h1>Example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                <h1>SiPirang</h1>
+                <p>Sistem Peminjaman Barang</p>
+                <p>Dinas Energi dan Sumber Daya Mineral Provinsi Jawa Tengah</p>
               </div>
             </div>
           </div>

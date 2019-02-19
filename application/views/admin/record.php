@@ -71,11 +71,11 @@ shoppingCart.clearCart();
             <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th style="">kd_pjm</th>
+                  <th style="">Kode Pinjam</th>
                   <th style="">Nama</th>
                   <th style="">Barang</th>
-                  <th style="">Jml_pinjam</th>
-                  <th style="">Jml_kmbl</th>
+                  <th style="">Jumlah Pinjam</th>
+                  <th style="">Jumlah Kembali</th>
                   <th style="">Status</th>
                     
                 </tr>
@@ -166,11 +166,11 @@ shoppingCart.clearCart();
               </tbody>
               <tfoot>
                 <tr>
-                  <th style="">kd_pjm</th>
+                  <th style="">Kode Pinjam</th>
                   <th style="">Nama</th>
                   <th style="">Barang</th>
-                  <th style="">Jml_pinjam</th>
-                  <th style="">Jml_kmbl</th>
+                  <th style="">Jumlah Pinjam</th>
+                  <th style="">Jumlah Kembali</th>
                   <th style="">Status</th>
                 </tr>
               </tfoot>
