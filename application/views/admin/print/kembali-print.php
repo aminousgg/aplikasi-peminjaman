@@ -22,8 +22,8 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Peminjam</th>
-                                <th>Barang</th>
+                                <th>NIP</th>
+                                <th>Kode Barang</th>
                                 <th>Tanggal Pinjam</th>
                                 <th>Tanggal Kembali</th>
                                 <th>Petugas</th>
@@ -33,16 +33,8 @@
                             <?php $i=1; foreach($tabel_record as $row){ ?>
                                 <tr>
                                     <td><?php echo $i; ?></td>
-                                    <td><?php 
-                                        $anggota=$this->db->get_where('anggota',array('nip'=>$row->nip));
-                                        $hsl=$anggota->row_array();
-                                        echo $hsl['nama'];
-                                    ?></td>
-                                    <td><?php
-                                        $brg=$this->db->get_where('barang',array('kode_barang'=>$row->kode_brg));
-                                        $hsl1=$brg->row_array();
-                                        echo $hsl1['nama_barang'];
-                                    ?></td>
+                                    <td><?php echo $row->nip ?></td>
+                                    <td><?php echo $row->kode_brg ?></td>
                                     <td><?php echo $row->tgl_pinjam ?></td>
                                     <td><?php echo $row->tgl_kembali ?></td>
                                     <td><?php echo $row->petugas_kmbl ?></td>                        
