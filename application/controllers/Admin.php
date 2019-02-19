@@ -816,7 +816,7 @@ class Admin extends CI_Controller{
 			$data['tabel_record'] = $this->M_admin->tampil_kembali()->result();
 			$data['judul']="Record";
 			$this->load->view('admin/print/head-print',$data);
-			$this->load->view('admin/print/pinjam-print',$data);
+			$this->load->view('admin/print/kembali-print',$data);
 		}else{
 			redirect(base_url('admin/login'));
 		}
