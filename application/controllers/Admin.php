@@ -771,7 +771,13 @@ class Admin extends CI_Controller{
 	// ===============================================RECORD============================
 	function record(){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
+			//$data['tabel_record'] = $this->db->get('aktifitas_pinjam')->result();
+			$first_date=date_create("2019-02-16");
+			$second_date=date_create("2019-02-17");
+			$this->db->where('tgl_pjm >=', date_format($first_date,"Y/m/d"));
+			$this->db->where('tgl_pjm <=', date_format($second_date,"Y/m/d"));
 			$data['tabel_record'] = $this->db->get('aktifitas_pinjam')->result();
+
 			$data['judul']="Record";
 			$this->load->view('admin/header-admin',$data);
 			$this->load->view('admin/aside-admin',$data);
