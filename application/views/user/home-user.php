@@ -42,12 +42,7 @@
           </table>
         </div>
         <div class="col-lg-4">
-          <div class="tombol-kanan">
-            barang yg telah di pinjam link dan logo otw
-          </div>
-          <div class="tombol-kanan2">
-            Pengembalian link dan logo otw
-          </div>
+          
           <div class="calen">
             <div id="v-cal">
               <div class="vcal-header">

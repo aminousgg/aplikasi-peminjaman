@@ -749,24 +749,7 @@ class Admin extends CI_Controller{
 		}
 	}
 
-	//=========================================================================
-	//===============================LAPORAN===================================
-	function laporan(){
-		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
-			$data['judul']="Laporan";
-			$data['brg'] = $this->db->get('barang')->num_rows();
-			$data['agt'] = $this->db->get('anggota')->num_rows();
-			$data['pinjam'] = $this->db->get('pinjam_barang')->num_rows();
-			$data['kembali'] = $this->db->get('kembali_brg')->num_rows();
-			$this->load->view('admin/header-admin',$data);
-			$this->load->view('admin/aside-admin',$data);
-			$this->load->view('admin/laporan-admin',$data);
-			$this->load->view('admin/footer-admin',$data);
-		}else{
-			redirect(base_url('admin/login'));
-		}
-		
-	}
+
 	// ===================================================================================
 	// ===============================================RECORD============================
 	function record(){

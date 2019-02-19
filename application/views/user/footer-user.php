@@ -10,13 +10,13 @@
       <div class="row">
         <div class="col-md-4 mb-5 mb-lg-0">
           <h4 class="text-uppercase mb-4">Pinjam</h4>
-          <p class="lead mb-0">Wajib mempunyai akun sembelum meminjam
-            <br>dapat meminjam lebih dari 1</p>
+          <p class="lead mb-0">Dapat meminjam barang dengan
+            <br>lebih dari 1 jenis barang</p>
         </div>
         <div class="col-md-4 mb-5 mb-lg-0">
           <h4 class="text-uppercase mb-4">Mengembalikan</h4>
           <p class="lead mb-0">Mengembalikan dengan 1x click
-          <br>Tanpa Repot</p>
+          <br>Serta pengembalian dapat per Jenis barang</p>
         </div>
         <div class="col-md-4">
           <h4 class="text-uppercase mb-4">Daftar Akun</h4>
