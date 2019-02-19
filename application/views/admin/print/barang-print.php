@@ -12,7 +12,6 @@
                 </div>
                 <!-- /.col -->
             </div>
-            
             <!-- Table row -->
             <div class="row">
                 <div class="col-12 table-responsive">
@@ -45,8 +44,6 @@
                 <!-- /.col -->
             </div>
             <!-- /.row -->
-
-            
         </section>
         <!-- /.content -->
         </div>
