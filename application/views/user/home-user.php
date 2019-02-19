@@ -1,7 +1,6 @@
 <section class="portfolio" id="portfolio">
     <div class="container">
-      <h3 class="text-center text-uppercase text-secondary mb-0">Daftar Barang</h3>
-      <!-- <hr class="star-dark mb-5"> -->
+      <h3 class="page-header">Daftar Barang</h3>
       <div class="row">
         <div class="col-lg-8">
           <table id="example" class="table table-striped table-bordered" style="width:100%">
