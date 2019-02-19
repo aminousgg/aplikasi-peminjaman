@@ -764,4 +764,16 @@ class Admin extends CI_Controller{
 			redirect(base_url('admin/login'));
 		}
 	}
+
+	// ===============================================PRINT BARANG============================
+	function print_barang(){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
+			$data['tabel_record'] = $this->M_admin->tampil_barang()->result();
+			$data['judul']="Record";
+			$this->load->view('admin/print/head-print',$data);
+			$this->load->view('admin/print/barang-print',$data);
+		}else{
+			redirect(base_url('admin/login'));
+		}
+	}
 }
