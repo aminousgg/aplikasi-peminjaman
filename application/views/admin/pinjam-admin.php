@@ -116,6 +116,16 @@ shoppingCart.clearCart();
                         if($i>0)
                         {
                           if($row[$i]->kd_pinjam==$row[$i-1]->kd_pinjam){
+                            echo "<td style='display:none;'></td>";
+                            echo "<td style='display:none;'></td>";
+                            echo "<td style='display:none;'></td>";
+                            echo "<td style='display:none;'></td>";
+                            echo "<td style='display:none;'></td>";
+                            echo "<td style='display:none;'></td>";
+                            echo "<td style='display:none;'></td>";
+                            echo "<td style='display:none;'></td>";
+                            echo "<td style='display:none;'></td>";
+
                             continue;
                           }
                         }
