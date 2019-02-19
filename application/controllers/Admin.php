@@ -130,6 +130,7 @@ class Admin extends CI_Controller{
 			$data['judul']="Beranda"; 
 			$data['brg'] = $this->db->get('barang')->num_rows();
 			$data['agt'] = $this->db->get('anggota')->num_rows();
+			$data['aggt'] = $this->db->get('anggota')->result();
 			$data['pinjam'] = $this->db->get('pinjam_barang')->num_rows();
 			$data['kembali'] = $this->db->get('kembali_brg')->num_rows();
 			$this->load->view('admin/header-admin',$data);
@@ -755,8 +756,11 @@ class Admin extends CI_Controller{
 	function record(){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			//$data['tabel_record'] = $this->db->get('aktifitas_pinjam')->result();
-			$first_date=date_create("2019-02-16");
-			$second_date=date_create("2019-02-17");
+			date_default_timezone_set('Asia/Jakarta');
+			$first_date=new DateTime();
+			$first_date=$first_date->modify('-1 day');
+			$second_date=date_create(date('Y-m-d'));
+			//var_dump($first_date->modify('-2 day')); die;
 			$this->db->where('tgl_pjm >=', date_format($first_date,"Y/m/d"));
 			$this->db->where('tgl_pjm <=', date_format($second_date,"Y/m/d"));
 			$data['tabel_record'] = $this->db->get('aktifitas_pinjam')->result();

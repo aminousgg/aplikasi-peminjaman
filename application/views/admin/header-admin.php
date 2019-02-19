@@ -82,7 +82,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <div style="padding-top:15px; padding-bottom:15px; background-color:#17a2b8;" class="image">
-            <img style="border-style: solid; border-color: #ffff; display: block;  margin-left: auto; margin-right: auto;" width=60px height=60px src="<?php echo base_url() ?>admin-lte-master/dist/img/user2-160x160.jpg" class="img-circle elevation-2">
+            <img style="border-style: solid; border-color: #ffff; display: block;  margin-left: auto; margin-right: auto;" width=60px height=60px src='<?= base_url()."admin-lte-master/foto/agt/".$angg['foto']?>' class="img-circle elevation-2">
           </div>
             <!--  ambil nama  -->
             <?php if($this->session->userdata('admin')['nama']==null){ 
