@@ -1,4 +1,4 @@
-    <body onload="window.print();">
+<body onload="window.print();">
         <div class="wrapper">
         <br>
         <!-- Main content -->
@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-12">
                     <h2 class="text-center text-uppercase text-secondary mb-0">
-                    DATA BARANG<br>
+                    DATA ANGGOTA<br>
                         Dinas Energi dan Sumber Daya Mineral<br>Provinsi Jawa Tengah <br><br>
                     </h2>
                 </div>
@@ -22,22 +22,22 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Barang</th>
-                                <th>Kode Barang</th>
-                                <th>Merk</th>
-                                <th>Jumlah</th>
-                                <th>Tersedia</th>
+                                <th>NIP</th>
+                                <th>Nama</th>
+                                <th>Jabatan</th>
+                                <th>Pangkat/Golongan</th>
+                                <th>Bidang</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php $i=1; foreach($tabel_record as $row){ ?>
                                 <tr>
                                     <td><?php echo $i; ?></td>
-                                    <td><?php echo $row->kode_barang ?></td>
-                                    <td><?php echo $row->nama_barang ?></td>
-                                    <td><?php echo $row->merk ?></td>
-                                    <td><?php echo $row->jml_barang ?></td>
-                                    <td><?php echo $row->jml_tersedia ?></td>                        
+                                    <td><?php echo $row->nip ?></td>
+                                    <td><?php echo $row->nama ?></td>
+                                    <td><?php echo $row->jabatan ?></td>
+                                    <td><?php echo $row->pangkat_golongan ?></td>
+                                    <td><?php echo $row->seksi ?></td>                        
                                     <?php $i++; ?>
                                 </tr>
                             <?php } ?>

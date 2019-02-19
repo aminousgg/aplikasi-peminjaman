@@ -782,4 +782,39 @@ class Admin extends CI_Controller{
 			redirect(base_url('admin/login'));
 		}
 	}
+	
+	// ===============================================PRINT ANGGOTA============================
+	function print_anggota(){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
+			$data['tabel_record'] = $this->M_admin->tampil_anggota()->result();
+			$data['judul']="Record";
+			$this->load->view('admin/print/head-print',$data);
+			$this->load->view('admin/print/anggota-print',$data);
+		}else{
+			redirect(base_url('admin/login'));
+		}
+	}
+	// ===============================================PRINT PINJAM============================
+	function print_pinjam(){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
+			$data['tabel_record'] = $this->M_admin->tampil_pinjam()->result();
+			$data['judul']="Record";
+			$this->load->view('admin/print/head-print',$data);
+			$this->load->view('admin/print/pinjam-print',$data);
+		}else{
+			redirect(base_url('admin/login'));
+		}
+	}
+
+	// ===============================================PRINT KEMBALI============================
+	function print_kembali(){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
+			$data['tabel_record'] = $this->M_admin->tampil_kembali()->result();
+			$data['judul']="Record";
+			$this->load->view('admin/print/head-print',$data);
+			$this->load->view('admin/print/pinjam-print',$data);
+		}else{
+			redirect(base_url('admin/login'));
+		}
+	}
 }
