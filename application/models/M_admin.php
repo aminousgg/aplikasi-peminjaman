@@ -41,5 +41,9 @@ class M_admin extends CI_Model{
 	function tampil_kembali(){
 		return $this->db->get('kembali_brg');
 	}
+
+	function tampil_rec(){
+		return $this->db->get('aktifitas_pinjam');
+	}
 }
 ?>
