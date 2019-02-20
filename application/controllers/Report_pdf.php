@@ -291,22 +291,22 @@ Class Report_pdf extends CI_Controller{
         $pdf->Cell(9,6,'No',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(30,6,'Kode Pinjam',1,0,'C',1);
+        $pdf->Cell(25,6,'Kode Pinjam',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
         $pdf->Cell(30,6,'NIP',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(35,6,'Kode Barang',1,0,'C',1);
+        $pdf->Cell(30,6,'Kode Barang',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(35,6,'Jumlah Pinjam',1,0,'C',1);
+        $pdf->Cell(30,6,'Jumlah Pinjam',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(35,6,'Jumlah Kembali',1,0,'C',1);
+        $pdf->Cell(30,6,'Jumlah Kembali',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(35,6,'Status',1,0,'C',1);
+        $pdf->Cell(30,6,'Status',1,0,'C',1);
 
         $pdf->SetFont('Arial','',11);
         $pdf->Ln();
@@ -315,12 +315,12 @@ Class Report_pdf extends CI_Controller{
         foreach ($rec as $row){
             $pdf->SetX(20);
             $pdf->Cell(9,6,$i,1,0,'C');
-            $pdf->Cell(30,6,$row->kd_pjm,1,0);
-            $pdf->Cell(30,6,$row->nip,1,0);
-            $pdf->Cell(35,6,$row->kd_brg,1,0,'C');
-            $pdf->Cell(35,6,$row->jml_pjm,1,0);
-            $pdf->Cell(35,6,$row->jml_kmbl,1,0);
-            $pdf->Cell(35,6,$row->status,1,0);
+            $pdf->Cell(25,6,$row->kd_pjm,1,0,'C');
+            $pdf->Cell(30,6,$row->nip,1,0,'C');
+            $pdf->Cell(30,6,$row->kd_brg,1,0,'C');
+            $pdf->Cell(30,6,$row->jml_pjm,1,0,'C');
+            $pdf->Cell(30,6,$row->jml_kmbl,1,0,'C');
+            $pdf->Cell(30,6,$row->status,1,0,'C');
             
             $i++;
             $pdf->Ln();

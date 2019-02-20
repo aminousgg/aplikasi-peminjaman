@@ -15,7 +15,7 @@ shoppingCart.clearCart();
           <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>Report_Excel/exportPinjam';">
             <i class="fa fa-print"></i> Excel
           </button>
-          <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>admin/print_pinjam';">
+          <button class="btn btn-info" type="button" onclick="window.open('<?php echo base_url() ?>admin/print_pinjam')">
             <i class="fa fa-print"></i> Print Out
           </button>
         </div>
