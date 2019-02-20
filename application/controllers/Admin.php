@@ -614,7 +614,6 @@ class Admin extends CI_Controller{
 					//var_dump($set); die;
 					$this->db->where('kode_barang',$this->input->post('kode')[$i]);
 					$result=$this->db->update('barang',$set);
-					
 					if($result==true){
 						$a++;
 					}else{
@@ -627,7 +626,7 @@ class Admin extends CI_Controller{
 			}
 			
 			if($a==count($this->input->post('kode'))){
-				$this->session->set_flashdata('success', 'Berhasil Meminjam !');
+				$this->session->set_flashdata('success', $kodePinjam);
 				redirect(base_url('admin/pinjam'));
 			}else{
 				$this->session->set_flashdata('error', 'Gagal Meminjam!');
@@ -928,9 +927,10 @@ class Admin extends CI_Controller{
 		}
 	}
 	// ===============================================PRINT FORM============================
-	function print_form(){
+	function print_form($kode_pjm){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
-			$data['tabel_record'] = $this->M_admin->tampil_rec()->result();
+			$data['tabel_record']=$this->db->get_where('pinjam_barang', array('kd_pinjam'=>$kode_pjm))->result();
+			$data['row']=$this->db->get_where('aktifitas_pinjam', array('kd_pjm'=>$kode_pjm))->row_array();
 			$data['judul']="Record";
 			$this->load->view('admin/print/head-print',$data);
 			$this->load->view('admin/print/form-print',$data);

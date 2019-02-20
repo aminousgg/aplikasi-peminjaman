@@ -136,7 +136,7 @@ endif;
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary" onclick="window.open('<?php echo base_url() ?>admin/print_form')">Pinjam</button>
+                  <button type="submit" class="btn btn-primary">Pinjam</button>
                 </div>
               <?php echo form_close(); ?>
         </div>

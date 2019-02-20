@@ -58,9 +58,13 @@ shoppingCart.clearCart();
       echo '<script>
               swal({
                   type: "'.'success'.'",
-                  title: "'.$this->session->flashdata('success').'",
-                  text: "'.'Cek tabel peminjaman'.'",
+                  title: "'.'berhasil'.'",
+                  text: "'.'Cetak Bukti Peminjaman'.'",
                   customClass: "'.'animated bounceIn'.'",
+                  }).then((result) => {
+                    if (result.value) {
+                      window.open("'.base_url().'admin/print_form/'.$this->session->flashdata('success').'");
+                    }
                   })
             </script>';
   endif;

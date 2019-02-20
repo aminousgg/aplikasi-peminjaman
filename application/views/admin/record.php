@@ -9,13 +9,13 @@ shoppingCart.clearCart();
       <div class="row mb-2">
       <div class="col-sm-6">
           <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>Report_pdf/pdf_record';">
-            <i class="ion ion-ios-printer-outline"></i> PDF
+            <i class="fa fa-print"></i> PDF
           </button>
           <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>Report_Excel/exportRec';">
-            <i class="ion ion-ios-printer-outline"></i> Excel
+            <i class="fa fa-print"></i> Excel
           </button>
           <button class="btn btn-info" type="button" onclick="window.open('<?php echo base_url() ?>admin/print_rec')">
-            <i class="ion ion-ios-printer-outline"></i> Print Out
+            <i class="fa fa-print"></i> Print Out
           </button>
         </div>
       </div>
