@@ -157,6 +157,23 @@ class Admin extends CI_Controller{
 		}
 		
 	}
+	function brg_kat($kat){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
+			//$this->db->get_where('barang', array('kategori'=>'kendaraan'))->result();
+			$data['tabel_record'] = $this->db->get_where('barang', array('kategori'=>$kat))->result();
+			$data['judul']="Barang";
+			$this->load->view('admin/header-admin',$data);
+			$this->load->view('admin/aside-admin',$data);
+			$this->load->view('admin/barang-admin',$data);
+			$this->load->view('admin/footer-admin',$data);
+		}else{
+			redirect(base_url('admin/login'));
+		}
+		
+	}
+
+
+
 	function tambah_barang(){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			$data['judul']="Barang";
@@ -755,6 +772,48 @@ class Admin extends CI_Controller{
 	// ===============================================RECORD============================
 	function record(){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
+			$data['tabel_record'] = $this->db->get('aktifitas_pinjam')->result();
+			// date_default_timezone_set('Asia/Jakarta');
+			// $first_date=new DateTime();
+			// $first_date=$first_date->modify('-1 day');
+			// $second_date=date_create(date('Y-m-d'));
+			// //var_dump($first_date->modify('-2 day')); die;
+			// $this->db->where('tgl_pjm >=', date_format($first_date,"Y/m/d"));
+			// $this->db->where('tgl_pjm <=', date_format($second_date,"Y/m/d"));
+			// $data['tabel_record'] = $this->db->get('aktifitas_pinjam')->result();
+
+			$data['judul']="Record";
+			$this->load->view('admin/header-admin',$data);
+			$this->load->view('admin/aside-admin',$data);
+			$this->load->view('admin/record',$data);
+			$this->load->view('admin/footer-admin',$data);
+		}else{
+			redirect(base_url('admin/login'));
+		}
+	}
+	function recordbulan(){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
+			//$data['tabel_record'] = $this->db->get('aktifitas_pinjam')->result();
+			date_default_timezone_set('Asia/Jakarta');
+			$first_date=new DateTime();
+			$first_date=$first_date->modify('-30 day');
+			$second_date=date_create(date('Y-m-d'));
+			//var_dump($first_date->modify('-2 day')); die;
+			$this->db->where('tgl_pjm >=', date_format($first_date,"Y/m/d"));
+			$this->db->where('tgl_pjm <=', date_format($second_date,"Y/m/d"));
+			$data['tabel_record'] = $this->db->get('aktifitas_pinjam')->result();
+
+			$data['judul']="Record";
+			$this->load->view('admin/header-admin',$data);
+			$this->load->view('admin/aside-admin',$data);
+			$this->load->view('admin/record',$data);
+			$this->load->view('admin/footer-admin',$data);
+		}else{
+			redirect(base_url('admin/login'));
+		}
+	}
+	function recordminggu(){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			//$data['tabel_record'] = $this->db->get('aktifitas_pinjam')->result();
 			date_default_timezone_set('Asia/Jakarta');
 			$first_date=new DateTime();
@@ -774,6 +833,28 @@ class Admin extends CI_Controller{
 			redirect(base_url('admin/login'));
 		}
 	}
+	function recordhari(){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
+			//$data['tabel_record'] = $this->db->get('aktifitas_pinjam')->result();
+			date_default_timezone_set('Asia/Jakarta');
+			$first_date=new DateTime();
+			$first_date=$first_date->modify('-0 day');
+			$second_date=date_create(date('Y-m-d'));
+			//var_dump($first_date->modify('-2 day')); die;
+			$this->db->where('tgl_pjm >=', date_format($first_date,"Y/m/d"));
+			$this->db->where('tgl_pjm <=', date_format($second_date,"Y/m/d"));
+			$data['tabel_record'] = $this->db->get('aktifitas_pinjam')->result();
+
+			$data['judul']="Record";
+			$this->load->view('admin/header-admin',$data);
+			$this->load->view('admin/aside-admin',$data);
+			$this->load->view('admin/record',$data);
+			$this->load->view('admin/footer-admin',$data);
+		}else{
+			redirect(base_url('admin/login'));
+		}
+	}
+
 
 	// ===============================================PRINT BARANG============================
 	function print_barang(){

@@ -62,12 +62,27 @@ shoppingCart.clearCart();
               <?php if($this->session->userdata('admin')['nama']==null){ 
               
               }else {?>
-                <button style="margin-top:-25px;" onclick="link()" class="btn btn-success float-right"><i class="fa fa-plus"></i>  Tambah Barang</button>
+                <button style="margin-top:-27px;" onclick="link(1)" class="btn btn-success float-right"><i class="fa fa-plus"></i>  Tambah Barang</button><br>
+                <button onclick="link(2)" class="btn btn-danger"><i class="nav-icon fa fa-list"></i> All</button>
+                <button onclick="link(3)" class="btn btn-danger"><i class="nav-icon fa fa-list"></i> Kendaraan</button>
+                <button onclick="link(4)" class="btn btn-danger"><i class="nav-icon fa fa-list"></i> Elektronik</button>
+                <button onclick="link(5)" class="btn btn-danger"><i class="nav-icon fa fa-list"></i> lain-lain</button>
               <?php } ?>
             </div>
             <script>
-              function link() {
-                window.location.href='<?php echo base_url() ?>admin/tambah_barang';
+              function link(a) {
+                if(a==1){
+                  window.location.href='<?php echo base_url() ?>admin/tambah_barang';
+                }else if(a==2){
+                  window.location.href='<?php echo base_url() ?>admin/barang';
+                }else if(a==3){
+                  window.location.href='<?php echo base_url() ?>admin/brg_kat/kendaraan';
+                }else if(a==4){
+                  window.location.href='<?php echo base_url() ?>admin/brg_kat/elektronik';
+                }else if(a==5){
+                  window.location.href='<?php echo base_url() ?>admin/brg_kat/lain-lain';
+                }
+                
               }
             </script>
           
@@ -206,7 +221,7 @@ shoppingCart.clearCart();
                               <input type="hidden" name="id" value="<?php echo $row->id ?>">
                               <input type="hidden" name="asli" value="<?php echo $row->jml_barang ?>">
                               <input type="hidden" name="sedia" value="<?php echo $row->jml_tersedia ?>">
-                              <button type="submit" class="btn btn-info"><i class="ion ion-android-add"></i></button>
+                              <button type="submit" class="btn btn-info"><i class="fa fa-plus"></i></button>
                             <?php echo form_close(); ?>
                           </div>
                           <div class="modal-footer">
