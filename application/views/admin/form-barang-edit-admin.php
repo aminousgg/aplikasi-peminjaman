@@ -38,7 +38,42 @@
                                 <div class="row">
                                   <div class="col">
                                     <label>Kategori</label>
-                                    <input name="kategori" value="<?php echo $brg['kategori']?>" type="text" class="form-control">
+                                    <!-- <input name="kategori" value="<?php echo $brg['kategori']?>" type="text" class="form-control"> -->
+                                    <select name="kategori" class="form-control">
+                                        <!-- <option hidden value="">Pilih Ketgori</option> -->
+                                        <?php if($brg['kategori']=="kendaraan") { ?>
+                                            <option value="kendaraan">Kendaraan</option>
+                                            <option value="teknis">Peralatan Teknis</option>
+                                            <option value="elektronik">Elektronik</option>
+                                            <option value="perpus">Perpustakaan</option>
+                                            <option value="lain-lain">Lain-lain</option>
+                                        <?php }elseif($brg['kategori']=="teknis"){ ?>
+                                            <option value="teknis">Peralatan Teknis</option>
+                                            <option value="kendaraan">Kendaraan</option>
+                                            <option value="elektronik">Elektronik</option>
+                                            <option value="perpus">Perpustakaan</option>
+                                            <option value="lain-lain">Lain-lain</option>
+                                        <?php }elseif($brg['kategori']=="elektronik"){ ?>
+                                            <option value="elektronik">Elektronik</option>
+                                            <option value="teknis">Peralatan Teknis</option>
+                                            <option value="kendaraan">Kendaraan</option>
+                                            <option value="perpus">Perpustakaan</option>
+                                            <option value="lain-lain">Lain-lain</option>
+                                        <?php }elseif($brg['kategori']=="perpus"){ ?>
+                                            <option value="perpus">Perpustakaan</option>
+                                            <option value="elektronik">Elektronik</option>
+                                            <option value="teknis">Peralatan Teknis</option>
+                                            <option value="kendaraan">Kendaraan</option>
+                                            <option value="lain-lain">Lain-lain</option>
+                                        <?php }elseif($brg['kategori']=="lain-lain"){ ?>
+                                            <option value="lain-lain">Lain-lain</option>
+                                            <option value="perpus">Perpustakaan</option>
+                                            <option value="elektronik">Elektronik</option>
+                                            <option value="teknis">Peralatan Teknis</option>
+                                            <option value="kendaraan">Kendaraan</option>
+                                        <?php } ?>
+
+                                    </select> 
                                   </div>
                                   <div class="col">
                                     <label>Merk</label>
