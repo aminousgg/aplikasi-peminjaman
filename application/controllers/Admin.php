@@ -595,7 +595,7 @@ class Admin extends CI_Controller{
 					'kd_brg'	=> $this->input->post('kode')[$i],
 					'jml_pjm'	=> $this->input->post('jml1')[$i],
 					'jml_kmbl'	=> 0,
-					'tgl_pjm'	=> $this->input->post('tgl_pinjam1'),
+					'tgl_pjm'	=> $this->input->post('tgl_pinjam'),
 					'estimate_kmbl'	=> $this->input->post('tgl_kembali'),
 					'ptgs_pjm'	=> $this->input->post('petugas'),
 					'ptg_kmbl' => "-",
