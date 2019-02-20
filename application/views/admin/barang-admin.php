@@ -59,14 +59,99 @@ shoppingCart.clearCart();
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Data Barang</h3>
-              <?php if($this->session->userdata('admin')['nama']==null){ 
-              
-              }else {?>
+              <?php if($this->session->userdata('admin')['nama']==null){ ?>
+                <?php if($aktif=="k"){ ?>
+                  <button onclick="link(2)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> All</button>
+                  <button onclick="link(3)" class="btn btn-secondary btn-sm"><i class="nav-icon fa fa-list"></i> Kendaraan</button>
+                  <button onclick="link(6)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i>Teknis</button>
+                  <button onclick="link(4)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> Elektronik</button>
+                  <button onclick="link(7)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i>Perpustakaan</button>
+                  <button onclick="link(5)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> lain-lain</button>
+                <?php }elseif($aktif=="e"){ ?>
+                  <button onclick="link(2)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> All</button>
+                  <button onclick="link(3)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> Kendaraan</button>
+                  <button onclick="link(6)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i>Teknis</button>
+                  <button onclick="link(4)" class="btn btn-secondary btn-sm"><i class="nav-icon fa fa-list"></i> Elektronik</button>
+                  <button onclick="link(7)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i>Perpustakaan</button>
+                  <button onclick="link(5)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> lain-lain</button>
+                <?php }elseif($aktif=="l"){ ?>
+                  <button onclick="link(2)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> All</button>
+                  <button onclick="link(3)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> Kendaraan</button>
+                  <button onclick="link(6)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i>Teknis</button>
+                  <button onclick="link(4)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> Elektronik</button>
+                  <button onclick="link(7)"class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i>Perpustakaan</button>
+                  <button onclick="link(5)" class="btn btn-secondary btn-sm"><i class="nav-icon fa fa-list"></i> lain-lain</button>
+                <?php }elseif($aktif=='t'){ ?>
+                  <button onclick="link(2)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> All</button>
+                  <button onclick="link(3)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> Kendaraan</button>
+                  <button onclick="link(6)" class="btn btn-secondary btn-sm"><i class="nav-icon fa fa-list"></i>Teknis</button>
+                  <button onclick="link(4)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> Elektronik</button>
+                  <button onclick="link(7)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i>Perpustakaan</button>
+                  <button onclick="link(5)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> lain-lain</button>
+                <?php }elseif($aktif=='p'){ ?>
+                  <button onclick="link(2)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> All</button>
+                  <button onclick="link(3)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> Kendaraan</button>
+                  <button onclick="link(6)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i>Teknis</button>
+                  <button onclick="link(4)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> Elektronik</button>
+                  <button onclick="link(7)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i>Perpustakaan</button>
+                  <button onclick="link(5)" class="btn btn-secondary btn-sm"><i class="nav-icon fa fa-list"></i> lain-lain</button>
+                <?php }elseif($aktif==""){?>
+                  <button onclick="link(2)" class="btn btn-secondary btn-sm"><i class="nav-icon fa fa-list"></i> All</button>
+                  <button onclick="link(3)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> Kendaraan</button>
+                  <button onclick="link(6)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i>Teknis</button>
+                  <button onclick="link(4)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> Elektronik</button>
+                  <button onclick="link(7)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i>Perpustakaan</button>
+                  <button onclick="link(5)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> lain-lain</button>
+                <?php } ?>
+
+              <?php }else { ?>
                 <button style="margin-top:-27px;" onclick="link(1)" class="btn btn-success float-right"><i class="fa fa-plus"></i>  Tambah Barang</button><br>
-                <button onclick="link(2)" class="btn btn-danger"><i class="nav-icon fa fa-list"></i> All</button>
-                <button onclick="link(3)" class="btn btn-danger"><i class="nav-icon fa fa-list"></i> Kendaraan</button>
-                <button onclick="link(4)" class="btn btn-danger"><i class="nav-icon fa fa-list"></i> Elektronik</button>
-                <button onclick="link(5)" class="btn btn-danger"><i class="nav-icon fa fa-list"></i> lain-lain</button>
+                
+                <?php if($aktif=="k"){ ?>
+                  <button onclick="link(2)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> All</button>
+                  <button onclick="link(3)" class="btn btn-secondary btn-sm"><i class="nav-icon fa fa-list"></i> Kendaraan</button>
+                  <button onclick="link(6)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i>Teknis</button>
+                  <button onclick="link(4)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> Elektronik</button>
+                  <button onclick="link(7)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i>Perpustakaan</button>
+                  <button onclick="link(5)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> lain-lain</button>
+                <?php }elseif($aktif=="e"){ ?>
+                  <button onclick="link(2)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> All</button>
+                  <button onclick="link(3)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> Kendaraan</button>
+                  <button onclick="link(6)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i>Teknis</button>
+                  <button onclick="link(4)" class="btn btn-secondary btn-sm"><i class="nav-icon fa fa-list"></i> Elektronik</button>
+                  <button onclick="link(7)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i>Perpustakaan</button>
+                  <button onclick="link(5)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> lain-lain</button>
+                <?php }elseif($aktif=="l"){ ?>
+                  <button onclick="link(2)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> All</button>
+                  <button onclick="link(3)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> Kendaraan</button>
+                  <button onclick="link(6)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i>Teknis</button>
+                  <button onclick="link(4)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> Elektronik</button>
+                  <button onclick="link(7)"class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i>Perpustakaan</button>
+                  <button onclick="link(5)" class="btn btn-secondary btn-sm"><i class="nav-icon fa fa-list"></i> lain-lain</button>
+                <?php }elseif($aktif=='t'){ ?>
+                  <button onclick="link(2)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> All</button>
+                  <button onclick="link(3)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> Kendaraan</button>
+                  <button onclick="link(6)" class="btn btn-secondary btn-sm"><i class="nav-icon fa fa-list"></i>Teknis</button>
+                  <button onclick="link(4)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> Elektronik</button>
+                  <button onclick="link(7)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i>Perpustakaan</button>
+                  <button onclick="link(5)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> lain-lain</button>
+                <?php }elseif($aktif=='p'){ ?>
+                  <button onclick="link(2)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> All</button>
+                  <button onclick="link(3)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> Kendaraan</button>
+                  <button onclick="link(6)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i>Teknis</button>
+                  <button onclick="link(4)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> Elektronik</button>
+                  <button onclick="link(7)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i>Perpustakaan</button>
+                  <button onclick="link(5)" class="btn btn-secondary btn-sm"><i class="nav-icon fa fa-list"></i> lain-lain</button>
+                <?php }elseif($aktif==""){?>
+                  <button onclick="link(2)" class="btn btn-secondary btn-sm"><i class="nav-icon fa fa-list"></i> All</button>
+                  <button onclick="link(3)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> Kendaraan</button>
+                  <button onclick="link(6)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i>Teknis</button>
+                  <button onclick="link(4)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> Elektronik</button>
+                  <button onclick="link(7)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i>Perpustakaan</button>
+                  <button onclick="link(5)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> lain-lain</button>
+                <?php } ?>
+
+
               <?php } ?>
             </div>
             <script>
@@ -81,6 +166,10 @@ shoppingCart.clearCart();
                   window.location.href='<?php echo base_url() ?>admin/brg_kat/elektronik';
                 }else if(a==5){
                   window.location.href='<?php echo base_url() ?>admin/brg_kat/lain-lain';
+                }else if(a==6){
+                  window.location.href='<?php echo base_url() ?>admin/brg_kat/teknis';
+                }else if(a==7){
+                  window.location.href='<?php echo base_url() ?>admin/brg_kat/perpustakaan';
                 }
                 
               }
