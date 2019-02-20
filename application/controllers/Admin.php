@@ -169,7 +169,7 @@ class Admin extends CI_Controller{
 				$data['aktif']='l';
 			}elseif($kat=="teknis"){
 				$data['aktif']='t';
-			}elseif($kat=="perpustakaan"){
+			}elseif($kat=="perpus"){
 				$data['aktif']='p';
 			}else{
 				$data['aktif']='';
@@ -923,6 +923,17 @@ class Admin extends CI_Controller{
 			$data['judul']="Record";
 			$this->load->view('admin/print/head-print',$data);
 			$this->load->view('admin/print/record-print',$data);
+		}else{
+			redirect(base_url('admin/login'));
+		}
+	}
+	// ===============================================PRINT FORM============================
+	function print_form(){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
+			$data['tabel_record'] = $this->M_admin->tampil_rec()->result();
+			$data['judul']="Record";
+			$this->load->view('admin/print/head-print',$data);
+			$this->load->view('admin/print/form-print',$data);
 		}else{
 			redirect(base_url('admin/login'));
 		}
