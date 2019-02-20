@@ -169,7 +169,7 @@ class Admin extends CI_Controller{
 				$data['aktif']='l';
 			}elseif($kat=="teknis"){
 				$data['aktif']='t';
-			}elseif($kat=="perpustakaan"){
+			}elseif($kat=="perpus"){
 				$data['aktif']='p';
 			}else{
 				$data['aktif']='';
