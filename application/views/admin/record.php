@@ -8,6 +8,7 @@ shoppingCart.clearCart();
     <div class="container-fluid">
       <div class="row mb-2">
       <div class="col-sm-6">
+<<<<<<< HEAD
           <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>Report_pdf/pdf_record';">
             <i class="ion ion-ios-printer-outline"></i> PDF
           </button>
@@ -16,6 +17,16 @@ shoppingCart.clearCart();
           </button>
           <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>admin/print_rec';">
             <i class="ion ion-ios-printer-outline"></i> Print Out
+=======
+          <button class="btn btn-info" type="button" onclick="window.location=">
+            <i class="fa fa-print"></i> PDF
+          </button>
+          <button class="btn btn-info" type="button" onclick="window.location=">
+            <i class="fa fa-print"></i> Excel
+          </button>
+          <button class="btn btn-info" type="button">
+            <i class="fa fa-print"></i> Print Out
+>>>>>>> 2bfd5035fb5d59b71327d702499ea1917aaec0f1
           </button>
         </div>
       </div>
@@ -59,11 +70,27 @@ shoppingCart.clearCart();
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Daftar Barang Kembali</h3>
-            <button style="margin-top:-25px;" onclick="link()" class="btn btn-success float-right"><i class="ion ion-android-add"></i>  Pinjam Barang</button>
+            <button style="margin-top:-27px;" onclick="link(1)" class="btn btn-success float-right"><i class="fa fa-plus"></i>  Pinjam Barang</button><br>
+            <button onclick="link(2)" class="btn btn-danger"><i class="nav-icon fa fa-list"></i> 1 Bulan</button>
+            <button onclick="link(3)" class="btn btn-danger"><i class="nav-icon fa fa-list"></i> 1 Minggu</button>
+            <button onclick="link(4)" class="btn btn-danger"><i class="nav-icon fa fa-list"></i> hari ini</button>
+            <!-- <button style="" onclick="link()" class="btn btn-success float-right"><i class="fa fa-plus"></i>  Pinjam Barang</button> -->
           </div>
           <script>
-            function link() {
-              window.location.href='<?php echo base_url() ?>admin/pinjam_barang';
+            function link(a) {
+              if(a==1){
+                window.location.href='<?php echo base_url() ?>admin/pinjam_barang';
+              }
+              else if(a==2){
+                window.location.href='<?php echo base_url() ?>admin/recordbulan';
+              }
+              else if(a==3){
+                window.location.href='<?php echo base_url() ?>admin/recordminggu';
+              }
+              else if(a==4){
+                window.location.href='<?php echo base_url() ?>admin/recordhari';
+              }
+              
             }
           </script>
           <!-- /.card-header -->
@@ -82,7 +109,11 @@ shoppingCart.clearCart();
               </thead>
               <tbody>
               <?php $i=1; foreach($tabel_record as $row){ ?>
-                <tr>
+              <?php if($row->jml_kmbl!=0){ ?>
+                <tr style="background-color:#E6E6FA;">
+              <?php }else{ ?>
+                <tr style="background-color:#fff;">
+              <?php }?>
                   <td><?= $row->kd_pjm ?></td>
                   <td>
                     <?php

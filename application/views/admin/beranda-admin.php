@@ -105,8 +105,8 @@ shoppingCart.clearCart();
                     ?>
                   <li>
                     <img style="width:50px; height:50px;" src="<?= base_url()."admin-lte-master/foto/agt/".$row->foto ?>" alt="Image">
-                    <a class="users-list-name" href="#">Alexander Pierce</a>
-                    <span class="users-list-date">Today</span>
+                    <a class="users-list-name" href="#"><?= $row->nama ?></a>
+                    <span class="users-list-date"><?= $row->tgl_lahir ?></span>
                   </li>
                   <?php $i++; } ?>
                 </ul>
