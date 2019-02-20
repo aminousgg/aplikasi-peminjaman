@@ -56,9 +56,9 @@
 <script src="<?php echo base_url() ?>admin-lte-master/plugins/fullcalendar/fullcalendar.min.js"></script>
 
   <!-- OPTIONAL SCRIPTS -->
-  <script src="<?php echo base_url() ?>admin-lte-master/plugins/chart.js/Chart.min.js"></script>
+  <!-- <script src="<?php echo base_url() ?>admin-lte-master/plugins/chart.js/Chart.min.js"></script>
 <script src="<?php echo base_url() ?>admin-lte-master/dist/js/demo.js"></script>
-<script src="<?php echo base_url() ?>admin-lte-master/dist/js/pages/dashboard3.js"></script>
+<script src="<?php echo base_url() ?>admin-lte-master/dist/js/pages/dashboard3.js"></script> -->
 <script>
   $(function () {
     $("#example1").DataTable();
