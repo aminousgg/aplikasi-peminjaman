@@ -47,7 +47,15 @@
                               <div class="row">
                                 <div class="col">
                                   <label>Kategori</label>
-                                  <input name="kategori" placeholder="Kategori" type="text" class="form-control">
+                                  <!-- <input name="kategori" placeholder="Kategori" type="text" class="form-control"> -->
+                                  <select name="kategori" class="form-control">
+                                    <option hidden value="">Pilih Ketgori</option>
+                                    <option value="kendaraan">Kendaraan</option>
+                                    <option value="teknis">Peralatan Teknis</option>
+                                    <option value="elektronik">Elektronik</option>
+                                    <option value="perpus">Perpustakaan</option>
+                                  </select>
+                                
                                 </div>
                                 <div class="col">
                                   <label>Tgl Masuk</label>
@@ -57,7 +65,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Jumlah Unit</label>
-                                <input type="text" name="jml_barang" class="form-control" placeholder="Angka">
+                                <input type="number" name="jml_barang" class="form-control numeric" placeholder="Angka">
                             </div>
                             <div class="form-group">
                                 <label>Spesifikasi</label>
@@ -97,3 +105,8 @@
     </section>
     <!-- /.content -->
 </div>
+<script>
+$(document).on("input", ".numeric", function() {
+    this.value = this.value.replace(/\D/g,'');
+});
+</script>

@@ -147,6 +147,7 @@ class Admin extends CI_Controller{
 	function barang(){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			$data['tabel_record'] = $this->M_admin->tampil_barang()->result();
+			$data['aktif']='';
 			$data['judul']="Barang";
 			$this->load->view('admin/header-admin',$data);
 			$this->load->view('admin/aside-admin',$data);
@@ -160,6 +161,19 @@ class Admin extends CI_Controller{
 	function brg_kat($kat){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			//$this->db->get_where('barang', array('kategori'=>'kendaraan'))->result();
+			if($kat=="kendaraan"){
+				$data['aktif']='k';
+			}elseif($kat=="elektronik"){
+				$data['aktif']='e';
+			}elseif($kat=="lain-lain"){
+				$data['aktif']='l';
+			}elseif($kat=="teknis"){
+				$data['aktif']='t';
+			}elseif($kat=="perpustakaan"){
+				$data['aktif']='p';
+			}else{
+				$data['aktif']='';
+			}
 			$data['tabel_record'] = $this->db->get_where('barang', array('kategori'=>$kat))->result();
 			$data['judul']="Barang";
 			$this->load->view('admin/header-admin',$data);

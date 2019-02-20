@@ -34,7 +34,7 @@
   endif;
 ?>
 <div class="login-card">
-    <img class="center" src="<?php echo base_url() ?>user/logo/sipirang_logo.png" width=90px height=70px>
+    <img class="center" src="<?php echo base_url() ?>admin-lte-master/dist/img/Logo-Jateng.png" width=100px height=70px>
     <h3 style="text-align:center;">Admin</h3>
     <?php echo form_open('admin/aksi_login'); ?>
         <input type="text" name="username" placeholder="Username">

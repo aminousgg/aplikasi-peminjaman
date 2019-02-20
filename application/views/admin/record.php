@@ -8,7 +8,6 @@ shoppingCart.clearCart();
     <div class="container-fluid">
       <div class="row mb-2">
       <div class="col-sm-6">
-<<<<<<< HEAD
           <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>Report_pdf/pdf_record';">
             <i class="ion ion-ios-printer-outline"></i> PDF
           </button>
@@ -17,16 +16,6 @@ shoppingCart.clearCart();
           </button>
           <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>admin/print_rec';">
             <i class="ion ion-ios-printer-outline"></i> Print Out
-=======
-          <button class="btn btn-info" type="button" onclick="window.location=">
-            <i class="fa fa-print"></i> PDF
-          </button>
-          <button class="btn btn-info" type="button" onclick="window.location=">
-            <i class="fa fa-print"></i> Excel
-          </button>
-          <button class="btn btn-info" type="button">
-            <i class="fa fa-print"></i> Print Out
->>>>>>> 2bfd5035fb5d59b71327d702499ea1917aaec0f1
           </button>
         </div>
       </div>

@@ -284,7 +284,7 @@ Class Report_pdf extends CI_Controller{
         $pdf->Cell(190,7,date('Y-m-d'),0,1,'C');
         // Memberikan space kebawah agar tidak terlalu rapat
         $pdf->Cell(10,7,'',0,1,'');
-        $pdf->SetX(20);
+        $pdf->SetX(13);
         $pdf->SetFont('Arial','B',11);
         
         $pdf->SetFillColor(28, 166, 205);
@@ -300,10 +300,10 @@ Class Report_pdf extends CI_Controller{
         $pdf->Cell(35,6,'Kode Barang',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(35,6,'Jumlah Pinjam',1,0,'C',1);
+        $pdf->Cell(23,6,'jml Pinjam',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(35,6,'Jumlah Kembali',1,0,'C',1);
+        $pdf->Cell(23,6,'jml Kembali',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
         $pdf->Cell(35,6,'Status',1,0,'C',1);
@@ -313,13 +313,13 @@ Class Report_pdf extends CI_Controller{
         $rec = $this->db->get('aktifitas_pinjam')->result();
         $i=1;
         foreach ($rec as $row){
-            $pdf->SetX(20);
+            $pdf->SetX(13);
             $pdf->Cell(9,6,$i,1,0,'C');
             $pdf->Cell(30,6,$row->kd_pjm,1,0);
             $pdf->Cell(30,6,$row->nip,1,0);
             $pdf->Cell(35,6,$row->kd_brg,1,0,'C');
-            $pdf->Cell(35,6,$row->jml_pjm,1,0);
-            $pdf->Cell(35,6,$row->jml_kmbl,1,0);
+            $pdf->Cell(23,6,$row->jml_pjm,1,0);
+            $pdf->Cell(23,6,$row->jml_kmbl,1,0);
             $pdf->Cell(35,6,$row->status,1,0);
             
             $i++;
