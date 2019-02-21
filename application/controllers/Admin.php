@@ -757,8 +757,9 @@ class Admin extends CI_Controller{
 		}else{
 			$petugas=$this->session->userdata('petugas')['nama'];
 		}
-		
+		//
 		$pinjam = $this->M_admin->ambil_pinjam($id)->row_array();
+		//var_dump($pinjam['kode_barang']); die;
 		if($pinjam==null){
 			echo "Peminjam tdk ditemukan";
 			die;
@@ -791,6 +792,18 @@ class Admin extends CI_Controller{
 				echo "gagal ada kesalahan sistem";
 				die;
 			}
+			// set jml tersedia
+			$ambilbrg=$this->db->get_where('barang',array('kode_barang'=>$pinjam['kode_barang']))->row_array();
+
+			$on=array(
+				'jml_terpinjam'=>$ambilbrg['jml_terpinjam']-$pinjam['jml_pinjam'],
+				'jml_tersedia'=>$ambilbrg['jml_tersedia']+$pinjam['jml_pinjam']
+			);
+			$brg=$this->db->where(array('kode_barang'=>$pinjam['kode_barang']));
+			$r=$this->db->update('barang',$on);
+			if($r==false){
+				echo "set barang gagal"; die;
+			}
 			$cekjml=$this->db->get_where('pinjam_barang', array('kd_pinjam'=>$pinjam['kd_pinjam']))->num_rows();
 			if($cekjml>0){
 				$this->session->set_flashdata('success', 'Pengembalian '.$pinjam['nama_barang']);
@@ -798,9 +811,7 @@ class Admin extends CI_Controller{
 			}else{
 				$this->session->set_flashdata('success1', 'Pengembalian '.$pinjam['nama_barang']);
 				redirect(base_url('admin/pinjam'));
-			}
-			
-					
+			}		
 		}else{
 			$this->session->set_flashdata('error', 'Pengembalian '.$pinjam['nama_barang']);
 			redirect(base_url('admin/list_kmbl/'.$pinjam['kd_pinjam']));
