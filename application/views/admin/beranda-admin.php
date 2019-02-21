@@ -68,7 +68,7 @@ shoppingCart.clearCart();
             <div class="info-box">
               <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-files-o"></i></span>
               <div class="info-box-content">
-              <a href="<?php echo base_url()?>admin/pinjam_barang">Pengembalian</a>
+              <a href="<?php echo base_url()?>admin/kembali">Pengembalian</a>
                 <!--<span class="info-box-text">Transaksi</span>-->
                 <span class="info-box-number"><?php echo $kembali ?></span>
               </div>
