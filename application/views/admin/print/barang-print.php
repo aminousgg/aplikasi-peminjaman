@@ -22,8 +22,8 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Barang</th>
                                 <th>Kode Barang</th>
+                                <th>Nama Barang</th>
                                 <th>Merk</th>
                                 <th>Jumlah</th>
                                 <th>Tersedia</th>
