@@ -49,7 +49,7 @@
                                   <label>Kategori</label>
                                   <!-- <input name="kategori" placeholder="Kategori" type="text" class="form-control"> -->
                                   <select name="kategori" class="form-control">
-                                    <option hidden value="">Pilih Ketgori</option>
+                                    <option hidden value="">Pilih Kategori</option>
                                     <option value="kendaraan">Kendaraan</option>
                                     <option value="teknis">Peralatan Teknis</option>
                                     <option value="elektronik">Elektronik</option>

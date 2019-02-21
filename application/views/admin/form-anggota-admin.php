@@ -58,7 +58,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Bidang</label>
-                                <input type="text" name="seksi" class="form-control" placeholder="Seksi Bagian" required>
+                                <input type="text" name="seksi" class="form-control" placeholder="Bidang" required>
                             </div>
                             <div class="form-group">
                                 <label>Tgl Lahir</label>
