@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Admin Peminjaman</title> 
+  <title>Admin Peminjaman</title>
+  <link rel="icon" type="image/gif" href="<?php echo base_url() ?>user/logo/logo-esdm.png" />
   <script src="<?php echo base_url() ?>admin-lte-master/plugins/jquery/jquery.min.js"></script>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">

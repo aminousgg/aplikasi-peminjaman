@@ -106,7 +106,7 @@ shoppingCart.clearCart();
                   <li>
                     <img style="width:50px; height:50px;" src="<?= base_url()."admin-lte-master/foto/agt/".$row->foto ?>" alt="Image">
                     <a class="users-list-name" href="#"><?= $row->nama ?></a>
-                    <span class="users-list-date"><?= $row->tgl_lahir ?></span>
+                    <span class="users-list-date"><?= $row->nip ?></span>
                   </li>
                   <?php $i++; } ?>
                 </ul>
@@ -133,3 +133,16 @@ shoppingCart.clearCart();
     
 
 </div>
+<script>
+  $('.info-box-number').each(function () {
+    $(this).prop('Counter',-1).animate({
+      Counter: $(this).text()
+    }, {
+      duration: 2450,
+      easing: 'swing',
+      step: function (now) {
+        $(this).text(Math.ceil(now));
+      }
+    });
+  });
+</script>

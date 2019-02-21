@@ -730,6 +730,26 @@ class Admin extends CI_Controller{
 		}
 		
 	}
+	function list_kmbl($kode_pjm){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
+			$cekjml=$this->db->get_where('pinjam_barang', array('kd_pinjam'=>$kode_pjm))->num_rows();
+			if($cekjml<1){
+				echo "tidak ditemukan transaksi pemnijaman"; die;
+			}
+
+			$data['tabel_record']=$this->db->get_where('pinjam_barang', array('kd_pinjam'=>$kode_pjm))->result();
+			$data['row']=$this->db->get_where('aktifitas_pinjam', array('kd_pjm'=>$kode_pjm))->row_array();
+			$data['judul']="Kembali";
+			$this->load->view('admin/header-admin',$data);
+			$this->load->view('admin/aside-admin',$data);
+			$this->load->view('admin/list-kembalikan',$data);
+			$this->load->view('admin/footer-admin',$data);
+		}else{
+			redirect(base_url('admin/login'));
+		}
+		
+	}
+
 	function kembalikan($id){
 		//echo $id; die;
 		if($this->session->userdata('admin')!=null){
@@ -771,12 +791,19 @@ class Admin extends CI_Controller{
 				echo "gagal ada kesalahan sistem";
 				die;
 			}
-			$this->session->set_flashdata('success', 'Pengembalian '.$pinjam['nama']);
-			redirect(base_url('admin/kembali'));
+			$cekjml=$this->db->get_where('pinjam_barang', array('kd_pinjam'=>$pinjam['kd_pinjam']))->num_rows();
+			if($cekjml>0){
+				$this->session->set_flashdata('success', 'Pengembalian '.$pinjam['nama_barang']);
+				redirect(base_url('admin/list_kmbl/'.$pinjam['kd_pinjam']));
+			}else{
+				$this->session->set_flashdata('success1', 'Pengembalian '.$pinjam['nama_barang']);
+				redirect(base_url('admin/pinjam'));
+			}
+			
 					
 		}else{
-			$this->session->set_flashdata('error', 'Pengembalian '.$pinjam['nama']);
-			redirect(base_url('admin/kembali'));
+			$this->session->set_flashdata('error', 'Pengembalian '.$pinjam['nama_barang']);
+			redirect(base_url('admin/list_kmbl/'.$pinjam['kd_pinjam']));
 		}
 	}
 
@@ -794,7 +821,7 @@ class Admin extends CI_Controller{
 			// $this->db->where('tgl_pjm >=', date_format($first_date,"Y/m/d"));
 			// $this->db->where('tgl_pjm <=', date_format($second_date,"Y/m/d"));
 			// $data['tabel_record'] = $this->db->get('aktifitas_pinjam')->result();
-
+			$data['a']='';
 			$data['judul']="Record";
 			$this->load->view('admin/header-admin',$data);
 			$this->load->view('admin/aside-admin',$data);
@@ -815,7 +842,7 @@ class Admin extends CI_Controller{
 			$this->db->where('tgl_pjm >=', date_format($first_date,"Y/m/d"));
 			$this->db->where('tgl_pjm <=', date_format($second_date,"Y/m/d"));
 			$data['tabel_record'] = $this->db->get('aktifitas_pinjam')->result();
-
+			$data['a']='b';
 			$data['judul']="Record";
 			$this->load->view('admin/header-admin',$data);
 			$this->load->view('admin/aside-admin',$data);
@@ -836,7 +863,7 @@ class Admin extends CI_Controller{
 			$this->db->where('tgl_pjm >=', date_format($first_date,"Y/m/d"));
 			$this->db->where('tgl_pjm <=', date_format($second_date,"Y/m/d"));
 			$data['tabel_record'] = $this->db->get('aktifitas_pinjam')->result();
-
+			$data['a']='m';
 			$data['judul']="Record";
 			$this->load->view('admin/header-admin',$data);
 			$this->load->view('admin/aside-admin',$data);
@@ -857,7 +884,7 @@ class Admin extends CI_Controller{
 			$this->db->where('tgl_pjm >=', date_format($first_date,"Y/m/d"));
 			$this->db->where('tgl_pjm <=', date_format($second_date,"Y/m/d"));
 			$data['tabel_record'] = $this->db->get('aktifitas_pinjam')->result();
-
+			$data['a']='h';
 			$data['judul']="Record";
 			$this->load->view('admin/header-admin',$data);
 			$this->load->view('admin/aside-admin',$data);

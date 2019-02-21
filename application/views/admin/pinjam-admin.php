@@ -68,6 +68,18 @@ shoppingCart.clearCart();
                   })
             </script>';
   endif;
+  if($this->session->flashdata('success1')):
+    $link="<script src='".base_url()."swal/sweetalert2.all.min.js'></script>";
+    echo $link;
+    echo '<script>
+            swal({
+                type: "'.'success'.'",
+                title: "'.$this->session->flashdata('success').'",
+                text: "'.'Barang Telah di kembalikan'.'",
+                customClass: "'.'animated bounceIn'.'",
+                })
+          </script>';
+endif;
 ?>
 
     <div class="row">
@@ -83,6 +95,9 @@ shoppingCart.clearCart();
           <script>
             function link() {
               window.location.href='<?php echo base_url() ?>admin/pinjam_barang';
+            }
+            function link1(a) {
+              window.location.href='<?php echo base_url() ?>admin/list_kmbl/'+a;
             }
           </script>
           <!-- /.card-header -->
@@ -178,7 +193,7 @@ shoppingCart.clearCart();
                                 window.location.href='<?php //echo base_url()."admin/edit_form_pinjam/".$row->id ?>';
                               }
                             </script>onclick="confrm(<?php echo $row[$i]->id?>)" -->
-                            <button type="button" data-toggle="modal" data-target="#kd_<?= $row[$i]->kd_pinjam ?>" class="btn btn-danger" style="font-size:12px; padding:3px;">Kembalikan</button>
+                            <button type="button" onclick="link1(<?= $row[$i]->kd_pinjam ?>)" class="btn btn-danger" style="font-size:12px; padding:3px;">Kembalikan</button>
                           </div>
                         </td>
                         

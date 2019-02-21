@@ -55,7 +55,7 @@
                                 <tr>
                                     <td><?php echo $i; ?></td>
                                     <td><?php echo $row->kode_barang ?></td>
-                                    <td><?php echo $row->nama ?></td>
+                                    <td><?php echo $row->nama_barang ?></td>
                                     <td><?php echo $row->jml_pinjam ?></td>
                                     <?php $i++; ?>
                                 </tr>

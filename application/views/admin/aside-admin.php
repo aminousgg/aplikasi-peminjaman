@@ -129,9 +129,9 @@
         </li>
         <li class="nav-item">
           <?php if($judul=="Record"){ ?>
-            <a href="<?php echo base_url()?>admin/record" class="nav-link active">
+            <a href="<?php echo base_url()?>admin/recordhari" class="nav-link active">
           <?php }else{ ?>
-            <a href="<?php echo base_url()?>admin/record" class="nav-link">
+            <a href="<?php echo base_url()?>admin/recordhari" class="nav-link">
           <?php } ?>
             <!-- <a href="#" class="nav-link"> -->
             <i class="nav-icon fa fa-list"></i>
