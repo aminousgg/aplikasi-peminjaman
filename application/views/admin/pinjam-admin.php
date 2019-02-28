@@ -12,6 +12,7 @@ shoppingCart.clearCart();
           <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>Report_pdf/pdf_pinjam';">
             <i class="fa fa-print"></i> PDF
           </button>
+          
           <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>Report_Excel/exportPinjam';">
             <i class="fa fa-print"></i> Excel
           </button>
@@ -99,6 +100,9 @@ endif;
             function link1(a) {
               window.location.href='<?php echo base_url() ?>admin/list_kmbl/'+a;
             }
+            function link2(a){
+              window.open("<?= base_url() ?>admin/print_form/"+a);
+            }
           </script>
           <!-- /.card-header -->
           <div class="card-body" style="padding-left:4px;">
@@ -144,7 +148,6 @@ endif;
                             echo "<td style='display:none;'></td>";
                             echo "<td style='display:none;'></td>";
                             echo "<td style='display:none;'></td>";
-
                             continue;
                           }
                         }
@@ -182,8 +185,6 @@ endif;
                           <td style="color:#007bff;"><?php echo "hari ini" ?></td>
                         <?php }else{ $day=$days*-1; ?>
                           <td style="color:red;"><?php echo "Lewat ".$day." hari"; }?></td>
-                        
-
                         <?php echo "<td>".$row[$i]->status."</td>"; ?></td>
                         <td>
                           <div class="button-group">
@@ -193,7 +194,12 @@ endif;
                                 window.location.href='<?php //echo base_url()."admin/edit_form_pinjam/".$row->id ?>';
                               }
                             </script>onclick="confrm(<?php echo $row[$i]->id?>)" -->
-                            <button type="button" onclick="link1(<?= $row[$i]->kd_pinjam ?>)" class="btn btn-danger" style="font-size:12px; padding:3px;">Kembalikan</button>
+                            <button onclick="link2(<?= $row[$i]->kd_pinjam ?>)" class="btn btn-info">
+                              <i class="nav-icon fa fa-print"></i>
+                            </button>
+                            <button type="button" onclick="link1(<?= $row[$i]->kd_pinjam ?>)" class="btn btn-danger">
+                              <i class="nav-icon fa fa-repeat"></i>
+                            </button>
                           </div>
                         </td>
                         
@@ -263,13 +269,8 @@ endif;
                         </div>
 
                       <?php 
-                        
-                      
                     }
                       ?>
-                      
-                      
-                    
                   </tr>
                 <?php } ?>
               </tbody>

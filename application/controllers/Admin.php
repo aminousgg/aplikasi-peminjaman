@@ -185,9 +185,6 @@ class Admin extends CI_Controller{
 		}
 		
 	}
-
-
-
 	function tambah_barang(){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			$data['judul']="Barang";
@@ -638,88 +635,12 @@ class Admin extends CI_Controller{
 		}
 		
 	}
-	function tambah_pinjam(){
-		
-		date_default_timezone_set('Asia/Jakarta');
-		$exp_date = $this->input->post('tgl_kembali');
-		$todays_date = $this->input->post('tgl_pinjam1'); 
-		$today = strtotime($todays_date); 
-		$expiration_date = strtotime($exp_date); 
-		if ($expiration_date >= $today) { 
-			// echo 'Still Active';
-			$status="Belum Kembali";
-		} else { 
-			// echo 'Time Expired';
-			$this->session->set_flashdata('error', 'Salah Tanggal');
-			$id=$this->input->post('id');
-			redirect(base_url('admin/form_pinjam/'.$id));
-			$status="Salah tanggal";
-			//echo $status;
-			//die;
-		}
-		$id=$this->input->post('id');
-		// var_dump($id); die;
-		//$brg=$this->input->post('brg');
-		if($status!="Salah tanggal"){
-			$data = $this->M_admin->ambil_row($id)->row_array();
-			//var_dump($data["jml_tersedia"]); die;
-			if($data['jml_tersedia']>=$this->input->post('unit')){
-				//var_dump($this->input->post('unit')); die;
-				$b=$data['jml_terpinjam'] + $this->input->post('unit');
-				$c=$data['jml_tersedia'] - $this->input->post('unit');
-				$set = array(
-					'jml_terpinjam'	=> $b,
-					'jml_tersedia'	=> $c,
-				);
-				//var_dump($set); die;
-				$nip = $this->input->post('nip1');
-				$angg = $this->M_admin->ambil_anggota($nip)->row_array();
-				//var_dump($this->input->post('nip')); die;
-				if($angg==null){
-					echo "NIP tidak Ditemukan";
-					die;
-				}
-				$this->db->where('id',$id);
-				$result=$this->db->update('barang',$set);
-				if($result==true){
-					$in = array(
-						'nip'			=> $nip,
-						'nama'			=> $this->input->post('nama'),
-						'jabatan'		=> $angg['jabatan'],
-						'seksi'			=> $angg['seksi'],
-						'kode_barang'	=> $data['kode_barang'],
-						'nama_barang'	=> $this->input->post('brg1'),
-						'jml_pinjam'	=> $this->input->post('unit'),
-						'tgl_pinjam'	=> $this->input->post('tgl_pinjam1'),
-						'tgl_kembali'	=> $this->input->post('tgl_kembali'),
-						'status'		=> $status
-					);
-					$masuk=$this->db->insert('pinjam_barang',$in);
-					
-					if($masuk==true){
-						$this->session->set_flashdata('success', 'Berhasil Meminjam !');
-						redirect(base_url('admin/pinjam'));
-					}else{
-						$this->session->set_flashdata('error', 'Gagal Mendaftar!');
-						redirect(base_url('admin/pinjam'));
-					}
-				}else{
-					$this->session->set_flashdata('gagal', 'error set stok');
-					redirect(base_url('admin/pinjam'));
-				}
-
-				
-			} else {
-				echo "unit tidak cukup untuk di pinjam";
-			}
-			
-		}
-	}
 	// ========================================================================
 	//==================================PENGEMBALIAN===========================
 	function kembali(){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
-			$data['tabel_record'] = $this->M_admin->tampil_kembali()->result();
+			// $data['tabel_record'] = $this->M_admin->tampil_kembali()->result();
+			$data['tabel_record']=$this->db->get_where('aktifitas_pinjam',array('status'=>'Telah Kembali'))->result();
 			$data['judul']="Kembali";
 			$this->load->view('admin/header-admin',$data);
 			$this->load->view('admin/aside-admin',$data);
@@ -736,7 +657,6 @@ class Admin extends CI_Controller{
 			if($cekjml<1){
 				echo "tidak ditemukan transaksi pemnijaman"; die;
 			}
-
 			$data['tabel_record']=$this->db->get_where('pinjam_barang', array('kd_pinjam'=>$kode_pjm))->result();
 			$data['row']=$this->db->get_where('aktifitas_pinjam', array('kd_pjm'=>$kode_pjm))->row_array();
 			$data['judul']="Kembali";
@@ -765,42 +685,47 @@ class Admin extends CI_Controller{
 			die;
 		}
 		date_default_timezone_set('Asia/Jakarta');
-		$in = array(
-			'nip'			=> $pinjam['nip'],
-			'kode_brg'		=> $pinjam['kode_barang'],
-			'tgl_pinjam'	=> $pinjam['tgl_pinjam'],
-			'estimasi'		=> $pinjam['tgl_kembali'],
-			'wkt_kembali'	=> date('Y-m-d'),
-			'petugas_kmbl'	=> $petugas,
-		);
-		$insert=$this->db->insert('kembali_brg',$in);
+		
 		//$nipPetugas=$this->db->get_where('anggota',array('nama'=>$petugas))->row_array();
 		//var_dump($nipPetugas); die;
+		if($pinjam['jml_pinjam']-$this->input->post('jml_kmbl')>0){
+			$status="Belum kembali";
+		}else{
+			$status="Telah Kembali";
+		}
 		$inAkt = array(
-			'jml_pjm'	=> 0,
+			'jml_pjm'	=> $pinjam['jml_pinjam']-$this->input->post('jml_kmbl'),
 			'jml_kmbl'	=> $pinjam['jml_pinjam'],
 			'tgl_kmbl'	=> date('Y-m-d'),
 			'ptg_kmbl'	=> $petugas,
-			'status'	=> "Telah Kembali"
+			'status'	=> $status
 		);
 		$dimana = array('kd_pjm' => $pinjam['kd_pinjam'], 'nip' => $pinjam['nip'], 'kd_brg' => $pinjam['kode_barang']);
 		$this->db->where($dimana); 	
 		$res=$this->db->update('aktifitas_pinjam',$inAkt);
-		if($insert==true&&$res==true){
-			$result=$this->db->delete('pinjam_barang',array('id'=>$id));
-			if($result==false){
-				echo "gagal ada kesalahan sistem";
-				die;
+		if($res==true){
+			if($pinjam['jml_pinjam']-$this->input->post('jml_kmbl')==0){
+				$result=$this->db->delete('pinjam_barang',array('id'=>$id));
+				if($result==false){
+					echo "gagal ada kesalahan sistem";
+					die;
+				}
+			}else{
+				$setUnitPjm=array(
+					'jml_pinjam' => $pinjam['jml_pinjam']-$this->input->post('jml_kmbl')
+				);
+				$this->db->where(array('id'=>$id));
+				$this->db->update('pinjam_barang',$setUnitPjm);
 			}
 			// set jml tersedia
 			$ambilbrg=$this->db->get_where('barang',array('kode_barang'=>$pinjam['kode_barang']))->row_array();
-
 			$on=array(
-				'jml_terpinjam'=>$ambilbrg['jml_terpinjam']-$pinjam['jml_pinjam'],
-				'jml_tersedia'=>$ambilbrg['jml_tersedia']+$pinjam['jml_pinjam']
+				'jml_terpinjam'=>$ambilbrg['jml_terpinjam']-$this->input->post('jml_kmbl'),
+				'jml_tersedia'=>$ambilbrg['jml_tersedia']+$this->input->post('jml_kmbl')
 			);
 			$brg=$this->db->where(array('kode_barang'=>$pinjam['kode_barang']));
 			$r=$this->db->update('barang',$on);
+			//====
 			if($r==false){
 				echo "set barang gagal"; die;
 			}

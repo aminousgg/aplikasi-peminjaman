@@ -54,8 +54,8 @@
                                     <option value="teknis">Peralatan Teknis</option>
                                     <option value="elektronik">Elektronik</option>
                                     <option value="perpus">Perpustakaan</option>
+                                    <option value="lain-lain">Lain-lain</option>
                                   </select>
-                                
                                 </div>
                                 <div class="col">
                                   <label>Tgl Masuk</label>

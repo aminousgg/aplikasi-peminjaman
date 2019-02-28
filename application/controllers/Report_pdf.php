@@ -268,7 +268,7 @@ Class Report_pdf extends CI_Controller{
         }
         $pdf->Output();
     }
-    function pdf_record(){
+    function pdf_record($range){
         $pdf = new FPDF('P','mm','A4');
         $pdf->SetMargins(10,10,10);
         // membuat halaman baru
@@ -291,13 +291,13 @@ Class Report_pdf extends CI_Controller{
         $pdf->Cell(9,6,'No',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(25,6,'Kode Pinjam',1,0,'C',1);
+        $pdf->Cell(30,6,'Kode Pinjam',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
         $pdf->Cell(30,6,'NIP',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(30,6,'Kode Barang',1,0,'C',1);
+        $pdf->Cell(35,6,'Kode Barang',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
         $pdf->Cell(23,6,'jml Pinjam',1,0,'C',1);
@@ -310,7 +310,37 @@ Class Report_pdf extends CI_Controller{
 
         $pdf->SetFont('Arial','',11);
         $pdf->Ln();
-        $rec = $this->db->get('aktifitas_pinjam')->result();
+        if($range==1){
+            date_default_timezone_set('Asia/Jakarta');
+			$first_date=new DateTime();
+			$first_date=$first_date->modify('-0 day');
+			$second_date=date_create(date('Y-m-d'));
+			//var_dump($first_date->modify('-2 day')); die;
+			$this->db->where('tgl_pjm >=', date_format($first_date,"Y/m/d"));
+			$this->db->where('tgl_pjm <=', date_format($second_date,"Y/m/d"));
+			$rec = $this->db->get('aktifitas_pinjam')->result();
+        }elseif($range==7){
+            date_default_timezone_set('Asia/Jakarta');
+			$first_date=new DateTime();
+			$first_date=$first_date->modify('-7 day');
+			$second_date=date_create(date('Y-m-d'));
+			//var_dump($first_date->modify('-2 day')); die;
+			$this->db->where('tgl_pjm >=', date_format($first_date,"Y/m/d"));
+			$this->db->where('tgl_pjm <=', date_format($second_date,"Y/m/d"));
+			$rec = $this->db->get('aktifitas_pinjam')->result();
+        }elseif($range==30){
+            date_default_timezone_set('Asia/Jakarta');
+			$first_date=new DateTime();
+			$first_date=$first_date->modify('-30 day');
+			$second_date=date_create(date('Y-m-d'));
+			//var_dump($first_date->modify('-2 day')); die;
+			$this->db->where('tgl_pjm >=', date_format($first_date,"Y/m/d"));
+			$this->db->where('tgl_pjm <=', date_format($second_date,"Y/m/d"));
+			$rec = $this->db->get('aktifitas_pinjam')->result();
+        }else{
+            $rec = $this->db->get('aktifitas_pinjam')->result();
+        }
+        
         $i=1;
         foreach ($rec as $row){
             $pdf->SetX(13);
@@ -320,8 +350,7 @@ Class Report_pdf extends CI_Controller{
             $pdf->Cell(35,6,$row->kd_brg,1,0,'C');
             $pdf->Cell(23,6,$row->jml_pjm,1,0);
             $pdf->Cell(23,6,$row->jml_kmbl,1,0);
-            $pdf->Cell(35,6,$row->status,1,0);
-            
+            $pdf->Cell(30,6,$row->status,1,0);
             $i++;
             $pdf->Ln();
         }

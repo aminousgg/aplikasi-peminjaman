@@ -3,7 +3,20 @@
   <a href="<?php echo base_url()?>admin" class="brand-link">
     <img src="<?php echo base_url() ?>admin-lte-master/dist/img/Logo-Jateng.png" alt="AdminLTE Logo" class="brand-image img-circle"
       style="opacity: .8">
-    <span class="brand-text font-weight-light">Admin Sipirang</span>
+    <span class="brand-text font-weight-light">
+    <?php
+      if($this->session->userdata('admin')['nama']!=null){
+        $cari=$this->session->userdata('admin')['nama'];
+        $dapat=$this->db->get_where('akun_admin',array('username'=>$cari))->row_array();
+        echo $dapat['level_user'];
+      }else{
+        $cari=$this->session->userdata('petugas')['nama'];
+        $dapat=$this->db->get_where('akun_admin',array('username'=>$cari))->row_array();
+        echo $dapat['level_user']; 
+      }
+    ?>
+    
+    Sipirang</span>
   </a>
 
   <!-- Sidebar -->
@@ -96,7 +109,6 @@
           <?php }else{ ?>
             <a href="<?php echo base_url()?>admin/anggota" class="nav-link">
           <?php } ?>
-            
           <i class="nav-icon fa fa-user"></i>
             <p>
               Anggota
@@ -129,9 +141,9 @@
         </li>
         <li class="nav-item">
           <?php if($judul=="Record"){ ?>
-            <a href="<?php echo base_url()?>admin/recordhari" class="nav-link active">
+            <a href="<?php echo base_url()?>admin/record" class="nav-link active">
           <?php }else{ ?>
-            <a href="<?php echo base_url()?>admin/recordhari" class="nav-link">
+            <a href="<?php echo base_url()?>admin/record" class="nav-link">
           <?php } ?>
             <!-- <a href="#" class="nav-link"> -->
             <i class="nav-icon fa fa-list"></i>

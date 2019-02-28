@@ -93,15 +93,15 @@ shoppingCart.clearCart();
                       </td>
 
                       <td><?php
-                          $brg=$this->db->get_where('barang',array('kode_barang'=>$row->kode_brg));
+                          $brg=$this->db->get_where('barang',array('kode_barang'=>$row->kd_brg));
                           $hsl1=$brg->row_array();
                           echo $hsl1['nama_barang'];
                           ?>
                       </td>
-                      <td><?php echo $row->tgl_pinjam ?></td>
-                      <td><?php echo $row->wkt_kembali ?></td>
-                      <td><?php echo $row->petugas_kmbl ?></td>
-                      <td>Telah Kembali</td>
+                      <td><?php echo $row->tgl_pjm ?></td>
+                      <td><?php echo $row->tgl_kmbl ?></td>
+                      <td><?php echo $row->ptg_kmbl ?></td>
+                      <td><?php echo $row->status ?></td>
                     </tr>
                     
               <?php $i++; } ?>   

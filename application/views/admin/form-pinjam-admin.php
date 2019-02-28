@@ -74,6 +74,11 @@ endif;
                     <input type="text" id="nip" name="nip" class="form-control" disabled>
                     <input type="hidden" id="nip1" name="nip1" class="form-control">
                   </div>
+                  <div class="form-group">
+                    <label>Bidang</label>
+                    <input type="text" id="bidang" name="bidang" class="form-control" disabled>
+                    <input type="hidden" id="bidang1" name="bidang1" class="form-control">
+                  </div>
                   <!-- <div class="form-group">
                     <label>Seksi Bagian</label>
                     <input type="text" name="seksi" class="form-control" placeholder="Seksi">
@@ -184,6 +189,8 @@ endif;
                       obj = JSON.parse(json);
                       $("#nip").val(obj.nip);
                       $("#nip1").val(obj.nip);
+                      $("#bidang").val(obj.jabatan);
+                      $("#bidang1").val(obj.jabatan);
                          
                     }
                 });

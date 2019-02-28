@@ -8,15 +8,27 @@ shoppingCart.clearCart();
     <div class="container-fluid">
       <div class="row mb-2">
       <div class="col-sm-6">
-          <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>Report_pdf/pdf_record';">
+          <!-- <button class="btn btn-info" type="button" onclick="window.location='';">
             <i class="fa fa-print"></i> PDF
-          </button>
-          <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>Report_Excel/exportRec';">
-            <i class="fa fa-print"></i> Excel
-          </button>
-          <button class="btn btn-info" type="button" onclick="window.open('<?php echo base_url() ?>admin/print_rec')">
-            <i class="fa fa-print"></i> Print Out
-          </button>
+          </button> -->
+          <div class="dropdown">
+            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-print"></i> PDF
+            </button>
+            <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>Report_Excel/exportRec';">
+              <i class="fa fa-print"></i> Excel
+            </button>
+            <button class="btn btn-info" type="button" onclick="window.open('<?php echo base_url() ?>admin/print_rec')">
+              <i class="fa fa-print"></i> Print Out
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="<?php echo base_url() ?>Report_pdf/pdf_record/0">All</a>
+              <a class="dropdown-item" href="<?php echo base_url() ?>Report_pdf/pdf_record/1">Hari ini</a>
+              <a class="dropdown-item" href="<?php echo base_url() ?>Report_pdf/pdf_record/7">1 Minggu</a>
+              <a class="dropdown-item" href="<?php echo base_url() ?>Report_pdf/pdf_record/30">1 Bulan</a>
+            </div>
+          </div>
+          
         </div>
       </div>
     </div><!-- /.container-fluid -->
