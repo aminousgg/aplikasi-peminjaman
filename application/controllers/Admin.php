@@ -208,7 +208,6 @@ class Admin extends CI_Controller{
 			$this->load->library('upload',$config);
 			$this->upload->do_upload('file');
 			$hasil = $this->upload->data();
-
 			$data = array(
 				'kode_barang'		=> $kode_barang,
 				'nama_barang'		=> $this->input->post('nama_barang'),
@@ -341,14 +340,26 @@ class Admin extends CI_Controller{
 	}
 	//==========================================================================
 	//======================================ANGGOTA=============================
-	function anggota(){
+	function anggota($i){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
-			$data['tabel_record'] = $this->M_admin->tampil_anggota()->result();
-			$data['judul']="Anggota";
-			$this->load->view('admin/header-admin',$data);
-			$this->load->view('admin/aside-admin',$data);
-			$this->load->view('admin/anggota-admin',$data);
-			$this->load->view('admin/footer-admin',$data);
+			if($i==0){
+				$data['tabel_record'] = $this->M_admin->tampil_anggota()->result();
+				$data['judul']="Anggota_0";
+				//$data['sub']="ang";
+				$this->load->view('admin/header-admin',$data);
+				$this->load->view('admin/aside-admin',$data);
+				$this->load->view('admin/anggota-admin',$data);
+				$this->load->view('admin/footer-admin',$data);
+			}else{
+				$data['tabel_record'] = $this->db->get_where('akun_admin',array('level_user'=>'petugas'))->result();
+				$data['judul']="Anggota_1";
+				//$data['sub']="ptgs";
+				$this->load->view('admin/header-admin',$data);
+				$this->load->view('admin/aside-admin',$data);
+				$this->load->view('admin/list-akun',$data);
+				$this->load->view('admin/footer-admin',$data);
+			}
+			
 		}else{
 			redirect(base_url('admin/login'));
 		}
@@ -387,15 +398,14 @@ class Admin extends CI_Controller{
 			$result=$this->M_admin->tambah_agt('anggota', $data);
 			if($result==true){
 				$this->session->set_flashdata('success', 'Anggota berhasil ditambahkan');
-				redirect(base_url('admin/anggota'));
+				redirect(base_url('admin/anggota/0'));
 			}else{
 				$this->session->set_flashdata('error', 'Gagal ditambahkan');
-				redirect(base_url('admin/anggota'));
+				redirect(base_url('admin/anggota/0'));
 			}
 		}else{
 			redirect(base_url('admin/login'));
 		}
-		
 	}
 	function edit_form_anggota($id){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
@@ -408,7 +418,6 @@ class Admin extends CI_Controller{
 		}else{
 			redirect(base_url('admin/login'));
 		}
-		
 	}
 	function edit_agt(){
 		if($this->input->post('cek')=="tdkada"){
@@ -447,10 +456,10 @@ class Admin extends CI_Controller{
 			$result=$this->db->update('anggota',$data);
 			if($result==true){
 				$this->session->set_flashdata('success', 'Update Berhasil');
-				redirect(base_url('admin/anggota'));
+				redirect(base_url('admin/anggota/0'));
 			}else{
 				$this->session->set_flashdata('error', 'Gagal Ubah');
-				redirect(base_url('admin/anggota'));
+				redirect(base_url('admin/anggota/0'));
 			}
 		}
 	}

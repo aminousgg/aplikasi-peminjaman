@@ -115,9 +115,9 @@
         <?php if($check['level_user']=="petugas"){ ?>
           <li class="nav-item">
             <?php if($judul=="Anggota"){ ?>
-              <a href="<?php echo base_url()?>admin/anggota" class="nav-link active">
+              <a href="<?php echo base_url()?>admin/anggota/0" class="nav-link active">
             <?php }else{ ?>
-              <a href="<?php echo base_url()?>admin/anggota" class="nav-link">
+              <a href="<?php echo base_url()?>admin/anggota/0" class="nav-link">
             <?php } ?>
             <i class="nav-icon fa fa-user"></i>
               <p>
@@ -126,8 +126,15 @@
             </a>
           </li>
         <?php }else{ ?>
-          <li class="nav-item has-treeview">
-              <?php if($judul=="Anggota"){ ?>
+          <?php
+            if($judul=="Anggota_0"||$judul=="Anggota_1"){
+              echo '<li class="nav-item has-treeview menu-open">';
+            }else{
+              echo '<li class="nav-item has-treeview">';
+            }
+          ?>
+            <!-- <li class="nav-item has-treeview"> -->
+              <?php if($judul=="Anggota_0"||$judul=="Anggota_1"){ ?>
                 <a href="#" class="nav-link active">
               <?php }else{ ?>
                 <a href="#" class="nav-link">
@@ -138,17 +145,30 @@
                 <i class="right fa fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul style="margin-left:8px;" class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo base_url()?>admin/anggota" class="nav-link">
+              <?php
+                if($judul=="Anggota_0"){
+                  echo '<a href="'.base_url().'admin/anggota/0" class="nav-link active">';
+                }else{
+                  echo '<a href="'.base_url().'admin/anggota/0" class="nav-link">';
+                }
+              ?>
+                <!-- <a href="<?php echo base_url()?>admin/anggota/0" class="nav-link active"> -->
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Semua Anggota</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+              <?php
+                if($judul=="Anggota_1"){
+                  echo '<a href="'.base_url().'admin/anggota/1" class="nav-link active">';
+                }else{
+                  echo '<a href="'.base_url().'admin/anggota/1" class="nav-link">';
+                }
+              ?>
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Petugas</p>
+                  <p>Akun Petugas</p>
                 </a>
               </li>
             </ul>
