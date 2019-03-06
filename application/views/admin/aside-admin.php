@@ -84,7 +84,6 @@
           <i class="nav-icon fa fa-dashboard"></i>
             <p>
               Beranda
-                
             </p>
           </a>
             
@@ -103,18 +102,59 @@
             </p>
             </a>
         </li>
-        <li class="nav-item">
-          <?php if($judul=="Anggota"){ ?>
-            <a href="<?php echo base_url()?>admin/anggota" class="nav-link active">
-          <?php }else{ ?>
-            <a href="<?php echo base_url()?>admin/anggota" class="nav-link">
-          <?php } ?>
-          <i class="nav-icon fa fa-user"></i>
-            <p>
-              Anggota
-            </p>
-          </a>
-        </li>
+        <?php 
+          $check="";
+          if($this->session->userdata('admin')['nama']){
+            $usr=$this->session->userdata('admin')['nama'];
+            $check=$this->db->get_where('akun_admin',array('username'=>$usr))->row_array();
+          }else{
+            $usr=$this->session->userdata('petugas')['nama'];
+            $check=$this->db->get_where('akun_admin',array('username'=>$usr))->row_array();
+          }
+        ?>
+        <?php if($check['level_user']=="petugas"){ ?>
+          <li class="nav-item">
+            <?php if($judul=="Anggota"){ ?>
+              <a href="<?php echo base_url()?>admin/anggota" class="nav-link active">
+            <?php }else{ ?>
+              <a href="<?php echo base_url()?>admin/anggota" class="nav-link">
+            <?php } ?>
+            <i class="nav-icon fa fa-user"></i>
+              <p>
+                Anggota
+              </p>
+            </a>
+          </li>
+        <?php }else{ ?>
+          <li class="nav-item has-treeview">
+              <?php if($judul=="Anggota"){ ?>
+                <a href="#" class="nav-link active">
+              <?php }else{ ?>
+                <a href="#" class="nav-link">
+              <?php } ?>
+              <i class="nav-icon fa fa fa-user"></i>
+              <p>
+                Anggota
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo base_url()?>admin/anggota" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Semua Anggota</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Petugas</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        <?php } ?>
+
         <li class="nav-item">
           <?php if($judul=="Peminjaman"){ ?>
             <a href="<?php echo base_url()?>admin/pinjam" class="nav-link active">

@@ -198,7 +198,7 @@ endif;
                               <i class="nav-icon fa fa-print"></i>
                             </button>
                             <button type="button" onclick="link1(<?= $row[$i]->kd_pinjam ?>)" class="btn btn-danger">
-                              <i class="nav-icon fa fa-repeat"></i>
+                              <i class="nav-icon fa fa-share"></i>
                             </button>
                           </div>
                         </td>

@@ -467,13 +467,23 @@ class Admin extends CI_Controller{
 			redirect(base_url('admin/login'));
 		}
 	}
-	function petugas($nip){
+	function setlevel(){
 		$pwdDefault="12345";
+		if($this->input->post('level')=="user"&&$this->input->post('cek_level')==null){
+			$this->session->set_flashdata('error', 'user di set mjd user');
+			redirect(base_url('admin/anggota'));
+		}elseif($this->input->post('level')=="petugas"&&$this->input->post('cek_level')=="petugas"){
+			$this->session->set_flashdata('error', 'Petugas di set mjd petugas');
+			redirect(base_url('admin/anggota'));
+		}elseif($this->input->post('level')=="user"&&$this->input->post('cek_level')=="petugas"){
+			$this->session->set_flashdata('error', 'aksi turun level belum');
+			redirect(base_url('admin/anggota'));
+		}
 		$data = array(
-			'username'		=> $nip,
+			'username'		=> $this->input->post('nip'),
 			'level_user'	=> "petugas",
 			'password'		=> md5($pwdDefault),
-			'token'			=> md5($nip),
+			'token'			=> md5($this->input->post('nip')),
 			'status'		=> 0,
 		);
 		$result=$this->db->insert('akun_admin', $data);

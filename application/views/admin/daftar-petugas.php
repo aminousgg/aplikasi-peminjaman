@@ -45,7 +45,6 @@ shoppingCart.clearCart();
                     <?php
                         $level=$this->db->get_where('akun_admin',array('username'=>$row->nip));
                         if($level->num_rows()>0){
-                            
                         }else {
                     ?>
                   <?php ?>

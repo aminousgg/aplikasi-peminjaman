@@ -48,8 +48,6 @@ shoppingCart.clearCart();
             </script>';
   endif;
 ?>
-  
-
   <!-- Main content -->
   <section class="content">
     <div class="row">
@@ -58,14 +56,9 @@ shoppingCart.clearCart();
           <div class="card-header">
             <h3 class="card-title">Data Anggota</h3>
             <?php if($this->session->userdata('admin')['nama']==null){ 
-              
             }else {?>
               <button style="margin-top:-25px; margin-left: 10px;" onclick="link()" class="btn btn-info float-right"><i class="fa fa-plus"></i>  Tambah Anggota</button>
-              <button style="margin-top:-25px;" onclick="linkPtgs()" class="btn btn-info float-right"><i class="fa fa-plus"></i>  Daftarkan Petugas</button>
-            <?php }?>
-            
-            
-            
+            <?php }?> 
           </div>
           <script>
             function link() {
@@ -107,26 +100,34 @@ shoppingCart.clearCart();
                       $level=$this->db->get_where('akun_admin',array('username'=>$row->nip));
                       if($level->num_rows()>0){
                         $level=$level->row_array();
-                        echo '<span style="cursor:pointer;" class="badge badge-success">'.$level['level_user'].'</span>';
+                        if($level['level_user']=="admin"){
+                          echo '<span style="cursor:pointer;" class="badge badge-success">'.$level['level_user'].'</span>';
+                        }else{
+                          echo '<span style="cursor:pointer;" class="badge badge-success">'.$level['level_user'].'</span> <i style="cursor:pointer;" data-toggle="modal" data-target="#'.$row->nip.'level" class="fa fa-pencil-square-o float-right"></i>';
+                        }
                       }else{
-                        echo '<span style="cursor:pointer;" class="badge badge-secondary">user</span>';
+                        echo '<span style="cursor:pointer;" class="badge badge-secondary">user</span>  <i style="cursor:pointer;" data-toggle="modal" data-target="#'.$row->nip.'level" class="fa fa-pencil-square-o float-right"></i>';
                       }
-
                     ?></td>
-                    
                     <?php if($this->session->userdata('admin')['nama']==null){ 
-              
                     }else {?>
                     <td>
                       <div class="button-group">
-                          
                         <button type="button" onclick="window.location='<?php echo base_url() ?>admin/edit_form_anggota/<?php echo $row->id ?>';" class="btn btn-info" title="Edit"> <i class="fa fa-pencil-square-o"></i> </button>
-                        <button type="button" onclick="del(<?php echo $row->id?>)" class="btn btn-danger"> <i class="fa fa-trash-o" title="Hapus"></i> </button>
+                        <?php
+                          $level=$this->db->get_where('akun_admin',array('username'=>$row->nip))->row_array();
+                          if($level['level_user']==null){ ?>
+                            <button type="button" onclick="del(<?php echo $row->id?>)" class="btn btn-danger">
+                              <i class="fa fa-trash-o" title="Hapus"></i>
+                            </button>
+                          <?php }else{ ?>
+                            <button style="cursor:no-drop;" type="button" class="btn btn-danger">
+                              <i class="fa fa-trash-o" title="Hapus"></i>
+                            </button>
+                          <?php } ?>
                       </div>
                     </td>
                     <?php } ?>
-                        
-                    
                     <?php $i++; ?>
                   </tr>
                   <!-- detail -->
@@ -170,9 +171,6 @@ shoppingCart.clearCart();
                               <img src="<?php echo base_url().'admin-lte-master/foto/agt/'.$row->foto ?>" width=150px height=150px>
                             </div>
                           </div>
-
-                          
-
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -211,27 +209,45 @@ shoppingCart.clearCart();
     <!-- /.row -->
   </section>
   <!-- modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+
+<?php $i=1; foreach($tabel_record as $row){ ?>
+  <div class="modal fade" id="<?= $row->nip ?>level" role="dialog">
     <div class="modal-dialog">
-    
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title">Ubah Level User</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          
         </div>
         <div class="modal-body">
-          <p>Some text in the modal.</p>
+          <p><?= $row->nama ?></p>
+          <p><?= $row->nip ?></p>
+          <p><?= $row->jabatan ?></p>
+          <?= form_open('admin/setlevel') ?>
+            <select name="level" id="" required>
+              <?php $level=$this->db->get_where('akun_admin',array('username'=>$row->nip))->row_array(); ?>
+              <option hidden value=""><?php
+                if($level['level_user']){
+                  echo $level['level_user'];
+                }else{
+                  echo 'user';
+                }
+              ?></option>
+              <option value="user">User</option>
+              <option value="petugas">Petugas</option>
+            </select>
+            <input type="hidden" name="nip" value="<?= $row->nip ?>">
+            <input type="hidden" name="cek_level" value="<?= $level['level_user'] ?>">
+            <button type="submit" class="btn btn-success btn-sm">Ubah</button>
+          <?= form_close() ?>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
-      
     </div>
   </div>
-  
+<?php $i++; } ?>  
   
   <!-- /.content -->
 </div>
