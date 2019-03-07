@@ -62,7 +62,7 @@ shoppingCart.clearCart();
       </div>
       <div class="row">
       <div class="col-md-12">
-        <table style="margin-left:20px;">
+        <table style="margin-left:20px; ">
           <tr>
               <td>Kode Pinjam &nbsp;</td>
               <td>: <?php echo $row['kd_pjm'] ?></td>

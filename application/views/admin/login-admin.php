@@ -36,6 +36,7 @@
 <div class="login-card">
     <img class="center" src="<?php echo base_url() ?>admin-lte-master/dist/img/Logo-Jateng.png" width=100px height=70px>
     <h3 style="text-align:center;">Sipirang</h3>
+    <p style="margin-top:-15px; text-align:center;">Sistem Pinjam Barang</p>
     <?php echo form_open('admin/aksi_login'); ?>
         <input type="text" name="username" placeholder="Username">
         <input type="password" name="password" placeholder="Password">
@@ -44,8 +45,8 @@
     
   <div class="login-help">
         <?php if($this->session->flashdata('error')):
-                echo '<p style="color: red; text-align: center;">Username/password salah</p>';
-              endif; 
+          echo '<p style="color: red; text-align: center;">Username/password salah</p>';
+        endif;
         ?>
   </div>
 </div>
