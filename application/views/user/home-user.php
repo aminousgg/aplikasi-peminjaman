@@ -72,11 +72,6 @@
               </div>
               <div class="vcal-body" data-calendar-area="month"></div>
             </div>
-
-            <p class="demo-picked">
-              Date picked:
-              <span style="font-size: 12px;" data-calendar-label="picked"></span>
-            </p>
           </div>
           
         </div>

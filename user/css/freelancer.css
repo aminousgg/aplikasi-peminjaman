@@ -100,7 +100,7 @@ section h2 {
   /*border-radius: 50%*/
   margin-top: -10px;
   width: 80px;
-  height: 60px;
+  height: 58px;
 }
 
 .scroll-to-top a {
@@ -115,7 +115,6 @@ section h2 {
   padding-bottom: 1rem;
   font-weight: 700;
   font-family: 'Montserrat';
-
 }
 
 #mainNav .navbar-brand {
@@ -150,8 +149,8 @@ section h2 {
 
 @media (min-width: 992px) {
   #mainNav {
-    padding-top: 0.7rem;
-    padding-bottom: 0.7rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
     -webkit-transition: padding-top 0.3s, padding-bottom 0.3s;
     transition: padding-top 0.3s, padding-bottom 0.3s;
   }
@@ -172,8 +171,8 @@ section h2 {
     background: #18BC9C;
   }
   #mainNav.navbar-shrink {
-    padding-top: 0.1rem;
-    padding-bottom: 0.1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
   #mainNav.navbar-shrink .navbar-brand {
     font-size: 1.5em;
@@ -183,7 +182,7 @@ section h2 {
 header.masthead {
   padding-top: calc(6rem + 72px);
   padding-bottom: 6rem;
-  height: 470px;
+  /*height: 700px;*/
 }
 
 .tombol-kanan {
@@ -380,7 +379,7 @@ a:focus, a:hover, a:active {
 }
 
 .bg-primary {
-  background-color: #FFEBCD !important;
+  background-color: #18BC9C !important;
 }
 
 .bg-secondary {

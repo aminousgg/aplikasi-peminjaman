@@ -1,33 +1,7 @@
  <!-- Footer -->
- <footer class="footer text-center">
-    
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h3 style="margin-top: -70px;" class="text-center text-uppercase mb-0">Fitur</h3>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4 mb-5 mb-lg-0">
-          <h4 class="text-uppercase mb-4">Pinjam</h4>
-          <p class="lead mb-0">Dapat meminjam barang dengan
-            <br>lebih dari 1 jenis barang</p>
-        </div>
-        <div class="col-md-4 mb-5 mb-lg-0">
-          <h4 class="text-uppercase mb-4">Mengembalikan</h4>
-          <p class="lead mb-0">Mengembalikan dengan 1x click
-          <br>Serta pengembalian dapat per Jenis barang</p>
-        </div>
-        <div class="col-md-4">
-          <h4 class="text-uppercase mb-4">Daftar Akun</h4>
-          <p class="lead mb-0">Mendaftar dengan authentifikasi
-          <br>Tanpa Repot</p>
-        </div>
-      </div>
-    </div>
-  </footer>
 
-  <div class="copyright py-4 text-center text-white">
+
+  <div class="copyright py-4 bg-info text-center text-white">
     <div class="container">
       <small>Copyright &copy; teamudinus 2019</small>
     </div>
@@ -60,6 +34,10 @@
   <script src="<?php echo base_url() ?>user/js/freelancer.min.js"></script>
   <script src="<?php echo base_url() ?>user/datatables/jquery.dataTables.js"></script>
   <script src="<?php echo base_url() ?>user/datatables/dataTables.bootstrap4.js"></script>
+
+
+
+
 
   <script type="text/javascript">
     $(document).ready(function() {
