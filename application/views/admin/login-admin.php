@@ -35,12 +35,12 @@
 ?>
 <div class="login-card">
     <img class="center" src="<?php echo base_url() ?>admin-lte-master/dist/img/Logo-Jateng.png" width=100px height=70px>
-    <h3 style="text-align:center;">SIPIRANG</h3>
+    <h3 style="text-align:center; ">SIPIRANG</h3>
     <h5 style="margin-top:-20px; text-align:center;">Sistim Pinjam Barang</h5>
     <?php echo form_open('admin/aksi_login'); ?>
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="password" placeholder="Password">
-        <input type="submit" name="login" class="login login-submit" value="login">
+        <input type="text" name="username" placeholder="Nama Pengguna / NIP">
+        <input type="password" name="password" placeholder="Kata Sandi">
+        <input type="submit" name="login" class="login login-submit" value="Masuk">
     <?php echo form_close(); ?>
     
   <div class="login-help">
