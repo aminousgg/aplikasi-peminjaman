@@ -73,25 +73,25 @@ shoppingCart.clearCart();
             <h3 class="card-title">Daftar Barang Kembali</h3>
             <button style="margin-top:-27px;" onclick="link(1)" class="btn btn-success float-right"><i class="fa fa-plus"></i>  Pinjam Barang</button><br>
             <?php if($a=='b'){ ?>
-              <button onclick="link(5)" class="btn btn-danger"><i class="nav-icon fa fa-list"></i> All</button>
-              <button onclick="link(2)" class="btn btn-secondary"><i class="nav-icon fa fa-list"></i> 1 Bulan</button>
-              <button onclick="link(3)" class="btn btn-danger"><i class="nav-icon fa fa-list"></i> 1 Minggu</button>
-              <button onclick="link(4)" class="btn btn-danger"><i class="nav-icon fa fa-list"></i> hari ini</button>
+              <button onclick="link(5)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> All</button>
+              <button onclick="link(2)" class="btn btn-secondary btn-sm"><i class="nav-icon fa fa-list"></i> 1 Bulan</button>
+              <button onclick="link(3)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> 1 Minggu</button>
+              <button onclick="link(4)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> hari ini</button>
             <?php }elseif($a=='m'){ ?>
-              <button onclick="link(5)" class="btn btn-danger"><i class="nav-icon fa fa-list"></i> All</button>
-              <button onclick="link(2)" class="btn btn-danger"><i class="nav-icon fa fa-list"></i> 1 Bulan</button>
-              <button onclick="link(3)" class="btn btn-secondary"><i class="nav-icon fa fa-list"></i> 1 Minggu</button>
-              <button onclick="link(4)" class="btn btn-danger"><i class="nav-icon fa fa-list"></i> hari ini</button>
+              <button onclick="link(5)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> All</button>
+              <button onclick="link(2)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> 1 Bulan</button>
+              <button onclick="link(3)" class="btn btn-secondary btn-sm"><i class="nav-icon fa fa-list"></i> 1 Minggu</button>
+              <button onclick="link(4)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> hari ini</button>
             <?php }elseif($a=='h'){ ?>
-              <button onclick="link(5)" class="btn btn-danger"><i class="nav-icon fa fa-list"></i> All</button>
-              <button onclick="link(2)" class="btn btn-danger"><i class="nav-icon fa fa-list"></i> 1 Bulan</button>
-              <button onclick="link(3)" class="btn btn-danger"><i class="nav-icon fa fa-list"></i> 1 Minggu</button>
-              <button onclick="link(4)" class="btn btn-secondary"><i class="nav-icon fa fa-list"></i> hari ini</button>
+              <button onclick="link(5)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> All</button>
+              <button onclick="link(2)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> 1 Bulan</button>
+              <button onclick="link(3)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> 1 Minggu</button>
+              <button onclick="link(4)" class="btn btn-secondary btn-sm"><i class="nav-icon fa fa-list"></i> hari ini</button>
             <?php }elseif($a==''){ ?>
-              <button onclick="link(5)" class="btn btn-secondary"><i class="nav-icon fa fa-list"></i> All</button>
-              <button onclick="link(2)" class="btn btn-danger"><i class="nav-icon fa fa-list"></i> 1 Bulan</button>
-              <button onclick="link(3)" class="btn btn-danger"><i class="nav-icon fa fa-list"></i> 1 Minggu</button>
-              <button onclick="link(4)" class="btn btn-danger"><i class="nav-icon fa fa-list"></i> hari ini</button>
+              <button onclick="link(5)" class="btn btn-secondary btn-sm"><i class="nav-icon fa fa-list"></i> All</button>
+              <button onclick="link(2)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> 1 Bulan</button>
+              <button onclick="link(3)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> 1 Minggu</button>
+              <button onclick="link(4)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> hari ini</button>
             <?php } ?>
 
             <!-- <button style="" onclick="link()" class="btn btn-success float-right"><i class="fa fa-plus"></i>  Pinjam Barang</button> -->

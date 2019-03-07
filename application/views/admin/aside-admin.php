@@ -114,7 +114,7 @@
         ?>
         <?php if($check['level_user']=="petugas"){ ?>
           <li class="nav-item">
-            <?php if($judul=="Anggota"){ ?>
+            <?php if($judul=="Anggota_0"||$judul=="Anggota_1"){ ?>
               <a href="<?php echo base_url()?>admin/anggota/0" class="nav-link active">
             <?php }else{ ?>
               <a href="<?php echo base_url()?>admin/anggota/0" class="nav-link">

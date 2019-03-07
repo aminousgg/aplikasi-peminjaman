@@ -186,11 +186,7 @@ shoppingCart.clearCart();
                     <th style="">Merk</th>
                     <th style="">Jumlah</th>
                     <th style="">Tersedia</th>
-                    <?php if($this->session->userdata('admin')['nama']==null){ 
-              
-                    }else {?>
-                      <th style="width:100px;">Aksi</th>
-                    <?php } ?>
+                    <th style="width:100px;">Aksi</th>
                     
                   </tr>
                 </thead>
@@ -204,25 +200,25 @@ shoppingCart.clearCart();
                       
                       <td>
                         <?php echo $row->jml_barang ?>
-                        <?php if($this->session->userdata('admin')['nama']==null){ 
-              
-                        }else {?>
                           <?php if($row->jml_tersedia==0){ ?>
                             <button style="padding:4px; cursor: no-drop; margin-left:3px;" class="btn btn-secondary float-right"><i class="fa fa-minus"></i></button>
                           <?php }else{ ?>
                             <button style="padding:5px; margin-left:3px;" data-toggle="modal" data-target="#<?php echo $row->id ?>_min" class="btn btn-secondary float-right"><i class="fa fa-minus"></i></button>
                           <?php }?>
                           <button style="padding:5px;" data-toggle="modal" data-target="#<?php echo $row->id ?>_unit" class="btn btn-secondary float-right"><i class="fa fa-plus"></i></button>
-                        <?php } ?>
                         
                       </td>
                       <?php if($row->jml_tersedia==0){ ?>
                         <td style="color:red;"><?php echo $row->jml_tersedia; ?></td>
                       <?php }else{ ?>
                         <td><?php echo $row->jml_tersedia;}  ?></td>
-                        <?php if($this->session->userdata('admin')['nama']==null){ 
-              
-                        }else {?>
+                        <?php if($this->session->userdata('admin')['nama']==null){ ?>
+                          <td>
+                            <button type="button" onclick="window.location='<?php echo base_url() ?>admin/edit_form_barang/<?php echo $row->id ?>';" class="btn btn-warning btn-sm" title="Edit" >
+                              <i class="fa fa-pencil-square-o"></i>
+                            </button>
+                          </td>
+                        <?php }else { ?>
                           <td>
                             <div class="button-group">
                               
@@ -232,7 +228,9 @@ shoppingCart.clearCart();
                                 }
                               </script>
                               
-                              <button type="button" onclick="window.location='<?php echo base_url() ?>admin/edit_form_barang/<?php echo $row->id ?>';" class="btn btn-info" title="Edit" > <i class="fa fa-pencil-square-o"></i> </button>
+                              <button type="button" onclick="window.location='<?php echo base_url() ?>admin/edit_form_barang/<?php echo $row->id ?>';" class="btn btn-info" title="Edit" >
+                                <i class="fa fa-pencil-square-o"></i>
+                              </button>
                               <?php
                                 $cekSedia=$this->db->get_where('barang',array('id'=>$row->id))->row_array();
                                 if($cekSedia['jml_barang']==$cekSedia['jml_tersedia']){ ?>
@@ -360,11 +358,7 @@ shoppingCart.clearCart();
                     
                     <th style="">Jumlah</th>
                     <th style="">Tersedia</th>
-                    <?php if($this->session->userdata('admin')['nama']==null){ 
-              
-                    }else {?>
-                      <th style="width:100px;">Aksi</th>
-                    <?php } ?>
+                    <th style="width:100px;">Aksi</th>
                   </tr>
                 </tfoot>
               </table>

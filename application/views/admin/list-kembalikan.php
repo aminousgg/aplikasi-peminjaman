@@ -47,10 +47,10 @@ shoppingCart.clearCart();
     <section class="content">
       <div class="row">
         <div class="col-md-3">
-            ini gambar
+          <img src="<?= base_url()?>admin-lte-master/dist/img/Logo-Jateng.png" class="mx-auto " width="200px" height="130px">
         </div>
         <div class="col-md-6">
-          <h4 style="text-align: center">
+          <h4 class="" style="text-align: center; margin-top:20px;">
           <b>Pengembalian Barang</b> <br>
           Dinas Energi dan Sumber Daya Mineral <br>
           Provinsi Jawa Tengah <br>

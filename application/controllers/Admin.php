@@ -365,6 +365,26 @@ class Admin extends CI_Controller{
 		}
 		
 	}
+	function reset_akun($id){
+		$get=$this->db->get_where('akun_admin',array('id'=>$id))->row_array();
+		$passDefault="12345";
+		$data=array(
+			'password' => md5($passDefault),
+			'status'   => 0
+		);
+		$this->db->where('id',$id);
+		$result=$this->db->update('akun_admin',$data);
+		if($result==true){
+			$this->session->set_flashdata('success', 'Reset Berhasil');
+			redirect(base_url('admin/anggota/1'));
+		}else{
+			$this->session->set_flashdata('error', 'Gagal Reset');
+			redirect(base_url('admin/anggota/1'));
+		}
+	}
+	function hapus_ptgs(){
+		
+	}
 	function form_anggota(){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			$data['judul']="Anggota";

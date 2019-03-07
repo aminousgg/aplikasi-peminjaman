@@ -80,9 +80,10 @@ shoppingCart.clearCart();
                   <th style="">Pangkat/Gol</th>
                   <th style="">Bidang</th>
                   <th style="">Level</th>
-                  <?php if($this->session->userdata('admin')['nama']==null){ 
-              
-                  }else {?>
+                  
+                  <?php if($this->session->userdata('admin')['nama']==null){ ?>
+                    <th>Aksi</th>
+                  <?php }else {?>
                     <th style="">Aksi</th>
                   <?php } ?>
                 </tr>
@@ -103,14 +104,29 @@ shoppingCart.clearCart();
                         if($level['level_user']=="admin"){
                           echo '<span style="cursor:pointer;" class="badge badge-success">'.$level['level_user'].'</span>';
                         }else{
-                          echo '<span style="cursor:pointer;" class="badge badge-success">'.$level['level_user'].'</span> <i style="cursor:pointer;" data-toggle="modal" data-target="#'.$row->nip.'level" class="fa fa-pencil-square-o float-right"></i>';
+                          if($this->session->userdata('admin')['nama']==null){
+                            echo '<span style="cursor:pointer;" class="badge badge-success">'.$level['level_user'].'</span>';
+                          }else{
+                            echo '<span style="cursor:pointer;" class="badge badge-success">'.$level['level_user'].'</span><i style="cursor:pointer;" data-toggle="modal" data-target="#'.$row->nip.'level" class="fa fa-pencil-square-o float-right"></i>';
+                          }
+                          
                         }
                       }else{
-                        echo '<span style="cursor:pointer;" class="badge badge-secondary">user</span>  <i style="cursor:pointer;" data-toggle="modal" data-target="#'.$row->nip.'level" class="fa fa-pencil-square-o float-right"></i>';
+                        if($this->session->userdata('admin')['nama']==null){
+                          echo '<span style="cursor:pointer;" class="badge badge-secondary">user</span>';
+                        }else{
+                          echo '<span style="cursor:pointer;" class="badge badge-secondary">user</span>  <i style="cursor:pointer;" data-toggle="modal" data-target="#'.$row->nip.'level" class="fa fa-pencil-square-o float-right"></i>';
+                        }
+                        
                       }
                     ?></td>
-                    <?php if($this->session->userdata('admin')['nama']==null){ 
-                    }else {?>
+                    <?php if($this->session->userdata('admin')['nama']==null){ ?>
+                      <td>
+                        <button type="button" onclick="window.location='<?php echo base_url() ?>admin/edit_form_anggota/<?php echo $row->id ?>';" class="btn btn-warning btn-sm" title="Edit">
+                          <i class="fa fa-pencil-square-o"></i>
+                        </button>
+                      </td>
+                    <?php }else {?>
                     <td>
                       <div class="button-group">
                         <button type="button" onclick="window.location='<?php echo base_url() ?>admin/edit_form_anggota/<?php echo $row->id ?>';" class="btn btn-info" title="Edit"> <i class="fa fa-pencil-square-o"></i> </button>
@@ -191,9 +207,10 @@ shoppingCart.clearCart();
                   <th style="">Pangkat/Gol</th>
                   <th style="">Bidang</th>
                   <th style="">Level</th>
-                  <?php if($this->session->userdata('admin')['nama']==null){ 
-              
-                  }else {?>
+
+                  <?php if($this->session->userdata('admin')['nama']==null){ ?>
+                    <th>Aksi</th>
+                  <?php }else {?>
                     <th style="">Aksi</th>
                   <?php } ?>
                 </tr>

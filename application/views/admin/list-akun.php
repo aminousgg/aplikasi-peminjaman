@@ -81,9 +81,9 @@ shoppingCart.clearCart();
                     <td><?= $ambil['jabatan'] ?></td>
                     <td><?php
                         if($row->status==0){
-                            echo 'belum aktif';
+                            echo '<span class="badge badge-secondary">belum aktif</span>';
                         }else{
-                            echo 'aktif';
+                            echo '<span class="badge badge-success">aktif</span>';
                         }
                     ?></td>
                     <td>
@@ -136,7 +136,7 @@ echo $link;
         cancelButtonText: 'Batal'
         }).then((result) => {
             if (result.value) {
-                window.location = "";
+                window.location = "<?php echo base_url() ?>admin/reset_akun/"+id;
             }
         })
     }
