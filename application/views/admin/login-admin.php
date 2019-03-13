@@ -38,9 +38,9 @@
     <h3 style="text-align:center;">Sipirang</h3>
     <p style="margin-top:-15px; text-align:center;">Sistem Pinjam Barang</p>
     <?php echo form_open('admin/aksi_login'); ?>
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="password" placeholder="Password">
-        <input type="submit" name="login" class="login login-submit" value="login">
+        <input type="text" name="username" placeholder="Nama Pengguna / NIP">
+        <input type="password" name="password" placeholder="Kata Sandi">
+        <input type="submit" name="login" class="login login-submit" value="Masuk">
     <?php echo form_close(); ?>
     
   <div class="login-help">

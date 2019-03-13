@@ -37,9 +37,15 @@
 <body id="page-top">
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+  <nav class="navbar navbar-expand-lg bg-info fixed-top text-uppercase" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="<?php echo base_url() ?>admin-lte-master/dist/img/Logo-Jateng.png" class="logokiri"> Sipirang</a>
+      <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="<?php echo base_url() ?>admin-lte-master/dist/img/Logo-Jateng.png" class="logokiri">
+      Sipirang
+      <P style="margin-top:-15px; margin-left:90px; font-size:12px;">Sistem Pinjam Barang</P>
+      </a>
+      <div>
+        
+      </div>
       <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>

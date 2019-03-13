@@ -99,8 +99,13 @@ section h2 {
 .logokiri {
   /*border-radius: 50%*/
   margin-top: -10px;
+<<<<<<< HEAD
   width: 45px;
   height: 45px;
+=======
+  width: 80px;
+  height: 58px;
+>>>>>>> 8bf85280c6f6bd126d045836eb1f81b2fa775c8d
 }
 
 .scroll-to-top a {

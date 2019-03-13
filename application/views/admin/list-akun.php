@@ -90,7 +90,7 @@ shoppingCart.clearCart();
                         <button type="button" onclick="reset(<?= $row->id ?>)" class="btn btn-warning btn-sm">
                             reset pass
                         </button>
-                        <button type="button" onclick="del(<?= $row->id ?>)" class="btn btn-danger btn-sm">
+                        <button type="button" onclick="del(<?= $row->username ?>)" class="btn btn-danger btn-sm">
                           <i class="fa fa-trash-o" title="Hapus"></i>
                         </button>
                     </td>
@@ -140,7 +140,7 @@ echo $link;
             }
         })
     }
-    function del(id){
+    function del(usr){
         swal({
         title: 'Hapus Akun',
         text: "Akun akan di hapus dan kembali menjadi user",
@@ -152,7 +152,7 @@ echo $link;
         cancelButtonText: 'Batal'
         }).then((result) => {
             if (result.value) {
-                window.location = "";
+                window.location = "<?php echo base_url() ?>admin/hapus_ptgs/"+usr;
             }
         })
     }

@@ -64,10 +64,6 @@
                               </div>
                             </div>
                             <div class="form-group">
-                                <label>Jumlah Unit</label>
-                                <input type="number" name="jml_barang" class="form-control numeric" placeholder="Angka">
-                            </div>
-                            <div class="form-group">
                                 <label>Spesifikasi</label>
                                 <input type="text" name="spesifikasi" class="form-control" placeholder="Spesifikasi">
                             </div>
@@ -94,7 +90,7 @@
                     </div>
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Daftar</button>
+                        <button type="submit" class="btn btn-primary">Tambah</button>
                     </div>
                     
                 </div>

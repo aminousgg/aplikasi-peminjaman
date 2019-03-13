@@ -21,7 +21,7 @@
                 <div class="col-6">
                     <h3 class="text-center text-uppercase mb-0 mt-20">
                     BUKTI PEMINJAMAN BARANG<br>
-                        Dinas Energi dan Sumber Daya Mineral<br>Provinsi Jawa Tengah <br><br>
+                        Dinas Energi Sumber Daya dan Mineral<br>Provinsi Jawa Tengah <br><br>
                     </h3>
                 </div>
                 <div class="col-3">

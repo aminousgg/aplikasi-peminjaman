@@ -57,12 +57,12 @@ shoppingCart.clearCart();
           </h4>
         </div>
         <div class="col-md-3">
-          ini juga
+          
         </div>
       </div>
-      <div class="row">
+      <div style='margin-top:30px;' class="row">
       <div class="col-md-12">
-        <table style="margin-left:20px; ">
+        <table style="margin-left:20px; width:40%;">
           <tr>
               <td>Kode Pinjam &nbsp;</td>
               <td>: <?php echo $row['kd_pjm'] ?></td>
@@ -93,7 +93,7 @@ shoppingCart.clearCart();
       </div>
         
       </div>
-      <div class="row">
+      <div style='margin-top:30px;' class="row">
           <div class="col-12 table-responsive">
             <div class="card">
               <div class="card-body">

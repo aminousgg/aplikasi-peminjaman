@@ -183,7 +183,6 @@ class Admin extends CI_Controller{
 		}else{
 			redirect(base_url('admin/login'));
 		}
-		
 	}
 	function tambah_barang(){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
@@ -197,12 +196,10 @@ class Admin extends CI_Controller{
 		}
 		
 	}
-
 	function tambah_barang_aksi(){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			$kode = rand(1000,9999);
 			$kode_barang = (string)$kode;
-
 			$config['upload_path'] 		= './admin-lte-master/foto/barang/';
 			$config['allowed_types'] 	= 'jpg|jpeg|png|gif';
 			$this->load->library('upload',$config);
@@ -214,10 +211,7 @@ class Admin extends CI_Controller{
 				'merk'				=> $this->input->post('merk'),
 				'kategori'			=> $this->input->post('kategori'),
 				'tgl_masuk'			=> $this->input->post('tgl_masuk'),
-				'jml_terpinjam'		=> 0,
 				'spesifikasi'		=> $this->input->post('spesifikasi'),
-				'jml_barang'		=> $this->input->post('jml_barang'),
-				'jml_tersedia'		=> $this->input->post('jml_barang'),
 				'foto'				=> $hasil['file_name'],
 			);
 			$result=$this->M_admin->tambah_brg('barang', $data);
@@ -234,42 +228,7 @@ class Admin extends CI_Controller{
 		}
 		
 	}
-	function unit(){
-		$update=$this->input->post('asli')+$this->input->post('unit');
-		$sedia=$this->input->post('sedia')+$this->input->post('unit');
-		$data=array(
-			'jml_barang'	=> $update,
-			'jml_tersedia'	=> $sedia,
-		);
-		$this->db->where('id',$this->input->post('id'));
-		$result=$this->db->update('barang',$data);
-		if($result==true){
-			$this->session->set_flashdata('success', 'Unit Berhasil ditambah');
-			redirect(base_url('admin/barang'));
-		}else{
-			$this->session->set_flashdata('error', 'Gagal Menambah');
-			redirect(base_url('admin/barang'));
-		}
-		
-	}
-	function unitmin(){
-		$update=$this->input->post('asli')-$this->input->post('unit');
-		$sedia=$this->input->post('sedia')-$this->input->post('unit');
-		$data=array(
-			'jml_barang'	=> $update,
-			'jml_tersedia'	=> $sedia,
-		);
-		$this->db->where('id',$this->input->post('id'));
-		$result=$this->db->update('barang',$data);
-		if($result==true){
-			$this->session->set_flashdata('success', 'Unit Berhasil dikurangi');
-			redirect(base_url('admin/barang'));
-		}else{
-			$this->session->set_flashdata('error', 'Gagal mengurangi');
-			redirect(base_url('admin/barang'));
-		}
-		
-	}
+	
 	function edit_form_barang($id){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			$data['brg']=$this->M_admin->get_brg($id)->row_array();
@@ -382,8 +341,15 @@ class Admin extends CI_Controller{
 			redirect(base_url('admin/anggota/1'));
 		}
 	}
-	function hapus_ptgs(){
-		
+	function hapus_ptgs($user){
+		$result=$this->db->delete('akun_admin', array('username' => $user));
+		if($result==true){
+			$this->session->set_flashdata('success', 'Telah berubah menjadi user');
+			redirect(base_url('admin/anggota/1'));
+		}else{
+			$this->session->set_flashdata('error', 'Gagal Hapus');
+			redirect(base_url('admin/anggota/1'));
+		}
 	}
 	function form_anggota(){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
@@ -500,13 +466,12 @@ class Admin extends CI_Controller{
 		$pwdDefault="12345";
 		if($this->input->post('level')=="user"&&$this->input->post('cek_level')==null){
 			$this->session->set_flashdata('error', 'user di set mjd user');
-			redirect(base_url('admin/anggota'));
+			redirect(base_url('admin/anggota/0'));
 		}elseif($this->input->post('level')=="petugas"&&$this->input->post('cek_level')=="petugas"){
 			$this->session->set_flashdata('error', 'Petugas di set mjd petugas');
-			redirect(base_url('admin/anggota'));
+			redirect(base_url('admin/anggota/0'));
 		}elseif($this->input->post('level')=="user"&&$this->input->post('cek_level')=="petugas"){
-			$this->session->set_flashdata('error', 'aksi turun level belum');
-			redirect(base_url('admin/anggota'));
+			redirect(base_url('admin/hapus_ptgs/'.$this->input->post('nip')));
 		}
 		$data = array(
 			'username'		=> $this->input->post('nip'),
@@ -595,14 +560,13 @@ class Admin extends CI_Controller{
 	function inPinjam(){
 		$kodePinjam = rand(1000,9999);
 		$zzz=0; //ceking
-		for($i=0;$i<count($this->input->post('kode'));$i++){
-			$data = $this->M_admin->ambil_row($this->input->post('kode')[$i])->row_array();
-			if($data["jml_tersedia"]>=$this->input->post('jml1')[$i]){
-				$zzz++;
-			}
-		}
+		// for($i=0;$i<count($this->input->post('kode'));$i++){
+		// 	$data = $this->M_admin->ambil_row($this->input->post('kode')[$i])->row_array();
+		// 	if($data["jml_tersedia"]>=$this->input->post('jml1')[$i]){
+		// 		$zzz++;
+		// 	}
+		// }
 		//var_dump(count($this->input->post('kode'))); die;
-		if($zzz==count($this->input->post('kode'))){
 			// lakukan
 			$a=0;
 			for($i=0;$i<count($this->input->post('kode'));$i++){
@@ -641,11 +605,8 @@ class Admin extends CI_Controller{
 				$masuk=$this->db->insert('pinjam_barang',$in);
 				$masuk1=$this->db->insert('aktifitas_pinjam',$inAktifitas);
 				if($masuk==true&&$masuk1==true){
-					$b=$data['jml_terpinjam'] + $this->input->post('jml1')[$i];
-					$c=$data['jml_tersedia'] - $this->input->post('jml1')[$i];
 					$set = array(
-						'jml_terpinjam'	=> $b,
-						'jml_tersedia'	=> $c,
+						'status'=>0
 					);
 					//var_dump($set); die;
 					$this->db->where('kode_barang',$this->input->post('kode')[$i]);
@@ -668,11 +629,6 @@ class Admin extends CI_Controller{
 				$this->session->set_flashdata('error', 'Gagal Meminjam!');
 				redirect(base_url('admin/pinjam'));
 			}
-
-		}else{
-			// jumlah brg terlalu bnyk
-		}
-		
 	}
 	// ========================================================================
 	//==================================PENGEMBALIAN===========================
@@ -757,10 +713,8 @@ class Admin extends CI_Controller{
 				$this->db->update('pinjam_barang',$setUnitPjm);
 			}
 			// set jml tersedia
-			$ambilbrg=$this->db->get_where('barang',array('kode_barang'=>$pinjam['kode_barang']))->row_array();
 			$on=array(
-				'jml_terpinjam'=>$ambilbrg['jml_terpinjam']-$this->input->post('jml_kmbl'),
-				'jml_tersedia'=>$ambilbrg['jml_tersedia']+$this->input->post('jml_kmbl')
+				'status'=>1
 			);
 			$brg=$this->db->where(array('kode_barang'=>$pinjam['kode_barang']));
 			$r=$this->db->update('barang',$on);
@@ -872,9 +826,22 @@ class Admin extends CI_Controller{
 
 
 	// ===============================================PRINT BARANG============================
-	function print_barang(){
+	function print_barang($kat){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
-			$data['tabel_record'] = $this->M_admin->tampil_barang()->result();
+			if($kat=='k'){
+				$kate="kendaraan";
+			}elseif($kat=='e'){
+				$kate="elektronik";
+			}elseif($kat=='l'){
+				$kate="lain-lain";
+			}elseif($kat=='t'){
+				$kate="teknis";
+			}elseif($kat=='p'){
+				$kate="perpus";
+			}else{
+				$kate='';
+			}
+			$data['tabel_record'] = $this->db->get_where('barang',array('kategori'=>$kate))->result();
 			$data['judul']="Record";
 			$this->load->view('admin/print/head-print',$data);
 			$this->load->view('admin/print/barang-print',$data);
@@ -882,7 +849,6 @@ class Admin extends CI_Controller{
 			redirect(base_url('admin/login'));
 		}
 	}
-	
 	// ===============================================PRINT ANGGOTA============================
 	function print_anggota(){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){

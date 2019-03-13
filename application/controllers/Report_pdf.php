@@ -8,7 +8,7 @@ Class Report_pdf extends CI_Controller{
         //$this->load->library('fpdf');
     }
     
-    function pdf_Barang(){
+    function pdf_Barang($kat){
         $pdf = new FPDF('P','mm','A4');
         $pdf->SetMargins(10,10,10);
         // membuat halaman baru
@@ -50,7 +50,21 @@ Class Report_pdf extends CI_Controller{
         
         $pdf->SetFont('Arial','',11);
         $pdf->Ln();
-        $brg = $this->db->get('barang')->result();
+        
+        if($kat=='k'){
+            $kate="kendaraan";
+        }elseif($kat=='e'){
+            $kate="elektronik";
+        }elseif($kat=='l'){
+            $kate="lain-lain";
+        }elseif($kat=='t'){
+            $kate="teknis";
+        }elseif($kat=='p'){
+            $kate="perpus";
+        }else{
+            $kate='';
+        }
+        $brg = $this->db->get_where('barang',array('kategori'=>$kate))->result();
         $i=1;
         foreach ($brg as $row){
             $pdf->SetX(30);
@@ -291,13 +305,13 @@ Class Report_pdf extends CI_Controller{
         $pdf->Cell(9,6,'No',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(30,6,'Kode Pinjam',1,0,'L',1);
+        $pdf->Cell(26,6,'Kode Pinjam',1,0,'L',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(30,6,'NIP',1,0,'L',1);
+        $pdf->Cell(45,6,'Nama',1,0,'L',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(35,6,'Kode Barang',1,0,'L',1);
+        $pdf->Cell(28,6,'Barang',1,0,'L',1);
 
         $pdf->SetFillColor(28, 166, 205);
         $pdf->Cell(23,6,'jml Pinjam',1,0,'L',1);
@@ -345,9 +359,15 @@ Class Report_pdf extends CI_Controller{
         foreach ($rec as $row){
             $pdf->SetX(13);
             $pdf->Cell(9,6,$i,1,0,'C');
-            $pdf->Cell(30,6,$row->kd_pjm,1,0);
-            $pdf->Cell(30,6,$row->nip,1,0);
-            $pdf->Cell(35,6,$row->kd_brg,1,0);
+            $pdf->Cell(26,6,$row->kd_pjm,1,0);
+            
+                $anggota=$this->db->get_where('anggota',array('nip'=>$row->nip));
+                $hsl=$anggota->row_array();
+                
+            $pdf->Cell(45,6,$hsl['nama'],1,0);
+                $brg=$this->db->get_where('barang',array('kode_barang'=>$row->kd_brg));
+                $hsl1=$brg->row_array();
+            $pdf->Cell(28,6,$hsl1['nama_barang'],1,0);
             $pdf->Cell(23,6,$row->jml_pjm,1,0);
             $pdf->Cell(23,6,$row->jml_kmbl,1,0);
             $pdf->Cell(30,6,$row->status,1,0);

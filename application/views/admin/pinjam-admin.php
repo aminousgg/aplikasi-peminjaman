@@ -113,7 +113,6 @@ endif;
                   <th style="font-size:13px;">NIP</th>
                   <th style="font-size:13px;">Nama</th>
                   <th style="font-size:13px;">Nama Barang</th>
-                  <th style="font-size:13px;">Unit</th>
                   <th style="font-size:13px;">Tanggal Pinjam</th>
                   <th style="font-size:13px;">Estimasi Kembali</th>
                   <th style="font-size:13px;">Status</th>
@@ -147,7 +146,6 @@ endif;
                             echo "<td style='display:none;'></td>";
                             echo "<td style='display:none;'></td>";
                             echo "<td style='display:none;'></td>";
-                            echo "<td style='display:none;'></td>";
                             continue;
                           }
                         }
@@ -159,11 +157,11 @@ endif;
                           echo "<li>".$row[$index[$b]]->nama_barang."</li>";
                         }
                         echo "</ul></td>";
-                        echo "<td><ul>";
-                        for($b=0;$b<count($index);$b++){
-                          echo "<li>".$row[$index[$b]]->jml_pinjam."</li>";
-                        }
-                        echo "</ul></td>";
+                        // echo "<td><ul>";
+                        // for($b=0;$b<count($index);$b++){
+                        //   echo "<li>".$row[$index[$b]]->jml_pinjam."</li>";
+                        // }
+                        // echo "</ul></td>";
                       ?>
                         <?php
                           echo "<td>".$row[$i]->tgl_pinjam."</td>";
@@ -188,16 +186,15 @@ endif;
                         <?php echo "<td>".$row[$i]->status."</td>"; ?></td>
                         <td>
                           <div class="button-group">
-                            
                             <!-- <script>
                               function link1() {
                                 window.location.href='<?php //echo base_url()."admin/edit_form_pinjam/".$row->id ?>';
                               }
                             </script>onclick="confrm(<?php echo $row[$i]->id?>)" -->
-                            <button onclick="link2(<?= $row[$i]->kd_pinjam ?>)" class="btn btn-info">
+                            <button title="Cetak" onclick="link2(<?= $row[$i]->kd_pinjam ?>)" class="btn btn-info">
                               <i class="nav-icon fa fa-print"></i>
                             </button>
-                            <button type="button" onclick="link1(<?= $row[$i]->kd_pinjam ?>)" class="btn btn-danger">
+                            <button title="Kembalikan" type="button" onclick="link1(<?= $row[$i]->kd_pinjam ?>)" class="btn btn-danger">
                               <i class="nav-icon fa fa-share"></i>
                             </button>
                           </div>
@@ -280,7 +277,6 @@ endif;
                   <th style="font-size:13px;">NIP</th>
                   <th style="font-size:13px;">Nama</th>
                   <th style="font-size:13px;">Nama Barang</th>
-                  <th style="font-size:13px;">Unit</th>
                   <th style="font-size:13px;">Tanggal Pinjam</th>
                   <th style="font-size:13px;">Estimasi Kembali</th>
                   <th style="font-size:13px;">Status</th>
@@ -321,6 +317,8 @@ endif;
   
     <!-- /.content -->
 </div>
+
+
 
 <?php
 $link="<script src='".base_url()."swal/sweetalert2.all.min.js'></script>";

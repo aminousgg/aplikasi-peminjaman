@@ -38,32 +38,26 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  
                   <th>Nama Barang</th>
                   <th>Merk</th>
-                  <th>Jumlah</th>
-                  <th>Tersedia</th>
+                  <th>Status</th>
                   <th>Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
                   <?php $i=1; foreach($tabel_record as $row){ ?>
                   <tr>
-                    
                     <td><?= $row->nama_barang ?></td>
                     <td><?php echo $row->merk ?></td>
-                    <td><?php echo $row->jml_barang ?></td>
-
-                    <?php if($row->jml_tersedia==0){ ?>
-                      <td style="color:red;"><?php echo $row->jml_tersedia ?></td>
+                    <?php if($row->status==0){ ?>
+                      <td style="color:red;"><?php echo "Terpinjam" ?></td>
                       <td>
                         <button style="cursor: not-allowed;" type="button" class="btn btn-info">pilih</button>
                       </td>
-
                     <?php } else { ?>
-                      <td id="sedia<?= $row->kode_barang ?>"><?php echo $row->jml_tersedia ?></td>
+                      <td id="sedia<?= $row->kode_barang ?>"><?php echo "Tersedia" ?></td>
                       <td id="pilih<?= $row->kode_barang ?>">
-                        <button data-sedia="<?= $row->jml_tersedia ?>" data-kode="<?= $row->kode_barang ?>" data-nama="<?= $row->nama_barang ?>" type="button" class="add-to-cart btn btn-info">pilih</button>
+                        <button data-sedia="<?= $row->status ?>" data-kode="<?= $row->kode_barang ?>" data-nama="<?= $row->nama_barang ?>" type="button" class="add-to-cart btn btn-info">pilih</button>
                       </td>
                     <?php } ?>
                     <?php $i++; ?>
@@ -72,11 +66,9 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                  
                   <th>Nama Barang</th>
                   <th>Merk</th>
-                  <th>Jumlah</th>
-                  <th>Tersedia</th>
+                  <th>Status</th>
                   <th>Aksi</th>
                 </tr>
                 </tfoot>

@@ -52,7 +52,7 @@
                 </button>
 
                 <div class="vcal-header__label" data-calendar-label="month">
-                  March 2017
+                  Maret 2017
                 </div>
 
                 <button class="vcal-btn" data-calendar-toggle="next">
@@ -62,21 +62,16 @@
                 </button>
               </div>
               <div class="vcal-week">
-                <span>Mon</span>
-                <span>Tue</span>
-                <span>Wed</span>
-                <span>Thu</span>
-                <span>Fri</span>
-                <span>Sat</span>
-                <span>Sun</span>
+                <span>Sen</span>
+                <span>Sel</span>
+                <span>Rab</span>
+                <span>Kam</span>
+                <span>Jum</span>
+                <span>Sab</span>
+                <span>Min</span>
               </div>
               <div class="vcal-body" data-calendar-area="month"></div>
             </div>
-
-            <p class="demo-picked">
-              Date picked:
-              <span style="font-size: 12px;" data-calendar-label="picked"></span>
-            </p>
           </div>
           
         </div>

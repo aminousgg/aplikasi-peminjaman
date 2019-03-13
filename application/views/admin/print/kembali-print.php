@@ -1,3 +1,11 @@
+<style>
+@page {
+    size:  auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+}
+</style>
 <body onload="window.print();">
         <div class="wrapper">
         <br>
@@ -8,7 +16,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <h2 class="text-center text-uppercase text-secondary mb-0">
+                    <h2 class="text-center mb-0">
                     DATA PENGEMBALIAN<br>
                         Dinas Energi dan Sumber Daya Mineral<br>Provinsi Jawa Tengah <br><br>
                     </h2>
@@ -18,7 +26,7 @@
             <!-- Table row -->
             <div class="row">
                 <div class="col-12 table-responsive">
-                    <table class="table table-striped">
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>No</th>
