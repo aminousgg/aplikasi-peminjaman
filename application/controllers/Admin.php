@@ -628,7 +628,7 @@ class Admin extends CI_Controller{
 	function kembali(){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			// $data['tabel_record'] = $this->M_admin->tampil_kembali()->result();
-			$data['tabel_record']=$this->db->get_where('aktifitas_pinjam',array('status'=>'Telah Kembali'))->result();
+			$data['tabel_record']=$this->db->get_where('aktifitas_pinjam',array('status'=>'Kembali'))->result();
 			$data['judul']="Kembali";
 			$this->load->view('admin/header-admin',$data);
 			$this->load->view('admin/aside-admin',$data);

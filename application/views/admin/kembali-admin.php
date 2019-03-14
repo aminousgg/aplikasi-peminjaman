@@ -91,7 +91,6 @@ shoppingCart.clearCart();
                           echo $hsl['nama'];
                           ?>
                       </td>
-
                       <td><?php
                           $brg=$this->db->get_where('barang',array('kode_barang'=>$row->kd_brg));
                           $hsl1=$brg->row_array();
