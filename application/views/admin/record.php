@@ -123,15 +123,15 @@ shoppingCart.clearCart();
                   <th style="">Kode Pinjam</th>
                   <th style="">Nama</th>
                   <th style="">Barang</th>
-                  <th style="">Jumlah Pinjam</th>
-                  <th style="">Jumlah Kembali</th>
+                  <th style="">Tgl Pinjam</th>
+                  <th style="">Estimasi</th>
                   <th style="">Status</th>
                     
                 </tr>
               </thead>
               <tbody>
               <?php $i=1; foreach($tabel_record as $row){ ?>
-              <?php if($row->jml_kmbl!=0){ ?>
+              <?php if($row->status=="kembali"){ ?>
                 <tr style="background-color:#E6E6FA;">
               <?php }else{ ?>
                 <tr style="background-color:#fff;">
@@ -149,8 +149,8 @@ shoppingCart.clearCart();
                         echo $namaBrg['nama_barang'];
                     ?>
                   </td>
-                  <td><?= $row->jml_pjm ?></td>
-                  <td><?= $row->jml_kmbl ?></td>
+                  <td><?= $row->tgl_pjm ?></td>
+                  <td><?= $row->estimate_kmbl ?></td>
                   <td><?= $row->status ?></td>
                 </tr>
                 <div class="modal fade" id="<?php echo $row->id ?>" role="dialog">

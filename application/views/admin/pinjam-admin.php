@@ -219,7 +219,6 @@ endif;
                                   <div class="col-md-2">
                                     <?php
                                       $pjm=$this->db->get_where('pinjam_barang',array('kd_pinjam'=>$row[$i]->kd_pinjam));
-                                      
                                       //var_dump($pjm->num_rows()); die;
                                       for($c=1;$c<=$pjm->num_rows();$c++){
                                         echo $c." Barang<br>";

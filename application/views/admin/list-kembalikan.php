@@ -114,7 +114,9 @@ shoppingCart.clearCart();
                             <td><?php echo $row->kode_barang ?></td>
                             <td><?php echo $row->nama_barang ?></td>
                             <td><?php echo $row->jml_pinjam ?></td>
-                            <td><button data-toggle="modal" data-target="#<?= $i ?>" class="btn btn-danger btn-sm">kembalikan</button></td>
+                            <td><button onclick="link(<?= $row->id ?>)" class="btn btn-danger btn-sm">
+                              kembalikan
+                            </button></td>
                             <?php $i++; ?>
                           </tr>
                       <?php } ?>
@@ -129,7 +131,7 @@ shoppingCart.clearCart();
 </div>
 <?php $o=0; foreach($tabel_record as $row){ ?>
 <!-- <div class="modal fade" role="dialog"> -->
-  <div class="modal fade" id="<?= $o+1 ?>"  tabindex="<?= $o ?>" role="dialog">
+  <!-- <div class="modal fade" id="<?= $o+1 ?>"  tabindex="<?= $o ?>" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -150,7 +152,7 @@ shoppingCart.clearCart();
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 <!-- </div> -->
 <?php $o++; } ?>
 <script>
