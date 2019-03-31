@@ -60,6 +60,9 @@ shoppingCart.clearCart();
             <div class="card-header">
               <h3 class="card-title">Data Barang</h3>
               <?php if($this->session->userdata('admin')['nama']==null){ ?>
+                <button style="margin-top:-27px;" onclick="link(1)" class="btn btn-success float-right"><i class="fa fa-plus">
+                    </i>  Tambah Barang
+                </button><br>
                 <?php if($aktif=="k"){ ?>
                   <button onclick="link(2)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> All</button>
                   <button onclick="link(3)" class="btn btn-secondary btn-sm"><i class="nav-icon fa fa-list"></i> Kendaraan</button>

@@ -38,8 +38,8 @@
                                 <th>Kode Barang</th>
                                 <th>Nama Barang</th>
                                 <th>Merk</th>
-                                <th>Jumlah</th>
-                                <th>Tersedia</th>
+                                <th>Status</th>
+                                <th>Tanggal masuk</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,8 +49,8 @@
                                     <td><?php echo $row->kode_barang ?></td>
                                     <td><?php echo $row->nama_barang ?></td>
                                     <td><?php echo $row->merk ?></td>
-                                    <td><?php echo $row->jml_barang ?></td>
-                                    <td><?php echo $row->jml_tersedia ?></td>                        
+                                    <td><?php echo $row->status ?></td>
+                                    <td><?php echo $row->tgl_masuk ?></td>                        
                                     <?php $i++; ?>
                                 </tr>
                             <?php } ?>

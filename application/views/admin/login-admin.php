@@ -4,7 +4,7 @@
 	<title>Login</title>
     <link rel="stylesheet" href="<?php echo base_url() ?>user/login/login.css">
 </head>
-<body>
+<body style="background-image: url(<?php echo base_url() ?>user/login/bg-login.jpg);">
 <?php 
   if($this->session->flashdata('error')):
       $link="<script src='".base_url()."swal/sweetalert2.all.min.js'></script>";
@@ -35,8 +35,8 @@
 ?>
 <div class="login-card">
     <img class="center" src="<?php echo base_url() ?>admin-lte-master/dist/img/Logo-Jateng.png" width=100px height=70px>
-    <h3 style="text-align:center;">Sipirang</h3>
-    <p style="margin-top:-15px; text-align:center;">Sistem Pinjam Barang</p>
+    <h3 style="text-align:center; color: #fff;">Sipirang</h3>
+    <p style="margin-top:-15px; text-align:center; color: #fff;">Sistem Pinjam Barang</p>
     <?php echo form_open('admin/aksi_login'); ?>
         <input type="text" name="username" placeholder="Nama Pengguna / NIP">
         <input type="password" name="password" placeholder="Kata Sandi">
@@ -45,7 +45,7 @@
     
   <div class="login-help">
         <?php if($this->session->flashdata('error')):
-          echo '<p style="color: red; text-align: center;">Username/password salah</p>';
+          echo '<p style="color: red; text-align: center;"><b>Username/password salah</b></p>';
         endif;
         ?>
   </div>

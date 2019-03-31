@@ -40,10 +40,7 @@ Class Report_pdf extends CI_Controller{
         $pdf->Cell(30,6,'Merk',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(10,6,'Unit',1,0,'C',1);
-
-        $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(17,6,'Tersedia',1,0,'C',1);
+        $pdf->Cell(25,6,'Status',1,0,'C',1);
 
         $pdf->SetFillColor(28, 166, 205);
         $pdf->Cell(25,6,'Tgl Masuk',1,0,'C',1);
@@ -72,12 +69,10 @@ Class Report_pdf extends CI_Controller{
             $pdf->Cell(17,6,$row->kode_barang,1,0);
             $pdf->Cell(40,6,$row->nama_barang,1,0);
             $pdf->Cell(30,6,$row->merk,1,0);
-            $pdf->Cell(10,6,$row->jml_barang,1,0,'C');
-            if($row->jml_tersedia>0){
-                $pdf->Cell(17,6,$row->jml_tersedia,1,0,'C');
+            if($row->status==1){
+                $pdf->Cell(25,6,"Tersedia",1,0,'C');
             }else{
-                $pdf->SetTextColor(255, 0, 0);
-                $pdf->Cell(17,6,$row->jml_tersedia,1,0,'C');
+                $pdf->Cell(25,6,"Terpinjam",1,0,'C');
             }
             $pdf->SetTextColor(0, 0, 0);
             $pdf->Cell(25,6,$row->tgl_masuk,1,0,'C');
