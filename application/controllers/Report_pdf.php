@@ -293,7 +293,7 @@ Class Report_pdf extends CI_Controller{
         $pdf->Cell(190,7,date('Y-m-d'),0,1,'C');
         // Memberikan space kebawah agar tidak terlalu rapat
         $pdf->Cell(10,7,'',0,1,'');
-        $pdf->SetX(13);
+        $pdf->SetX(30);
         $pdf->SetFont('Arial','B',11);
         
         $pdf->SetFillColor(28, 166, 205);
@@ -309,17 +309,11 @@ Class Report_pdf extends CI_Controller{
         $pdf->Cell(28,6,'Barang',1,0,'L',1);
 
         $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(23,6,'jml Pinjam',1,0,'L',1);
-
-        $pdf->SetFillColor(28, 166, 205);
-        $pdf->Cell(23,6,'jml Kembali',1,0,'L',1);
-
-        $pdf->SetFillColor(28, 166, 205);
         $pdf->Cell(30,6,'Status',1,0,'L',1);
 
         $pdf->SetFont('Arial','',11);
         $pdf->Ln();
-        if($range==1){
+        if($range=="h"){
             date_default_timezone_set('Asia/Jakarta');
 			$first_date=new DateTime();
 			$first_date=$first_date->modify('-0 day');
@@ -328,7 +322,7 @@ Class Report_pdf extends CI_Controller{
 			$this->db->where('tgl_pjm >=', date_format($first_date,"Y/m/d"));
 			$this->db->where('tgl_pjm <=', date_format($second_date,"Y/m/d"));
 			$rec = $this->db->get('aktifitas_pinjam')->result();
-        }elseif($range==7){
+        }elseif($range=="m"){
             date_default_timezone_set('Asia/Jakarta');
 			$first_date=new DateTime();
 			$first_date=$first_date->modify('-7 day');
@@ -337,7 +331,7 @@ Class Report_pdf extends CI_Controller{
 			$this->db->where('tgl_pjm >=', date_format($first_date,"Y/m/d"));
 			$this->db->where('tgl_pjm <=', date_format($second_date,"Y/m/d"));
 			$rec = $this->db->get('aktifitas_pinjam')->result();
-        }elseif($range==30){
+        }elseif($range=="b"){
             date_default_timezone_set('Asia/Jakarta');
 			$first_date=new DateTime();
 			$first_date=$first_date->modify('-30 day');
@@ -352,7 +346,7 @@ Class Report_pdf extends CI_Controller{
         
         $i=1;
         foreach ($rec as $row){
-            $pdf->SetX(13);
+            $pdf->SetX(30);
             $pdf->Cell(9,6,$i,1,0,'C');
             $pdf->Cell(26,6,$row->kd_pjm,1,0);
             
@@ -363,8 +357,6 @@ Class Report_pdf extends CI_Controller{
                 $brg=$this->db->get_where('barang',array('kode_barang'=>$row->kd_brg));
                 $hsl1=$brg->row_array();
             $pdf->Cell(28,6,$hsl1['nama_barang'],1,0);
-            $pdf->Cell(23,6,$row->jml_pjm,1,0);
-            $pdf->Cell(23,6,$row->jml_kmbl,1,0);
             $pdf->Cell(30,6,$row->status,1,0);
             $i++;
             $pdf->Ln();

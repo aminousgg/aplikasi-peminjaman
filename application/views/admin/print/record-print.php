@@ -33,8 +33,6 @@
                                 <th>Kode Pinjam</th>
                                 <th>Nama</th>
                                 <th>Barang</th>
-                                <th>Jumlah Pinjam</th>
-                                <th>Jumlah Kembali</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -53,8 +51,6 @@
                                         $hsl1=$brg->row_array();
                                         echo $hsl1['nama_barang'];
                                     ?></td>
-                                    <td><?php echo $row->jml_pjm ?></td>
-                                    <td><?php echo $row->jml_kmbl ?></td>
                                     <td><?php echo $row->status ?></td>                        
                                     <?php $i++; ?>
                                 </tr>

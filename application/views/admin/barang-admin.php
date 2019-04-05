@@ -223,7 +223,17 @@ shoppingCart.clearCart();
                               <button type="button" onclick="window.location='<?php echo base_url() ?>admin/edit_form_barang/<?php echo $row->id ?>';" class="btn btn-info" title="Edit" >
                                 <i class="fa fa-pencil-square-o"></i>
                               </button>
-                                <button type="button" onclick="del(<?php echo $row->id?>)" class="btn btn-danger" title="Hapus"> <i class="fa fa-trash-o"></i> </button>
+                              <?php
+                                if($row->status==0){ ?>
+                                  <button style="cursor: not-allowed;" type="button" class="btn btn-danger" title="Hapus">
+                                    <i class="fa fa-trash-o"></i>
+                                  </button>
+                                <?php }else{ ?>
+                                  <button type="button" onclick="del(<?php echo $row->id?>)" class="btn btn-danger" title="Hapus">
+                                    <i class="fa fa-trash-o"></i>
+                                  </button>
+                                <?php } ?>
+                              
                             </div>
                           </td>
                         <?php } ?>

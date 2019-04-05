@@ -12,13 +12,13 @@ shoppingCart.clearCart();
             <i class="fa fa-print"></i> PDF
           </button> -->
           <div class="dropdown">
-            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-info" onclick='window.location=`<?php echo base_url() ?>Report_pdf/pdf_record/<?= $a ?>`' type="button">
               <i class="fa fa-print"></i> PDF
             </button>
             <button class="btn btn-info" type="button" onclick="window.location='<?php echo base_url() ?>Report_Excel/exportRec';">
               <i class="fa fa-print"></i> Excel
             </button>
-            <button class="btn btn-info" type="button" onclick="window.open('<?php echo base_url() ?>admin/print_rec')">
+            <button class="btn btn-info" type="button" onclick="window.open('<?php echo base_url() ?>admin/print_rec/<?= $a ?>')">
               <i class="fa fa-print"></i> Print Out
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -87,7 +87,7 @@ shoppingCart.clearCart();
               <button onclick="link(2)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> 1 Bulan</button>
               <button onclick="link(3)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> 1 Minggu</button>
               <button onclick="link(4)" class="btn btn-secondary btn-sm"><i class="nav-icon fa fa-list"></i> hari ini</button>
-            <?php }elseif($a==''){ ?>
+            <?php }elseif($a=='all'){ ?>
               <button onclick="link(5)" class="btn btn-secondary btn-sm"><i class="nav-icon fa fa-list"></i> All</button>
               <button onclick="link(2)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> 1 Bulan</button>
               <button onclick="link(3)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> 1 Minggu</button>

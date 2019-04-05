@@ -115,7 +115,7 @@ shoppingCart.clearCart();
                             <td><?php echo $row->nama_barang ?></td>
                             <td><?php echo $row->jml_pinjam ?></td>
                             <td><button onclick="link(<?= $row->id ?>)" class="btn btn-danger btn-sm">
-                              kembalikan
+                              <i class="nav-icon fa fa-share"></i>
                             </button></td>
                             <?php $i++; ?>
                           </tr>

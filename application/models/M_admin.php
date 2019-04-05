@@ -42,8 +42,41 @@ class M_admin extends CI_Model{
 		return $this->db->get('kembali_brg');
 	}
 
-	function tampil_rec(){
-		return $this->db->get('aktifitas_pinjam');
+	function tampil_rec($range){
+		if($range=="all"){
+			return $this->db->get('aktifitas_pinjam');
+		}elseif($range=="h"){
+			date_default_timezone_set('Asia/Jakarta');
+			$first_date=new DateTime();
+			$first_date=$first_date->modify('-0 day');
+			$second_date=date_create(date('Y-m-d'));
+			//var_dump($first_date->modify('-2 day')); die;
+			$this->db->where('tgl_pjm >=', date_format($first_date,"Y/m/d"));
+			$this->db->where('tgl_pjm <=', date_format($second_date,"Y/m/d"));
+			$rec = $this->db->get('aktifitas_pinjam');
+			return $rec;
+		}elseif($range=="m"){
+			date_default_timezone_set('Asia/Jakarta');
+			$first_date=new DateTime();
+			$first_date=$first_date->modify('-7 day');
+			$second_date=date_create(date('Y-m-d'));
+			//var_dump($first_date->modify('-2 day')); die;
+			$this->db->where('tgl_pjm >=', date_format($first_date,"Y/m/d"));
+			$this->db->where('tgl_pjm <=', date_format($second_date,"Y/m/d"));
+			$rec = $this->db->get('aktifitas_pinjam');
+			return $rec;
+		}elseif($range=="b"){
+			date_default_timezone_set('Asia/Jakarta');
+			$first_date=new DateTime();
+			$first_date=$first_date->modify('-30 day');
+			$second_date=date_create(date('Y-m-d'));
+			//var_dump($first_date->modify('-2 day')); die;
+			$this->db->where('tgl_pjm >=', date_format($first_date,"Y/m/d"));
+			$this->db->where('tgl_pjm <=', date_format($second_date,"Y/m/d"));
+			$rec = $this->db->get('aktifitas_pinjam');
+			return $rec;
+		}
+		
 	}
 }
 ?>

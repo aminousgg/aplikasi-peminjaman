@@ -675,12 +675,17 @@ class Admin extends CI_Controller{
 		);
 		$this->db->where(array('kd_pjm'=>$get['kd_pinjam'],'nip'=>$get['nip'],'kd_brg'=>$get['kode_barang']));
 		$res=$this->db->update('aktifitas_pinjam',$data);
+		$data1 = array(
+			'status'=>1,
+		);
+		$this->db->where(array('kode_barang'=>$get['kode_barang']));
+		$set_brg=$this->db->update('barang',$data1);
 		if($res==true){
-			$this->session->set_flashdata('success', 'Berhasil');
-			redirect(base_url('admin'));
+			$this->session->set_flashdata('success1', 'Berhasil');
+			redirect(base_url('admin/pinjam'));
 		}else{
 			$this->session->set_flashdata('error', 'Gagal Ubah');
-			redirect(base_url('admin'));
+			redirect(base_url('admin/pinjam'));
 		}
 
 	}
@@ -689,16 +694,8 @@ class Admin extends CI_Controller{
 	function record(){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			$data['tabel_record'] = $this->db->get('aktifitas_pinjam')->result();
-			// date_default_timezone_set('Asia/Jakarta');
-			// $first_date=new DateTime();
-			// $first_date=$first_date->modify('-1 day');
-			// $second_date=date_create(date('Y-m-d'));
-			// //var_dump($first_date->modify('-2 day')); die;
-			// $this->db->where('tgl_pjm >=', date_format($first_date,"Y/m/d"));
-			// $this->db->where('tgl_pjm <=', date_format($second_date,"Y/m/d"));
-			// $data['tabel_record'] = $this->db->get('aktifitas_pinjam')->result();
-			$data['a']='';
 			$data['judul']="Record";
+			$data['a']='all';
 			$this->load->view('admin/header-admin',$data);
 			$this->load->view('admin/aside-admin',$data);
 			$this->load->view('admin/record',$data);
@@ -831,9 +828,9 @@ class Admin extends CI_Controller{
 		}
 	}
 	// ===============================================PRINT RECORD============================
-	function print_rec(){
+	function print_rec($range){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
-			$data['tabel_record'] = $this->M_admin->tampil_rec()->result();
+			$data['tabel_record'] = $this->M_admin->tampil_rec($range)->result();
 			$data['judul']="Record";
 			$this->load->view('admin/print/head-print',$data);
 			$this->load->view('admin/print/record-print',$data);
