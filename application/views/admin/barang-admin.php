@@ -233,7 +233,6 @@ shoppingCart.clearCart();
                                     <i class="fa fa-trash-o"></i>
                                   </button>
                                 <?php } ?>
-                              
                             </div>
                           </td>
                         <?php } ?>

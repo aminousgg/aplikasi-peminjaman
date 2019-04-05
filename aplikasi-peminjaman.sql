@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 14 Mar 2019 pada 14.55
+-- Generation Time: 05 Apr 2019 pada 16.18
 -- Versi Server: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -46,11 +46,14 @@ CREATE TABLE `aktifitas_pinjam` (
 --
 
 INSERT INTO `aktifitas_pinjam` (`id`, `kd_pjm`, `nip`, `kd_brg`, `tgl_pjm`, `estimate_kmbl`, `tgl_kmbl`, `ptgs_pjm`, `ptg_kmbl`, `status`) VALUES
-(65, '7569', '88776', '3252', '2019-03-13', '2019-03-20', '0000-00-00', 'admin', '-', 'Belum Kembali'),
+(65, '7569', '88776', '3252', '2019-03-13', '2019-03-20', '2019-04-05', 'admin', '', 'Kembali'),
 (66, '7569', '88776', '4046', '2019-03-13', '2019-03-20', '0000-00-00', 'admin', '-', 'Belum Kembali'),
 (67, '7569', '88776', '6107', '2019-03-13', '2019-03-20', '2019-03-14', 'admin', '', 'Kembali'),
-(68, '7569', '88776', '5301', '2019-03-13', '2019-03-20', '0000-00-00', 'admin', '-', 'Belum Kembali'),
-(69, '7569', '88776', '1130', '2019-03-13', '2019-03-20', '0000-00-00', 'admin', '-', 'Belum Kembali');
+(68, '7569', '88776', '5301', '2019-03-13', '2019-03-20', '2019-04-05', 'admin', '', 'Kembali'),
+(69, '7569', '88776', '1130', '2019-03-13', '2019-03-20', '2019-04-05', 'admin', '', 'Kembali'),
+(70, '3881', '33667', '5136', '2019-04-04', '2019-04-11', '2019-04-04', 'admin', 'Marni Styani', 'Kembali'),
+(71, '3881', '33667', '2271', '2019-04-04', '2019-04-11', '2019-04-04', 'admin', 'Marni Styani', 'Kembali'),
+(72, '9858', '66672', '8492', '2019-04-04', '2019-04-11', '2019-04-05', '66672', 'Marni Styani', 'Kembali');
 
 -- --------------------------------------------------------
 
@@ -136,13 +139,13 @@ CREATE TABLE `barang` (
 
 INSERT INTO `barang` (`id`, `kode_barang`, `nama_barang`, `merk`, `kategori`, `tgl_masuk`, `spesifikasi`, `status`, `foto`) VALUES
 (29, '8492', 'Kompas', 'gigabit', 'teknis', '2019-02-21', 'anti magnet', 1, 'logo_1.jpg'),
-(30, '1130', 'Buku Kimia', 'Gmedia', 'perpus', '2019-02-21', '300 halaman', 0, 'texture-red-brick-wall.jpg'),
-(31, '2271', 'Gelas', 'BBC', 'lain-lain', '2019-02-26', 'kaca', 1, 'warna1.jpg'),
-(32, '5136', 'Flasdisk', 'Sandisk', 'elektronik', '2019-03-10', '4 GB', 1, 'pilihan.png'),
+(30, '1130', 'Buku Kimia', 'Gmedia', 'perpus', '2019-02-21', '300 halaman', 1, 'texture-red-brick-wall.jpg'),
+(31, '2271', 'Gelas', 'BBC', 'lain-lain', '2019-02-26', 'kaca', 0, 'warna1.jpg'),
+(32, '5136', 'Flasdisk', 'Sandisk', 'elektronik', '2019-03-10', '4 GB', 0, 'pilihan.png'),
 (33, '6107', 'asfa', 'asfasdf', 'lain-lain', '2019-03-06', 'afasfsdf', 0, 'img_bg_1.jpg'),
 (34, '3252', 'asd', 'sdasdadas', 'teknis', '0000-00-00', 'asdfsdfadsfasdfsd', 0, 'Screenshot_(3).png'),
 (35, '5301', 'asfaasf', 'asdfsfs', 'lain-lain', '0000-00-00', 'asfasdf asdf', 0, 'Screenshot_(12).png'),
-(36, '4046', 'asdvzxcvzcxvas', 'asdfvszdv v', 'perpus', '2019-03-07', 'sfdsadf', 0, 'Screenshot_(8).png');
+(37, '7043', 'Komputer', 'asus', 'elektronik', '2019-04-06', 'ram 4gb', 1, 'jabat-tangan-ilustrasi-_151221');
 
 -- --------------------------------------------------------
 
@@ -190,15 +193,6 @@ CREATE TABLE `pinjam_barang` (
   `petugas` varchar(30) NOT NULL,
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `pinjam_barang`
---
-
-INSERT INTO `pinjam_barang` (`id`, `kd_pinjam`, `nip`, `nama`, `jabatan`, `seksi`, `kode_barang`, `nama_barang`, `jml_pinjam`, `tgl_pinjam`, `tgl_kembali`, `petugas`, `status`) VALUES
-(18, '7569', '88776', 'Manto Widodo', 'Program', 'Sekretariat', '3252', 'asd', 1, '2019-03-13', '2019-03-20', 'admin', 'Belum Kembali'),
-(21, '7569', '88776', 'Manto Widodo', 'Program', 'Sekretariat', '5301', 'asfaasf', 1, '2019-03-13', '2019-03-20', 'admin', 'Belum Kembali'),
-(22, '7569', '88776', 'Manto Widodo', 'Program', 'Sekretariat', '1130', 'Buku Kimia', 1, '2019-03-13', '2019-03-20', 'admin', 'Belum Kembali');
 
 --
 -- Indexes for dumped tables
@@ -250,7 +244,7 @@ ALTER TABLE `pinjam_barang`
 -- AUTO_INCREMENT for table `aktifitas_pinjam`
 --
 ALTER TABLE `aktifitas_pinjam`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `akun_admin`
@@ -268,7 +262,7 @@ ALTER TABLE `anggota`
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `kembali_brg`
@@ -280,7 +274,7 @@ ALTER TABLE `kembali_brg`
 -- AUTO_INCREMENT for table `pinjam_barang`
 --
 ALTER TABLE `pinjam_barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
