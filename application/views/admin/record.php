@@ -131,7 +131,7 @@ shoppingCart.clearCart();
               </thead>
               <tbody>
               <?php $i=1; foreach($tabel_record as $row){ ?>
-              <?php if($row->status=="kembali"){ ?>
+              <?php if($row->status!="Kembali"){ ?>
                 <tr style="background-color:#E6E6FA;">
               <?php }else{ ?>
                 <tr style="background-color:#fff;">

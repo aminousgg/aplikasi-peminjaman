@@ -57,7 +57,7 @@
                     <?php } else { ?>
                       <td id="sedia<?= $row->kode_barang ?>"><?php echo "Tersedia" ?></td>
                       <td id="pilih<?= $row->kode_barang ?>">
-                        <button data-sedia="<?= $row->status ?>" data-kode="<?= $row->kode_barang ?>" data-nama="<?= $row->nama_barang ?>" type="button" class="add-to-cart btn btn-info">pilih</button>
+                        <button data-sedia="<?= $row->status ?>" data-merk="<?= $row->merk ?>" data-kode="<?= $row->kode_barang ?>" data-nama="<?= $row->nama_barang ?>" type="button" class="add-to-cart btn btn-info">pilih</button>
                       </td>
                     <?php } ?>
                     <?php $i++; ?>
@@ -123,7 +123,8 @@
           var name = $(this).attr("data-nama");
           var price = Number($(this).attr("data-kode"));
           var sedia = Number($(this).attr("data-sedia"));
-          shoppingCart.addItemToCart(name, sedia, price, 1);
+          var merk = $(this).attr("data-merk");
+          shoppingCart.addItemToCart(name, sedia, price, 1, merk);
           displayCart();
         }else{
           var name = $(this).attr("data-nama");
@@ -146,18 +147,15 @@
         var cartArray = shoppingCart.listCart();
         console.log(cartArray);
         var output = "";
-
+        
         for (var i in cartArray) {
             output += "<li class='item'>"
                 +"<div class='product-info'><div class='row'>"
                 +"<div class='col-4'>"+cartArray[i].name+"</div>"
-                +"<div class='col-4'><input style='width:70px;' class='item-count' type='number' data-name='"
+                +"<div class='col-4'><input style='width:70px;' class='item-count' type='text' data-name='"
                 +cartArray[i].name
-                +"' value='"+cartArray[i].count+"' readonly ></div>"
-                +"<div class='col-4'> <button class='plus-item' data-name='"
-                +cartArray[i].price+"' data-sedia='"+cartArray[i].sedia+"'>+</button>"
-                +" <button class='subtract-item' data-name='"
-                +cartArray[i].price+"'>-</button>"
+                +"' value='"+cartArray[i].merk+"' disabled ></div>"
+                +"<div class='col-4'>"
                 +" <button class='delete-item' data-name='"
                 +cartArray[i].price+"'>batal</button></div>"
                 +"</div></div></li>";
@@ -187,15 +185,14 @@
     });
 
     $("#show-cart").on("click", ".subtract-item", function(event){
-        var price = Number($(this).attr("data-name"));
-        shoppingCart.removeItemFromCart(price);
-        displayCart();
+        // var price = Number($(this).attr("data-name"));
+        // shoppingCart.removeItemFromCart(price);
+        // displayCart();
     });
 
     $("#show-cart").on("click", ".plus-item", function(event){
         var price = Number($(this).attr("data-name"));
         var sedia = Number($(this).attr("data-sedia"));
-        shoppingCart.addItemToCart("",sedia, price, 1);
         //name, sedia, price, count
         displayCart();
     });

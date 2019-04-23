@@ -5,12 +5,12 @@ var shoppingCart = (function () {
     // Private methods and properties
     var cart = [];
 
-    function Item(name, sedia, price, count) {
+    function Item(name, sedia, price, count, merk) {
         this.name = name
         this.sedia = sedia
         this.price = price
         this.count = count
-        
+        this.merk = merk
     }
 
     function saveCart() {
@@ -31,7 +31,7 @@ var shoppingCart = (function () {
     // Public methods and properties
     var obj = {};
 
-    obj.addItemToCart = function (name, sedia, price, count) {
+    obj.addItemToCart = function (name, sedia, price, count, merk) {
         //alert('aasd');
         for (var i in cart) {
             
@@ -51,8 +51,8 @@ var shoppingCart = (function () {
 
         
         if(name!==""){ // maksimal pinjem 5
-            console.log("addItemToCart:", name, sedia, price, count);
-            var item = new Item(name, sedia, price, count);
+            console.log("addItemToCart:", name, sedia, price, count,merk);
+            var item = new Item(name, sedia, price, count, merk);
             cart.push(item);
             saveCart();
         }else{

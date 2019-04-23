@@ -185,9 +185,8 @@ class Report_Excel extends CI_Controller {
         $excel->setActiveSheetIndex(0)->setCellValue('B4', "Kode"); // Set kolom B4 dengan tulisan "NIS"
         $excel->setActiveSheetIndex(0)->setCellValue('C4', "Nama Barang"); // Set kolom C4 dengan tulisan "NAMA"
         $excel->setActiveSheetIndex(0)->setCellValue('D4', "Merk"); // Set kolom D4 dengan tulisan "JENIS KELAMIN"
-        $excel->setActiveSheetIndex(0)->setCellValue('E4', "Unit"); // Set kolom E4 dengan tulisan "ALAMAT"
-        $excel->setActiveSheetIndex(0)->setCellValue('F4', "Tersedia"); // Set kolom F4 dengan tulisan "JENIS KELAMIN"
-        $excel->setActiveSheetIndex(0)->setCellValue('G4', "Tanggal Masuk"); // Set kolom G4 dengan tulisan "ALAMAT"
+        $excel->setActiveSheetIndex(0)->setCellValue('E4', "Tersedia"); // Set kolom F4 dengan tulisan "JENIS KELAMIN"
+        $excel->setActiveSheetIndex(0)->setCellValue('F4', "Status"); // Set kolom G4 dengan tulisan "ALAMAT"
     
         // Apply style header yang telah kita buat tadi ke masing-masing kolom header
         $excel->getActiveSheet()->getStyle('A4')->applyFromArray($style_col);
@@ -196,7 +195,6 @@ class Report_Excel extends CI_Controller {
         $excel->getActiveSheet()->getStyle('D4')->applyFromArray($style_col);
         $excel->getActiveSheet()->getStyle('E4')->applyFromArray($style_col);
         $excel->getActiveSheet()->getStyle('F4')->applyFromArray($style_col);
-        $excel->getActiveSheet()->getStyle('G4')->applyFromArray($style_col);
     
         // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
         // $siswa = $this->SiswaModel->view();
@@ -209,9 +207,13 @@ class Report_Excel extends CI_Controller {
             $excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $row->kode_barang);
             $excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, $row->nama_barang);
             $excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $row->merk);
-            $excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow, $row->jml_barang);
-            $excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow, $row->jml_tersedia);
-            $excel->setActiveSheetIndex(0)->setCellValue('G'.$numrow, $row->tgl_masuk);
+            $excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow, $row->tgl_masuk);
+            if($row->status==1){
+                $excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow, "Tersedia");
+            }else{
+                $excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow, "Terpinjam");
+            }
+            
             // Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
             $excel->getActiveSheet()->getStyle('A'.$numrow)->applyFromArray($style_row);
             $excel->getActiveSheet()->getStyle('B'.$numrow)->applyFromArray($style_row);
@@ -219,7 +221,6 @@ class Report_Excel extends CI_Controller {
             $excel->getActiveSheet()->getStyle('D'.$numrow)->applyFromArray($style_row);
             $excel->getActiveSheet()->getStyle('E'.$numrow)->applyFromArray($style_row);
             $excel->getActiveSheet()->getStyle('F'.$numrow)->applyFromArray($style_row);
-            $excel->getActiveSheet()->getStyle('G'.$numrow)->applyFromArray($style_row);
       
             $i++; // Tambah 1 setiap kali looping
             $numrow++; // Tambah 1 setiap kali looping

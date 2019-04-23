@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <title>Sipirang</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+  <!-- Favicons -->
+  <link href="<?php echo base_url() ?>admin-lte-master/dist/img/title-icon.png" rel="icon">
+  <link href="<?php echo base_url() ?>asset-user/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <title>Home</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
 
-  <!-- Bootstrap core CSS -->
-  <link href="<?php echo base_url() ?>user/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <!-- Bootstrap CSS File -->
+  <link href="<?php echo base_url() ?>asset-user/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Custom fonts for this template -->
-  <link href="<?php echo base_url() ?>user/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <!-- Libraries CSS Files -->
+  <link href="<?php echo base_url() ?>asset-user/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="<?php echo base_url() ?>asset-user/lib/animate/animate.min.css" rel="stylesheet">
+  <link href="<?php echo base_url() ?>asset-user/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="<?php echo base_url() ?>asset-user/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="<?php echo base_url() ?>asset-user/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
-  <!-- Plugin CSS -->
-  <link href="<?php echo base_url() ?>user/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
-
-  <!-- Custom styles for this template -->
-  <link href="<?php echo base_url() ?>user/css/freelancer.css" rel="stylesheet">
+  <!-- Main Stylesheet File -->
+  <link href="<?php echo base_url() ?>asset-user/css/style.css" rel="stylesheet">
   <link href="<?php echo base_url() ?>user/css/datatable.min.css" rel="stylesheet">
   <link href="<?php echo base_url() ?>user/css/headertable.min.css" rel="stylesheet">
    <link href="<?php echo base_url() ?>user/css/cal.css" rel="stylesheet">
@@ -32,83 +34,53 @@
   <link rel="stylesheet" href="<?php echo base_url() ?>user/daterangepicker/daterangepicker-bs3.css">
   <!-- bootstrap wysihtml5 - text editor -->
 
+  <!-- =======================================================
+    Theme Name: Rapid
+    Theme URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
 </head>
 
-<body id="page-top">
-
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg bg-info fixed-top text-uppercase" id="mainNav">
+<body>
+  <!--==========================
+  Header
+  ============================-->
+  <header id="header">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="<?php echo base_url() ?>admin-lte-master/dist/img/Logo-Jateng.png" class="logokiri">
-      Sipirang
-      <P style="margin-top:-15px; margin-left:90px; font-size:12px;">Sistem Pinjam Barang</P>
-      </a>
-      <div>
-        
-      </div>
-      <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="admin/login">Masuk</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
 
-  <!-- Header -->
-  <header>
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
-            <div class="container">
-              <div class="carousel-caption text-left">
-                <h1>SiPirang</h1>
-                <p>Sistem Peminjaman Barang</p>
-                <p>Dinas Energi dan Sumber Daya Mineral Provinsi Jawa Tengah</p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
-            <div class="container">
-              <div class="carousel-caption">
-                <h1>Another example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
-            <div class="container">
-              <div class="carousel-caption text-right">
-                <h1>One more for good measure.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-              </div>
-            </div>
+      <div class="logo float-left">
+
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <h1 class="text-light"><a href="#intro" class="scrollto"><span>Sipirang</span></a></h1>
+        <!-- <a href="#header" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a> -->
+      </div>
+
+      <nav class="main-nav float-right d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="#portfolio">Home</a></li>
+          <li><a href="#footer">Contact</a></li>
+          <li><a href="">Masuk admin</a></li>
+        </ul>
+      </nav><!-- .main-nav -->
+      
+    </div>
+  </header><!-- #header -->
+
+  <section id="intro" class="clearfix">
+    <div class="container d-flex h-100">
+      <div class="row justify-content-center align-self-center">
+        <div class="col-md-6 intro-info order-md-first order-last">
+          <h2>Sipirang<br>Pinjam <span>Barang</span></h2>
+          <div>
+            <a class="btn-get-started scrollto">Pinjam?</a>
           </div>
         </div>
-        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
+  
+        <div class="col-md-6 intro-img order-md-last order-first">
+          <img src="<?php echo base_url() ?>asset-user/img/intro-img.svg" alt="" class="img-fluid">
+        </div>
       </div>
 
-
-  </header>
+    </div>
+  </section><!-- #intro -->

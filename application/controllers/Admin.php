@@ -770,7 +770,7 @@ class Admin extends CI_Controller{
 
 
 	// ===============================================PRINT BARANG============================
-	function print_barang($kat){
+	function print_barang($kat=''){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
 			if($kat=='k'){
 				$kate="kendaraan";
@@ -785,7 +785,12 @@ class Admin extends CI_Controller{
 			}else{
 				$kate='';
 			}
-			$data['tabel_record'] = $this->db->get_where('barang',array('kategori'=>$kate))->result();
+			
+			if($kate==''){
+				$data['tabel_record'] =  $this->db->get('barang')->result();
+			}else{
+				$data['tabel_record'] = $this->db->get_where('barang',array('kategori'=>$kate))->result();	
+			}
 			$data['judul']="Record";
 			$this->load->view('admin/print/head-print',$data);
 			$this->load->view('admin/print/barang-print',$data);
