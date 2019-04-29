@@ -20,5 +20,18 @@ class Web extends CI_Controller{
 		$this->load->view('user/login-user',$data);
 		$this->load->view('user/footer-user',$data);
 	}
-
+	function contact(){
+		$data = array(
+			"nama"	=> $this->input->post('nama'),
+			"email"	=> $this->input->post('email'),
+			"isi"	=> $this->input->post('isi')
+		);
+		$cek=$this->db->insert('contact',$data);
+		if($cek){
+			echo "OK";
+		}else{
+			echo "gagal";
+		}
+		
+	}
 }

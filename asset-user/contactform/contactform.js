@@ -104,12 +104,18 @@ jQuery(document).ready(function($) {
           $("#sendmessage").addClass("show");
           $("#errormessage").removeClass("show");
           $('.contactForm').find("input, textarea").val("");
+          setTimeout(function(){
+            $("#sendmessage").removeClass("show");
+          },2000);
         } else {
           $("#sendmessage").removeClass("show");
           $("#errormessage").addClass("show");
           $('#errormessage').html(msg);
         }
 
+      },error: function(msg){
+        console.log("asd");
+        
       }
     });
     return false;

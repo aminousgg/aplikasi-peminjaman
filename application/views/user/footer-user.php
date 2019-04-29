@@ -16,11 +16,7 @@
                   </div>
 
                   <div class="footer-newsletter">
-                    <h4>Our Newsletter</h4>
-                    <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem.</p>
-                    <!-- <form action="" method="post">
-                      <input type="email" name="email"><input type="submit"  value="Subscribe">
-                    </form> -->
+                    
                   </div>
 
                 </div>
@@ -63,10 +59,10 @@
             <div class="form">
               
               <h4>Hubungi kami</h4>
-              <p>layanan untuk menghubungi pihak petugas atau admi sipirang</p>
-              <form action="" method="post" role="form" class="contactForm">
+              <p>layanan untuk menghubungi pihak petugas atau admin sipirang</p>
+              <form action="<?= base_url() ?>web/contact" method="post" role="form" class="contactForm">
                 <div class="form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <input type="text" name="nama" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">
@@ -78,7 +74,7 @@
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                  <textarea class="form-control" name="isi" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
                   <div class="validation"></div>
                 </div>
                 <div id="sendmessage">Your message has been sent. Thank you!</div>
@@ -99,7 +95,7 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong>Rapid</strong>. All Rights Reserved
+        &copy; Copyright <strong></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!--

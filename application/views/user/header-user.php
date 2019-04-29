@@ -61,7 +61,7 @@
           <li class="active"><a href="#intro">Home</a></li>
           <li><a href="#portfolio">Barang</a></li>
           <li><a href="#footer">Contact</a></li>
-          <li><a href="">Masuk admin</a></li>
+          <li><a href="<?= base_url() ?>admin/">Masuk admin</a></li>
         </ul>
       </nav><!-- .main-nav -->
       
