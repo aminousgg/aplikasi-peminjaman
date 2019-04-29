@@ -58,7 +58,8 @@
 
       <nav class="main-nav float-right d-none d-lg-block">
         <ul>
-          <li class="active"><a href="#portfolio">Home</a></li>
+          <li class="active"><a href="#intro">Home</a></li>
+          <li><a href="#portfolio">Barang</a></li>
           <li><a href="#footer">Contact</a></li>
           <li><a href="">Masuk admin</a></li>
         </ul>
@@ -78,7 +79,7 @@
         </div>
   
         <div class="col-md-6 intro-img order-md-last order-first">
-          <img src="<?php echo base_url() ?>asset-user/img/intro-img.svg" alt="" class="img-fluid">
+          <img style="margin-left:60px;" src="<?php echo base_url() ?>asset-user/img/introo.png" alt="" class="img-fluid">
         </div>
       </div>
 
