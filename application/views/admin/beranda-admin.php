@@ -23,7 +23,7 @@ shoppingCart.clearCart();
       <div class="container-fluid">
         <!-- baris icon beranda -->
         <div class="row">
-          <div class="col-md-3 col-sm-6 col-12">
+          <div class="col-md-3 col-sm-6 col-12 w3-animate-zoom">
             <div class="info-box">
               <span class="info-box-icon bg-info elevation-1"><i class="fa fa-inbox"></i></span>
               <div class="info-box-content">
@@ -36,7 +36,7 @@ shoppingCart.clearCart();
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
-          <div class="col-md-3 col-sm-6 col-12">
+          <div class="col-md-3 col-sm-6 col-12 w3-animate-zoom">
             <div class="info-box">
               <span class="info-box-icon bg-success elevation-1"><i class="fa fa-users"></i></span>
 
@@ -50,7 +50,7 @@ shoppingCart.clearCart();
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
-          <div class="col-md-3 col-sm-6 col-12">
+          <div class="col-md-3 col-sm-6 col-12 w3-animate-zoom">
             <div class="info-box">
               <span class="info-box-icon bg-warning elevation-1"><i class="fa fa-shopping-cart"></i></span>
 
@@ -64,7 +64,7 @@ shoppingCart.clearCart();
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
-          <div class="col-md-3 col-sm-6 col-12">
+          <div class="col-md-3 col-sm-6 col-12 w3-animate-zoom">
             <div class="info-box">
               <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-files-o"></i></span>
               <div class="info-box-content">
@@ -82,7 +82,7 @@ shoppingCart.clearCart();
         <!-- Main row -->
         <!-- /.row (main row) -->
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4 w3-animate-zoom">
             
             <div class="card">
               <div class="card-header">
