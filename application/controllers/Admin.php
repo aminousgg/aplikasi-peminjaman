@@ -9,7 +9,6 @@ class Admin extends CI_Controller{
 		$this->load->model('M_login');
 		
 	}
-
 	//==============================LOGIN & LOGOUT===================
 	function login(){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
@@ -767,8 +766,30 @@ class Admin extends CI_Controller{
 			redirect(base_url('admin/login'));
 		}
 	}
-
-
+	//==================================== contact =============
+	function contact($id=null){
+		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){
+			if($id!=null){
+				$res=$this->db->delete('contact',array('id'=>$id));
+				if($res==true){
+					$this->session->set_flashdata('success', 'Berhasil di Hapus');
+					redirect(base_url('admin/contact'));
+				}else{
+					$this->session->set_flashdata('error', 'Gagal menghapus');
+					redirect(base_url('admin/contact'));
+				}
+			}
+			$data['tabel_record'] = $this->db->get('contact')->result();
+			$data['judul']="Contact";
+			$data['a']='all';
+			$this->load->view('admin/header-admin',$data);
+			$this->load->view('admin/aside-admin',$data);
+			$this->load->view('admin/contact',$data);
+			$this->load->view('admin/footer-admin',$data);
+		}else{
+			redirect(base_url('admin/login'));
+		}
+	}
 	// ===============================================PRINT BARANG============================
 	function print_barang($kat=''){
 		if($this->session->userdata('admin')["status"] == "login" || $this->session->userdata('petugas')["status"] == "login"){

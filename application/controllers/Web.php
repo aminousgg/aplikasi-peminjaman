@@ -22,6 +22,7 @@ class Web extends CI_Controller{
 	}
 	function contact(){
 		$data = array(
+			"tgl"	=> date('Y-m-d'),
 			"nama"	=> $this->input->post('nama'),
 			"email"	=> $this->input->post('email'),
 			"isi"	=> $this->input->post('isi')

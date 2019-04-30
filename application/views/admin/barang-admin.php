@@ -60,7 +60,7 @@ shoppingCart.clearCart();
             <div class="card-header">
               <h3 class="card-title">Data Barang</h3>
               <?php if($this->session->userdata('admin')['nama']==null){ ?>
-                <button style="margin-top:-27px;" onclick="link(1)" class="btn btn-success float-right"><i class="fa fa-plus">
+                <button style="margin-top:-27px;" onclick="link(1)" class="btn btn-info float-right"><i class="fa fa-plus">
                     </i>  Tambah Barang
                 </button><br>
                 <?php if($aktif=="k"){ ?>
@@ -106,9 +106,8 @@ shoppingCart.clearCart();
                   <button onclick="link(7)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i>Perpustakaan</button>
                   <button onclick="link(5)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> lain-lain</button>
                 <?php } ?>
-
               <?php }else { ?>
-                <button style="margin-top:-27px;" onclick="link(1)" class="btn btn-success float-right"><i class="fa fa-plus"></i>  Tambah Barang</button><br>
+                <button style="margin-top:-27px;" onclick="link(1)" class="btn btn-info float-right"><i class="fa fa-plus"></i>  Tambah Barang</button><br>
                 
                 <?php if($aktif=="k"){ ?>
                   <button onclick="link(2)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> All</button>
@@ -317,7 +316,6 @@ shoppingCart.clearCart();
 <?php
 $link="<script src='".base_url()."swal/sweetalert2.all.min.js'></script>";
 echo $link;
-
 ?>
 <script>
   function del(id){

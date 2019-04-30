@@ -212,6 +212,19 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <?php if($judul=="Contact"){ ?>
+            <a href="<?php echo base_url()?>admin/contact" class="nav-link active">
+          <?php }else{ ?>
+            <a href="<?php echo base_url()?>admin/contact" class="nav-link">
+          <?php } ?>
+            <!-- <a href="#" class="nav-link"> -->
+            <i class="nav-icon fa fa-comments-o"></i>
+            <p>
+              Contact
+            </p>
+          </a>
+        </li>
         
        
       </ul>
