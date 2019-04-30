@@ -152,8 +152,6 @@ shoppingCart.clearCart();
                   <button onclick="link(7)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i>Perpustakaan</button>
                   <button onclick="link(5)" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-list"></i> lain-lain</button>
                 <?php } ?>
-
-
               <?php } ?>
             </div>
             <script>

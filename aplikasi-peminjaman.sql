@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 05 Apr 2019 pada 16.18
--- Versi Server: 10.1.28-MariaDB
+-- Generation Time: Apr 30, 2019 at 04:16 AM
+-- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `aktifitas_pinjam`
+-- Table structure for table `aktifitas_pinjam`
 --
 
 CREATE TABLE `aktifitas_pinjam` (
@@ -42,7 +42,7 @@ CREATE TABLE `aktifitas_pinjam` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `aktifitas_pinjam`
+-- Dumping data for table `aktifitas_pinjam`
 --
 
 INSERT INTO `aktifitas_pinjam` (`id`, `kd_pjm`, `nip`, `kd_brg`, `tgl_pjm`, `estimate_kmbl`, `tgl_kmbl`, `ptgs_pjm`, `ptg_kmbl`, `status`) VALUES
@@ -58,7 +58,7 @@ INSERT INTO `aktifitas_pinjam` (`id`, `kd_pjm`, `nip`, `kd_brg`, `tgl_pjm`, `est
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `akun_admin`
+-- Table structure for table `akun_admin`
 --
 
 CREATE TABLE `akun_admin` (
@@ -71,7 +71,7 @@ CREATE TABLE `akun_admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `akun_admin`
+-- Dumping data for table `akun_admin`
 --
 
 INSERT INTO `akun_admin` (`id`, `username`, `level_user`, `password`, `token`, `status`) VALUES
@@ -83,7 +83,7 @@ INSERT INTO `akun_admin` (`id`, `username`, `level_user`, `password`, `token`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `anggota`
+-- Table structure for table `anggota`
 --
 
 CREATE TABLE `anggota` (
@@ -98,7 +98,7 @@ CREATE TABLE `anggota` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `anggota`
+-- Dumping data for table `anggota`
 --
 
 INSERT INTO `anggota` (`id`, `nip`, `nama`, `jabatan`, `pangkat_golongan`, `seksi`, `tgl_lahir`, `foto`) VALUES
@@ -118,7 +118,7 @@ INSERT INTO `anggota` (`id`, `nip`, `nama`, `jabatan`, `pangkat_golongan`, `seks
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `barang`
+-- Table structure for table `barang`
 --
 
 CREATE TABLE `barang` (
@@ -134,7 +134,7 @@ CREATE TABLE `barang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `barang`
+-- Dumping data for table `barang`
 --
 
 INSERT INTO `barang` (`id`, `kode_barang`, `nama_barang`, `merk`, `kategori`, `tgl_masuk`, `spesifikasi`, `status`, `foto`) VALUES
@@ -150,7 +150,30 @@ INSERT INTO `barang` (`id`, `kode_barang`, `nama_barang`, `merk`, `kategori`, `t
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kembali_brg`
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL,
+  `tgl` date NOT NULL,
+  `nama` varchar(30) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `isi` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`id`, `tgl`, `nama`, `email`, `isi`) VALUES
+(1, '2019-04-15', 'dsafdsaf', 'afds@gmail.com', 'sdfsdf asxdcvf dfv'),
+(2, '2019-04-17', 'dfgdffd', 'afds@gmail.com', 'dfvb fdsb vxfd '),
+(4, '2019-04-30', 'asdcsdcasx ', 'axvcsadsafdkjb@gmail.com', 'asdgvfdv  sdzfbsdfbv sdfghbsdfg sfdhbsdfhgads egrssdfv');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kembali_brg`
 --
 
 CREATE TABLE `kembali_brg` (
@@ -164,7 +187,7 @@ CREATE TABLE `kembali_brg` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kembali_brg`
+-- Dumping data for table `kembali_brg`
 --
 
 INSERT INTO `kembali_brg` (`id`, `nip`, `kode_brg`, `tgl_pinjam`, `estimasi`, `wkt_kembali`, `petugas_kmbl`) VALUES
@@ -175,7 +198,7 @@ INSERT INTO `kembali_brg` (`id`, `nip`, `kode_brg`, `tgl_pinjam`, `estimasi`, `w
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pinjam_barang`
+-- Table structure for table `pinjam_barang`
 --
 
 CREATE TABLE `pinjam_barang` (
@@ -225,6 +248,12 @@ ALTER TABLE `barang`
   ADD UNIQUE KEY `kode_barang` (`kode_barang`);
 
 --
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `kembali_brg`
 --
 ALTER TABLE `kembali_brg`
@@ -263,6 +292,12 @@ ALTER TABLE `anggota`
 --
 ALTER TABLE `barang`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `kembali_brg`
