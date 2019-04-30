@@ -37,7 +37,7 @@
               $cek=$this->session->userdata('admin')['nama'];
               $angg=$this->db->get_where('anggota',array('nip'=>$cek))->row_array();
               if($angg['nama']!=null){
-                echo '<img style="height:40px;" src="'.base_url().'admin-lte-master/foto/agt/'.$angg['foto'].'" class="img-circle elevation-2" alt="Image">';
+                echo '<img style="height:35px;" src="'.base_url().'admin-lte-master/foto/agt/'.$angg['foto'].'" class="img-circle elevation-2" alt="Image">';
               }else{
                 echo '<img src="'.base_url().'admin-lte-master/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="Image">';
               }

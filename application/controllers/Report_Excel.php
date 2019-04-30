@@ -559,9 +559,9 @@ class Report_Excel extends CI_Controller {
         $excel->setActiveSheetIndex(0)->setCellValue('A4', "No"); // Set kolom A3 dengan tulisan "NO"
         $excel->setActiveSheetIndex(0)->setCellValue('B4', "Kode Pinjam"); // Set kolom B3 dengan tulisan "Kode Pinjam"
         $excel->setActiveSheetIndex(0)->setCellValue('C4', "NIP"); // Set kolom C3 dengan tulisan "NIP"
-        $excel->setActiveSheetIndex(0)->setCellValue('D4', "Kode Barang"); // Set kolom D3 dengan tulisan "Nama Peminjam"
-        $excel->setActiveSheetIndex(0)->setCellValue('E4', "Jumlah Pinjam"); // Set kolom E3 dengan tulisan "Kode Barang"
-        $excel->setActiveSheetIndex(0)->setCellValue('F4', "Jumlah Kembali"); // Set kolom F3 dengan tulisan "Jumlah Pinjam"
+        $excel->setActiveSheetIndex(0)->setCellValue('D4', "Nama");
+        $excel->setActiveSheetIndex(0)->setCellValue('E4', "Kode Barang"); 
+        $excel->setActiveSheetIndex(0)->setCellValue('F4', "Nama Barang");
         $excel->setActiveSheetIndex(0)->setCellValue('G4', "Tanggal Pinjam"); // Set kolom G3 dengan tulisan "Jumlah Kembali"
         $excel->setActiveSheetIndex(0)->setCellValue('H4', "Tanggal Kembali"); // Set kolom H3 dengan tulisan "Tanggal Pinjam"
         $excel->setActiveSheetIndex(0)->setCellValue('I4', "Petugas"); // Set kolom I3 dengan tulisan "Tanggal Kembali"
@@ -588,12 +588,15 @@ class Report_Excel extends CI_Controller {
             $excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $i);
             $excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $row->kd_pjm);
             $excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, $row->nip);
-            $excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $row->kd_brg);
-            $excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow, $row->jml_pjm);
-            $excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow, $row->jml_kmbl);
+            $nama_ang=$this->db->get_where('anggota',array('nip'=>$row->nip))->row_array()['nama'];
+            $excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $nama_ang);
+            $excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow, $row->kd_brg);
+            $nama_brg=$this->db->get_where('barang',array('kode_barang'=>$row->kd_brg))->row_array()['nama_barang'];
+            $excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow, $nama_brg);
             $excel->setActiveSheetIndex(0)->setCellValue('G'.$numrow, $row->tgl_pjm);
             $excel->setActiveSheetIndex(0)->setCellValue('H'.$numrow, $row->tgl_kmbl);
-            $excel->setActiveSheetIndex(0)->setCellValue('I'.$numrow, $row->ptgs_pjm);
+            $ptg=$this->db->get_where('anggota',array('nip'=>$row->ptgs_pjm))->row_array()['nama'];
+            $excel->setActiveSheetIndex(0)->setCellValue('I'.$numrow, $ptg);
             $excel->setActiveSheetIndex(0)->setCellValue('J'.$numrow, $row->status);
             // Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
             $excel->getActiveSheet()->getStyle('A'.$numrow)->applyFromArray($style_row);
